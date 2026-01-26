@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+      - "*.qmd"
+      - "!dev/"
+website:
+  title: "CSUF Statstics using CourseKata"
+  navbar:
+    left:
+      - text: Home
+        href: index.html
+      - text: Chapter 2 (Sections 1-7) Slides
+        href: presentation/coursekata_ch2.html
+      - text: About
+        href: about.html
+format:
+  html:
+    theme: cosmo
