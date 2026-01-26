@@ -1,0 +1,7 @@
+---
+title: "CSUF Statistics using CourseKata"
+---
+
+Welcome! Choose a deck:
+
+- [Chapter 2 (Sections 1–7)](presentation/coursekata_ch2.html)
