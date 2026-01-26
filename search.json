@@ -159,5 +159,19 @@
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Share-out (fast)",
     "text": "Share-out (fast)\nEach team shares (60–90 sec):\n\ncases + variables\none measurement-related concept (units? coding? definition?)\none expected insight about data that you will collect"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About CSUF Statistics and CourseKata",
+    "section": "",
+    "text": "Here are some details!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSUF Statistics using CourseKata",
+    "section": "",
+    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)"
   }
 ]
