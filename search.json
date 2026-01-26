@@ -151,7 +151,7 @@
     "href": "presentations/CK-ch2.1-1.7.html#design-a-dataset-teams-of-34",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "“Design a dataset” (teams of 3–4)",
-    "text": "“Design a dataset” (teams of 3–4)\n\n\nPick ONE scenario:\n\nSleep & performance\nCaffeine & anxiety\nExercise & mood\n\n\nYour team must produce:\n\nCases: what counts as one row?\nVariables: 4–6 columns\nWhich are categorical vs quantitative\nFor Next Class: A dataset with 8–15 rows"
+    "text": "“Design a dataset” (teams of 3–4)\n\n\nPick ONE scenario:\n\nSleep & performance\nCaffeine & anxiety\nExercise & mood\n\n\nYour team must produce:\n\nCases: what counts as one row?\nVariables: 4–6 columns\nWhich are categorical vs quantitative\nFor Next Class: A dataset with 25-35 rows"
   },
   {
     "objectID": "presentations/CK-ch2.1-1.7.html#share-out-fast",
@@ -159,33 +159,5 @@
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Share-out (fast)",
     "text": "Share-out (fast)\nEach team shares (60–90 sec):\n\ncases + variables\none measurement-related concept (units? coding? definition?)\none expected insight about data that you will collect"
-  },
-  {
-    "objectID": "dev/git - git publishing.html",
-    "href": "dev/git - git publishing.html",
-    "title": "Initializing git and publishing as HTML",
-    "section": "",
-    "text": "git init\ngit add .\ngit commit -m \"Initial commit\"\ngit remote add origin &lt;your-repo-url&gt;\n# For new ones\ngit push -u origin main \n# For existing ones\ngit branch -u origin/main # or git branch --set-upstream-to=origin/main\nNOTE: git fetch only updates the local copy of the remote; useful to see the differences before merging.\ngit pull is equivalent to git fetch && git merge origin/main git pull --rebase is equivalent to git fetch && git rebase origin/main\n\n\n\nquarto publish gh-pages\n\n\n\nOn GitHub: Repo → Settings → Pages\nSet Source to Deploy from a branch\nChoose Branch = gh-pages and folder / (root)\nYour site will be at:\nhttps://.github.io//"
-  },
-  {
-    "objectID": "dev/git - git publishing.html#git-init",
-    "href": "dev/git - git publishing.html#git-init",
-    "title": "Initializing git and publishing as HTML",
-    "section": "",
-    "text": "git init\ngit add .\ngit commit -m \"Initial commit\"\ngit remote add origin &lt;your-repo-url&gt;\n# For new ones\ngit push -u origin main \n# For existing ones\ngit branch -u origin/main # or git branch --set-upstream-to=origin/main\nNOTE: git fetch only updates the local copy of the remote; useful to see the differences before merging.\ngit pull is equivalent to git fetch && git merge origin/main git pull --rebase is equivalent to git fetch && git rebase origin/main"
-  },
-  {
-    "objectID": "dev/git - git publishing.html#quarto-publish",
-    "href": "dev/git - git publishing.html#quarto-publish",
-    "title": "Initializing git and publishing as HTML",
-    "section": "",
-    "text": "quarto publish gh-pages"
-  },
-  {
-    "objectID": "dev/git - git publishing.html#on-github",
-    "href": "dev/git - git publishing.html#on-github",
-    "title": "Initializing git and publishing as HTML",
-    "section": "",
-    "text": "On GitHub: Repo → Settings → Pages\nSet Source to Deploy from a branch\nChoose Branch = gh-pages and folder / (root)\nYour site will be at:\nhttps://.github.io//"
   }
 ]
