@@ -1,0 +1,191 @@
+[
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#session-goals",
+    "href": "presentations/coursekata_ch2_webr_first.html#session-goals",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Session goals",
+    "text": "Session goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBy the end of today you can:\n\nexplain variation and why we organize data\ndistinguish measurement vs sampling\nidentify cases (rows) and variables (columns)\nmake and interpret frequency tables (using tally())\ntell categorical from quantitative variables\nexplain variable vs value"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#variation-is-the-point",
+    "href": "presentations/coursekata_ch2_webr_first.html#variation-is-the-point",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Variation is the point",
+    "text": "Variation is the point\n\nTwo bunches:\n\n2, 2, 2, 2, 2, 2, 2, 2, 2\n2, 1, 3, 3, 2, 3, 1, 2, 1\n\n\n\n\n\nWe reveal patterns by sorting and counting."
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#lets-sort-and-tally",
+    "href": "presentations/coursekata_ch2_webr_first.html#lets-sort-and-tally",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Let’s sort and tally",
+    "text": "Let’s sort and tally"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#pair-prompt",
+    "href": "presentations/coursekata_ch2_webr_first.html#pair-prompt",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Pair prompt",
+    "text": "Pair prompt\n\nWhat pattern is easier to see after sorting?\nWhat does the frequency table make obvious?"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#numbers-become-data-when-they-represent-the-world-librarymosaic",
+    "href": "presentations/coursekata_ch2_webr_first.html#numbers-become-data-when-they-represent-the-world-librarymosaic",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Numbers become “data” when they represent the world library(mosaic)",
+    "text": "Numbers become “data” when they represent the world library(mosaic)\nTwo core processes:\n\nMeasurement: turning attributes into values\n\n\n\n\nSampling: choosing which cases to measure"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#thinkpairshare-2-minutes",
+    "href": "presentations/coursekata_ch2_webr_first.html#thinkpairshare-2-minutes",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Think–Pair–Share (2 minutes)",
+    "text": "Think–Pair–Share (2 minutes)\nPick one:\n\nStress and school performance\nSleep and mood\nScreen time and attention\n\nFor your choice:\n\nWhat is one measurement?\nWhat is your sample?"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#cases-variables-values",
+    "href": "presentations/coursekata_ch2_webr_first.html#cases-variables-values",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Cases, variables, values",
+    "text": "Cases, variables, values\n\nRows = cases\nColumns = variables\nEach cell is a value"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#example-dataset-mindsetmatters-like-small-demo",
+    "href": "presentations/coursekata_ch2_webr_first.html#example-dataset-mindsetmatters-like-small-demo",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Example dataset (MindsetMatters-like, small demo)",
+    "text": "Example dataset (MindsetMatters-like, small demo)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#peek-at-structure-coursekata-style-glimpse",
+    "href": "presentations/coursekata_ch2_webr_first.html#peek-at-structure-coursekata-style-glimpse",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Peek at structure (CourseKata-style: glimpse)",
+    "text": "Peek at structure (CourseKata-style: glimpse)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#frequency-table-of-a-categorical-variable",
+    "href": "presentations/coursekata_ch2_webr_first.html#frequency-table-of-a-categorical-variable",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Frequency table of a categorical variable",
+    "text": "Frequency table of a categorical variable"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#two-way-tally-cross-tab",
+    "href": "presentations/coursekata_ch2_webr_first.html#two-way-tally-cross-tab",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Two-way tally (cross-tab)",
+    "text": "Two-way tally (cross-tab)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#sort-a-data-frame",
+    "href": "presentations/coursekata_ch2_webr_first.html#sort-a-data-frame",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Sort a data frame",
+    "text": "Sort a data frame"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#measurement-choices-affect-meaning",
+    "href": "presentations/coursekata_ch2_webr_first.html#measurement-choices-affect-meaning",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Measurement choices affect meaning",
+    "text": "Measurement choices affect meaning\n\nUnits and scales (years vs months)\nCoding (0/1 vs labels)\nDefinitions (what counts as “exercise”?)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#example-coding-vs-labeling",
+    "href": "presentations/coursekata_ch2_webr_first.html#example-coding-vs-labeling",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Example: coding vs labeling",
+    "text": "Example: coding vs labeling\n\n\n\n\n\n\n\n\nPrompt: Why do labels reduce mistakes?"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#two-types-youll-use-constantly",
+    "href": "presentations/coursekata_ch2_webr_first.html#two-types-youll-use-constantly",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Two types you’ll use constantly",
+    "text": "Two types you’ll use constantly\nQuantitative: amount/quantity (Age, BMI, blood pressure)\nCategorical: group/category (Condition, AgeGroup)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#quick-classification",
+    "href": "presentations/coursekata_ch2_webr_first.html#quick-classification",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Quick classification",
+    "text": "Quick classification\n\nAge\nBMI\nCondition\nZip code (in general)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#check-types-in-r",
+    "href": "presentations/coursekata_ch2_webr_first.html#check-types-in-r",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Check types in R",
+    "text": "Check types in R"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#variable-vs-value",
+    "href": "presentations/coursekata_ch2_webr_first.html#variable-vs-value",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Variable vs value",
+    "text": "Variable vs value\n\nVariable: the attribute/column (e.g., Age)\nValue: one case’s measurement (e.g., Age = 41)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#point-to-values",
+    "href": "presentations/coursekata_ch2_webr_first.html#point-to-values",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Point to values",
+    "text": "Point to values"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#how-many-unique-values",
+    "href": "presentations/coursekata_ch2_webr_first.html#how-many-unique-values",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "How many unique values?",
+    "text": "How many unique values?"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#design-a-dataset-teams-of-34",
+    "href": "presentations/coursekata_ch2_webr_first.html#design-a-dataset-teams-of-34",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "“Design a dataset” (teams of 3–4)",
+    "text": "“Design a dataset” (teams of 3–4)\nPick ONE scenario:\n\nSleep & performance\nCaffeine & anxiety\nExercise & mood\n\nYour team must produce:\n\nCases: what counts as one row?\nVariables: 4–6 columns\nWhich are categorical vs quantitative\nA dataset with 8–15 rows\nOne frequency table using tally()\nOne sorted view using arrange()"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#team-coding-space-edit-together",
+    "href": "presentations/coursekata_ch2_webr_first.html#team-coding-space-edit-together",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Team coding space (edit together)",
+    "text": "Team coding space (edit together)"
+  },
+  {
+    "objectID": "presentations/coursekata_ch2_webr_first.html#share-out-fast",
+    "href": "presentations/coursekata_ch2_webr_first.html#share-out-fast",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Share-out (fast)",
+    "text": "Share-out (fast)\nEach team shares (60–90 sec):\n\ncases + variables\none measurement gotcha (units? coding? definition?)\none tally or sorting insight"
+  },
+  {
+    "objectID": "dev/git - git publishing.html",
+    "href": "dev/git - git publishing.html",
+    "title": "Initializing git and publishing as HTML",
+    "section": "",
+    "text": "git init\ngit add .\ngit commit -m \"Initial commit\"\ngit remote add origin &lt;your-repo-url&gt;\n# For new ones\ngit push -u origin main \n# For existing ones\ngit branch -u origin/main # or git branch --set-upstream-to=origin/main\nNOTE: git fetch only updates the local copy of the remote; useful to see the differences before merging.\ngit pull is equivalent to git fetch && git merge origin/main git pull --rebase is equivalent to git fetch && git rebase origin/main\n\n\n\nquarto publish gh-pages\n\n\n\nOn GitHub: Repo → Settings → Pages\nSet Source to Deploy from a branch\nChoose Branch = gh-pages and folder / (root)\nYour site will be at:\nhttps://.github.io//"
+  },
+  {
+    "objectID": "dev/git - git publishing.html#git-init",
+    "href": "dev/git - git publishing.html#git-init",
+    "title": "Initializing git and publishing as HTML",
+    "section": "",
+    "text": "git init\ngit add .\ngit commit -m \"Initial commit\"\ngit remote add origin &lt;your-repo-url&gt;\n# For new ones\ngit push -u origin main \n# For existing ones\ngit branch -u origin/main # or git branch --set-upstream-to=origin/main\nNOTE: git fetch only updates the local copy of the remote; useful to see the differences before merging.\ngit pull is equivalent to git fetch && git merge origin/main git pull --rebase is equivalent to git fetch && git rebase origin/main"
+  },
+  {
+    "objectID": "dev/git - git publishing.html#quarto-publish",
+    "href": "dev/git - git publishing.html#quarto-publish",
+    "title": "Initializing git and publishing as HTML",
+    "section": "",
+    "text": "quarto publish gh-pages"
+  },
+  {
+    "objectID": "dev/git - git publishing.html#on-github",
+    "href": "dev/git - git publishing.html#on-github",
+    "title": "Initializing git and publishing as HTML",
+    "section": "",
+    "text": "On GitHub: Repo → Settings → Pages\nSet Source to Deploy from a branch\nChoose Branch = gh-pages and folder / (root)\nYour site will be at:\nhttps://.github.io//"
+  }
+]
