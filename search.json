@@ -1,164 +1,164 @@
 [
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#session-goals",
-    "href": "presentations/coursekata_ch2_webr_first.html#session-goals",
+    "objectID": "presentations/CK-ch2.1-1.7.html#session-goals",
+    "href": "presentations/CK-ch2.1-1.7.html#session-goals",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Session goals",
-    "text": "Session goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBy the end of today you can:\n\nexplain variation and why we organize data\ndistinguish measurement vs sampling\nidentify cases (rows) and variables (columns)\nmake and interpret frequency tables (using tally())\ntell categorical from quantitative variables\nexplain variable vs value"
+    "text": "Session goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBy the end of today you can:\n\nexplain variation and why we organize data\nmake and interpret frequency tables (using tally())\nidentify cases (rows) and variables (columns)\nexplain variable vs value\ntell categorical from quantitative variables\ndistinguish measurement vs sampling"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#variation-is-the-point",
-    "href": "presentations/coursekata_ch2_webr_first.html#variation-is-the-point",
+    "objectID": "presentations/CK-ch2.1-1.7.html#variation-is-the-point",
+    "href": "presentations/CK-ch2.1-1.7.html#variation-is-the-point",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Variation is the point",
-    "text": "Variation is the point\n\nTwo bunches:\n\n2, 2, 2, 2, 2, 2, 2, 2, 2\n2, 1, 3, 3, 2, 3, 1, 2, 1\n\n\n\n\n\nWe reveal patterns by sorting and counting."
+    "text": "Variation is the point\n\nTwo bunches:\n\n2, 2, 2, 2, 2, 2, 2, 2, 2\n2, 1, 3, 3, 2, 3, 1, 2, 1\n\nWe reveal patterns by sorting and counting.\nWe use patterns to find  unusual things  exceptions  outliers"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#lets-sort-and-tally",
-    "href": "presentations/coursekata_ch2_webr_first.html#lets-sort-and-tally",
+    "objectID": "presentations/CK-ch2.1-1.7.html#lets-sort-and-tally",
+    "href": "presentations/CK-ch2.1-1.7.html#lets-sort-and-tally",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Let’s sort and tally",
     "text": "Let’s sort and tally"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#pair-prompt",
-    "href": "presentations/coursekata_ch2_webr_first.html#pair-prompt",
+    "objectID": "presentations/CK-ch2.1-1.7.html#pair-prompt",
+    "href": "presentations/CK-ch2.1-1.7.html#pair-prompt",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Pair prompt",
-    "text": "Pair prompt\n\nWhat pattern is easier to see after sorting?\nWhat does the frequency table make obvious?"
+    "text": "Pair prompt\n\nx &lt;- c(2, 1, 3, 3, 2, 3, 1, 2, 1)\nprint(sort(x))\n\n[1] 1 1 1 2 2 2 3 3 3\n\ncat('\\n')\ntally(x)\n\nX\n1 2 3 \n3 3 3 \n\n\n\nWhat pattern is easier to see after sorting?\nWhat does the frequency table make obvious?"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#numbers-become-data-when-they-represent-the-world-librarymosaic",
-    "href": "presentations/coursekata_ch2_webr_first.html#numbers-become-data-when-they-represent-the-world-librarymosaic",
+    "objectID": "presentations/CK-ch2.1-1.7.html#numbers-become-data-when-they-represent-the-world-librarymosaic",
+    "href": "presentations/CK-ch2.1-1.7.html#numbers-become-data-when-they-represent-the-world-librarymosaic",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Numbers become “data” when they represent the world library(mosaic)",
     "text": "Numbers become “data” when they represent the world library(mosaic)\nTwo core processes:\n\nMeasurement: turning attributes into values\n\n\n\n\nSampling: choosing which cases to measure"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#thinkpairshare-2-minutes",
-    "href": "presentations/coursekata_ch2_webr_first.html#thinkpairshare-2-minutes",
+    "objectID": "presentations/CK-ch2.1-1.7.html#thinkpairshare-2-minutes",
+    "href": "presentations/CK-ch2.1-1.7.html#thinkpairshare-2-minutes",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Think–Pair–Share (2 minutes)",
     "text": "Think–Pair–Share (2 minutes)\nPick one:\n\nStress and school performance\nSleep and mood\nScreen time and attention\n\nFor your choice:\n\nWhat is one measurement?\nWhat is your sample?"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#cases-variables-values",
-    "href": "presentations/coursekata_ch2_webr_first.html#cases-variables-values",
+    "objectID": "presentations/CK-ch2.1-1.7.html#example-dataset-mindsetmatters",
+    "href": "presentations/CK-ch2.1-1.7.html#example-dataset-mindsetmatters",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Example dataset (MindsetMatters)",
+    "text": "Example dataset (MindsetMatters)\n\nHouskeepr Information before and after informing some of them that their job counts as an active-lifestyle.\nWhat do you see?"
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#cases-variables-values",
+    "href": "presentations/CK-ch2.1-1.7.html#cases-variables-values",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Cases, variables, values",
-    "text": "Cases, variables, values\n\nRows = cases\nColumns = variables\nEach cell is a value"
+    "text": "Cases, variables, values\n\nRows = cases\nColumns = variables\nEach cell is a value\n\n\n\n  Cond Age  Wt   Wt2  BMI BMI2  Fat Fat2  WHR WHR2 Syst Syst2 Diast Diast2\n1    0  43 137 137.4 25.1 25.1 31.9 32.8 0.79 0.79  124   118    70     73\n2    0  42 150 147.0 29.3 28.7 35.5   NA 0.81 0.81  119   112    80     68\n3    0  41 124 124.8 26.9 27.0 35.1   NA 0.84 0.84  108   107    59     65\n4    0  40 173 171.4 32.8 32.4 41.9 42.4 1.00 1.00  116   126    71     79\n5    0  33 163 160.2 37.9 37.2 41.7   NA 0.86 0.84  113   114    73     78\n6    0  24  90  91.8 16.5 16.8   NA   NA 0.73 0.73   NA    NA    78     76\n   Condition\n1 Uninformed\n2 Uninformed\n3 Uninformed\n4 Uninformed\n5 Uninformed\n6 Uninformed"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#example-dataset-mindsetmatters-like-small-demo",
-    "href": "presentations/coursekata_ch2_webr_first.html#example-dataset-mindsetmatters-like-small-demo",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Example dataset (MindsetMatters-like, small demo)",
-    "text": "Example dataset (MindsetMatters-like, small demo)"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#peek-at-structure-coursekata-style-glimpse",
-    "href": "presentations/coursekata_ch2_webr_first.html#peek-at-structure-coursekata-style-glimpse",
+    "objectID": "presentations/CK-ch2.1-1.7.html#peek-at-structure-coursekata-style-glimpse",
+    "href": "presentations/CK-ch2.1-1.7.html#peek-at-structure-coursekata-style-glimpse",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Peek at structure (CourseKata-style: glimpse)",
-    "text": "Peek at structure (CourseKata-style: glimpse)"
+    "text": "Peek at structure (CourseKata-style: glimpse)\n\nWhat types of values do you see?"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#frequency-table-of-a-categorical-variable",
-    "href": "presentations/coursekata_ch2_webr_first.html#frequency-table-of-a-categorical-variable",
+    "objectID": "presentations/CK-ch2.1-1.7.html#variable-vs-value",
+    "href": "presentations/CK-ch2.1-1.7.html#variable-vs-value",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Variable vs value",
+    "text": "Variable vs value\n\nVariable: the attribute/column (e.g., Age)\nValue: one case’s measurement (e.g., Age = 41)\nVariables and Values in a Dataset:"
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#value-types",
+    "href": "presentations/CK-ch2.1-1.7.html#value-types",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Value Types",
+    "text": "Value Types\n\nNames: character strings, labels\nNumbers: A combination of 0 to 9 digits and symbols like . and %\n\n\n\n'data.frame':   75 obs. of  15 variables:\n $ Cond     : int  0 0 0 0 0 0 0 0 0 0 ...\n $ Age      : int  43 42 41 40 33 24 46 21 29 19 ...\n $ Wt       : int  137 150 124 173 163 90 150 156 141 123 ...\n $ Wt2      : num  137 147 125 171 160 ...\n $ BMI      : num  25.1 29.3 26.9 32.8 37.9 16.5 27.5 25.9 27.5 19.6 ...\n $ BMI2     : num  25.1 28.7 27 32.4 37.2 16.8 27.4 25.7 27.4 19.7 ...\n $ Fat      : num  31.9 35.5 35.1 41.9 41.7 NA 36.1 36.4 NA 26.6 ...\n $ Fat2     : num  32.8 NA NA 42.4 NA NA 37.3 NA NA NA ...\n $ WHR      : num  0.79 0.81 0.84 1 0.86 0.73 0.9 0.78 0.87 0.69 ...\n $ WHR2     : num  0.79 0.81 0.84 1 0.84 0.73 0.9 0.78 0.85 0.69 ...\n $ Syst     : int  124 119 108 116 113 NA 119 116 110 113 ...\n $ Syst2    : int  118 112 107 126 114 NA 115 135 115 117 ...\n $ Diast    : int  70 80 59 71 73 78 75 67 73 75 ...\n $ Diast2   : int  73 68 65 79 78 76 77 65 74 72 ...\n $ Condition: Factor w/ 2 levels \"Informed\",\"Uninformed\": 2 2 2 2 2 2 2 2 2 2 ..."
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#variable-types",
+    "href": "presentations/CK-ch2.1-1.7.html#variable-types",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Variable Types",
+    "text": "Variable Types\n\nVariables:\n\nCategorical: for qualitative comparison (grouping)\nNumerical: for quantitative comparison (distance, ratio)\n\n\n\n\n'data.frame':   75 obs. of  15 variables:\n $ Cond     : int  0 0 0 0 0 0 0 0 0 0 ...\n $ Age      : int  43 42 41 40 33 24 46 21 29 19 ...\n $ Wt       : int  137 150 124 173 163 90 150 156 141 123 ...\n $ Wt2      : num  137 147 125 171 160 ...\n $ BMI      : num  25.1 29.3 26.9 32.8 37.9 16.5 27.5 25.9 27.5 19.6 ...\n $ BMI2     : num  25.1 28.7 27 32.4 37.2 16.8 27.4 25.7 27.4 19.7 ...\n $ Fat      : num  31.9 35.5 35.1 41.9 41.7 NA 36.1 36.4 NA 26.6 ...\n $ Fat2     : num  32.8 NA NA 42.4 NA NA 37.3 NA NA NA ...\n $ WHR      : num  0.79 0.81 0.84 1 0.86 0.73 0.9 0.78 0.87 0.69 ...\n $ WHR2     : num  0.79 0.81 0.84 1 0.84 0.73 0.9 0.78 0.85 0.69 ...\n $ Syst     : int  124 119 108 116 113 NA 119 116 110 113 ...\n $ Syst2    : int  118 112 107 126 114 NA 115 135 115 117 ...\n $ Diast    : int  70 80 59 71 73 78 75 67 73 75 ...\n $ Diast2   : int  73 68 65 79 78 76 77 65 74 72 ...\n $ Condition: Factor w/ 2 levels \"Informed\",\"Uninformed\": 2 2 2 2 2 2 2 2 2 2 ..."
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#quick-classification",
+    "href": "presentations/CK-ch2.1-1.7.html#quick-classification",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Quick classification",
+    "text": "Quick classification\n\nAge\nBMI\nCondition\nZip code (in general)\n\n\nhead(MindsetMatters, 3)\n\n  Cond Age  Wt Wt2  BMI BMI2  Fat Fat2  WHR WHR2 Syst Syst2 Diast Diast2\n1    0  43 137 137 25.1 25.1 31.9 32.8 0.79 0.79  124   118    70     73\n2    0  42 150 147 29.3 28.7 35.5   NA 0.81 0.81  119   112    80     68\n3    0  41 124 125 26.9 27.0 35.1   NA 0.84 0.84  108   107    59     65\n   Condition\n1 Uninformed\n2 Uninformed\n3 Uninformed"
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#switching-value-types-to-factor",
+    "href": "presentations/CK-ch2.1-1.7.html#switching-value-types-to-factor",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Switching Value Types: To Factor",
+    "text": "Switching Value Types: To Factor"
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#switching-value-types-to-numeric",
+    "href": "presentations/CK-ch2.1-1.7.html#switching-value-types-to-numeric",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Switching Value Types: To Numeric",
+    "text": "Switching Value Types: To Numeric"
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#frequency-table-of-a-categorical-variable",
+    "href": "presentations/CK-ch2.1-1.7.html#frequency-table-of-a-categorical-variable",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Frequency table of a categorical variable",
     "text": "Frequency table of a categorical variable"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#two-way-tally-cross-tab",
-    "href": "presentations/coursekata_ch2_webr_first.html#two-way-tally-cross-tab",
+    "objectID": "presentations/CK-ch2.1-1.7.html#two-way-tally-cross-tab",
+    "href": "presentations/CK-ch2.1-1.7.html#two-way-tally-cross-tab",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Two-way tally (cross-tab)",
     "text": "Two-way tally (cross-tab)"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#sort-a-data-frame",
-    "href": "presentations/coursekata_ch2_webr_first.html#sort-a-data-frame",
+    "objectID": "presentations/CK-ch2.1-1.7.html#sort-a-data-frame",
+    "href": "presentations/CK-ch2.1-1.7.html#sort-a-data-frame",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Sort a data frame",
     "text": "Sort a data frame"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#measurement-choices-affect-meaning",
-    "href": "presentations/coursekata_ch2_webr_first.html#measurement-choices-affect-meaning",
+    "objectID": "presentations/CK-ch2.1-1.7.html#frequency-table-for-numerical-variables",
+    "href": "presentations/CK-ch2.1-1.7.html#frequency-table-for-numerical-variables",
+    "title": "CourseKata Ch. 2.1–2.7",
+    "section": "Frequency Table for Numerical Variables",
+    "text": "Frequency Table for Numerical Variables\n\nTally works on numeric but is not alwyas helpful\n\n\n\n\n\n\n\n\n\n\nGrouping works better:"
+  },
+  {
+    "objectID": "presentations/CK-ch2.1-1.7.html#measurement-choices-affect-meaning",
+    "href": "presentations/CK-ch2.1-1.7.html#measurement-choices-affect-meaning",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Measurement choices affect meaning",
-    "text": "Measurement choices affect meaning\n\nUnits and scales (years vs months)\nCoding (0/1 vs labels)\nDefinitions (what counts as “exercise”?)"
+    "text": "Measurement choices affect meaning\n\nUnits and scales (years vs months, miles vs km)\nCoding (0/1 vs labels)\nDefinitions (what counts as “exercise”?)"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#example-coding-vs-labeling",
-    "href": "presentations/coursekata_ch2_webr_first.html#example-coding-vs-labeling",
+    "objectID": "presentations/CK-ch2.1-1.7.html#example-coding-vs-labeling",
+    "href": "presentations/CK-ch2.1-1.7.html#example-coding-vs-labeling",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Example: coding vs labeling",
-    "text": "Example: coding vs labeling\n\n\n\n\n\n\n\n\nPrompt: Why do labels reduce mistakes?"
+    "text": "Example: coding vs labeling\n\n\n\n\n\n\n\n\nQuestion: Which one do you prefer: labels or Numerical Codes?"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#two-types-youll-use-constantly",
-    "href": "presentations/coursekata_ch2_webr_first.html#two-types-youll-use-constantly",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Two types you’ll use constantly",
-    "text": "Two types you’ll use constantly\nQuantitative: amount/quantity (Age, BMI, blood pressure)\nCategorical: group/category (Condition, AgeGroup)"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#quick-classification",
-    "href": "presentations/coursekata_ch2_webr_first.html#quick-classification",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Quick classification",
-    "text": "Quick classification\n\nAge\nBMI\nCondition\nZip code (in general)"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#check-types-in-r",
-    "href": "presentations/coursekata_ch2_webr_first.html#check-types-in-r",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Check types in R",
-    "text": "Check types in R"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#variable-vs-value",
-    "href": "presentations/coursekata_ch2_webr_first.html#variable-vs-value",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Variable vs value",
-    "text": "Variable vs value\n\nVariable: the attribute/column (e.g., Age)\nValue: one case’s measurement (e.g., Age = 41)"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#point-to-values",
-    "href": "presentations/coursekata_ch2_webr_first.html#point-to-values",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Point to values",
-    "text": "Point to values"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#how-many-unique-values",
-    "href": "presentations/coursekata_ch2_webr_first.html#how-many-unique-values",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "How many unique values?",
-    "text": "How many unique values?"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#design-a-dataset-teams-of-34",
-    "href": "presentations/coursekata_ch2_webr_first.html#design-a-dataset-teams-of-34",
+    "objectID": "presentations/CK-ch2.1-1.7.html#design-a-dataset-teams-of-34",
+    "href": "presentations/CK-ch2.1-1.7.html#design-a-dataset-teams-of-34",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "“Design a dataset” (teams of 3–4)",
-    "text": "“Design a dataset” (teams of 3–4)\nPick ONE scenario:\n\nSleep & performance\nCaffeine & anxiety\nExercise & mood\n\nYour team must produce:\n\nCases: what counts as one row?\nVariables: 4–6 columns\nWhich are categorical vs quantitative\nA dataset with 8–15 rows\nOne frequency table using tally()\nOne sorted view using arrange()"
+    "text": "“Design a dataset” (teams of 3–4)\n\n\nPick ONE scenario:\n\nSleep & performance\nCaffeine & anxiety\nExercise & mood\n\n\nYour team must produce:\n\nCases: what counts as one row?\nVariables: 4–6 columns\nWhich are categorical vs quantitative\nFor Next Class: A dataset with 8–15 rows"
   },
   {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#team-coding-space-edit-together",
-    "href": "presentations/coursekata_ch2_webr_first.html#team-coding-space-edit-together",
-    "title": "CourseKata Ch. 2.1–2.7",
-    "section": "Team coding space (edit together)",
-    "text": "Team coding space (edit together)"
-  },
-  {
-    "objectID": "presentations/coursekata_ch2_webr_first.html#share-out-fast",
-    "href": "presentations/coursekata_ch2_webr_first.html#share-out-fast",
+    "objectID": "presentations/CK-ch2.1-1.7.html#share-out-fast",
+    "href": "presentations/CK-ch2.1-1.7.html#share-out-fast",
     "title": "CourseKata Ch. 2.1–2.7",
     "section": "Share-out (fast)",
-    "text": "Share-out (fast)\nEach team shares (60–90 sec):\n\ncases + variables\none measurement gotcha (units? coding? definition?)\none tally or sorting insight"
+    "text": "Share-out (fast)\nEach team shares (60–90 sec):\n\ncases + variables\none measurement-related concept (units? coding? definition?)\none expected insight about data that you will collect"
   },
   {
     "objectID": "dev/git - git publishing.html",
