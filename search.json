@@ -137,14 +137,20 @@
     "href": "index.html",
     "title": "CSUF Statistics using CourseKata",
     "section": "",
-    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)"
+    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)",
+    "crumbs": [
+      "CSUF Statistics using CourseKata"
+    ]
   },
   {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About CSUF Statistics and CourseKata",
     "section": "",
-    "text": "Here are some details!"
+    "text": "Here are some details!",
+    "crumbs": [
+      "About CSUF Statistics and CourseKata"
+    ]
   },
   {
     "objectID": "presentations/CK-ch2.1-2.7.html#session-goals",
