@@ -1,0 +1,320 @@
+---
+title: "CourseKata Chapter 2.8–2.11"
+subtitle: "Sampling • Tidy Data • Missing Data • Creating Variables"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: false
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 2.8–2.11"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch2.8-2.11.html
+---
+
+# Today (Ch. 2.8–2.11)
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| echo: false
+#| output: false
+#| include: false
+
+#  Helper Functions
+## helpers <- readLines("webr_helpers.R", warn = FALSE)
+## eval(parse(text = helpers))
+
+#  Packages available in your WebR build -
+library(mosaic)
+library(ggformula)
+
+# A "fake population" for sampling variation demos
+fake_pop <- rep(0:9, each = 100)
+
+options(digits = 3)
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+load(file = "./data/Fingers.rda")
+# create a webr to read the data
+source('./data/embedData.R')
+cat(embedData(Fingers))
+```
+
+## Session goals
+
+By the end of today, you can:
+
+- Explain **population vs. sample** 
+- Explain why random + independent sampling matters
+- Describe **tidy data** (rows/columns) and work with data frames
+- Recognize and handle **missing data** (`NA`) in a principled way
+- **Create and recode** variables to answer a question
+
+# 2.8 Sampling from a population
+
+## Big ideas
+
+- **Population:** the universe of cases we want to learn about  
+- **Sample:** the cases we actually measure
+- Two key choices in any sampling plan:
+  1. *Who counts as part of the population?*
+  2. *How do we select cases from that population?*
+
+
+
+## Random & independent sampling
+
+- **Random:** each case has an equal chance of being selected  
+- **Independent:** picking one case doesn’t change the chance of picking another
+
+Why we care:
+
+- Many statistical methods assume your sample is (*approximately*) random and independent.
+- When these assumptions fail, conclusions can be misleading.
+
+
+
+## Try it: sampling variation with a “fake population”
+
+```{webr}
+# fake_pop is already created in the setup
+tally(fake_pop)
+```
+
+Now take a *random* sample of 10 and compare.
+
+```{webr}
+random_sample <- sample(fake_pop, 10)
+random_sample
+tally(random_sample)
+```
+
+
+
+## Visual: histogram of your sample (n = 10)
+
+```{webr}
+gf_histogram(~random_sample, binwidth = 1) +
+  scale_x_continuous(limits = c(-.5, 9.5), breaks = 0:9)
+```
+
+## Think, Pair, Share:
+- What do you expect if we repeat the sampling again?
+
+```{webr}
+random_sample <- sample(fake_pop, 10)
+gf_histogram(~random_sample, binwidth = 1) +
+  scale_x_continuous(limits = c(-.5, 9.5), breaks = 0:9)
+```
+
+- What happens if we increase the sample size?
+```{webr}
+random_sample50 <- sample(fake_pop, 50)
+gf_histogram(~random_sample50, binwidth = 1) +
+  scale_x_continuous(limits = c(-.5, 9.5), breaks = 0:9)
+```
+
+
+**Discuss:** Which sample looks “more representative” of the population? Why?
+
+# 2.9 The structure of data (tidy data)
+
+## The tidy-data idea
+
+A useful default structure:
+
+1. Each **column** is a variable  
+2. Each **row** is a case (observation)  
+3. Each *type* of case belongs in its own table
+
+
+## Meet `coursekata` data frame: `Fingers`
+
+```{webr}
+head(Fingers, 6)
+```
+
+**Think:**  
+- What are the cases?  
+- What are the variables?
+
+
+## Selecting a few columns (CourseKata-style)
+
+```{webr}
+select(Fingers, Gender, Thumb)
+```
+
+Often we only want a few rows, too:
+
+```{webr}
+head(select(Fingers, Gender, Thumb), 6)
+```
+
+## Filtering rows (subsetting cases)
+
+Example: keep only `Gender == "female"`.
+
+```{webr}
+F_female <- filter(Fingers, Gender == "female")
+head(F_female, 6)
+```
+
+**Question:**
+- How many females are in this sample?
+
+```{webr}
+tally(~Gender, data = Fingers) # any other ways?
+```
+
+
+# 2.10 Missing data
+
+## What is missing data in R?
+
+- R uses the special value `NA` (“not available”) to represent missingness.
+
+```{webr}
+is.na(NA)
+```
+
+```{webr}
+is.na("NA")
+```
+
+- `NA` is not the same as the text `"NA"`.
+
+```{webr}
+NA == "NA"
+```
+
+## Identify missing values
+
+```{webr}
+# How many SSLast values are missing?
+sum(is.na(Fingers$SSLast))
+```
+
+```{webr}
+# Which ones are missing
+which(is.na(Fingers$SSLast))
+```
+
+```{webr}
+# A quick look at SSLast
+head(Fingers$SSLast, 20)
+```
+
+## Two common strategies
+
+1) **Drop rows** with missing values (sometimes OK, sometimes not)
+
+```{webr}
+Fingers_complete <- na.omit(Fingers)
+nrow(Fingers); nrow(Fingers_complete)
+```
+
+2) **Filter only the rows you need** (more targeted)
+
+```{webr}
+Fingers_subset <- filter(Fingers, is.na(SSLast) == FALSE)
+sum(is.na(Fingers_subset$SSLast))
+```
+
+
+
+## Activity: “missingness decisions” (group work)
+
+In groups of 3–4:
+
+- Imagine `SSLast` is **important** to your analysis.
+- Decide which approach you’d use:
+  - `na.omit()` on the whole data frame
+  - targeted `filter()` for just `SSLast`
+  - something else
+
+Be ready to justify your choice in 1–2 sentences.
+
+
+
+# 2.11 Creating and recoding variables
+
+## Creating a summary variable (logical)
+
+CourseKata example idea: “Is ring finger longer than index finger?”
+
+```{webr}
+Fingers$RingLonger <- Fingers$Ring > Fingers$Index
+tally(~RingLonger, data = Fingers)
+```
+
+
+
+## Creating a ratio variable
+
+```{webr}
+Fingers$IndexRingRatio <- Fingers$Index / Fingers$Ring
+head(select(Fingers, Ring, Index, IndexRingRatio), 6)
+```
+
+```{webr}
+gf_histogram( ~ Fingers$IndexRingRatio, binwidth = 1)
+```
+
+## Creating an average across multiple variables
+
+```{webr}
+Fingers$AvgFinger <- (Fingers$Thumb + Fingers$Index + Fingers$Middle + Fingers$Ring + Fingers$Pinkie) / 5
+head(select(Fingers, Thumb, Index, Middle, Ring, Pinkie, AvgFinger), 6)
+```
+
+
+## Recoding: turn a quantitative variable into categories
+
+Example: make a “HighRatio” indicator (above 1 vs not).
+
+```{webr}
+Fingers$HighRatio <- Fingers$IndexRingRatio > 1
+tally(~HighRatio, data = Fingers)
+```
+
+Now cross-tab by Gender:
+
+```{webr}
+tally(HighRatio ~ Gender, data = Fingers)
+```
+
+
+## Wrap-up: what we just practiced
+
+- Sampling → variability shows up even when the population is “known”
+- Tidy data → rows = cases, columns = variables
+- Missing data → `NA` requires explicit handling
+- New variables → make your analysis easier (and your models possible)
+
+
+
+# Exit ticket (2–3 minutes)
+
+Write a short response:
+
+1. One sentence: define **population** vs **sample**  
+2. One sentence: what makes data “tidy”?  
+3. One R line: remove rows where `SSLast` is `NA` (don’t use `na.omit()`)
+
+```{webr}
+# Your line here:
+# Fingers_subset <- ...
+```

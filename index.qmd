@@ -4,4 +4,5 @@ title: "CSUF Statistics using CourseKata"
 
 Welcome! Choose a deck:
 
-- [Chapter 2 (Sections 1–7)](presentation/coursekata_ch2.html)
+- [Chapter 2 (Sections 1–7)](presentations/CK-ch2.1-2.7.html)
+- [Chapter 2 (Sections 8–11)](presentations/CK-ch2.8-2.11.html)
