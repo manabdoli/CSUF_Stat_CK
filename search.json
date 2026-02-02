@@ -1,7 +1,7 @@
 [
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#session-goals",
-    "href": "presentations/CK-ch3.1-3.8.html#session-goals",
+    "objectID": "presentations/CK-ch3.1-3.9.html#session-goals",
+    "href": "presentations/CK-ch3.1-3.9.html#session-goals",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Session goals",
     "text": "Session goals\nBy the end of today, you can:\n\nExplain what a distribution is (pattern of variation in a variable)\nBuild and interpret histograms\nDescribe a distribution using shape, center, spread, and unusual features\nCompute the five-number summary and interpret quartiles\nCreate and interpret box plots\nIdentify outliers using the 1.5×IQR rule",
@@ -11,8 +11,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#big-idea",
-    "href": "presentations/CK-ch3.1-3.8.html#big-idea",
+    "objectID": "presentations/CK-ch3.1-3.9.html#big-idea",
+    "href": "presentations/CK-ch3.1-3.9.html#big-idea",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Big idea",
     "text": "Big idea\nA distribution is the pattern of variation in a variable.\n\nWe look at all values together\nWe summarize and visualize the pattern\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are distribution characteristics in each case?",
@@ -22,8 +22,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#summary-statistics",
-    "href": "presentations/CK-ch3.1-3.8.html#summary-statistics",
+    "objectID": "presentations/CK-ch3.1-3.9.html#summary-statistics",
+    "href": "presentations/CK-ch3.1-3.9.html#summary-statistics",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Summary Statistics",
     "text": "Summary Statistics\n\n\n\nRaceEthnic\n           White African American            Asian           Latino \n              50               11               56               28 \n           Other \n              12 \n\n\n\n\n\n\nIndex\n\n\n       min Q1 median Q3 max     mean       sd   n missing\n        45 67     70 76 110 72.50666 10.02764 157       0\n\n\n\n\n\nPair prompt (1–2 min):\n\nWhat do these summary tell you, and what do they hide?",
@@ -33,8 +33,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#what-a-histogram-shows",
-    "href": "presentations/CK-ch3.1-3.8.html#what-a-histogram-shows",
+    "objectID": "presentations/CK-ch3.1-3.9.html#what-a-histogram-shows",
+    "href": "presentations/CK-ch3.1-3.9.html#what-a-histogram-shows",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "What a histogram shows",
     "text": "What a histogram shows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx-axis: values (bins)\ny-axis: counts (or density)\nreveals shape + spread quickly",
@@ -44,8 +44,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#bin-width-matters",
-    "href": "presentations/CK-ch3.1-3.8.html#bin-width-matters",
+    "objectID": "presentations/CK-ch3.1-3.9.html#bin-width-matters",
+    "href": "presentations/CK-ch3.1-3.9.html#bin-width-matters",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Bin width matters",
     "text": "Bin width matters\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich bin width best shows the overall pattern without “too much noise”?",
@@ -55,8 +55,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#a-checklist-for-describing-a-distribution",
-    "href": "presentations/CK-ch3.1-3.8.html#a-checklist-for-describing-a-distribution",
+    "objectID": "presentations/CK-ch3.1-3.9.html#a-checklist-for-describing-a-distribution",
+    "href": "presentations/CK-ch3.1-3.9.html#a-checklist-for-describing-a-distribution",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "A checklist for describing a distribution",
     "text": "A checklist for describing a distribution\n\nShape: symmetric? skewed? unimodal/bimodal?\nCenter: typical value\n\nmode, median or mean\n\nSpread: how variable? how concentrated?\n\nRange \\(=Max - Min\\), Standard Deviation, IQR\n\nWeird things: gaps, clusters, outliers\n\nOutliers: far away from typical \\(\\equiv\\) unlikely tail",
@@ -66,8 +66,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#five-numbers-that-tell-a-lot",
-    "href": "presentations/CK-ch3.1-3.8.html#five-numbers-that-tell-a-lot",
+    "objectID": "presentations/CK-ch3.1-3.9.html#five-numbers-that-tell-a-lot",
+    "href": "presentations/CK-ch3.1-3.9.html#five-numbers-that-tell-a-lot",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Five numbers that tell a lot",
     "text": "Five numbers that tell a lot\n\nmin, Q1, median, Q3, max\n\n\n\nPopulation [of Countries]:\n\n\n      min    Q1 median     Q3    max     mean       sd   n missing\n     0.29 4.455  10.48 31.225 1304.5 44.14545 145.4893 143       0\n\n\n\nInterpretation check:\n\nWhat is the population of the largest country?\nCould data be skewed?\nWhat does Q1 mean in plain language?",
@@ -77,8 +77,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#quartiles-cutpoints",
-    "href": "presentations/CK-ch3.1-3.8.html#quartiles-cutpoints",
+    "objectID": "presentations/CK-ch3.1-3.9.html#quartiles-cutpoints",
+    "href": "presentations/CK-ch3.1-3.9.html#quartiles-cutpoints",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Quartiles = cutpoints",
     "text": "Quartiles = cutpoints\n\nQ1: about 25% of values are below\nMedian: about 50% below\nQ3: about 75% below\n\n\n\n\n\n\n\n\n\n\n\n\n“Half the countries have a population _______.”\n“The population of a quarter of countries is _______.”",
@@ -88,8 +88,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#picturing-the-five-number-summary",
-    "href": "presentations/CK-ch3.1-3.8.html#picturing-the-five-number-summary",
+    "objectID": "presentations/CK-ch3.1-3.9.html#picturing-the-five-number-summary",
+    "href": "presentations/CK-ch3.1-3.9.html#picturing-the-five-number-summary",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Picturing the Five-number summary",
     "text": "Picturing the Five-number summary\n\n\nIndex Distribution\n\n\n\n\n\n\n\n\n\nIndex Distribution by Gender\n\n\n\n\n\n\n\n\n\n\nWhich group has the higher median Index length?",
@@ -99,8 +99,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#the-1.5iqr-rule",
-    "href": "presentations/CK-ch3.1-3.8.html#the-1.5iqr-rule",
+    "objectID": "presentations/CK-ch3.1-3.9.html#the-1.5iqr-rule",
+    "href": "presentations/CK-ch3.1-3.9.html#the-1.5iqr-rule",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "The 1.5×IQR rule",
     "text": "The 1.5×IQR rule\n\nLower fence: Q1 − 1.5×IQR\nUpper fence: Q3 + 1.5×IQR\nValues beyond fences are flagged as outliers\n\n\n\n\n min Q1 median Q3 max\n  45 67     70 76 110",
@@ -110,8 +110,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#distribution-of-categorical-data",
-    "href": "presentations/CK-ch3.1-3.8.html#distribution-of-categorical-data",
+    "objectID": "presentations/CK-ch3.1-3.9.html#distribution-of-categorical-data",
+    "href": "presentations/CK-ch3.1-3.9.html#distribution-of-categorical-data",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Distribution of Categorical Data",
     "text": "Distribution of Categorical Data",
@@ -121,8 +121,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#characteristics-of-categorical-distributions",
-    "href": "presentations/CK-ch3.1-3.8.html#characteristics-of-categorical-distributions",
+    "objectID": "presentations/CK-ch3.1-3.9.html#characteristics-of-categorical-distributions",
+    "href": "presentations/CK-ch3.1-3.9.html#characteristics-of-categorical-distributions",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Characteristics of Categorical Distributions:",
     "text": "Characteristics of Categorical Distributions:\n\nShape: Not applicable\n\nLocation (for nominal data) and position no important)\n\nCenter: The tallest bar\nSpread: How different equal bars are",
@@ -132,8 +132,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#variability-in-categorical-distributions-advanced",
-    "href": "presentations/CK-ch3.1-3.8.html#variability-in-categorical-distributions-advanced",
+    "objectID": "presentations/CK-ch3.1-3.9.html#variability-in-categorical-distributions-advanced",
+    "href": "presentations/CK-ch3.1-3.9.html#variability-in-categorical-distributions-advanced",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Variability in Categorical Distributions (Advanced):",
     "text": "Variability in Categorical Distributions (Advanced):\n\nVariability is measured different ways:\n\nThe larger the value; the more equal the bars.\nGini: \\(1-\\sum_{i=1}^k p_i^2 \\quad \\in [0, (k-1)/k]\\)\nShannon Entropy: \\(H=−\\sum_{i=1}^k p_i \\log(p_i) \\quad \\in [0, \\log(k)]\\)",
@@ -143,8 +143,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#distribution-detective-teams-of-34",
-    "href": "presentations/CK-ch3.1-3.8.html#distribution-detective-teams-of-34",
+    "objectID": "presentations/CK-ch3.1-3.9.html#distribution-detective-teams-of-34",
+    "href": "presentations/CK-ch3.1-3.9.html#distribution-detective-teams-of-34",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Distribution detective (teams of 3–4)",
     "text": "Distribution detective (teams of 3–4)\nPick ONE quantitative variable from Fingers:\n\nIndex, Ring, or Middle\n\nYour team will produce:\n\nA histogram (choose a reasonable bin width)\nA one-sentence description of shape\nA measure of center (mean + median)\nA measure of spread (IQR)\nThe five-number summary\nOutlier fences + how many outliers\n\nTeam workspace",
@@ -154,8 +154,8 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#share-out-5-minutes",
-    "href": "presentations/CK-ch3.1-3.8.html#share-out-5-minutes",
+    "objectID": "presentations/CK-ch3.1-3.9.html#share-out-5-minutes",
+    "href": "presentations/CK-ch3.1-3.9.html#share-out-5-minutes",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Share-out (5 minutes)",
     "text": "Share-out (5 minutes)\nEach team: 60 seconds - What variable? - Shape (in words) - One “weird thing” you noticed (gap/outlier/skew)",
