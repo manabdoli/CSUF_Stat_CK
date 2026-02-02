@@ -15,7 +15,7 @@
     "href": "presentations/CK-ch3.1-3.9.html#big-idea",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Big idea",
-    "text": "Big idea\nA distribution is the pattern of variation in a variable.\n\nWe look at all values together\nWe summarize and visualize the pattern\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are distribution characteristics in each case?",
+    "text": "Big idea\nA distribution is the pattern of variation in a variable.\n\n\nWe look at all values together\nWe summarize and visualize the pattern\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are distribution characteristics in each case?",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 3.1–3.9"
@@ -37,7 +37,7 @@
     "href": "presentations/CK-ch3.1-3.9.html#what-a-histogram-shows",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "What a histogram shows",
-    "text": "What a histogram shows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx-axis: values (bins)\ny-axis: counts (or density)\nreveals shape + spread quickly",
+    "text": "What a histogram shows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx-axis: values (bins)\ny-axis: counts (or density)\nreveals shape + spread quickly",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 3.1–3.9"
@@ -59,7 +59,7 @@
     "href": "presentations/CK-ch3.1-3.9.html#a-checklist-for-describing-a-distribution",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "A checklist for describing a distribution",
-    "text": "A checklist for describing a distribution\n\nShape: symmetric? skewed? unimodal/bimodal?\nCenter: typical value\n\nmode, median or mean\n\nSpread: how variable? how concentrated?\n\nRange \\(=Max - Min\\), Standard Deviation, IQR\n\nWeird things: gaps, clusters, outliers\n\nOutliers: far away from typical \\(\\equiv\\) unlikely tail",
+    "text": "A checklist for describing a distribution\n\nShape: symmetric? skewed? unimodal/bimodal?\n\n\n\nCenter: typical value\n\nmode, median or mean\n\n\n\n\n\nSpread: how variable? how concentrated?\n\nRange \\((=Max - Min)\\), Standard Deviation, IQR\n\n\n\n\n\nWeird things: gaps, clusters, outliers\n\nOutliers: far away from typical \\(\\equiv\\) unlikely tail",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 3.1–3.9"
@@ -70,7 +70,7 @@
     "href": "presentations/CK-ch3.1-3.9.html#five-numbers-that-tell-a-lot",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Five numbers that tell a lot",
-    "text": "Five numbers that tell a lot\n\nmin, Q1, median, Q3, max\n\n\n\nPopulation [of Countries]:\n\n\n      min    Q1 median     Q3    max     mean       sd   n missing\n     0.29 4.455  10.48 31.225 1304.5 44.14545 145.4893 143       0\n\n\n\nInterpretation check:\n\nWhat is the population of the largest country?\nCould data be skewed?\nWhat does Q1 mean in plain language?",
+    "text": "Five numbers that tell a lot\n\nmin, Q1, median, Q3, max\n\n\n\nPopulation [of Countries]:\n\n\n      min    Q1 median     Q3    max     mean       sd   n missing\n     0.29 4.455  10.48 31.225 1304.5 44.14545 145.4893 143       0\n\n\n\nInterpretation check:\n\nWhat is the population of the largest country?\nCould data be skewed?\nWhat does Q1 mean in plain language?\nWhat does IQR(\\(=Q_3-Q_1\\)) represent?",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 3.1–3.9"
@@ -125,7 +125,7 @@
     "href": "presentations/CK-ch3.1-3.9.html#characteristics-of-categorical-distributions",
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Characteristics of Categorical Distributions:",
-    "text": "Characteristics of Categorical Distributions:\n\nShape: Not applicable\n\nLocation (for nominal data) and position no important)\n\nCenter: The tallest bar\nSpread: How different equal bars are",
+    "text": "Characteristics of Categorical Distributions:\n\nShape: Not applicable (Location? position?)\nCenter: The tallest bar\nSpread: How different equal bars are",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 3.1–3.9"
@@ -137,28 +137,6 @@
     "title": "CourseKata Chapter 3.1–3.9",
     "section": "Variability in Categorical Distributions (Advanced):",
     "text": "Variability in Categorical Distributions (Advanced):\n\nVariability is measured different ways:\n\nThe larger the value; the more equal the bars.\nGini: \\(1-\\sum_{i=1}^k p_i^2 \\quad \\in [0, (k-1)/k]\\)\nShannon Entropy: \\(H=−\\sum_{i=1}^k p_i \\log(p_i) \\quad \\in [0, \\log(k)]\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 3.1–3.9"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch3.1-3.9.html#distribution-detective-teams-of-34",
-    "href": "presentations/CK-ch3.1-3.9.html#distribution-detective-teams-of-34",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Distribution detective (teams of 3–4)",
-    "text": "Distribution detective (teams of 3–4)\nPick ONE quantitative variable from Fingers:\n\nIndex, Ring, or Middle\n\nYour team will produce:\n\nA histogram (choose a reasonable bin width)\nA one-sentence description of shape\nA measure of center (mean + median)\nA measure of spread (IQR)\nThe five-number summary\nOutlier fences + how many outliers\n\nTeam workspace",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 3.1–3.9"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch3.1-3.9.html#share-out-5-minutes",
-    "href": "presentations/CK-ch3.1-3.9.html#share-out-5-minutes",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Share-out (5 minutes)",
-    "text": "Share-out (5 minutes)\nEach team: 60 seconds - What variable? - Shape (in words) - One “weird thing” you noticed (gap/outlier/skew)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 3.1–3.9"
