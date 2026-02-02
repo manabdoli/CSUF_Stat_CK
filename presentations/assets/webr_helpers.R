@@ -74,3 +74,23 @@ mutate <- function(.data, ...) {
   }
   .data
 }
+
+five_num <- function(x) {
+  x <- x[is.na(x) == FALSE]
+  q <- as.numeric(quantile(x, probs = c(0, .25, .5, .75, 1)))
+  names(q) <- c("min", "Q1", "median", "Q3", "max")
+  q
+}
+
+iqr_val <- function(x) {
+  q <- five_num(x)
+  unname(q["Q3"] - q["Q1"])
+}
+
+outlier_flags <- function(x) {
+  q <- five_num(x)
+  iqr <- q["Q3"] - q["Q1"]
+  lo <- q["Q1"] - 1.5 * iqr
+  hi <- q["Q3"] + 1.5 * iqr
+  list(lower = lo, upper = hi, is_outlier = (x < lo) | (x > hi))
+}
