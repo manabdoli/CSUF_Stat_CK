@@ -1,0 +1,41 @@
+---
+title: "test"
+subtitle: "Examining Distributions"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "tst"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: tst.html
+---
+
+```{ojs}
+//| label: slider
+viewof n = Inputs.range([1, 100], {value: 10, step: 1})
+```
+```{ojs}
+//| label: export
+globalThis.n_val = n
+```
+
+```{r}
+#| engine: webr
+# depending on your webr version, one of these will work:
+n <- webr::js_eval("globalThis.n_val")
+# or:
+# n <- webr::eval_js("globalThis.n_val")
+
+n
+rnorm(n)
+```

@@ -1,0 +1,386 @@
+---
+title: "CourseKata Chapter 3.1–3.9"
+subtitle: "Examining Distributions"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 3.1–3.9"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch3.1-3.9.html
+---
+
+# Today (Ch. 3.1–3.8)
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+#  Packages available in your WebR build -
+library(mosaic)
+library(ggformula)
+
+options(digits = 3)
+
+```
+
+```{r}
+#| echo: false
+# Helper function
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+
+five_num <- function(x) {
+  x <- x[is.na(x) == FALSE]
+  q <- as.numeric(quantile(x, probs = c(0, .25, .5, .75, 1)))
+  names(q) <- c("min", "Q1", "median", "Q3", "max")
+  q
+}
+
+iqr_val <- function(x) {
+  q <- five_num(x)
+  unname(q["Q3"] - q["Q1"])
+}
+
+outlier_flags <- function(x) {
+  q <- five_num(x)
+  iqr <- q["Q3"] - q["Q1"]
+  lo <- q["Q1"] - 1.5 * iqr
+  hi <- q["Q3"] + 1.5 * iqr
+  list(lower = lo, upper = hi, is_outlier = (x < lo) | (x > hi))
+}
+
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+# create a webr to read the data
+source('./data/embedData.R')
+source('./assets/utils.R')
+load(file = "./data/Fingers.rda")
+cat(embedData(Fingers))
+Fingers$MathAnxious <- 
+  factor(Fingers$MathAnxious,
+  levels=c('Strongly Disagree', 
+    'Disagree', 
+    'Neither Agree nor Disagree', 
+    'Agree', 'Strongly Agree'))
+
+load(file = "./data/MindsetMatters.rda")
+cat(embedData(MindsetMatters))
+
+load(file = "./data/HappyPlanetIndex.rda")
+cat(embedData(HappyPlanetIndex))
+
+library(ggformula)
+```
+
+## Session goals 
+
+:::{.nonincremental}
+
+By the end of today, you can:
+
+- Explain what a **distribution** is (pattern of variation in a variable)
+- Build and interpret **histograms**
+- Describe a distribution using **shape, center, spread, and unusual features**
+- Compute the **five-number summary** and interpret **quartiles**
+- Create and interpret **box plots**
+- Identify **outliers** using the 1.5×IQR rule
+
+:::
+<!--
+## Sample 2
+```{webr}
+str(Fingers)
+gf_histogram(Fingers |> mutate(familymem=ntiles(FamilyMembers, 4)),
+  ~FamilyMembers, binwidth=1, 
+  fill= ~familymem)
+```
+-->
+
+# 3.1 The concept of distribution
+
+## Big idea
+
+A **distribution** is the *pattern of variation* in a variable.
+
+:::{.fragment .nonincremental}
+- We look at **all values** together
+- We summarize and visualize the pattern
+:::
+
+:::{.columns}
+::::{.column}
+:::::{.fragment}
+```{r, echo=FALSE}
+gf_bar(~RaceEthnic, data=Fingers) |>
+  gf_labs(title='Fingers$RaceEthnic (Categorical)') |>
+  gf_theme(text = element_text(size = 16))
+```
+:::::
+::::
+
+::::{.column}
+:::::{.fragment}
+```{r, echo=FALSE}
+gf_histogram(~Index, data=Fingers, binwidth=1) |>
+  gf_labs(title = 'Fingers$Index (Numerical)') |>
+  gf_theme(text = element_text(size = 20))
+```
+:::::
+::::
+:::
+
+- What are distribution characteristics in each case?
+
+## Summary Statistics
+
+:::::{.fragment}
+```{r, echo=FALSE}
+tally(~RaceEthnic, data=Fingers)
+```
+:::::
+:::::{.fragment}
+```{r, echo=FALSE, results='markdown'}
+cat('Index\n')
+indent_print(favstats(~Index, data=Fingers), spaces=6)
+```
+:::::
+
+:::::{.fragment}
+\
+**Pair prompt (1–2 min):**  
+
+- What do these summary tell you, and what do they *hide*?
+:::::
+
+# 3.2 Histograms
+
+## What a histogram shows
+
+:::{.columns}
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_histogram(~Index, 
+  data = Fingers, 
+  binwidth = 0.25)
+```
+::::
+::::{.column}
+\
+
+\
+
+::::: {.fragment .nonincremental}
+- x-axis: values (bins)
+- y-axis: counts (or density)
+- reveals shape + spread quickly
+:::::
+::::
+:::
+
+# 3.3 Visualizing data with histograms
+
+## Bin width matters
+
+:::{.columns}
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_histogram(binwidth = 0.1, ~Index, data = Fingers)
+```
+::::
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_histogram(binwidth = 0.5, ~Index, data = Fingers)
+```
+::::
+:::
+
+  - Which bin width best shows the overall pattern without “too much noise”?
+
+# 3.4 Shape, center, spread, and weird things
+
+## A checklist for describing a distribution
+- **Shape:** symmetric? skewed? unimodal/bimodal?
+
+:::{.fragment .nonincremental}
+- **Center:** typical value
+  - mode, median or mean
+:::
+:::{.fragment .nonincremental}
+- **Spread:** how variable? how concentrated?
+  - Range $(=Max - Min)$, Standard Deviation, IQR
+:::
+:::{.fragment .nonincremental}
+- **Weird things:** gaps, clusters, outliers
+  - Outliers: far away from typical $\equiv$ **unlikely tail**
+:::
+
+# 3.5 The five-number summary
+
+## Five numbers that tell a lot
+:::{.nonincremental}
+- min, Q1, median, Q3, max
+:::
+
+```{r, echo=FALSE}
+cat('Population [of Countries]:\n')
+indent_print(favstats(HappyPlanetIndex$Population))
+```
+
+- **Interpretation check:**  
+  - What is the population of the largest country?
+  - Could data be skewed?
+  - What does Q1 mean in plain language?
+  - What does IQR($=Q_3-Q_1$) represent?
+
+# 3.6 Quartiles and the five-number summary
+
+## Quartiles = cutpoints
+
+- Q1: about 25% of values are below
+- Median: about 50% below
+- Q3: about 75% below
+
+:::{.fragment}
+```{webr}
+favstats(HappyPlanetIndex$Population)[1:5]
+```
+:::
+
+ - “Half the countries have a population  _______.”
+ - "The population of a quarter of countries is _______."
+
+# 3.7 Box plots and the five-number summary
+
+## Picturing the Five-number summary
+
+:::{.columns}
+::::{.column}
+**Index Distribution**
+```{webr}
+#| fig-width: 5
+#| fig-height: 3.5
+gf_boxplot(Index~., data = Fingers)
+```
+::::
+::::{.column}
+**Index Distribution by Gender**
+```{webr}
+#| fig-width: 5
+#| fig-height: 3.5
+gf_boxplot(Index ~ Gender, data = Fingers)
+```
+::::
+:::
+
+- Which group has the higher median Index length?
+
+# 3.8 Outliers on a box plot
+
+## The 1.5×IQR rule
+
+- Lower fence: Q1 − 1.5×IQR
+- Upper fence: Q3 + 1.5×IQR
+- Values beyond fences are flagged as outliers
+
+
+:::{.fragment}
+```{r, echo=FALSE}
+(index5num<- favstats(Fingers$Index)[1:5])
+IQR <- 76-67
+LF <- 67-1.5*IQR
+UF <- 76+1.5*IQR
+```
+
+```{webr}
+IQR <- 
+LF <-
+UF <- 
+cat('LF=', LF, ',\t UF=', UF)
+```
+:::
+
+:::{.fragment}
+```{r, echo=FALSE}
+#| fig-height: 1
+gf_boxplot(~Index, data=Fingers) |>
+  gf_vline(xintercept = c(LF, UF), color='red')
+```
+:::
+
+# Exploring Variation in Categorical Variables
+
+## Distribution of Categorical Data
+
+:::{.columns}
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_bar(~RaceEthnic, data=Fingers) |>
+  gf_labs(title='Fingers$RaceEthnic (Categorical)')
+```
+::::
+
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_bar(~MathAnxious, data=Fingers) |>
+  gf_labs(title='Fingers$MathAnxious (Categorical)') 
+```
+::::
+:::
+
+## Characteristics of Categorical Distributions:
+:::{.nonincremental}
+  - Shape: Not applicable (Location? position?)
+  - Center: The tallest bar
+  - Spread: How ~~different~~ equal bars are
+:::
+::: {.fragment}
+```{webr}
+tally(~RaceEthnic, data=Fingers, margin=TRUE) # format='count' 
+tally(~RaceEthnic, data=Fingers, margin=TRUE, format='proportion') 
+```
+
+```{webr}
+tally(~MathAnxious, data=Fingers, margin=TRUE)
+tally(~MathAnxious, data=Fingers, margin=TRUE, format='proportion')
+```
+:::
+
+
+## Variability in Categorical Distributions (Advanced):
+:::{.nonincremental}
+- Variability is measured different ways:
+  - The larger the value; the more equal the bars.
+
+  - Gini: $1-\sum_{i=1}^k p_i^2 \quad \in [0, (k-1)/k]$ 
+  - Shannon Entropy: $H=−\sum_{i=1}^k p_i \log(p_i) \quad \in [0, \log(k)]$
+:::

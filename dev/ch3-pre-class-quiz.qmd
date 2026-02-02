@@ -1,0 +1,101 @@
+Q4 in part 1:
+Question 4 (1 pt)
+
+In a box plot, the box (the rectangle) spans from:
+
+A. min to max
+B. Q1 to Q2
+C. Q1 to Q3
+D. mean to median
+
+✅ Answer: C
+
+change to multi select with covering 50%.
+
+Question 1 (1 pt)
+
+The five-number summary consists of:
+
+A. mean, SD, min, max, median
+B. min, Q1, median, Q3, max
+C. Q1, Q2, Q3, IQR, range
+D. min, mean, median, mode, max
+
+✅ Answer: B
+
+Question 2 (1 pt)
+
+Which statement best describes Q1?
+
+A. 75% of values are below Q1
+B. Q1 is the average of the lowest 25%
+C. About 25% of values are at or below Q1
+D. Q1 is always the smallest value
+
+✅ Answer: C
+
+Question 3 (1 pt)
+
+The IQR is:
+
+A. Q1 − Q3
+B. max − min
+C. median − mean
+D. Q3 − Q1
+
+✅ Answer: D
+
+Question 4 (1 pt)
+
+In a box plot, the box (the rectangle) spans from:
+
+A. min to max
+B. Q1 to Q2
+C. Q1 to Q3
+D. mean to median
+
+✅ Answer: C
+
+Question 5 (1 pt)
+
+In a standard box plot, the line inside the box represents the:
+
+A. mean
+B. mode
+C. median
+D. IQR
+
+✅ Answer: C
+
+Question 6 (1 pt)
+
+The 1.5×IQR rule flags outliers as values:
+
+A. more than 1.5 standard deviations from the mean
+B. outside the range [min, max]
+C. outside the middle 50%
+D. below Q1 − 1.5×IQR or above Q3 + 1.5×IQR
+
+✅ Answer: D
+
+Question 7 (1 pt)
+
+Which code makes a basic box plot of Index from the data frame Fingers?
+
+A. gf_boxplot(Index ~ Fingers)
+B. gf_boxplot(~Fingers, data = Index)
+C. gf_boxplot(~Index, data = Fingers)
+D. gf_histogram(~Index, data = Fingers)
+
+✅ Answer: C
+
+Question 8 (1 pt)
+
+Which code compares Index distributions by Gender using a box plot?
+
+A. gf_boxplot(~Gender, data = Fingers)
+B. gf_boxplot(Gender ~ Index, data = Fingers)
+C. gf_boxplot(Index ~ Gender, data = Fingers)
+D. gf_histogram(Index ~ Gender, data = Fingers)
+
+✅ Answer: C

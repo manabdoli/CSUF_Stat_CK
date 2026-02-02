@@ -1,0 +1,46 @@
+Here's a summary of the micromamba environment auto-activation setup for your reference:
+
+## Micromamba Auto-Activation Setup
+
+### 1. `.zshrc` Configuration
+```shellscript
+# >>> mamba initialize >>>
+export MAMBA_EXE='/opt/homebrew/bin/micromamba';
+export MAMBA_ROOT_PREFIX='/Users/mabdoli/mamba';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias micromamba="$MAMBA_EXE"
+fi
+unset __mamba_setup
+# <<< mamba initialize <
+
+# Auto-activate rpy environment (default)
+micromamba activate rpy
+```
+
+**Key points:**
+- Use correct path: `/opt/homebrew/bin/micromamba` (verify with `which micromamba`)
+- The shell hook must be evaluated before any `micromamba activate` commands
+
+### 2. VSCodium Settings (User settings.json)
+```json
+{
+  "python.condaPath": "/opt/homebrew/bin/micromamba",
+  "python.terminal.activateEnvironment": false
+}
+```
+
+**Why:** Prevents VSCodium from trying to use `conda activate`, since `.zshrc` handles activation
+
+### 3. Per-Workspace Environment (Workspace .vscode/settings.json)
+```json
+{
+  "python.defaultInterpreterPath": "/Users/mabdoli/mamba/envs/YOUR_ENV_NAME/bin/python"
+}
+```
+
+**Result:** Each project automatically uses its specified environment when opening terminals in VSCodium
+
+This setup gives you auto-activation in both regular terminals and VSCodium, with per-project environment selection.

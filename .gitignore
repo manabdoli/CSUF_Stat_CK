@@ -50,3 +50,7 @@ rsconnect/
 
 /.quarto/
 **/*.quarto_ipynb
+
+.DS_Store
+dev/*.html
+dev/*_files/

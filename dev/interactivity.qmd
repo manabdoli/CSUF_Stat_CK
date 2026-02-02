@@ -1,0 +1,139 @@
+Excellent! Now you want interactivity with sliders and dynamic graphs. With webr, you have several options:
+
+## Option 1: Use Shiny-style inputs with `ojs` (Observable JS)
+
+Quarto supports Observable JS which works great with webr for interactive controls:
+
+```markdown
+---
+format:
+  live-revealjs:
+    slide-number: true
+---
+
+```{ojs}
+//| echo: false
+viewof n = Inputs.range([10, 1000], {step: 10, label: "Sample size:", value: 100})
+```
+
+```{webr-r}
+#| autorun: true
+# Access the ojs value
+n <- as.integer(ojs_define(n = n)$n)
+x <- rnorm(n)
+hist(x, main = paste("Histogram of", n, "random normals"))
+```
+```
+
+## Option 2: Use htmlwidgets packages in webr
+
+Many R htmlwidgets work in webr:
+
+```markdown
+::: {.fragment}
+```{webr-r}
+library(plotly)
+
+# Create interactive plot
+plot_ly(mtcars, x = ~wt, y = ~mpg, type = 'scatter', mode = 'markers')
+```
+:::
+```
+
+## Option 3: Pure webr with HTML inputs
+
+Create custom HTML controls:
+
+```markdown
+<input type="range" id="slider" min="10" max="100" value="50">
+<span id="value">50</span>
+
+```{webr-r}
+#| context: interactive
+library(htmltools)
+
+# JavaScript to update R when slider changes
+tags$script(HTML("
+  document.getElementById('slider').addEventListener('input', function(e) {
+    const val = e.target.value;
+    document.getElementById('value').innerText = val;
+    // Trigger R code with new value
+    webr.evalR(`
+      n <- ${val}
+      x <- rnorm(n)
+      hist(x, main = paste('n =', n))
+    `);
+  });
+"))
+```
+```
+
+## Option 4: Use `{crosstalk}` for linked views
+
+```markdown
+```{webr-r}
+library(crosstalk)
+library(plotly)
+
+shared_mtcars <- SharedData$new(mtcars)
+
+filter_slider("cyl", "Cylinders", shared_mtcars, ~cyl)
+plot_ly(shared_mtcars, x = ~wt, y = ~mpg) %>% add_markers()
+```
+```
+
+## Recommended approach for presentations:
+
+For Revealjs + webr, I'd suggest **Option 1 (Observable JS)** because:
+- Clean, simple syntax
+- Works seamlessly with webr
+- Professional-looking controls
+
+Want me to show you a complete example slide with a specific type of interactive visualization you have in mind?
+
+# R installation issues:
+
+```bash
+micromamba install -c conda-forge r-ggformula
+
+```
+
+```bash
+micromamba install -n my_r_env libgit2 libcurl libxml2 openssl make gcc
+
+```
+
+```{r}
+install.packages(c("rcmdcheck", "usethis", "remotes", "httr", "jsonlite", "git2r"))
+install.packages('devtools')
+devtools::install_github("ProjectMOSAIC/ggformula")
+```
+
+```bash
+# on mac
+brew install pkg-config cairo libpng freetype
+#on linux
+sudo apt-get update
+sudo apt-get install libgtk2.0-dev libcairo2-dev libxt-dev libpng-dev libjpeg-dev libtiff5-dev libgif-dev
+```
+
+```bash
+brew install cairo
+brew install freetype
+brew install harfbuzz
+brew install fribidi
+```
+
+```{r}
+# Install gdtools first
+install.packages("gdtools")  # resolves font and graphics issues
+
+# Install ggiraph next
+install.packages("ggiraph")  
+
+# Finally, devtools
+install.packages("devtools")  
+
+# Install ggformula from CRAN
+install.packages("ggformula")
+```

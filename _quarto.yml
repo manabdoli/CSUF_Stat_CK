@@ -4,6 +4,7 @@ project:
   render:
       - "*.qmd"
       - "!dev/"
+      - "!tst.qmd"
 website:
   title: "CSUF Statstics using CourseKata"
 
