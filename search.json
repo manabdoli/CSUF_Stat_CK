@@ -1,231 +1,167 @@
 [
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#session-goals",
-    "href": "presentations/CK-ch2.8-2.11.html#session-goals",
-    "title": "CourseKata Chapter 2.8–2.11",
+    "objectID": "presentations/CK-ch3.1-3.8.html#session-goals",
+    "href": "presentations/CK-ch3.1-3.8.html#session-goals",
+    "title": "CourseKata Chapter 3.1–3.9",
     "section": "Session goals",
-    "text": "Session goals\nBy the end of today, you can:\n\nExplain population vs. sample\nExplain why random + independent sampling matters\nDescribe tidy data (rows/columns) and work with data frames\nRecognize and handle missing data (NA) in a principled way\nCreate and recode variables to answer a question",
+    "text": "Session goals\nBy the end of today, you can:\n\nExplain what a distribution is (pattern of variation in a variable)\nBuild and interpret histograms\nDescribe a distribution using shape, center, spread, and unusual features\nCompute the five-number summary and interpret quartiles\nCreate and interpret box plots\nIdentify outliers using the 1.5×IQR rule",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#big-ideas",
-    "href": "presentations/CK-ch2.8-2.11.html#big-ideas",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Big ideas",
-    "text": "Big ideas\n\nPopulation: the universe of cases we want to learn about\n\nSample: the cases we actually measure\nTwo key choices in any sampling plan:\n\nWho counts as part of the population?\nHow do we select cases from that population?",
+    "objectID": "presentations/CK-ch3.1-3.8.html#big-idea",
+    "href": "presentations/CK-ch3.1-3.8.html#big-idea",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Big idea",
+    "text": "Big idea\nA distribution is the pattern of variation in a variable.\n\nWe look at all values together\nWe summarize and visualize the pattern\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are distribution characteristics in each case?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#random-independent-sampling",
-    "href": "presentations/CK-ch2.8-2.11.html#random-independent-sampling",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Random & independent sampling",
-    "text": "Random & independent sampling\n\nRandom: each case has an equal chance of being selected\n\nIndependent: picking one case doesn’t change the chance of picking another\n\nWhy we care:\n\nMany statistical methods assume your sample is (approximately) random and independent.\nWhen these assumptions fail, conclusions can be misleading.",
+    "objectID": "presentations/CK-ch3.1-3.8.html#summary-statistics",
+    "href": "presentations/CK-ch3.1-3.8.html#summary-statistics",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Summary Statistics",
+    "text": "Summary Statistics\n\n\n\nRaceEthnic\n           White African American            Asian           Latino \n              50               11               56               28 \n           Other \n              12 \n\n\n\n\n\n\nIndex\n\n\n       min Q1 median Q3 max     mean       sd   n missing\n        45 67     70 76 110 72.50666 10.02764 157       0\n\n\n\n\n\nPair prompt (1–2 min):\n\nWhat do these summary tell you, and what do they hide?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#try-it-sampling-variation-with-a-fake-population",
-    "href": "presentations/CK-ch2.8-2.11.html#try-it-sampling-variation-with-a-fake-population",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Try it: sampling variation with a “fake population”",
-    "text": "Try it: sampling variation with a “fake population”\n\n\n\n\n\n\n\n\nNow take a random sample of 10 and compare.",
+    "objectID": "presentations/CK-ch3.1-3.8.html#what-a-histogram-shows",
+    "href": "presentations/CK-ch3.1-3.8.html#what-a-histogram-shows",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "What a histogram shows",
+    "text": "What a histogram shows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx-axis: values (bins)\ny-axis: counts (or density)\nreveals shape + spread quickly",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#visual-histogram-of-your-sample-n-10",
-    "href": "presentations/CK-ch2.8-2.11.html#visual-histogram-of-your-sample-n-10",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Visual: histogram of your sample (n = 10)",
-    "text": "Visual: histogram of your sample (n = 10)",
+    "objectID": "presentations/CK-ch3.1-3.8.html#bin-width-matters",
+    "href": "presentations/CK-ch3.1-3.8.html#bin-width-matters",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Bin width matters",
+    "text": "Bin width matters\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich bin width best shows the overall pattern without “too much noise”?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#think-pair-share",
-    "href": "presentations/CK-ch2.8-2.11.html#think-pair-share",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Think, Pair, Share:",
-    "text": "Think, Pair, Share:\n\nWhat do you expect if we repeat the sampling again?\n\n\n\n\n\n\n\n\n\n\nWhat happens if we increase the sample size?\n\n\n\n\n\n\n\n\n\nDiscuss: Which sample looks “more representative” of the population? Why?",
+    "objectID": "presentations/CK-ch3.1-3.8.html#a-checklist-for-describing-a-distribution",
+    "href": "presentations/CK-ch3.1-3.8.html#a-checklist-for-describing-a-distribution",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "A checklist for describing a distribution",
+    "text": "A checklist for describing a distribution\n\nShape: symmetric? skewed? unimodal/bimodal?\nCenter: typical value\n\nmode, median or mean\n\nSpread: how variable? how concentrated?\n\nRange \\(=Max - Min\\), Standard Deviation, IQR\n\nWeird things: gaps, clusters, outliers\n\nOutliers: far away from typical \\(\\equiv\\) unlikely tail",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#the-tidy-data-idea",
-    "href": "presentations/CK-ch2.8-2.11.html#the-tidy-data-idea",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "The tidy-data idea",
-    "text": "The tidy-data idea\nA useful default structure:\n\nEach column is a variable\n\nEach row is a case (observation)\n\nEach type of case belongs in its own table",
+    "objectID": "presentations/CK-ch3.1-3.8.html#five-numbers-that-tell-a-lot",
+    "href": "presentations/CK-ch3.1-3.8.html#five-numbers-that-tell-a-lot",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Five numbers that tell a lot",
+    "text": "Five numbers that tell a lot\n\nmin, Q1, median, Q3, max\n\n\n\nPopulation [of Countries]:\n\n\n      min    Q1 median     Q3    max     mean       sd   n missing\n     0.29 4.455  10.48 31.225 1304.5 44.14545 145.4893 143       0\n\n\n\nInterpretation check:\n\nWhat is the population of the largest country?\nCould data be skewed?\nWhat does Q1 mean in plain language?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#meet-coursekata-data-frame-fingers",
-    "href": "presentations/CK-ch2.8-2.11.html#meet-coursekata-data-frame-fingers",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Meet coursekata data frame: Fingers",
-    "text": "Meet coursekata data frame: Fingers\n\n\n\n\n\n\n\n\nThink:\n- What are the cases?\n- What are the variables?",
+    "objectID": "presentations/CK-ch3.1-3.8.html#quartiles-cutpoints",
+    "href": "presentations/CK-ch3.1-3.8.html#quartiles-cutpoints",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Quartiles = cutpoints",
+    "text": "Quartiles = cutpoints\n\nQ1: about 25% of values are below\nMedian: about 50% below\nQ3: about 75% below\n\n\n\n\n\n\n\n\n\n\n\n\n“Half the countries have a population _______.”\n“The population of a quarter of countries is _______.”",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#selecting-a-few-columns-coursekata-style",
-    "href": "presentations/CK-ch2.8-2.11.html#selecting-a-few-columns-coursekata-style",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Selecting a few columns (CourseKata-style)",
-    "text": "Selecting a few columns (CourseKata-style)\n\n\n\n\n\n\n\n\nOften we only want a few rows, too:",
+    "objectID": "presentations/CK-ch3.1-3.8.html#picturing-the-five-number-summary",
+    "href": "presentations/CK-ch3.1-3.8.html#picturing-the-five-number-summary",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Picturing the Five-number summary",
+    "text": "Picturing the Five-number summary\n\n\nIndex Distribution\n\n\n\n\n\n\n\n\n\nIndex Distribution by Gender\n\n\n\n\n\n\n\n\n\n\nWhich group has the higher median Index length?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#filtering-rows-subsetting-cases",
-    "href": "presentations/CK-ch2.8-2.11.html#filtering-rows-subsetting-cases",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Filtering rows (subsetting cases)",
-    "text": "Filtering rows (subsetting cases)\nExample: keep only Gender == \"female\".\n\n\n\n\n\n\n\n\nQuestion: - How many females are in this sample?",
+    "objectID": "presentations/CK-ch3.1-3.8.html#the-1.5iqr-rule",
+    "href": "presentations/CK-ch3.1-3.8.html#the-1.5iqr-rule",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "The 1.5×IQR rule",
+    "text": "The 1.5×IQR rule\n\nLower fence: Q1 − 1.5×IQR\nUpper fence: Q3 + 1.5×IQR\nValues beyond fences are flagged as outliers\n\n\n\n\n min Q1 median Q3 max\n  45 67     70 76 110",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#what-is-missing-data-in-r",
-    "href": "presentations/CK-ch2.8-2.11.html#what-is-missing-data-in-r",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "What is missing data in R?",
-    "text": "What is missing data in R?\n\nR uses the special value NA (“not available”) to represent missingness.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNA is not the same as the text \"NA\".",
+    "objectID": "presentations/CK-ch3.1-3.8.html#distribution-of-categorical-data",
+    "href": "presentations/CK-ch3.1-3.8.html#distribution-of-categorical-data",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Distribution of Categorical Data",
+    "text": "Distribution of Categorical Data",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#identify-missing-values",
-    "href": "presentations/CK-ch2.8-2.11.html#identify-missing-values",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Identify missing values",
-    "text": "Identify missing values",
+    "objectID": "presentations/CK-ch3.1-3.8.html#characteristics-of-categorical-distributions",
+    "href": "presentations/CK-ch3.1-3.8.html#characteristics-of-categorical-distributions",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Characteristics of Categorical Distributions:",
+    "text": "Characteristics of Categorical Distributions:\n\nShape: Not applicable\n\nLocation (for nominal data) and position no important)\n\nCenter: The tallest bar\nSpread: How different equal bars are",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#two-common-strategies",
-    "href": "presentations/CK-ch2.8-2.11.html#two-common-strategies",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Two common strategies",
-    "text": "Two common strategies\n\nDrop rows with missing values (sometimes OK, sometimes not)\n\n\n\n\n\n\n\n\n\n\nFilter only the rows you need (more targeted)",
+    "objectID": "presentations/CK-ch3.1-3.8.html#variability-in-categorical-distributions-advanced",
+    "href": "presentations/CK-ch3.1-3.8.html#variability-in-categorical-distributions-advanced",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Variability in Categorical Distributions (Advanced):",
+    "text": "Variability in Categorical Distributions (Advanced):\n\nVariability is measured different ways:\n\nThe larger the value; the more equal the bars.\nGini: \\(1-\\sum_{i=1}^k p_i^2 \\quad \\in [0, (k-1)/k]\\)\nShannon Entropy: \\(H=−\\sum_{i=1}^k p_i \\log(p_i) \\quad \\in [0, \\log(k)]\\)",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#activity-missingness-decisions-group-work",
-    "href": "presentations/CK-ch2.8-2.11.html#activity-missingness-decisions-group-work",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Activity: “missingness decisions” (group work)",
-    "text": "Activity: “missingness decisions” (group work)\nIn groups of 3–4:\n\nImagine SSLast is important to your analysis.\nDecide which approach you’d use:\n\nna.omit() on the whole data frame\ntargeted filter() for just SSLast\nsomething else\n\n\nBe ready to justify your choice in 1–2 sentences.",
+    "objectID": "presentations/CK-ch3.1-3.8.html#distribution-detective-teams-of-34",
+    "href": "presentations/CK-ch3.1-3.8.html#distribution-detective-teams-of-34",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Distribution detective (teams of 3–4)",
+    "text": "Distribution detective (teams of 3–4)\nPick ONE quantitative variable from Fingers:\n\nIndex, Ring, or Middle\n\nYour team will produce:\n\nA histogram (choose a reasonable bin width)\nA one-sentence description of shape\nA measure of center (mean + median)\nA measure of spread (IQR)\nThe five-number summary\nOutlier fences + how many outliers\n\nTeam workspace",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
-    "objectID": "presentations/CK-ch2.8-2.11.html#creating-a-summary-variable-logical",
-    "href": "presentations/CK-ch2.8-2.11.html#creating-a-summary-variable-logical",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Creating a summary variable (logical)",
-    "text": "Creating a summary variable (logical)\nCourseKata example idea: “Is ring finger longer than index finger?”",
+    "objectID": "presentations/CK-ch3.1-3.8.html#share-out-5-minutes",
+    "href": "presentations/CK-ch3.1-3.8.html#share-out-5-minutes",
+    "title": "CourseKata Chapter 3.1–3.9",
+    "section": "Share-out (5 minutes)",
+    "text": "Share-out (5 minutes)\nEach team: 60 seconds - What variable? - Shape (in words) - One “weird thing” you noticed (gap/outlier/skew)",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 2.8–2.11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch2.8-2.11.html#creating-a-ratio-variable",
-    "href": "presentations/CK-ch2.8-2.11.html#creating-a-ratio-variable",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Creating a ratio variable",
-    "text": "Creating a ratio variable",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 2.8–2.11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch2.8-2.11.html#creating-an-average-across-multiple-variables",
-    "href": "presentations/CK-ch2.8-2.11.html#creating-an-average-across-multiple-variables",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Creating an average across multiple variables",
-    "text": "Creating an average across multiple variables",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 2.8–2.11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch2.8-2.11.html#recoding-turn-a-quantitative-variable-into-categories",
-    "href": "presentations/CK-ch2.8-2.11.html#recoding-turn-a-quantitative-variable-into-categories",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Recoding: turn a quantitative variable into categories",
-    "text": "Recoding: turn a quantitative variable into categories\nExample: make a “HighRatio” indicator (above 1 vs not).\n\n\n\n\n\n\n\n\nNow cross-tab by Gender:",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 2.8–2.11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch2.8-2.11.html#wrap-up-what-we-just-practiced",
-    "href": "presentations/CK-ch2.8-2.11.html#wrap-up-what-we-just-practiced",
-    "title": "CourseKata Chapter 2.8–2.11",
-    "section": "Wrap-up: what we just practiced",
-    "text": "Wrap-up: what we just practiced\n\nSampling → variability shows up even when the population is “known”\nTidy data → rows = cases, columns = variables\nMissing data → NA requires explicit handling\nNew variables → make your analysis easier (and your models possible)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 2.8–2.11"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSUF Statistics using CourseKata",
-    "section": "",
-    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)",
-    "crumbs": [
-      "CSUF Statistics using CourseKata"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About CSUF Statistics and CourseKata",
-    "section": "",
-    "text": "Here are some details!",
-    "crumbs": [
-      "About CSUF Statistics and CourseKata"
+      "CourseKata Chapter 3.1–3.9"
     ]
   },
   {
@@ -482,168 +418,232 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#session-goals",
-    "href": "presentations/CK-ch3.1-3.8.html#session-goals",
-    "title": "CourseKata Chapter 3.1–3.9",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About CSUF Statistics and CourseKata",
+    "section": "",
+    "text": "Here are some details!",
+    "crumbs": [
+      "About CSUF Statistics and CourseKata"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSUF Statistics using CourseKata",
+    "section": "",
+    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)",
+    "crumbs": [
+      "CSUF Statistics using CourseKata"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch2.8-2.11.html#session-goals",
+    "href": "presentations/CK-ch2.8-2.11.html#session-goals",
+    "title": "CourseKata Chapter 2.8–2.11",
     "section": "Session goals",
-    "text": "Session goals\nBy the end of today, you can:\n\nExplain what a distribution is (pattern of variation in a variable)\nBuild and interpret histograms\nDescribe a distribution using shape, center, spread, and unusual features\nCompute the five-number summary and interpret quartiles\nCreate and interpret box plots\nIdentify outliers using the 1.5×IQR rule",
+    "text": "Session goals\nBy the end of today, you can:\n\nExplain population vs. sample\nExplain why random + independent sampling matters\nDescribe tidy data (rows/columns) and work with data frames\nRecognize and handle missing data (NA) in a principled way\nCreate and recode variables to answer a question",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#big-idea",
-    "href": "presentations/CK-ch3.1-3.8.html#big-idea",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Big idea",
-    "text": "Big idea\nA distribution is the pattern of variation in a variable.\n\nWe look at all values together\nWe summarize and visualize the pattern\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are distribution characteristics in each case?",
+    "objectID": "presentations/CK-ch2.8-2.11.html#big-ideas",
+    "href": "presentations/CK-ch2.8-2.11.html#big-ideas",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Big ideas",
+    "text": "Big ideas\n\nPopulation: the universe of cases we want to learn about\n\nSample: the cases we actually measure\nTwo key choices in any sampling plan:\n\nWho counts as part of the population?\nHow do we select cases from that population?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#summary-statistics",
-    "href": "presentations/CK-ch3.1-3.8.html#summary-statistics",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Summary Statistics",
-    "text": "Summary Statistics\n\n\n\nRaceEthnic\n           White African American            Asian           Latino \n              50               11               56               28 \n           Other \n              12 \n\n\n\n\n\n\nIndex\n\n\n       min Q1 median Q3 max     mean       sd   n missing\n        45 67     70 76 110 72.50666 10.02764 157       0\n\n\n\n\n\nPair prompt (1–2 min):\n\nWhat do these summary tell you, and what do they hide?",
+    "objectID": "presentations/CK-ch2.8-2.11.html#random-independent-sampling",
+    "href": "presentations/CK-ch2.8-2.11.html#random-independent-sampling",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Random & independent sampling",
+    "text": "Random & independent sampling\n\nRandom: each case has an equal chance of being selected\n\nIndependent: picking one case doesn’t change the chance of picking another\n\nWhy we care:\n\nMany statistical methods assume your sample is (approximately) random and independent.\nWhen these assumptions fail, conclusions can be misleading.",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#what-a-histogram-shows",
-    "href": "presentations/CK-ch3.1-3.8.html#what-a-histogram-shows",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "What a histogram shows",
-    "text": "What a histogram shows\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nx-axis: values (bins)\ny-axis: counts (or density)\nreveals shape + spread quickly",
+    "objectID": "presentations/CK-ch2.8-2.11.html#try-it-sampling-variation-with-a-fake-population",
+    "href": "presentations/CK-ch2.8-2.11.html#try-it-sampling-variation-with-a-fake-population",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Try it: sampling variation with a “fake population”",
+    "text": "Try it: sampling variation with a “fake population”\n\n\n\n\n\n\n\n\nNow take a random sample of 10 and compare.",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#bin-width-matters",
-    "href": "presentations/CK-ch3.1-3.8.html#bin-width-matters",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Bin width matters",
-    "text": "Bin width matters\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWhich bin width best shows the overall pattern without “too much noise”?",
+    "objectID": "presentations/CK-ch2.8-2.11.html#visual-histogram-of-your-sample-n-10",
+    "href": "presentations/CK-ch2.8-2.11.html#visual-histogram-of-your-sample-n-10",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Visual: histogram of your sample (n = 10)",
+    "text": "Visual: histogram of your sample (n = 10)",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#a-checklist-for-describing-a-distribution",
-    "href": "presentations/CK-ch3.1-3.8.html#a-checklist-for-describing-a-distribution",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "A checklist for describing a distribution",
-    "text": "A checklist for describing a distribution\n\nShape: symmetric? skewed? unimodal/bimodal?\nCenter: typical value\n\nmode, median or mean\n\nSpread: how variable? how concentrated?\n\nRange \\(=Max - Min\\), Standard Deviation, IQR\n\nWeird things: gaps, clusters, outliers\n\nOutliers: far away from typical \\(\\equiv\\) unlikely tail",
+    "objectID": "presentations/CK-ch2.8-2.11.html#think-pair-share",
+    "href": "presentations/CK-ch2.8-2.11.html#think-pair-share",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Think, Pair, Share:",
+    "text": "Think, Pair, Share:\n\nWhat do you expect if we repeat the sampling again?\n\n\n\n\n\n\n\n\n\n\nWhat happens if we increase the sample size?\n\n\n\n\n\n\n\n\n\nDiscuss: Which sample looks “more representative” of the population? Why?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#five-numbers-that-tell-a-lot",
-    "href": "presentations/CK-ch3.1-3.8.html#five-numbers-that-tell-a-lot",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Five numbers that tell a lot",
-    "text": "Five numbers that tell a lot\n\nmin, Q1, median, Q3, max\n\n\n\nPopulation [of Countries]:\n\n\n      min    Q1 median     Q3    max     mean       sd   n missing\n     0.29 4.455  10.48 31.225 1304.5 44.14545 145.4893 143       0\n\n\n\nInterpretation check:\n\nWhat is the population of the largest country?\nCould data be skewed?\nWhat does Q1 mean in plain language?",
+    "objectID": "presentations/CK-ch2.8-2.11.html#the-tidy-data-idea",
+    "href": "presentations/CK-ch2.8-2.11.html#the-tidy-data-idea",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "The tidy-data idea",
+    "text": "The tidy-data idea\nA useful default structure:\n\nEach column is a variable\n\nEach row is a case (observation)\n\nEach type of case belongs in its own table",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#quartiles-cutpoints",
-    "href": "presentations/CK-ch3.1-3.8.html#quartiles-cutpoints",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Quartiles = cutpoints",
-    "text": "Quartiles = cutpoints\n\nQ1: about 25% of values are below\nMedian: about 50% below\nQ3: about 75% below\n\n\n\n\n\n\n\n\n\n\n\n\n“Half the countries have a population _______.”\n“The population of a quarter of countries is _______.”",
+    "objectID": "presentations/CK-ch2.8-2.11.html#meet-coursekata-data-frame-fingers",
+    "href": "presentations/CK-ch2.8-2.11.html#meet-coursekata-data-frame-fingers",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Meet coursekata data frame: Fingers",
+    "text": "Meet coursekata data frame: Fingers\n\n\n\n\n\n\n\n\nThink:\n- What are the cases?\n- What are the variables?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#picturing-the-five-number-summary",
-    "href": "presentations/CK-ch3.1-3.8.html#picturing-the-five-number-summary",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Picturing the Five-number summary",
-    "text": "Picturing the Five-number summary\n\n\nIndex Distribution\n\n\n\n\n\n\n\n\n\nIndex Distribution by Gender\n\n\n\n\n\n\n\n\n\n\nWhich group has the higher median Index length?",
+    "objectID": "presentations/CK-ch2.8-2.11.html#selecting-a-few-columns-coursekata-style",
+    "href": "presentations/CK-ch2.8-2.11.html#selecting-a-few-columns-coursekata-style",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Selecting a few columns (CourseKata-style)",
+    "text": "Selecting a few columns (CourseKata-style)\n\n\n\n\n\n\n\n\nOften we only want a few rows, too:",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#the-1.5iqr-rule",
-    "href": "presentations/CK-ch3.1-3.8.html#the-1.5iqr-rule",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "The 1.5×IQR rule",
-    "text": "The 1.5×IQR rule\n\nLower fence: Q1 − 1.5×IQR\nUpper fence: Q3 + 1.5×IQR\nValues beyond fences are flagged as outliers\n\n\n\n\n min Q1 median Q3 max\n  45 67     70 76 110",
+    "objectID": "presentations/CK-ch2.8-2.11.html#filtering-rows-subsetting-cases",
+    "href": "presentations/CK-ch2.8-2.11.html#filtering-rows-subsetting-cases",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Filtering rows (subsetting cases)",
+    "text": "Filtering rows (subsetting cases)\nExample: keep only Gender == \"female\".\n\n\n\n\n\n\n\n\nQuestion: - How many females are in this sample?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#distribution-of-categorical-data",
-    "href": "presentations/CK-ch3.1-3.8.html#distribution-of-categorical-data",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Distribution of Categorical Data",
-    "text": "Distribution of Categorical Data",
+    "objectID": "presentations/CK-ch2.8-2.11.html#what-is-missing-data-in-r",
+    "href": "presentations/CK-ch2.8-2.11.html#what-is-missing-data-in-r",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "What is missing data in R?",
+    "text": "What is missing data in R?\n\nR uses the special value NA (“not available”) to represent missingness.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNA is not the same as the text \"NA\".",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#characteristics-of-categorical-distributions",
-    "href": "presentations/CK-ch3.1-3.8.html#characteristics-of-categorical-distributions",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Characteristics of Categorical Distributions:",
-    "text": "Characteristics of Categorical Distributions:\n\nShape: Not applicable\n\nLocation (for nominal data) and position no important)\n\nCenter: The tallest bar\nSpread: How different equal bars are",
+    "objectID": "presentations/CK-ch2.8-2.11.html#identify-missing-values",
+    "href": "presentations/CK-ch2.8-2.11.html#identify-missing-values",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Identify missing values",
+    "text": "Identify missing values",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#variability-in-categorical-distributions-advanced",
-    "href": "presentations/CK-ch3.1-3.8.html#variability-in-categorical-distributions-advanced",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Variability in Categorical Distributions (Advanced):",
-    "text": "Variability in Categorical Distributions (Advanced):\n\nVariability is measured different ways:\n\nThe larger the value; the more equal the bars.\nGini: \\(1-\\sum_{i=1}^k p_i^2 \\quad \\in [0, (k-1)/k]\\)\nShannon Entropy: \\(H=−\\sum_{i=1}^k p_i \\log(p_i) \\quad \\in [0, \\log(k)]\\)",
+    "objectID": "presentations/CK-ch2.8-2.11.html#two-common-strategies",
+    "href": "presentations/CK-ch2.8-2.11.html#two-common-strategies",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Two common strategies",
+    "text": "Two common strategies\n\nDrop rows with missing values (sometimes OK, sometimes not)\n\n\n\n\n\n\n\n\n\n\nFilter only the rows you need (more targeted)",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#distribution-detective-teams-of-34",
-    "href": "presentations/CK-ch3.1-3.8.html#distribution-detective-teams-of-34",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Distribution detective (teams of 3–4)",
-    "text": "Distribution detective (teams of 3–4)\nPick ONE quantitative variable from Fingers:\n\nIndex, Ring, or Middle\n\nYour team will produce:\n\nA histogram (choose a reasonable bin width)\nA one-sentence description of shape\nA measure of center (mean + median)\nA measure of spread (IQR)\nThe five-number summary\nOutlier fences + how many outliers\n\nTeam workspace",
+    "objectID": "presentations/CK-ch2.8-2.11.html#activity-missingness-decisions-group-work",
+    "href": "presentations/CK-ch2.8-2.11.html#activity-missingness-decisions-group-work",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Activity: “missingness decisions” (group work)",
+    "text": "Activity: “missingness decisions” (group work)\nIn groups of 3–4:\n\nImagine SSLast is important to your analysis.\nDecide which approach you’d use:\n\nna.omit() on the whole data frame\ntargeted filter() for just SSLast\nsomething else\n\n\nBe ready to justify your choice in 1–2 sentences.",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch3.1-3.8.html#share-out-5-minutes",
-    "href": "presentations/CK-ch3.1-3.8.html#share-out-5-minutes",
-    "title": "CourseKata Chapter 3.1–3.9",
-    "section": "Share-out (5 minutes)",
-    "text": "Share-out (5 minutes)\nEach team: 60 seconds - What variable? - Shape (in words) - One “weird thing” you noticed (gap/outlier/skew)",
+    "objectID": "presentations/CK-ch2.8-2.11.html#creating-a-summary-variable-logical",
+    "href": "presentations/CK-ch2.8-2.11.html#creating-a-summary-variable-logical",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Creating a summary variable (logical)",
+    "text": "Creating a summary variable (logical)\nCourseKata example idea: “Is ring finger longer than index finger?”",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 3.1–3.9"
+      "CourseKata Chapter 2.8–2.11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch2.8-2.11.html#creating-a-ratio-variable",
+    "href": "presentations/CK-ch2.8-2.11.html#creating-a-ratio-variable",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Creating a ratio variable",
+    "text": "Creating a ratio variable",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 2.8–2.11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch2.8-2.11.html#creating-an-average-across-multiple-variables",
+    "href": "presentations/CK-ch2.8-2.11.html#creating-an-average-across-multiple-variables",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Creating an average across multiple variables",
+    "text": "Creating an average across multiple variables",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 2.8–2.11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch2.8-2.11.html#recoding-turn-a-quantitative-variable-into-categories",
+    "href": "presentations/CK-ch2.8-2.11.html#recoding-turn-a-quantitative-variable-into-categories",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Recoding: turn a quantitative variable into categories",
+    "text": "Recoding: turn a quantitative variable into categories\nExample: make a “HighRatio” indicator (above 1 vs not).\n\n\n\n\n\n\n\n\nNow cross-tab by Gender:",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 2.8–2.11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch2.8-2.11.html#wrap-up-what-we-just-practiced",
+    "href": "presentations/CK-ch2.8-2.11.html#wrap-up-what-we-just-practiced",
+    "title": "CourseKata Chapter 2.8–2.11",
+    "section": "Wrap-up: what we just practiced",
+    "text": "Wrap-up: what we just practiced\n\nSampling → variability shows up even when the population is “known”\nTidy data → rows = cases, columns = variables\nMissing data → NA requires explicit handling\nNew variables → make your analysis easier (and your models possible)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 2.8–2.11"
     ]
   }
 ]
