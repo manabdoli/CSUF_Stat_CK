@@ -145,6 +145,15 @@ Mansour Abdoli, PhD
 </div>
 
 </section>
+<section class="slide level2">
+
+<!-- NOTES 2 MA
+# add "boundary=b" to gf_histogram (maybe in 2.8-2.11)
+# add |> gf_density() to gf_histogram
+# add an example for gf_boxplot after filter 
+# add boxplot under histogram (where?)
+-->
+</section>
 <section>
 <section id="today-ch.-3.13.8" class="title-slide slide level1 center">
 <h1>Today (Ch. 3.1–3.8)</h1>
@@ -198,7 +207,7 @@ eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwib3V0cHV0IjpmYWxz
 ## Sample 2
 
 ::: {.cell}
-```nyycgp
+```yycnms
 str(Fingers)
 gf_histogram(Fingers |> mutate(familymem=ntiles(FamilyMembers, 4)),
   ~FamilyMembers, binwidth=1, 
