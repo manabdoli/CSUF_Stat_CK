@@ -1,0 +1,684 @@
+---
+title: "CourseKata Chapter 4"
+subtitle: "Modeling Relationships: Numerical & Categorical Responses"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 4"
+#resources:
+#  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch4-full.html
+---
+
+# Today: Response and Explanatory
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+# create a webr to read the data
+source('./data/embedData.R')
+source('./assets/utils.R')
+load(file = "./data/Fingers.rda")
+cat(embedData(Fingers))
+
+# load(file = "./data/MindsetMatters.rda")
+# cat(embedData(MindsetMatters))
+
+# load(file = "./data/HappyPlanetIndex.rda")
+# cat(embedData(HappyPlanetIndex))
+```
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+options(digits = 3)
+
+# Load helper functions if present (optional)
+helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+eval(parse(text = helpers))
+
+Fingers$MathAnxious <- 
+  factor(Fingers$MathAnxious,
+  levels=c('Strongly Disagree', 
+    'Disagree', 
+    'Neither Agree nor Disagree', 
+    'Agree', 'Strongly Agree'))
+Fingers$Job <- 
+  factor(Fingers$Job,
+         c("Not Working", "Part-time Job", "Full-time Job"))
+
+.webr_ready <- TRUE
+```
+
+## Session goals
+
+:::{.nonincremental}
+By the end of today, you can:
+
+- Identify **Response vs Explanatory** Variables
+- Choose the Correct **Plot** based on the Response Type
+- Visualize **Explained Variability**
+- Recognize **Random Sampling** vs **Random Assignment**
+- Differentiate **Association** and **Causation**
+:::
+
+# Review: Type of Response
+## Investigating Distributions
+
+:::{.columns}
+::: {.column}
+### **Numerical response**
+- Summary
+  - Center: Mean, Midean, Mode
+  - Spread: Std.Dev., IQR, Range
+- Visualizatin (shape):
+  - Histogram/Boxplot
+:::
+::: {.column}
+### **Categorical response**
+- Summary
+  - Count
+  - Proportion
+
+\
+
+- Visualization
+  - Barplot
+:::
+:::
+
+## Quick check:
+```{r, echo=FALSE}
+head(Fingers |> dplyr::select(Job, Interest, Height, Weight, Sex), 2)
+```
+::: {.columns}
+::: {.column width="33%"}
+### `Job`
+```{webr}
+#| fig-width: 3
+#| fig-height: 2.5
+gf_(~Job, data=Fingers)
+```
+:::
+::: {.column width="33%"}
+### `Interest`
+```{webr}
+#| fig-width: 3
+#| fig-height: 2.5
+gf_(~Interest, data=Fingers)
+```
+:::
+::: {.column width="33%"}
+### `Height`
+```{webr}
+#| fig-width: 3
+#| fig-height: 2.5
+gf_(~Height, data=Fingers)
+```
+:::
+:::
+
+
+## Investigating Associations:
+### Explaining Variability: 
+:::{.fragment .nonincremental}
+-  Response = Explanatory + Other Stuff
+-  **Formula:** Response ~ Explanatory
+:::
+:::{.fragment .nonincremental}
+### Numerical Response
+::: {.columns}
+::: {.column}
+- Numerical Explanatory
+:::
+::: {.column}
+- Categorical Explanatory
+:::
+:::
+<!-- end columns -->
+:::
+:::{.fragment .nonincremental}
+### Categorical Response
+::: {.columns}
+::: {.column}
+- Categorical Explanatory
+:::
+::: {.column}
+- <span style="color: gray;">Numerical Explanatory</span>
+:::
+:::
+:::
+
+## Consequential Choices
+
+:::{.fragment .nonincremental}
+### Part of Fingers Dataset
+```{r, echo=FALSE}
+head(Fingers |> dplyr::select(Gender, Job, Interest, GradePredict, Height, MathAnxious, Thumb), 2)
+```
+
+:::
+
+- Practice:
+  - What type are the variables, and which is Response?
+
+  - What association do you expect?
+
+::: {.fragment .nonincremental}
+::: {.columns}
+::: {.column}
+- `Intrests ~ Job`
+- `Height ~ Gender`
+:::
+::: {.column}
+- `GradePredict ~ Height`
+- `MathAnxious ~ Year`
+:::
+:::
+:::
+
+# Part A — Numerical Response
+## Numerical ~ Numerical:
+### Scatterplot: `Height ~ Thumb`
+::: {.columns}
+::: {.column}
+
+```{webr}
+#| fig-height: 2
+#| fig-width: 5 
+gf_point(Height ~ Thumb, data = Fingers)
+```
+:::
+::: {.column}
+- Characteristics
+  - Form
+  - Direction
+  - Strength
+:::
+:::
+<!-- end columns -->
+
+::: {.fragment}
+```{webr}
+#| fig-height: 2.5 
+#| fig-width: 5 
+gf_point(Height ~ Thumb, data = Fingers, alpha=0.5) |> 
+  gf_vline(xintercept = c(50, 70)) |>
+  gf_point(Height ~ Thumb, data = Fingers |> filter(Thumb %in% c(50, 70)),color='red') |> gf_smooth(method='lm')
+```
+:::
+
+## Numerical ~ Categorical:
+### Boxplot: `GradePredict ~ Job`
+::: {.columns}
+::: {.column}
+
+```{webr}
+#| fig-height: 1.5 
+#| fig-width: 5 
+gf_point(GradePredict ~ Job, data = Fingers)
+```
+
+```{webr}
+#| fig-height: 1.5 
+#| fig-width: 5 
+gf_boxplot(GradePredict ~ Job, data = Fingers)
+```
+
+:::
+::: {.column}
+- Compare
+  - Skewness
+  - Center / Positions
+  - Spread
+:::
+:::
+<!-- end columns -->
+
+## Explaning Variation
+::: {.fragment}
+::: {.columns}
+::: {.column}
+### Total
+```{webr}
+#| fig-height: 2.5 
+#| fig-width: 2 
+gf_boxplot(GradePredict ~ 1, data = Fingers, xlim=c(1.5, 4.5)) |> 
+  gf_jitter(width = .2, height = .1, alpha = 0.5)
+```
+
+:::
+::: {.column}
+### Between & Within
+```{webr}
+#| fig-height: 2.5 
+#| fig-width: 5 
+gf_boxplot(GradePredict ~ Job, data = Fingers, xlim=c(1.5, 4.5)) |> 
+  gf_jitter(width = .2, height = .1, alpha = 0.5)
+```
+:::
+:::
+:::
+
+## Explaning Variation: Different Ways
+:::{.columns}
+:::{.column}
+### Histogram + Boxplot
+```{webr}
+#| fig-height: 2.5
+#| fig-width: 5
+gf_histogram(~Thumb, data = Fingers) |>
+  gf_boxplot(width = 3, fill='purple', alpha=.5)
+```
+:::
+:::{.column}
+### Histogram + Density
+```{webr}
+#| fig-height: 2.5
+#| fig-width: 5
+gf_dhistogram(~Thumb, data = Fingers) |>
+  gf_density(fill='yellow', alpha=.5)
+```
+:::
+:::
+
+:::{.columns}
+:::{.column}
+```{webr}
+#| fig-height: 2.5 
+#| fig-width: 5
+gf_histogram(~Thumb, data = Fingers) |>
+  gf_boxplot(width = 3, fill='purple', alpha=.5) |>
+  gf_facet_grid(Gender~.)
+
+```
+:::
+:::{.column}
+```{webr}
+#| fig-height: 2.5 
+#| fig-width: 5
+gf_dhistogram(~Thumb, data = Fingers) |>
+  gf_density(fill='yellow', alpha=.5) |>
+  gf_facet_grid(Gender~.)
+
+```
+:::
+:::
+
+## More Explanatory Variables
+
+```{webr}
+#| fig-height: 2.5 
+gf_histogram(~Thumb, data = Fingers, fill=~Gender, bins=20) |>
+  gf_boxplot(width = 3, fill='purple', alpha=.5)
+
+```
+
+```{webr}
+#| fig-height: 2.5 
+gf_boxplot(GradePredict~Gender, data=Fingers, color=~Gender) |>
+  gf_facet_grid(~Interest) |>
+  gf_jitter(width = .2, height = .1)
+#|>
+#  gf_boxplot(GradePredict~"Total", data=Fingers, color = 'purple')
+```
+
+
+# Part B — Categorical Response 
+
+## Categorical ~ Categorical
+::: {.fragment}
+:::{.columns}
+:::{.column}
+### Total
+```{webr}
+#| fig-height: 2
+#| fig-width: 5
+gf_bar(~Interest, data = Fingers) |>
+  gf_theme(axis.text.x = element_text(angle = 8, hjust = .5, vjust = 0.5))
+```
+:::
+:::{.column}
+### Between & Within
+```{webr}
+#| fig-height: 2
+#| fig-width: 5
+gf_bar(~Interest, data = Fingers, fill='green') |>
+  gf_facet_grid(.~Gender) |> gf_theme(axis.text.x = element_text(angle = 8, hjust = .5, vjust = 0.5))
+```
+:::
+:::
+### Characteristics
+:::{.columns}
+:::{.column width="35%"}
+- Levels (Values)
+- Counts
+- Proportions
+:::
+:::{.column width="65%"}
+- : Not much critical
+- : Limited use for comparable groups
+- : Useful for making inferences
+:::
+:::
+:::
+
+## Categorical ~ Categorical: Proportions {.nonincremental}
+:::{.columns}
+:::{.column}
+### Total
+```{webr}
+#| fig-height: 2
+#| fig-width: 5
+gf_props(~Interest, data = Fingers) |>
+  gf_theme(axis.text.x = element_text(angle = 8, hjust = .5, vjust = 0.5))
+```
+:::
+:::{.column}
+### Between & Within
+```{webr}
+#| fig-height: 2 
+#| fig-width: 5
+gf_props(~Interest, data = Fingers, fill='green') |>
+  gf_facet_grid(.~Gender) |> gf_theme(axis.text.x = element_text(angle = 8, hjust = .5, vjust = 0.5))
+```
+:::
+:::
+
+## Stacked-Barplot
+::: {.fragment}
+:::{.columns}
+:::{.column}
+```{webr}
+#| fig-height: 3 
+#| fig-weight: 5 
+gf_bar(~Sex, data = Fingers, fill=~Interest) |>
+  gf_theme(axis.text.x = element_text(angle = 8, hjust = .5, vjust = 0.5))
+```
+:::
+:::{.column}
+```{webr}
+#| fig-height: 3
+#| fig-weight: 5 
+gf_bar(~Sex, data = Fingers, fill=~Interest, position='fill') |>
+  gf_theme(axis.text.x = element_text(angle = 8, hjust = .5, vjust = 0.5))
+#|>
+#  gf_bar(~'Total', data = Fingers, fill=~Interest, position='fill')
+```
+:::
+:::
+:::
+
+## Counts & Proportions
+### Count
+```{webr}
+tally(~Interest, data=Fingers)
+```
+
+```{webr}
+tally(Gender~Interest, data=Fingers)
+```
+
+### Proportions
+```{webr}
+tally(Gender~Interest, data=Fingers, format = 'proportion')
+```
+
+# Part C — Modeling and Design
+
+## Models of Variability
+- Chance Model: $$GradePredict = \text{Other Stuff} (Unexplained)$$
+
+- One Explanatory: $$GradePredict = Gender + \text{Other Stuff}$$
+
+- Two Explanatory: $$GradePredict = Gender + Interest + \text{Other Stuff}$$
+
+
+## Research Design
+### Association or Causation?
+- Observational Studies: *Random* **Sampling**
+  - Unbiased Association
+  - Other variables may also explain variation
+
+- Designed Experiments: *Random* **Assignment**
+  - Eliminating the impact of other variables
+  - Revealing **Causation**
+  
+<!--
+
+## B2. Two-way table: counts
+
+```{webr}
+#| echo: true
+#| output: true
+
+tab <- tally(Pass ~ Group, data = CatData)
+tab
+```
+
+**Prompt:** Why can counts mislead?
+
+
+
+## B3. Conditional proportions (within each group)
+
+```{webr}
+#| echo: true
+#| output: true
+
+T <- table(CatData$Pass, CatData$Group)
+T
+prop.table(T, margin = 2)
+```
+
+Interpret: Which group has the higher pass rate?
+
+
+
+## B4. Visual: proportion bar chart
+
+```{webr}
+#| echo: true
+#| output: true
+
+gf_bar(~Pass, data = CatData, fill = ~Group, position = "fill")
+```
+
+
+
+## B5. One-probability vs two-probability model
+
+```{webr}
+#| echo: true
+#| output: true
+
+overall_p <- mean(CatData$Pass == "Pass")
+group_ps <- prop.table(table(CatData$Pass, CatData$Group), margin = 2)["Pass", ]
+
+c(overall = overall_p, group_ps)
+```
+
+
+
+## B6. “Residuals” for categorical responses
+
+Use 1 for Pass, 0 for Fail.
+
+```{webr}
+#| echo: true
+#| output: true
+
+CatData$Y <- ifelse(CatData$Pass == "Pass", 1, 0)
+CatData$Pred1 <- overall_p
+CatData$Pred2 <- ifelse(CatData$Group == "Control", group_ps["Control"], group_ps["Treatment"])
+
+CatData$Resid1 <- CatData$Y - CatData$Pred1
+CatData$Resid2 <- CatData$Y - CatData$Pred2
+
+c(one_prob = mean(abs(CatData$Resid1)),
+  two_prob = mean(abs(CatData$Resid2)))
+```
+
+
+
+# Synthesis slide
+
+## Same logic, different quantities
+
+::: columns
+::: column width="33%"
+### Numerical response
+- plot values
+- model typical values
+- residuals in **units**
+:::
+
+::: column width="33%"
+### Categorical response
+- plot proportions
+- model probabilities
+- residuals in **0/1 units**
+:::
+
+::: column width="33%"
+### Both
+- response first
+- compare models
+- conditioning often helps
+:::
+:::
+
+
+
+# Guided practice (choose your track)
+
+## Track 1: Numerical response
+
+```{webr}
+#| echo: true
+#| output: true
+
+# 1) Choose a plot
+gf_point(Score ~ StudyTime, data = NumData)
+
+# 2) Describe in one sentence
+c(mean = mean(NumData$Score), median = median(NumData$Score))
+```
+
+## Track 2: Categorical response
+
+```{webr}
+#| echo: true
+#| output: true
+
+# 1) Compute within-group pass rates
+prop.table(table(CatData$Pass, CatData$Group), margin = 2)
+
+# 2) Visualize proportions
+gf_bar(~Pass, data = CatData, fill = ~Group, position = "fill")
+```
+
+
+
+# Collaboration activity (15 minutes)
+
+## “Pick the right model”
+
+In teams of 3–4, pick one scenario:
+
+1) Numerical response: explain Score using Gender or StudyTime  
+2) Categorical response: explain Pass using Group  
+
+Your team must produce:
+- the correct plot
+- a one-sentence description of the relationship
+- a simple model (overall vs by-group)
+- a one-sentence conclusion: “The better model is ___ because ___.”
+
+
+
+# Exit ticket (2–3 minutes)
+
+1. One sentence: why does the **response type** matter?  
+2. Name the *best plot* for each:
+   - numerical response + categorical explanatory
+   - categorical response + categorical explanatory
+3. Complete: “A model is useful if residuals are ______.”
+
+```{webr}
+#| echo: true
+#| output: true
+
+# Write one code line you used today (any):
+# ...
+```
+
+
+## A1. Choose the plot
+
+| Explanatory | Response | Plot |
+||||
+| Categorical | Numerical | Side-by-side boxplots |
+| Numerical | Numerical | Scatterplot |
+
+
+### One-number model
+
+```{webr}
+#| echo: true
+#| output: true
+overall_mean <- mean(NumData$Score)
+overall_mean
+```
+
+### Two-number model (by Gender)
+
+```{webr}
+#| echo: true
+#| output: true
+group_means <- mean(Score ~ Gender, data = NumData)
+group_means
+```
+
+
+
+## A5. Residuals (observed − predicted)
+
+```{webr}
+#| echo: true
+#| output: true
+
+NumData$Pred2 <- group_means[NumData$Gender]
+NumData$Resid2 <- NumData$Score - NumData$Pred2
+
+mean(abs(NumData$Resid2))
+```
+
+**Check:** Why is the mean absolute residual a “model quality” idea?
+
+-->

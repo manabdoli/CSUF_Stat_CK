@@ -1,0 +1,221 @@
+---
+title: "CourseKata Chapter 4A"
+subtitle: "Modeling Relationships with a Numerical Response"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 4 — Numerical Response"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch4-numerical.html
+---
+
+# Today: Numerical Response Models (Ch. 4)
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+
+options(digits = 3)
+
+helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+eval(parse(text = helpers))
+
+set.seed(123)
+n <- 80
+Data <- data.frame(
+  Gender = sample(c("Female","Male"), n, replace = TRUE),
+  StudyTime = round(runif(n, 0, 10), 1),
+  Score = round(60 + 4 * runif(n, 0, 10) + rnorm(n, 0, 8), 1)
+)
+
+.webr_ready <- TRUE
+```
+
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+```
+
+## Session goals
+
+:::{.nonincremental}
+By the end of today, you can:
+
+- Identify **response vs explanatory** variables
+- Choose the correct **visualization** for a numerical response
+- Describe relationships using **center, spread, overlap, and trend**
+- Use **typical values** as informal models
+- Explain the role of **residuals**
+:::
+
+---
+
+# 4.1 Response vs explanatory variables
+
+## Start with the response
+
+The **response variable** is the outcome we want to understand or predict.
+
+Examples:
+- Score ~ StudyTime  
+- Thumb length ~ Gender  
+
+> Always identify the response first — the plot and model depend on it.
+
+---
+
+## Quick check (pair)
+
+Which is the response?
+
+1. Gender vs Score  
+2. Score vs Gender  
+
+```{webr}
+#| echo: true
+#| output: true
+names(Data)
+```
+
+---
+
+# 4.2 Visualizing numerical responses
+
+## Rule of thumb
+
+| Explanatory | Response | Plot |
+|------------|---------|------|
+| Categorical | Numerical | Side-by-side boxplots |
+| Numerical | Numerical | Scatterplot |
+
+---
+
+## Numerical response + categorical explanatory
+
+```{webr}
+#| echo: true
+#| output: true
+
+gf_boxplot(Score ~ Gender, data = Data)
+```
+
+---
+
+## Numerical response + numerical explanatory
+
+```{webr}
+#| echo: true
+#| output: true
+
+gf_point(Score ~ StudyTime, data = Data)
+```
+
+---
+
+# 4.3 Describing relationships
+
+## A useful checklist
+
+- **Center**
+- **Spread**
+- **Overlap**
+- **Trend**
+- **Outliers**
+
+```{webr}
+#| echo: true
+#| output: true
+
+summary(Data$Score)
+```
+
+---
+
+# 4.4 Typical values as models
+
+## One-number model
+
+```{webr}
+#| echo: true
+#| output: true
+
+mean(Data$Score)
+```
+
+---
+
+## Two-number model (by Gender)
+
+```{webr}
+#| echo: true
+#| output: true
+
+mean(Score ~ Gender, data = Data)
+```
+
+---
+
+# 4.5 Residuals
+
+## How wrong is the model?
+
+```{webr}
+#| echo: true
+#| output: true
+
+Data$Pred <- mean(Score ~ Gender, data = Data)[Data$Gender]
+Data$Resid <- Data$Score - Data$Pred
+
+mean(abs(Data$Resid))
+```
+
+---
+
+# Guided group activity
+
+## Which model is better?
+
+```{webr}
+#| echo: true
+#| output: true
+
+overall_pred <- mean(Data$Score)
+overall_resid <- Data$Score - overall_pred
+mean(abs(overall_resid))
+```
+
+---
+
+# Exit ticket
+
+1. Why must we choose the response first?  
+2. When is a two-number model better?  
+3. What does a residual measure?
+
+```{webr}
+#| echo: true
+#| output: true
+
+# One sentence answer here
+```

@@ -1,0 +1,323 @@
+---
+title: "CourseKata Chapter 4B"
+subtitle: "Modeling Relationships with a Categorical Response"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 4 — Categorical Response"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch4-categorical.html
+---
+
+# Today: Categorical Response Models (Ch. 4)
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+
+options(digits = 3)
+
+# Load helper functions if present (optional)
+helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+eval(parse(text = helpers))
+
+# Demo dataset (self-contained)
+set.seed(246)
+n <- 120
+Data <- data.frame(
+  Group = sample(c("Control", "Treatment"), n, replace = TRUE),
+  StudyTime = round(runif(n, 0, 10), 1)
+)
+
+# Create a categorical response influenced by Group and StudyTime
+# Pass probability: higher in Treatment, higher with more StudyTime
+lin <- -0.8 + 0.35 * Data$StudyTime + ifelse(Data$Group == "Treatment", 0.6, 0)
+p <- 1 / (1 + exp(-lin))
+Data$Pass <- ifelse(runif(n) < p, "Pass", "Fail")
+Data$Pass <- factor(Data$Pass, levels = c("Fail", "Pass"))
+
+.webr_ready <- TRUE
+```
+
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+```
+
+## Session goals
+
+:::{.nonincremental}
+By the end of today, you can:
+
+- Identify a **categorical response** and explain why the mean is not the right summary
+- Use **two-way tables** to compare groups
+- Compute and interpret **conditional proportions** (“within each group”)
+- Visualize categorical responses using **bar charts of proportions**
+- Use proportions as **informal probability models**
+- Explain why **sample size** affects how stable proportions look
+:::
+
+---
+
+# Reset: categorical response ≠ numerical response
+
+## What changes?
+
+If the response is categorical (e.g., Pass/Fail), we don’t model “typical values.”
+We model **probabilities / proportions**:
+
+- “What proportion passed?”
+- “How does that proportion change by group?”
+
+---
+
+## Quick check (pair)
+
+Which is the response?
+
+1. Pass ~ Group  
+2. Group ~ Pass  
+
+```{webr}
+#| echo: true
+#| output: true
+names(Data)
+tally(~Pass, data = Data)
+```
+
+---
+
+# Two-way tables: counts first
+
+## Start with counts (but don’t stop there)
+
+```{webr}
+#| echo: true
+#| output: true
+
+tab <- tally(Pass ~ Group, data = Data)
+tab
+```
+
+**Discuss:** Why can counts be misleading if groups have different sizes?
+
+---
+
+# Conditional proportions (the key idea)
+
+## “Within each group”
+
+We want proportions like:
+
+- P(Pass | Control)
+- P(Pass | Treatment)
+
+```{webr}
+#| echo: true
+#| output: true
+
+# Build a 2x2 table
+T <- table(Data$Pass, Data$Group)
+
+T
+prop.table(T, margin = 2)  # proportions within each Group (columns)
+```
+
+**Interpret:** Which group has a higher pass rate?
+
+---
+
+# Visualizing categorical responses
+
+## Bar chart of proportions
+
+This makes “within-group proportions” visible.
+
+```{webr}
+#| echo: true
+#| output: true
+
+gf_bar(~Pass, data = Data, fill = ~Group, position = "fill")
+```
+
+**Prompt:** Which color is larger within each group? What does that mean?
+
+---
+
+## Practice: compare Pass rates numerically
+
+```{webr}
+#| echo: true
+#| output: true
+
+pt <- prop.table(table(Data$Pass, Data$Group), margin = 2)
+pt
+
+# Extract the pass probabilities
+p_control <- pt["Pass", "Control"]
+p_treat   <- pt["Pass", "Treatment"]
+
+c(Control = p_control, Treatment = p_treat, Difference = p_treat - p_control)
+```
+
+---
+
+# Informal probability models
+
+## One-probability model (overall rate)
+
+A very simple model predicts the same probability for everyone:
+
+```{webr}
+#| echo: true
+#| output: true
+
+overall_p <- mean(Data$Pass == "Pass")
+overall_p
+```
+
+---
+
+## Two-probability model (by group)
+
+A better model often uses a different probability per group.
+
+```{webr}
+#| echo: true
+#| output: true
+
+group_ps <- prop.table(table(Data$Pass, Data$Group), margin = 2)["Pass", ]
+group_ps
+```
+
+**Pair prompt:** Why does conditioning on Group usually improve predictions?
+
+---
+
+# Model “errors” for categorical responses
+
+## Residual idea (probability version)
+
+We can define a simple “error”:
+
+- Observed outcome: 1 for Pass, 0 for Fail
+- Residual: observed − predicted probability
+
+```{webr}
+#| echo: true
+#| output: true
+
+Data$Y <- ifelse(Data$Pass == "Pass", 1, 0)
+
+# Predictions
+Data$Pred1 <- overall_p
+Data$Pred2 <- ifelse(Data$Group == "Control", group_ps["Control"], group_ps["Treatment"])
+
+# Residuals
+Data$Resid1 <- Data$Y - Data$Pred1
+Data$Resid2 <- Data$Y - Data$Pred2
+
+# Compare average absolute residuals (simple accuracy idea)
+c(
+  one_prob  = mean(abs(Data$Resid1)),
+  two_prob  = mean(abs(Data$Resid2))
+)
+```
+
+---
+
+# Sample size matters
+
+## Try small samples
+
+```{webr}
+#| echo: true
+#| output: true
+
+small <- Data[sample(1:nrow(Data), 20), ]
+prop.table(table(small$Pass, small$Group), margin = 2)
+gf_bar(~Pass, data = small, fill = ~Group, position = "fill")
+```
+
+**Discuss:** Why are the proportions “jumpier” with n = 20?
+
+---
+
+# Guided group activity (15–20 minutes)
+
+## Build and test a probability model
+
+In groups of 3–4:
+
+1. Make a two-way table of Pass by Group
+2. Compute **pass rate** in each group
+3. Compute the overall pass rate
+4. Decide: does Group seem useful for predicting Pass?
+5. Optional: try a small subsample (n = 20) and compare stability
+
+### Team workspace
+
+```{webr}
+#| echo: true
+#| output: true
+
+T <- table(Data$Pass, Data$Group)
+T
+prop.table(T, margin = 2)
+
+overall_p <- mean(Data$Pass == "Pass")
+overall_p
+
+gf_bar(~Pass, data = Data, fill = ~Group, position = "fill")
+```
+
+**Share-out:** One sentence:
+- “Treatment is ___ likely to pass than Control” (fill in “more/less/about the same”)
+
+---
+
+# Wrap-up
+
+## Key takeaways
+
+- Categorical response → model **probabilities**, not means
+- Always compare **within-group proportions**
+- Visualize with **proportion bar charts**
+- Group-based probability models often outperform one-probability models
+- Small samples can make proportions look unstable
+
+---
+
+# Exit ticket
+
+1. Why can raw counts be misleading?  
+2. What does `prop.table(T, margin = 2)` do?  
+3. Write one sentence interpreting the difference in pass rates.
+
+```{webr}
+#| echo: true
+#| output: true
+
+# One sentence answer here
+```
