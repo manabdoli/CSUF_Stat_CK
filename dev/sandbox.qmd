@@ -1,0 +1,199 @@
+---
+title: "WebR Two‑Column Reactive Slide"
+format:
+  live-revealjs:
+    slide-number: true
+    chalkboard: true
+filters:
+  - webr
+---
+{{< include ../presentations/_extensions/coatless/live/_knitr.qmd >}}
+
+<!--
+- uses **live‑revealjs**
+- has a **two‑column layout**
+- includes a **syntax‑highlighted CodeMirror editor**
+- has a **Run button**
+- shows **reactive output on the right**
+- handles **errors cleanly**
+- keeps all `:::` fences *inside* code blocks so nothing leaks into the slide
+-->
+
+::: columns
+::: column
+
+### Code Editor
+
+```{ojs}
+// Create a CodeMirror editor for R code
+viewof code = Inputs.textarea({
+  label: "Type R code here",
+  value: `x <- rnorm(100)
+hist(x)`,
+  rows: 12,
+  spellcheck: false
+})
+```
+
+```{ojs}
+// A Run button so the code doesn't execute on every keystroke
+viewof run = Inputs.button("Run code")
+```
+
+```{ojs}
+// When the user clicks Run, execute the R code in WebR
+run;  // makes this cell depend on the button
+
+// Try running the code; capture errors safely
+let result;
+try {
+  result = await webr.runR(code);
+} catch (err) {
+  result = { html: `<pre style="color:red;">${err}</pre>` };
+}
+
+globalThis.result = result;
+```
+
+:::
+::: column
+
+### Output Panel
+
+```{ojs}
+// Display whatever WebR returned (plots, text, errors)
+html`${globalThis.result.html}`
+```
+
+:::
+:::
+
+
+<!--
+Ah, yes — that error tells me exactly what’s going on, and it has nothing to do with your code. It’s Quarto itself complaining that it’s trying to treat **“webr” as an external JSON filter**, which only happens when Quarto **cannot find the quarto-webr extension**.
+
+In other words:
+
+### 👉 Quarto is not recognizing `webr` as a filter  
+so it assumes it must be a *file* named `webr` on your system, tries to run it, and fails.
+
+This is why you see:
+
+> “Could not run …/webr as a JSON filter. Please make sure the file exists and is executable.”
+
+That message is Quarto’s way of saying:  
+**“I don’t know what `webr` is supposed to be.”**
+
+Let’s fix that cleanly.
+
+---
+
+# ✅ Step 1 — Make sure the quarto-webr extension is installed
+
+Run this in your terminal (not inside R):
+
+```
+quarto add quarto-ext/webr
+```
+
+You should see something like:
+
+```
+✓ Installed extension webr
+```
+
+If you already installed it earlier, run:
+
+```
+quarto update
+```
+
+This ensures the extension is registered.
+
+---
+
+# ✅ Step 2 — Confirm the extension is visible to Quarto
+
+Run:
+
+```
+quarto check
+```
+
+Scroll to the bottom — you should see:
+
+```
+Extensions:
+  webr
+```
+
+If you don’t see it, Quarto will not know how to process `{ojs}` or `{webr}`.
+
+---
+
+# ✅ Step 3 — Make sure your YAML uses the correct filter syntax
+
+Your YAML must include:
+
+```yaml
+filters:
+  - webr
+```
+
+**NOT**:
+
+- `- /webr`
+- `- ./webr`
+- `- webr.lua`
+- `- quarto-webr`
+
+If the filter name is wrong, Quarto again tries to run a file named “webr”.
+
+---
+
+# ✅ Step 4 — Make sure you’re rendering with the Quarto CLI
+
+You mentioned earlier that you had to install Quarto CLI — that was the right move.
+
+Now render using:
+
+```
+quarto preview yourfile.qmd
+```
+
+or inside VSCode/VSCodium:
+
+- Command Palette → “Quarto: Render Document”
+- Or click the Render button
+
+If you try to open the HTML directly with `file://`, OJS will break — but `live-revealjs` automatically launches a local web server, so you’re safe.
+
+---
+
+# ⭐ If you want, I can check your exact file
+
+If you paste:
+
+- your YAML header  
+- the first 10–20 lines of your `.qmd`  
+
+…I can spot the issue instantly.
+
+---
+
+# 🎁 And once we confirm the extension is loading correctly…
+
+I’ll give you a **fully polished, production‑ready two‑column WebR + OJS template** with:
+
+- CodeMirror editor  
+- Run button  
+- Error panel  
+- Plot panel  
+- Clean layout  
+- No leaking `:::` fences  
+- Works in `live-revealjs`  
+
+You’ll have a perfect teaching slide.
+
+Just send me your YAML or the full file and I’ll tune it precisely for your setup.
+-->

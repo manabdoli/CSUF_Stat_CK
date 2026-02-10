@@ -1,0 +1,402 @@
+---
+title: "CourseKata Chapter 3.10–3.13"
+subtitle: "The DGP • Sampling Variation • Simulations"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 3.10–3.13"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch3.10-3.13.html
+params:
+  load_helper: false
+---
+
+# Today (Ch. 3.10–3.13)
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+#  Packages available in your WebR build -
+library(mosaic)
+library(ggformula)
+
+options(digits = 3)
+
+# Load your helper functions (optional)
+if(isTRUE(params$load_helper)){
+  helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+  eval(parse(text = helpers))
+}
+
+# local variales
+dice_outcomes <- 1:6
+w_pop <- c(rep(1,5), 2, rep(3,10), rep(4,10), 5, rep(6,5))
+
+.webr_ready <- TRUE
+```
+
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+
+if(isTRUE(params$load_helper)){
+  source('assets/webr_helpers.R')
+}
+
+```
+
+## Session goals
+
+:::{.nonincremental}
+By the end of today, you can:
+
+- Explain what **Data Generating Process (DGP)** means.
+- Use **bottom‑up** vs **top‑down** thinking to connect data ↔ DGP
+- Simulate a DGP with `sample()` / `resample()` and visualize results
+- Explain **sampling variation** and why small samples can look “weird”
+- Use simulations to see the **law of large numbers** in action
+:::
+
+
+
+# 3.10 The Data Generating Process (DGP)
+
+## Data Generating Proccess (DGP)
+- Distributions Represents Variability in Data
+
+:::{.fragment}
+:::{.columns} 
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=3}
+die <- data.frame(n=1:6)
+gf_dhistogram(~n, data=die, binwidth=1, color='red') |>
+  gf_labs(title='Distribution of a fair die:') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=3}
+set.seed(123)
+x <- resample(die, 20)
+gf_dhistogram(~n, data=x, binwidth=1, color='red') |>
+  gf_labs(title='Distribution of 20 rolls of a fair die:') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=3}
+set.seed(123)
+x <- resample(die, 100)
+gf_dhistogram(~n, data=x, binwidth=1, color='red') |>
+  gf_labs(title='Distribution of 100 rolls of a fair die:') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+:::
+:::
+
+:::{.columns} 
+::::{.column width="33%"}
+:::{.fragment .nonincremental}
+:::{style="font-size: .8em;"}
+- Known Population
+  - Fixed Variability
+:::
+:::
+::::
+::::{.column width="33%"}
+:::{.fragment .nonincremental}
+:::{style="font-size: .8em;"}
+- A Small Sample
+  - Much different
+:::
+:::
+::::
+::::{.column width="33%"}
+:::{.fragment .nonincremental}
+:::{style="font-size: .8em;"}
+- A Large Sample;
+  - Different, but less
+:::
+:::
+::::
+:::
+
+- Variation in part depends on the DGP
+  - Key Idea: "What DGP generated population variability?"
+
+## Quick example: bus wait times ([source](https://app.coursekata.org/preview/book/0358a8c8-8816-417b-b8ac-bdc91fc7023a/lesson/5/9))
+
+::: {.columns}
+::: {.column}
+![distribution of some 60,000 waiting times at a NY bus stop](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*YUASmLvUFhE23gsOPyxs7Q.png)
+:::
+::: {.column}
+- DGP thinking = <br>using context to explain the distribution:
+  - schedules?
+  - passenger behavior?
+  - delays, traffic, bunching?
+:::
+:::
+<!-- end columns -->
+
+
+# 3.11 Back-and-forth: data ↔ DGP
+
+## Two moves statisticians make
+
+- **Top‑down:** Theory of DGP → Expected Distribution
+  
+:::{.fragment}
+:::{.columns} 
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=1}
+set.seed(123)
+x <- resample(die, 20)
+gf_dhistogram(~n, data=x, binwidth=1, color='red') |> gf_density(adjust=1.5) |>
+gf_labs(title='20 Rolls') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=1}
+set.seed(123)
+x <- resample(die, 100)
+gf_dhistogram(~n, data=x, binwidth=1, color='red') |> gf_density(adjust=1.5)|>
+gf_labs(title='100 Rolls') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=1}
+set.seed(123)
+x <- resample(die, 1000)
+gf_dhistogram(~n, data=x, binwidth=1, color='red')  |> gf_density(adjust=1.5) |>
+gf_labs(title='1000 Rolls') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+:::
+:::
+
+- **Bottom‑up:** Observed Distribution → Predict Population/DGP  
+
+:::{.fragment}
+:::{.columns} 
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=1}
+set.seed(123)
+x <- resample(die, 100)
+gf_dhistogram(~n, data=x, binwidth=1, color='red') |> gf_density(adjust=1.5) |>
+gf_labs(title='20 Rolls') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=1}
+y <- resample(x, 20)
+gf_dhistogram(~n, data=y, binwidth=1, color='red') |> gf_density() |>
+gf_labs(title='Resample 20 Rolls') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+::::{.column width="33%"}
+```{r, echo=FALSE, width=4, height=1}
+y <- resample(x, 20)
+gf_dhistogram(~n, data=y, binwidth=1, color='red') |> gf_density()|>
+gf_labs(title='Resample 20 Rolls') |>
+  gf_theme(text = element_text(size = 16))
+```
+::::
+:::
+:::
+
+
+## Sampling and Resampling
+- Sampling 1 Roll of a Die
+
+:::{.fragment}
+
+```{webr}
+dice_outcomes <- 1:6
+my_sample <- sample(dice_outcomes, 1)
+my_sample
+```
+
+:::
+
+- **Pair prompt:**
+  - Why do we get different numbers?
+  - What stays the same?
+
+
+# 3.12 From DGP → population → samples
+
+## GDP: Independent Samples
+- Sample with replacement (Independet Samples)
+
+:::{.fragment}
+```{webr}
+#| fig-height: 2
+ten_rolls <- sample(dice_outcomes, 10, replace = TRUE)
+gf_bar(~ten_rolls)
+```
+:::
+
+- What happens if `replace = FALSE` (default)?
+- How the distribution resembles the population?
+
+## GDP: Large Independent Samples
+- 1000 independent samples:
+
+:::{.fragment}
+```{webr}
+#| fig-height: 2
+large_sample <- sample(dice_outcomes, 1000, replace = TRUE)
+gf_bar(~large_sample)
+```
+
+:::
+
+- Which one (10 or 1000) looks more like the population?
+- Which one has more **sampling variation**?
+
+<!--
+## Activity: sampling variation gallery (5–7 minutes)
+
+In pairs:
+
+1. Generate **five** samples of size 12.
+2. For each sample, make a bar graph.
+3. Circle the *most surprising* one.
+
+```{webr}
+#| echo: true
+#| output: true
+
+dice_outcomes <- 1:6
+
+s1 <- resample(dice_outcomes, 12)
+s2 <- resample(dice_outcomes, 12)
+s3 <- resample(dice_outcomes, 12)
+s4 <- resample(dice_outcomes, 12)
+s5 <- resample(dice_outcomes, 12)
+
+gf_bar(~s1); gf_bar(~s2); gf_bar(~s3); gf_bar(~s4); gf_bar(~s5)
+```
+
+**Share-out:** What “pattern” did you see that felt non‑random?
+
+-->
+
+# 3.13 Weird DGPs and their samples
+
+## Weird populations can exist
+```{webr}
+#| fig-height: 2
+w_pop <- c(rep(1,5), 2, rep(3,10), rep(4,10), 5, rep(6,5))
+gf_bar(~w_pop)
+```
+
+- This is a strange population shape -— but it’s still a valid distribution.
+
+- Could a sample represent this weird distribution?
+
+## Sampling from the Weird Population
+
+:::{.columns}
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 2
+small_sample <- resample(w_pop, 24)
+gf_bar(~small_sample)
+```
+::::
+::::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 2
+large_sample <- resample(w_pop, 1000)
+gf_bar(~large_sample)
+```
+::::
+:::
+
+- Which sample “reveals” the W-shape better?
+- Which DGP is more variable?
+
+## Law of Large Numbers
+- As sample size increases:
+  - the sample distribution tends to resemble the population distribution more closely.
+
+- A single small sample could do the same but less likely to do so:
+  - Small samples can be misleading.
+
+- Law of Large Numbers works better on Statistics than Distribution! Why?
+
+<!--
+# Collaboration activity (15–20 minutes)
+
+## Build your own DGP (teams of 3–4)
+
+Create a “weird” population on purpose, then test it.
+
+1. Make a population vector `my_pop` with values 1–6 (use `rep()`)
+2. Make a bar graph of the population
+3. Draw samples of size 24 and 1000
+4. Compare the sample graphs to the population
+
+```{webr}
+#| echo: true
+#| output: true
+
+# Example starter (edit it!)
+my_pop <- c(rep(1,2), rep(2,8), rep(3,1), rep(4,12), rep(5,1), rep(6,6))
+
+gf_bar(~my_pop)
+
+s24  <- resample(my_pop, 24)
+s1000 <- resample(my_pop, 1000)
+
+gf_bar(~s24)
+gf_bar(~s1000)
+```
+
+**Share-out:** What’s one thing a small sample “got wrong” about your population?
+
+
+
+# Exit ticket (2–3 minutes)
+
+1. In one sentence: what is the **DGP**?  
+2. Which is **top‑down** thinking: “simulate dice rolls” or “infer bus schedules from the histogram”?  
+3. Complete this sentence: *Small samples can look very different from the population because of ________.*
+
+```{webr}
+#| echo: true
+#| output: true
+
+# One line of code to simulate 50 dice rolls with replacement:
+# my_rolls <- ...
+```
+-->

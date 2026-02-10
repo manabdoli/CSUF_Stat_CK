@@ -39,3 +39,29 @@ n <- webr::js_eval("globalThis.n_val")
 n
 rnorm(n)
 ```
+
+
+```{r}
+set.seed(123)
+S <- 1:10; K <- 10; R<- 1000; Y <- matrix(0, nrow=R*K, ncol=3)
+for(k in 1:K) 
+  for(r in 1:R){ 
+    x <- sample(S,k)
+    Y[r+(k-1)*R, ] <-
+     c(K=k, 
+     var1=var(x)*(k-1),
+     var2=var(setdiff(S,x))*(10-k-1))
+  } 
+
+colnames(Y) = c('k', 'SS1', 'SS2')
+head(Y)  
+
+library(tidyverse)
+Y |> as.data.frame() |> 
+ mutate(SST=ifelse(is.na(SS1),0,SS1)+
+   ifelse(is.na(SS2),0,SS2)) |> 
+  pivot_longer(cols=-c('k'), values_to = 'SS', 
+    names_to = 'group') |> 
+  ggplot(aes(x=factor(k), y=SS, fill=group))+ 
+  geom_boxplot()
+```

@@ -1,0 +1,75 @@
+---
+title: "CourseKata Chapter x.x-y.y"
+subtitle: "Description"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. x.x-y.y"
+resources:
+  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-chx.x-y.y.html
+params:
+  load_helper: false
+---
+
+# Today (Ch. x.x–y.y)
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+#  Packages available in your WebR build -
+library(mosaic)
+library(ggformula)
+
+# Load your helper functions (optional)
+if(isTRUE(params$load_helper)){
+  helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+  eval(parse(text = helpers))
+}
+
+options(digits = 3)
+
+```
+
+```{r}
+#| echo: false
+# Helper function
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+
+if(isTRUE(params$load_helper)){
+  source('assets/webr_helpers.R')
+}
+# add any helper functions needed
+
+```
+
+
+## Session goals 
+
+:::{.nonincremental}
+
+By the end of today, you can:
+
+- List goals
+- ...
+
+:::
+
