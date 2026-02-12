@@ -29,6 +29,7 @@ output-files: CK-ch4-full.html
 suppressPackageStartupMessages({
   library(mosaic)
   library(ggformula)
+  library(cowplot)
 })
 ```
 
@@ -460,12 +461,36 @@ tally(Gender~Interest, data=Fingers, format = 'proportion')
 # Part C — Modeling and Design
 
 ## Models of Variability
-- Chance Model: $$GradePredict = \text{Other Stuff} (Unexplained)$$
+- Chance Model: Variability is only by *Chance* $$GradePredict = \text{Other Stuff} (Unexplained)$$
 
-- One Explanatory: $$GradePredict = Gender + \text{Other Stuff}$$
+- One Explanatory: *Gender* explains some variability  $$GradePredict = Gender + \text{Other Stuff}$$
 
-- Two Explanatory: $$GradePredict = Gender + Interest + \text{Other Stuff}$$
+- Two Explanatory: Both *Gender* and *Interest* explain some variability $$GradePredict = Gender + Interest + \text{Other Stuff}$$
 
+## How to Compate Models (Hypothesis)
+:::{style="font-size: .85em;"}
+- Explained variability: *outcome* (*residuals*) depends on *explanatory* value
+  - Residuals = Observed - Predicted (or expected)
+- More explained variablity $\rightarrow$ Better model 
+:::
+:::{.columns}
+:::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 3
+gf_point(Pinkie~Height, data=Fingers) |>
+  gf_boxplot(Pinkie~55, data=Fingers, color='red')
+```
+:::
+:::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 3
+gf_bar(~MathAnxious, data=Fingers, fill=~Gender, position='fill') |>
+gf_bar(~'Total', data=Fingers, fill=~Gender, position='fill', color='black')
+```
+:::
+:::
 
 ## Research Design
 ### Association or Causation?
