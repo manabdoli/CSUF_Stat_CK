@@ -54,3 +54,5 @@ rsconnect/
 .DS_Store
 dev/*.html
 dev/*_files/
+exams/_extensions
+_extensions

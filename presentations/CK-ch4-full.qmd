@@ -146,10 +146,18 @@ gf_(~Height, data=Fingers)
 
 ## Investigating Associations:
 ### Explaining Variability: 
-:::{.fragment .nonincremental}
+::: {.columns}
+::: {.column width="60%"}
+:::{.fragment .nonincremental style="font-size: .85em;"}
 -  Response = Explanatory + Other Stuff
 -  **Formula:** Response ~ Explanatory
 :::
+:::
+::: {.column width="40%"}
+- Residual: $\text{Observed} - \text{Predicted}$
+:::
+:::
+<!-- end columns -->
 :::{.fragment .nonincremental}
 ### Numerical Response
 ::: {.columns}
