@@ -37,7 +37,7 @@
     "href": "presentations/CK-ch4-full.html#investigating-associations",
     "title": "CourseKata Chapter 4",
     "section": "Investigating Associations:",
-    "text": "Investigating Associations:\nExplaining Variability:\n\n\nResponse = Explanatory + Other Stuff\nFormula: Response ~ Explanatory\n\n\n\nNumerical Response\n\n\n\nNumerical Explanatory\n\n\n\nCategorical Explanatory\n\n\n\n\n\nCategorical Response\n\n\n\nCategorical Explanatory\n\n\n\nNumerical Explanatory",
+    "text": "Investigating Associations:\nExplaining Variability:\n\n\n\n\nResponse = Explanatory + Other Stuff\nFormula: Response ~ Explanatory\n\n\n\n\nResidual: \\(\\text{Observed} - \\text{Predicted}\\)\n\n\n\n\nNumerical Response\n\n\n\nNumerical Explanatory\n\n\n\nCategorical Explanatory\n\n\n\n\n\nCategorical Response\n\n\n\nCategorical Explanatory\n\n\n\nNumerical Explanatory",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 4"
@@ -158,7 +158,18 @@
     "href": "presentations/CK-ch4-full.html#models-of-variability",
     "title": "CourseKata Chapter 4",
     "section": "Models of Variability",
-    "text": "Models of Variability\n\nChance Model: \\[GradePredict = \\text{Other Stuff} (Unexplained)\\]\nOne Explanatory: \\[GradePredict = Gender + \\text{Other Stuff}\\]\nTwo Explanatory: \\[GradePredict = Gender + Interest + \\text{Other Stuff}\\]",
+    "text": "Models of Variability\n\nChance Model: Variability is only by Chance \\[GradePredict = \\text{Other Stuff} (Unexplained)\\]\nOne Explanatory: Gender explains some variability \\[GradePredict = Gender + \\text{Other Stuff}\\]\nTwo Explanatory: Both Gender and Interest explain some variability \\[GradePredict = Gender + Interest + \\text{Other Stuff}\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 4"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch4-full.html#how-to-compate-models-hypothesis",
+    "href": "presentations/CK-ch4-full.html#how-to-compate-models-hypothesis",
+    "title": "CourseKata Chapter 4",
+    "section": "How to Compate Models (Hypothesis)",
+    "text": "How to Compate Models (Hypothesis)\n\n\nExplained variability: outcome (residuals) depends on explanatory value\n\nResiduals = Observed - Predicted (or expected)\n\nMore explained variablity \\(\\rightarrow\\) Better model",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 4"
@@ -570,6 +581,13 @@
       "Presentations",
       "CourseKata Ch. 2.1–2.7"
     ]
+  },
+  {
+    "objectID": "exams/CK_ch1-4_sample_exam_interactive_webr.html#instructions",
+    "href": "exams/CK_ch1-4_sample_exam_interactive_webr.html#instructions",
+    "title": "Sample Exam (Interactive, WebR)",
+    "section": "Instructions",
+    "text": "Instructions\n\nThis is a practice exam for Chapters 1–4.\nWork in pairs or solo (your instructor will decide).\nFor each question, run the code (if provided) and write a short answer.\nIf a question asks you to modify code, do it in the code cell."
   },
   {
     "objectID": "about.html",
