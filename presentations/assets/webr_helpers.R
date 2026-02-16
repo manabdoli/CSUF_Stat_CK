@@ -94,3 +94,11 @@ outlier_flags <- function(x) {
   hi <- q["Q3"] + 1.5 * iqr
   list(lower = lo, upper = hi, is_outlier = (x < lo) | (x > hi))
 }
+
+drop_na <- function(x){
+  if(is.data.frame(x)) x[complete.cases(x), ] else{
+    if(is.list(x)) lapply(x, drop_na) else{
+      if(is.vector(x)) x[complete.cases(x)]
+    }
+  }
+}
