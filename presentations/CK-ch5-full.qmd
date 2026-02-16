@@ -1,0 +1,415 @@
+---
+title: "CourseKata Chapter 5"
+subtitle: "Simple Model: Prediction + Residual"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 5"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch5.html
+---
+
+# Today: Representing Distributions with 1 Number
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+## Session Goals
+
+:::{.nonincremental}
+By the end of today, you can:
+
+* Explain **error** in mathematical & statistical models
+* Choose a **statistic** to represent a distribution
+* Compute and interpret **residuals**
+* Use `lm()` to build a simple model based on **mean**.
+* Use `predict()` and `resid()` to evaluate the performance of a model.
+:::
+
+# Mathematical vs. Statistical Estimation
+## Mathematical Modeling
+Assume we need to estimate the area of a circle:
+
+::: {.fragment}
+::: {.columns}
+::: {.column}
+```{r, echo=FALSE}
+#| fig-height: 2
+#| fig-width: 5
+#| fig-alt: "A circle with a set of inner and an outer squares"
+#| fig-cap: "Using squares"
+par(mar=c(0,0,1,0))
+k <- 4
+funs2teach::drawPolygon(n=10000, r=1, labels.v=NA, labels.e=NA, lwd=2)
+funs2teach::drawPolygon(n=k, r=1, labels.v=NA, labels.e=NA, border = 'blue', add=TRUE, lwd=2, lty=2)
+funs2teach::drawPolygon(n=k, r=1/cos(pi/k), labels.v=NA, labels.e=NA, border = 'red', add = TRUE, angle=pi/k, lwd=2, lty=2)
+legend('right', legend = c('over-estimate', 'under-estimate'), col=c('red', 'blue'), lty=2, bty='n')
+```
+:::
+::: {.column}
+```{r, echo=FALSE}
+#| fig-height: 2
+#| fig-width: 5
+#| fig-alt: "A circle with a set of inner and an outer octagons"
+#| fig-cap: "Using octagons"
+par(mar=c(0,0,1,0), xpd=TRUE)
+k <- 8
+funs2teach::drawPolygon(n=10000, r=1, labels.v=NA, labels.e=NA, lwd=2)
+funs2teach::drawPolygon(n=k, r=1, labels.v=NA, labels.e=NA, border = 'blue', add=TRUE, lwd=2, lty=2)
+funs2teach::drawPolygon(n=k, r=1/cos(pi/k), labels.v=NA, labels.e=NA, border = 'red', add = TRUE, angle=pi/k, lwd=2, lty=2)
+legend('right', legend = c('over-estimate', 'under-estimate'), col=c('red', 'blue'), lty=2,  bty='n')
+
+```
+:::
+:::
+<!-- end columns -->
+:::
+
+::: {.columns}
+::: {.column}
+- Area = Estimate + Error
+:::
+::: {.column}
+- We can control the error
+:::
+:::
+<!-- end columns -->
+
+## Statistical Modeling of Distributions
+::: {.columns}
+::: {.column width="40%"}
+Students' Height:
+```{webr}
+#| fig-width: 4
+#| fig-height: 4
+par(def.par)
+gf_histogram(~Height, data=Fingers, breaks=seq(55,75,5)+2.5, fill='orange')
+```
+:::
+::: {.column  width="60%"}
+- Two Important questions:
+  - How to estimate the distribution?
+  - How to predict future samples?
+- Answer: 
+  1. Model the **DGP process**
+  2. Estimate the model **parameters**. 
+  3. Control the **error** as much as possible.
+:::
+:::
+<!-- end columns -->
+
+## A Simple DGP Model
+::: {.columns}
+::: {.column width="40%"}
+Student's Height:
+```{r}
+#| fig-alt: "Slightly skewed right centered around 65, taking values between 55 to 80"
+#| fig=width: 4
+#| fig-height: 5
+par(def.par)
+gf_histogram(~Height, data=Fingers, breaks=seq(55,75,5)+2.5, fill='orange') |> 
+  gf_theme(text = element_text(size = 24))
+favstats(~Height, data=Fingers)[1:5]
+favstats(~Height, data=Fingers)[-c(1:5)]
+```
+:::
+::: {.column width="60%"}
+- DGP: Data (Height) = Model + Error 
+- Estimating Model (**Center**):
+  - Mode (Most likely): $(62.5, 67.5]$
+  - Median (Middle number): $65.5$
+  - Mean (Center of mass): $65.95$
+:::
+:::
+
+
+## Evaluating A DGP Model
+:::{.nonincremental}
+- DGP: Data (Height) = Model + Error 
+:::
+::: {.columns}
+::: {.column}
+:::{.nonincremental style="font-size:0.9em;"}
+- Estimating Model (**Center**):
+  - Mode (Most likely): $(62.5, 67.5]$
+  - Median (Middle number): $65.5$
+  - Mean (Center of mass): $65.95$
+:::
+:::
+::: {.column}
+- Estimating Error (**Residual**)
+  - Mode: 
+    - Residual$=1_{[Height==Mode]} \in \{0,1\}$
+  - Median & Mean:
+    - Residual$=Height - Center$
+:::
+:::
+
+# Long-run Behavior
+Hands on Simulation of Simple Models
+
+## A Toy Problem:
+Predicting the next random selection from: $2, 2, 2, 4, 6, 12$
+
+:::{.columns}
+:::{.column width="60%"}
+- Form a Team (of 3 or 4)
+- Create a table with 15-20 rows:
+
+:::{.fragment style="font-size:0.6em;"}
+
+|#|Guess|Actural|Match(0/1)|Actual-Guess|
+|-|-----|-------|----------|------------|
+|1|  -  |   -   |     -    |      -     |
+|2|  -  |   -   |     -    |      -     |
+:::
+:::
+:::{.column width="40%"}
+
+- Decide on a predicting procedure:
+
+:::{.fragment style="font-size:0.6em;"}
+
+$$\begin{array}{ll}
+- \text{Mode} & - \text{Median}\\
+- \text{Mean} & - \text{Random Guess}
+\end{array}$$
+
+:::
+:::
+:::
+
+## A Toy Problem (continue):
+Predicting the next random selection from: $2, 2, 2, 4, 6, 12$
+
+Repeate 15-20 times:
+
+:::{.columns}
+:::{.column width="40%"}
+
+\
+
+- Guess the next value 
+- Record it under Guess
+
+
+:::
+:::{.column width="60%"}
+- Roll a die (real or digital)
+- Use it to pick the next observation.
+- Record the observation under Actual.
+:::
+:::
+
+- Compute Match and Diff columns.
+- How good was your guessing procedure?
+
+## Simulatoin of the Toy Problem
+:::{.columns}
+:::{.column}
+```{r}
+par(def.par)
+#| fig-width: 5
+#| fig_height: 2
+ds <- c(2, 2, 2, 4, 6, 11)
+gf_histogram(~ds) |> 
+  gf_theme(text=element_text(size=24))
+favstats(ds)[1:5]
+favstats(ds)[-(1:5)]
+```
+:::
+:::{.column}
+```{webr}
+ds <- c(2, 2, 2, 4, 6, 11)
+r <- 1000
+x.idx <- sample(1:6, r, replace=TRUE)
+obsr <- ds[x.idx]
+pred.rand <- resample(ds, r)
+pred.mode <- rep(2, r)
+pred.median <- rep(median(ds), r)
+pred.mean <- rep(mean(ds), r)
+head(results <- data.frame(Actual=obsr, Rand=pred.rand, Mode=pred.mode, Med.=pred.median, Mean=pred.mean), 3)
+```
+:::
+:::
+
+## Simulatoin Results
+:::{.columns}
+:::{.column}
+```{webr}
+rand.res <- data.frame(
+    Actual=obsr, Match=obsr==pred.rand,
+    Res=obsr-pred.rand,
+    Res.abs=abs(obsr-pred.rand), 
+    Res.Sqr= (obsr-pred.rand)^2)
+head(rand.res, 2)
+
+```
+```{webr}
+mode.res <- data.frame(
+    Actual=obsr, Match=obsr==pred.mode,
+    Res=obsr-pred.mode,
+    Res.abs=abs(obsr-pred.mode), 
+    Res.Sqr= (obsr-pred.mode)^2)
+head(mode.res, 2)
+
+```
+:::
+:::{.column}
+```{webr}
+median.res <- data.frame(
+    Actual=obsr, Match=obsr==pred.median,
+    Res=obsr-pred.median,
+    Res.abs=abs(obsr-pred.median), 
+    Res.Sqr= (obsr-pred.median)^2)
+head(median.res, 2)
+
+```
+```{webr}
+mean.res <- data.frame(
+    Actual=obsr, Match=obsr==pred.mean,
+    Res=obsr-pred.mean,
+    Res.abs=abs(obsr-pred.mean), 
+    Res.Sqr= (obsr-pred.mean)^2)
+head(mean.res, 2)
+
+```
+:::
+:::
+
+## Simulation Results
+
+:::{styel="max-height:25%; overflow-y:auto;"}
+```{webr}
+sapply(rand.res, function(v) data.frame(Sum=sum(v), Mean=mean(v)))
+sapply(mode.res, function(v) data.frame(Sum=sum(v), Mean=mean(v)))
+sapply(median.res, function(v) data.frame(Sum=sum(v), Mean=mean(v)))
+sapply(mean.res, function(v) data.frame(Sum=sum(v), Mean=mean(v)))
+
+```
+:::
+
+## Mean + Residual as Simple Model
+:::{style="font-size:.8em;"}
+- Mean:
+  - Balances Residuals: $\sum e_i=\sum (y_i-\bar{y}) = 0$
+  - Minimizes $\sum e_i^2=\sum (y_i-\bar{y})^2$
+
+- `R` functions:
+  
+:::{.fragment}
+
+```{webr}
+simple_model <- lm(Height~NULL, data=Fingers)
+Fingers$Height[1:3]
+predict(simple_model) |> head(3)
+resid(simple_model) |> head(3)
+```
+:::
+:::
+
+## Models and Explaning Variability
+:::{style="font-size:.8em;"}
+- Mean-Model is the **Null Hypothesis**
+  - All variations is due to chance
+- The **Alternative Hypothesis**:
+  - Added variables can explain some variability 
+:::
+
+:::{.fragment style="font-size:.85em;"}
+:::{.columns}
+:::{.column width="33%"}
+```{webr}
+#| fig-width: 3
+#| fig-height: 2.5
+gf_jitter(Height~'All', data=Fingers) |>
+  gf_model(simple_model, color='blue')
+```
+:::
+:::{.column width="33%"}
+```{webr}
+#| fig-width: 3
+#| fig-height: 2.5
+gf_point(Height~Gender, data=Fingers) |> gf_jitter() |>
+  gf_model(simple_model, color='blue')
+```
+:::
+:::{.column width="33%"}
+```{webr}
+#| fig-width: 3
+#| fig-height: 2.5
+gf_point(Height~Ring, data=Fingers) |> gf_jitter() |>
+  gf_model(simple_model, color='blue')
+```
+:::
+:::
+:::
+
+## Statistica Modeling Notation
+
+:::{.columns}
+:::{.column}
+:::{.fragment}
+### Modeling Observed Data by Mean
+- Data = Observed Mean + Residual
+  $$y_i = b_0 + e_i$$
+  - $b_0 = \bar y$ and 
+  - $e_i = y_i - \bar y$
+:::
+:::
+:::{.column}
+:::{.fragment}
+### Modeling (Population) GDP by Mean
+- Data = Population Mean + Error
+  $$y_i = \beta_0 + \varepsilon_i$$
+  - $\beta_0 = \mu$ and 
+  - $\varepsilon_i = y_i - \mu$
+:::
+:::
+:::

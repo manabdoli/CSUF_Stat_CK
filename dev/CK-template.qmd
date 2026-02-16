@@ -1,6 +1,6 @@
 ---
-title: "CourseKata Chapter x.x-y.y"
-subtitle: "Description"
+title: "CourseKata Chapter x"
+subtitle: "Chapter X Topic"
 author: "Mansour Abdoli, PhD"
 format:
   live-revealjs:
@@ -9,22 +9,43 @@ format:
     chalkboard: true
     preview-links: true
     code-overflow: wrap
-    footer: "CourseKata Ch. x.x-y.y"
-resources:
-  - assets/webr_helpers.R
+    footer: "CourseKata Ch. X"
+#resources:
+#  - assets/webr_helpers.R
 engine: knitr
 execute:
   echo: true
   warning: false
   message: false
-output-files: CK-chx.x-y.y.html
-params:
-  load_helper: false
+output-files: CK-ch-x.html
 ---
 
-# Today (Ch. x.x–y.y)
+# Today: Overview
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+# create a webr to read the data
+source('./data/embedData.R')
+source('./assets/utils.R')
+load(file = "./data/Fingers.rda")
+cat(embedData(Fingers))
+
+# for more data:
+## load(file =) # load a dataset
+## cat(embedData(dataset)) # Embed it 
+
+```
 
 ```{webr}
 #| echo: false
@@ -32,44 +53,53 @@ params:
 #| warning: false
 #| message: false
 
-#  Packages available in your WebR build -
 library(mosaic)
 library(ggformula)
-
-# Load your helper functions (optional)
-if(isTRUE(params$load_helper)){
-  helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
-  eval(parse(text = helpers))
-}
-
 options(digits = 3)
 
+# Load helper functions if present (optional)
+helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+eval(parse(text = helpers))
+
+Fingers$MathAnxious <- 
+  factor(Fingers$MathAnxious,
+  levels=c('Strongly Disagree', 
+    'Disagree', 
+    'Neither Agree nor Disagree', 
+    'Agree', 'Strongly Agree'))
+Fingers$Job <- 
+  factor(Fingers$Job,
+         c("Not Working", "Part-time Job", "Full-time Job"))
+
+.webr_ready <- TRUE
 ```
 
-```{r}
-#| echo: false
-# Helper function
-suppressPackageStartupMessages({
-  library(mosaic)
-  library(ggformula)
-})
 
-if(isTRUE(params$load_helper)){
-  source('assets/webr_helpers.R')
-}
-# add any helper functions needed
-
-```
-
-
-## Session goals 
+## Session goals
 
 :::{.nonincremental}
-
 By the end of today, you can:
 
-- List goals
-- ...
+- do 1
+- do 2
+- know 3
 
 :::
+
+# First Topic
+
+## Sub-Topic
+
+- A
+- B
+
+:::{.fragment}
+```{webr}
+#| fig-height: 2.5
+#| alt-text: "Something" # note sure if the syntax is correct
+gf_points(Ring~Thumb, data=Fingers)
+```
+:::
+
+
 

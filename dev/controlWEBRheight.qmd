@@ -1,0 +1,305 @@
+Yes — you *can* limit the height of a **WebR code chunk** in Quarto, but the trick is that the height is controlled by **CSS**, not by chunk options. WebR chunks render inside a `<div class="webr-editor">` (for the code editor) and a `<div class="webr-output">` (for the output). Both can be styled.
+
+Here are the reliable ways to constrain the height.
+
+---
+
+# ⭐ **1. Limit the height of the WebR code editor**
+
+Add this to your document (either in the YAML `format: html:` section or in a separate CSS file):
+
+```css
+.webr-editor {
+  max-height: 200px;
+  overflow-y: auto;
+}
+```
+
+This keeps the editor scrollable instead of expanding endlessly.
+
+Then your chunk is just:
+
+```markdown
+```{webr}
+# your R code here
+```
+```
+
+---
+
+# ⭐ **2. Limit the height of the WebR output panel**
+
+```css
+.webr-output {
+  max-height: 250px;
+  overflow-y: auto;
+}
+```
+
+This is useful when students generate long output.
+
+---
+
+# ⭐ **3. Apply the CSS inline inside the Quarto document**
+
+If you don’t want a separate CSS file:
+
+```markdown
+::: {.cell}
+<style>
+.webr-editor {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.webr-output {
+  max-height: 250px;
+  overflow-y: auto;
+}
+</style>
+:::
+```
+
+This works in HTML and RevealJS (including `live-revealjs`).
+
+---
+
+# ⭐ **4. Limit height for a *specific* WebR chunk only**
+
+Wrap the chunk in a custom div:
+
+```markdown
+::: {.limited-webr}
+```{webr}
+# code here
+```
+:::
+```
+
+Then define:
+
+```css
+.limited-webr .webr-editor {
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.limited-webr .webr-output {
+  max-height: 220px;
+  overflow-y: auto;
+}
+```
+
+This avoids affecting all WebR chunks.
+
+---
+
+# ⭐ **5. If you want the editor to be *fixed height* instead of max-height**
+
+```css
+.webr-editor {
+  height: 180px;
+  overflow-y: scroll;
+}
+```
+
+---
+
+# ⭐ **6. Works in:**
+- Quarto HTML  
+- Quarto RevealJS  
+- Quarto Live‑RevealJS  
+- WebR notebooks  
+
+(Word/PDF do not support WebR execution, so height control is irrelevant there.)
+
+---
+
+If you want, I can help you:
+
+- create a **clean CSS block** you can reuse in all your teaching slides  
+- style the WebR editor to look more like RStudio  
+- create a two‑pane layout (editor left, output right) with controlled heights  
+- integrate this into your **live‑revealjs** teaching setup  
+
+Just tell me what direction you want to refine.
+
+
+Yes — you *can* absolutely put the **WebR code editor on the left** and the **WebR output on the right**, and you can do it cleanly in Quarto without tables. The trick is to use **CSS flexbox** to create a two‑column layout, then place the WebR editor and output inside those columns.
+
+This works beautifully in **HTML** and **live‑revealjs**, and it avoids the accessibility problems of table‑based layouts.
+
+Below is the cleanest, most reliable pattern.
+
+---
+
+# ⭐ **Two‑Column Layout for WebR (Code Left, Output Right)**
+
+### **Step 1 — Add a CSS block to your document**
+
+You can place this at the top of your `.qmd` or in a separate `.css` file.
+
+```html
+<style>
+.webr-two-col {
+  display: flex;
+  gap: 20px;
+}
+
+.webr-left, .webr-right {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Optional: control heights */
+.webr-left .webr-editor {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.webr-right .webr-output {
+  max-height: 300px;
+  overflow-y: auto;
+}
+</style>
+```
+
+This creates a responsive two‑column layout using flexbox.
+
+---
+
+# ⭐ **Step 2 — Wrap your WebR code and output in the layout**
+
+Here’s the pattern:
+
+```markdown
+::: {.webr-two-col}
+
+::: {.webr-left}
+```{ojs}
+// Code editor
+viewof code = Inputs.textarea({
+  label: "Type R code here",
+  value: "x <- rnorm(100)\nhist(x)",
+  rows: 10
+})
+```
+
+```{ojs}
+// Run the R code
+globalThis.result = await webr.runR(code)
+```
+:::
+
+::: {.webr-right}
+```{ojs}
+// Display output
+html`${globalThis.result.html}`
+```
+:::
+
+:::
+```
+
+This gives you:
+
+**Left column:**  
+- WebR editor  
+- Code execution cell  
+
+**Right column:**  
+- Output panel  
+
+All reactive, all clean.
+
+---
+
+# ⭐ Why this works so well
+
+- Flexbox gives you **true two‑column layout** in HTML/RevealJS  
+- No tables, so **fully accessible**  
+- Works with **WebR**, **OJS**, and **live‑revealjs**  
+- You can control height, width, scrolling, spacing  
+- The layout adapts to screen size  
+
+This is the same pattern you and I used earlier for the two‑column OJS + WebR teaching slide — now extended with layout control.
+
+---
+
+# ⭐ Optional: Fixed widths
+
+If you want the code editor narrower:
+
+```css
+.webr-left { flex: 0 0 40%; }
+.webr-right { flex: 1; }
+```
+
+---
+
+# ⭐ Optional: Add borders or background shading
+
+```css
+.webr-left {
+  border-right: 2px solid #ccc;
+  padding-right: 10px;
+}
+```
+
+---
+
+If you want, I can turn this into:
+
+- a **reusable Quarto include file**  
+- a **live‑revealjs slide template**  
+- a version with **CodeMirror** instead of the default textarea  
+- a version with a **Run button** instead of auto‑reactivity  
+
+Just tell me how you want to refine it.
+
+
+# TEST!
+I thought this will work:
+
+::: {.cell}
+<style>
+.webr-two-col {
+  display: flex;
+  gap: 20px;
+}
+.webr-editor {
+  max-height: 200px;
+  overflow-y: auto;
+  flex: 1;
+  min-width: 0;
+}
+.webr-output {
+  max-height: 250px;
+  overflow-y: auto;
+  flex: 1;
+  min-width: 0;
+}
+</style>
+:::
+
+## Test WEBR
+
+:::{.webr-two-col}
+```{webr}
+gf_histogram(~Height, data=Fingers)
+```
+:::
+
+- Just a test
+- Did it work?
+
+## Test WEBR
+
+:::{.webr-two-col}
+```{webr}
+gf_histogram(~Height, data=Fingers)
+```
+:::
+
+- Just a test
+- Did it work?
+
