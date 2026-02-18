@@ -132,11 +132,11 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch5-full.html#statistica-modeling-notation",
-    "href": "presentations/CK-ch5-full.html#statistica-modeling-notation",
+    "objectID": "presentations/CK-ch5-full.html#statistical-modeling-notation",
+    "href": "presentations/CK-ch5-full.html#statistical-modeling-notation",
     "title": "CourseKata Chapter 5",
-    "section": "Statistica Modeling Notation",
-    "text": "Statistica Modeling Notation\n\n\n\nModeling Observed Data by Mean\n\nData = Observed Mean + Residual \\[y_i = b_0 + e_i\\]\n\n\\(b_0 = \\bar y\\) and\n\\(e_i = y_i - \\bar y\\)\n\n\n\n\n\nModeling (Population) GDP by Mean\n\nData = Population Mean + Error \\[y_i = \\beta_0 + \\varepsilon_i\\]\n\n\\(\\beta_0 = \\mu\\) and\n\\(\\varepsilon_i = y_i - \\mu\\)",
+    "section": "Statistical Modeling Notation",
+    "text": "Statistical Modeling Notation\n\n\n\nModeling Observed Data by Mean\n\nData = Observed Mean + Residual \\[y_i = b_0 + e_i\\]\n\n\\(b_0 = \\bar y\\) and\n\\(e_i = y_i - \\bar y\\)\n\n\n\n\n\nModeling (Population) GDP by Mean\n\nData = Population Mean + Error \\[y_i = \\beta_0 + \\varepsilon_i\\]\n\n\\(\\beta_0 = \\mu\\) and\n\\(\\varepsilon_i = y_i - \\mu\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 5"
@@ -466,7 +466,7 @@
     "href": "index.html",
     "title": "CSUF Statistics using CourseKata",
     "section": "",
-    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4",
+    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5",
     "crumbs": [
       "CSUF Statistics using CourseKata"
     ]
