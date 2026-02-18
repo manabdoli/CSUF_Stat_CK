@@ -391,7 +391,7 @@ gf_point(Height~Ring, data=Fingers) |> gf_jitter() |>
 :::
 :::
 
-## Statistica Modeling Notation
+## Statistical Modeling Notation
 
 :::{.columns}
 :::{.column}

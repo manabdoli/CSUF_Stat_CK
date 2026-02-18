@@ -1,0 +1,49 @@
+---
+title: "Data Prep to be used in Jupyter Notebook"
+author: "Mansour Abdoli, PhD"
+---
+
+## Flappy Bird
+
+```{r}
+ds <- read.delim(header=TRUE, sep='\t',
+    text ='Section	Hi3	PlayNum	HiEnd
+A	5	3	5
+A	0	3	0
+A	11	3	11
+A	7	3	7
+A	25	3	25
+A	6	5	6
+A	11	3	11
+A	57	3	57
+A	15	4	15
+A	8	3	8
+A	7	14	10
+A	21	3	21
+A	3	5	6
+A	18	4	22
+A	21	5	21
+A	9	6	9
+A	101	3	101
+A	14	3	14
+A	17	3	17
+A	6	25	6
+A	12	3	12
+B	23	3	23
+B	8	3	2
+B	10	3	3
+B	7	4	7
+B	15	3	5
+B	2	3	2
+B	15	3	15
+B	2	3	2
+B	3	10	14
+B	24	30	42
+B	23	3	23
+B	11	3	11
+B	87	3	87
+B	6	7	6
+')
+ds$Section <- factor(ds$Section)
+funs2teach::df2code(ds)
+```

@@ -1,0 +1,174 @@
+Below are **10 auto-graded questions** you can paste into your lab `.qmd` (or Quarto HTML page). They’re written in a **Quarto quiz / assessment style** that auto-checks **multiple choice, multiple-select, and short-answer** responses.
+
+I’m assuming students have already run:
+
+```r
+library(coursekata)
+flappyBird <- data.frame(...)
+```
+
+and that you’re using the outcome **`Hi3Score`** and predictors **`Section`** and **`HiEndScore`**.
+
+> Note: Auto-graded questions work best in **HTML output**. If you’re keeping this as a Jupyter notebook, you can still include these in a Quarto-rendered lab page (HTML) that accompanies the notebook.
+
+---
+
+## ✅ Copy/paste block: 10 auto-graded questions
+
+````markdown
+## Lab Check: Empty Model for Flappy Bird Scores
+
+### Question 1 (Distribution)
+Which type of graph is most appropriate for viewing the distribution of `Hi3Score`?
+
+- [x] Histogram  
+- [ ] Scatterplot  
+- [ ] Bar chart of categories  
+- [ ] Line graph  
+
+:::{.solution}
+`Hi3Score` is quantitative, so a histogram is appropriate for its distribution.
+:::
+
+---
+
+### Question 2 (Interpretation)
+A histogram of `Hi3Score` shows a few very large scores (like 87 and 101). What does this suggest about the distribution?
+
+- [ ] It is symmetric  
+- [x] It is right-skewed  
+- [ ] It is left-skewed  
+- [ ] It is uniform  
+
+:::{.solution}
+A few very high values create a long right tail → right-skewed.
+:::
+
+---
+
+### Question 3 (Empty model prediction)
+For the empty model predicting `Hi3Score`, what value is predicted for **every** student?
+
+- [ ] The median of `Hi3Score`  
+- [x] The mean of `Hi3Score`  
+- [ ] The maximum of `Hi3Score`  
+- [ ] 0  
+
+:::{.solution}
+For quantitative outcomes, the empty model predicts the sample mean for everyone.
+:::
+
+---
+
+### Question 4 (Fit the empty model)
+Which R command correctly fits the empty model for `Hi3Score`?
+
+- [x] `lm(Hi3Score ~ 1, data = flappyBird)`  
+- [ ] `lm(Hi3Score ~ Section, data = flappyBird)`  
+- [ ] `lm(Hi3Score ~ HiEndScore, data = flappyBird)`  
+- [ ] `gf_histogram(~Hi3Score, data = flappyBird)`  
+
+:::{.solution}
+The empty model uses only an intercept: `Hi3Score ~ 1`.
+:::
+
+---
+
+### Question 5 (Observed vs Predicted)
+Residuals are computed as:
+
+- [x] Observed − Predicted  
+- [ ] Predicted − Observed  
+- [ ] Observed + Predicted  
+- [ ] Observed ÷ Predicted  
+
+:::{.solution}
+Residual = observed outcome minus model prediction.
+:::
+
+---
+
+### Question 6 (Short answer: compute a residual)
+Suppose the mean `Hi3Score` is 17.0 (so the empty model predicts 17.0 for everyone).  
+If one student has `Hi3Score = 25`, what is that student’s residual?
+
+```{short-answer}
+8
+````
+
+:::{.solution}
+Residual = 25 − 17 = 8.
+:::
+
+---
+
+### Question 7 (resid() meaning)
+
+If you fit `m <- lm(Hi3Score ~ 1, data = flappyBird)`, which command returns the residuals?
+
+* [ ] `coef(m)`
+* [ ] `predict(m)`
+* [x] `resid(m)`
+* [ ] `summary(m)`
+
+:::{.solution}
+`resid(m)` returns the vector of residuals for the model.
+:::
+
+---
+
+### Question 8 (Properties of residuals in the empty model)
+
+Which statements are true for residuals from an empty model fit with least squares?
+(Select all that apply.)
+
+* [x] The sum of residuals is (approximately) 0
+* [x] The mean of the residuals is (approximately) 0
+* [ ] Every residual is 0
+* [ ] Residuals must be all positive
+
+:::{.solution}
+With an intercept-only least squares model, residuals sum to 0 and have mean 0, but they vary above/below 0.
+:::
+
+---
+
+### Question 9 (Comparing histograms)
+
+Which statement best describes the relationship between the histogram of `Hi3Score` and the histogram of residuals from the empty model?
+
+* [x] They have the same shape, but residuals are centered around 0
+* [ ] They are identical and centered around the mean
+* [ ] Residuals are always positive, so the shapes differ completely
+* [ ] Residuals are always between 0 and 1
+
+:::{.solution}
+Residuals are just `Hi3Score` shifted by subtracting the mean, so the shape is the same, but centered at 0.
+:::
+
+---
+
+### Question 10 (When the empty model is not enough)
+
+If a scatterplot shows a clear positive relationship between `Hi3Score` and `HiEndScore`, what does that imply?
+
+* [ ] The empty model is the best possible model
+* [x] A model using `HiEndScore` could predict `Hi3Score` better than the empty model
+* [ ] `HiEndScore` must be categorical
+* [ ] Residuals should be ignored
+
+:::{.solution}
+If `HiEndScore` helps explain variation in `Hi3Score`, then adding it as an explanatory variable can improve predictions.
+:::
+
+```
+
+---
+
+## Optional tweak to make Q6 “truly auto-graded” using *their* computed mean
+If you prefer not to hard-code 17.0, I can rewrite Q6 so the notebook computes the mean and the quiz uses that value (still auto-graded) — but it depends on your exact Quarto quiz engine/setup.
+
+---
+
+If you tell me what you’re rendering this lab as (**Quarto HTML**, **Quarto revealjs**, or **pure Jupyter**), I can format these questions in the *exact* syntax that your setup will auto-grade reliably.
+```

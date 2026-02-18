@@ -9,3 +9,4 @@ Welcome! Choose a deck:
 - [Chapter 3 (Sections 1-9)](presentations/CK-ch3.1-3.9.html)
 - [Chapter 3 (Sections 10-13)](presentations/CK-ch3.10-3.13.html)
 - [Chapter 4](presentations/CK-ch4-full.html)
+- [Chapter 5](presentations/CK-ch5.html)
