@@ -1,0 +1,279 @@
+---
+title: "CourseKata Chapter 5"
+subtitle: "Simple Model: Prediction + Residual"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 6-1-6.4"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch6_1-6_4.html
+---
+
+# Today: Mean, SS, Variance and SD
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+## Session Goals
+
+By the end of today you can:
+
+* Explain what a residual is
+* Show why the mean minimizes sum of squares
+* Explain why SS grows with sample size
+* Define variance as average squared error
+* Interpret SD as typical prediction error
+
+
+## DATA = MODEL + ERROR
+
+Recall: $$\text{DATA} = \text{MODEL} + \text{ERROR}$$
+
+For the empty (simple) model: $$\text{Model = Center} = \hat{y}$$
+
+- Residual: $$e_i = y_i - \hat{y}$$
+- Total Error (SS) as Model Performance
+
+## Group Activity
+- Let population be $$5, 7, 7, 12, 20$$
+- Find mode, median, and mean.
+- Evaluate Different Simple Models
+  - Choose one center $$\text{Centers} = 5, 7, 10, \bar y, 12, 15, \text{ or } 20$$
+- Calculate Residuals and **SS**
+
+## Checking Results
+```{webr}
+center <- 5 #5, 7, 10, \bar y, 12, 15, \text{ or } 20
+score <- c(5, 7, 7, 12, 20)
+residual <- score - center
+ds <- data.frame(score, residual, res.sq=residual^2)
+ds
+colSums(ds)
+```
+
+
+## Plotting the Results
+```{webr}
+#| fig-height : 3
+centers <-c(5, 7, 10, mean(ds$score), 12, 15, 20)
+K <- length(centers)
+SS = rep(NA, K)
+for(k in 1:K) { SS[k] = sum((ds$score-centers[k])^2) }
+gf_point(SS~centers, pch=16, col='red', cex=5) |>
+  gf_smooth()
+```
+
+## Lesson Learned
+
+- SS-Center relation is U-shaped
+- Minimum SS happens at $\hat y = \bar y$.
+
+\
+
+- The mean minimizes: $$SS = \sum (y_i - \hat{y})^2$$
+
+## Why SS?
+- Uses Mean (Balances Error)
+- Measures Variablity
+
+:::{.fragment}
+### Check
+:::
+:::{.columns}
+:::{.column}
+- Original Data
+
+:::{.fragment}
+```{webr}
+score <- c(5, 7, 7, 12, 20)
+y_bar <- mean(score)
+SS <- sum((score-y_bar)^2)
+cat(' Mean = ', y_bar, 
+  '\n SS = ', SS)
+```
+:::
+:::
+:::{.column}
+- Stretched Data
+
+:::{.fragment}
+```{webr}
+score_stretched <- c(0, 7, 7, 12, 25)
+y_bar_stretched <- mean(score_stretched)
+SS_stretched <- sum((score_stretched-y_bar_stretched)^2)
+cat(' Mean = ', y_bar_stretched, 
+  '\n SS_stretched = ', SS_stretched)
+```
+:::
+:::
+:::
+
+## Population Size and SS
+- What happens if we double the data size? $$5, 7, 7, 12, 20, 5, 7, 7, 12, 20$$
+  - Does the average change?
+  - Do the residuals change?
+  - How does SS change?
+- Let’s check:
+
+:::{.fragment}
+```{webr}
+score2 <- rep(c(5, 7, 7, 12, 20),2)
+y_bar2 <- mean(score2)
+SS2 <- sum((score2 - y_bar2)^2)
+cat('SS = ', SS, '\tSS-Stretched = ', SS_stretched, 
+  '\tSS2 = ', SS2)
+```
+:::
+
+## SS and Relative Variability
+```{webr}
+#| fig-height: 3
+data.frame(score, source='Original') |>
+  add_row(data.frame(score=score2, source='Double')) |>
+  gf_dhistogram(~score, fill=~source, ) |>
+  gf_facet_grid(source~.)
+
+```
+
+- SS represents variability.
+- Variability changes relative to the sample size.
+- Relative Variability (Variance) = SS/Size
+
+# Population Variance vs. SS
+- Population Variance = $$\sigma^2 = \frac{SS}{n}$$
+
+:::{.fragment}
+:::{columns}
+:::{.column}
+```{webr}
+cat('Original:')
+cat('\n\t SS =: ', SS)
+cat('\n\t Var =: ', SS/length(score))
+```
+:::
+:::{.column}
+```{webr}
+cat('Stretched:')
+cat('\n\t SS =: ', SS_stretched)
+cat('\n\t Var =: ', SS_stretched/length(score_stretched))
+```
+:::
+:::
+:::
+
+
+
+# Why Divide by n−1?
+
+Because:
+
+* SS grows with n
+* We want *average squared error*
+* Dividing makes it comparable
+
+Variance = average squared residual
+
+
+
+# Standard Deviation
+
+[
+s = \sqrt{s^2}
+]
+
+```{webr}
+sd(small_sample)
+sd(large_sample)
+```
+
+
+
+# Interpretation
+
+SD tells us:
+
+> The typical size of prediction error when using the mean.
+
+This is powerful.
+
+It tells us how wrong the empty model usually is.
+
+
+
+# Important Distinction
+
+| Quantity | Measures                 |
+| -- |  |
+| Residual | Individual error         |
+| SS       | Total squared error      |
+| Variance | Average squared error    |
+| SD       | Typical prediction error |
+
+
+
+# Exit Question
+
+If we change one value to be extremely large, what happens?
+
+* A) Mean changes a little
+* B) Mean changes a lot
+* C) Variance increases
+* D) Both B and C
+
+(Answer: D)
+
+
+
+# Big Idea Today
+
+The mean is not arbitrary.
+
+It is the value that minimizes squared prediction error.
+
+Variance and SD measure how wrong that model is.
