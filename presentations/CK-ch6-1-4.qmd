@@ -64,72 +64,86 @@ set.seed(123)
 
 By the end of today you can:
 
+:::{.nonincremental}
 * Explain what a residual is
 * Show why the mean minimizes sum of squares
 * Explain why SS grows with sample size
 * Define variance as average squared error
 * Interpret SD as typical prediction error
-
+::::
 
 ## DATA = MODEL + ERROR
 
 Recall: $$\text{DATA} = \text{MODEL} + \text{ERROR}$$
 
-For the empty (simple) model: $$\text{Model = Center} = \hat{y}$$
-
-- Residual: $$e_i = y_i - \hat{y}$$
+:::{.fragment}
+For the empty (simple) model: 
+$$\begin{array}\text{Model = Center} &= \hat{y_i}\\
+\text{Data} &= y_i\\
+\text{Residual} = e_i &= y_i - \hat{y_i}
+\end{array}$$
+:::
 - Total Error (SS) as Model Performance
 
 ## Group Activity
+
+:::{style="font-size:0.9em;"}
 - Let population be $$5, 7, 7, 12, 20$$
 - Find mode, median, and mean.
 - Evaluate Different Simple Models
-  - Choose one center $$\text{Centers} = 5, 7, 10, \bar y, 12, 15, \text{ or } 20$$
+  - Choose one center $$\text{Centers} = 0, 5, 7, 10, \bar y, 12, 15, 17, \text{ or } 20$$
 - Calculate Residuals and **SS**
+:::
 
 ## Checking Results
 ```{webr}
-center <- 5 #5, 7, 10, \bar y, 12, 15, \text{ or } 20
+center <- 5 #0, 5, 7, 10, \bar y, 12, 15, 17, \text{ or } 20
 score <- c(5, 7, 7, 12, 20)
 residual <- score - center
 ds <- data.frame(score, residual, res.sq=residual^2)
 ds
-colSums(ds)
+colSums(ds) # c(NA, colSums(ds[,-1]))
 ```
 
 
 ## Plotting the Results
 ```{webr}
 #| fig-height : 3
-centers <-c(5, 7, 10, mean(ds$score), 12, 15, 20)
-K <- length(centers)
-SS = rep(NA, K)
-for(k in 1:K) { SS[k] = sum((ds$score-centers[k])^2) }
+centers <-c(0, 5, 7, 10, mean(ds$score), 12, 15, 17, 20)
+n <- length(centers)
+SS = rep(NA, n)
+for(k in 1:n) { SS[k] = sum((ds$score-centers[k])^2) }
 gf_point(SS~centers, pch=16, col='red', cex=5) |>
   gf_smooth()
 ```
 
 ## Lesson Learned
 
-- SS-Center relation is U-shaped
-- Minimum SS happens at $\hat y = \bar y$.
+- SS~Center relation is U-shaped
+- Minimum SS happens at $\hat y_i = \bar y$.
 
 \
 
-- The mean minimizes: $$SS = \sum (y_i - \hat{y})^2$$
+- The mean minimizes: $$SS = \sum_{i=1}^n (y_i - \hat{y_i})^2$$
 
 ## Why SS?
-- Uses Mean (Balances Error)
-- Measures Variablity
 
-:::{.fragment}
-### Check
+:::{style="font-size:0.9em;"}
+- Uses Mean (Balances Error)
+- Measures Variability
 :::
+
+:::{.fragment style="font-size:0.85em;"}
+
+### Check Application of Variability
+
+:::
+:::{.fragment .nonincremental}
+:::{style="font-size:0.85em;"}
 :::{.columns}
 :::{.column}
-- Original Data
 
-:::{.fragment}
+- Original Data
 ```{webr}
 score <- c(5, 7, 7, 12, 20)
 y_bar <- mean(score)
@@ -138,11 +152,9 @@ cat(' Mean = ', y_bar,
   '\n SS = ', SS)
 ```
 :::
-:::
 :::{.column}
-- Stretched Data
 
-:::{.fragment}
+- Stretched Data
 ```{webr}
 score_stretched <- c(0, 7, 7, 12, 25)
 y_bar_stretched <- mean(score_stretched)
@@ -153,17 +165,25 @@ cat(' Mean = ', y_bar_stretched,
 :::
 :::
 :::
+:::
+
 
 ## Population Size and SS
+
+:::{style="font-size:.75em;"}
+
 - What happens if we double the data size? $$5, 7, 7, 12, 20, 5, 7, 7, 12, 20$$
   - Does the average change?
   - Do the residuals change?
   - How does SS change?
 - Let’s check:
 
-:::{.fragment}
+:::
+
+:::{.fragment style="font-size:.85em"}
 ```{webr}
 score2 <- rep(c(5, 7, 7, 12, 20),2)
+score2
 y_bar2 <- mean(score2)
 SS2 <- sum((score2 - y_bar2)^2)
 cat('SS = ', SS, '\tSS-Stretched = ', SS_stretched, 
@@ -172,36 +192,50 @@ cat('SS = ', SS, '\tSS-Stretched = ', SS_stretched,
 :::
 
 ## SS and Relative Variability
+
+:::{style="font-size:.85em"}
 ```{webr}
-#| fig-height: 3
+#| fig-height: 2.5
 data.frame(score, source='Original') |>
   add_row(data.frame(score=score2, source='Double')) |>
-  gf_dhistogram(~score, fill=~source, ) |>
+  gf_dhistogram(~score, fill=~source, binwidth=1) |>
   gf_facet_grid(source~.)
-
 ```
+:::
 
+:::{style="font-size:.75em"}
 - SS represents variability.
 - Variability changes relative to the sample size.
 - Relative Variability (Variance) = SS/Size
+:::
 
-# Population Variance vs. SS
+## Population Variance vs. SS
+
+:::{style="font-size:.75em"}
 - Population Variance = $$\sigma^2 = \frac{SS}{n}$$
+:::
 
 :::{.fragment}
 :::{columns}
-:::{.column}
+:::{.column width="33%"}
 ```{webr}
 cat('Original:')
-cat('\n\t SS =: ', SS)
-cat('\n\t Var =: ', SS/length(score))
+cat('\n\t SS = ', SS, 
+  '\n\t Var = ', SS/length(score))
 ```
 :::
-:::{.column}
+:::{.column width="33%"}
 ```{webr}
 cat('Stretched:')
-cat('\n\t SS =: ', SS_stretched)
-cat('\n\t Var =: ', SS_stretched/length(score_stretched))
+cat('\n\t SS = ', SS_stretched, 
+  '\n\t Var = ', SS_stretched/length(score_stretched))
+```
+:::
+:::{.column width="33%"}
+```{webr}
+cat('Double:')
+cat('\n\t SS = ', SS2,
+  '\n\t Var = ', SS2/length(score2))
 ```
 :::
 :::
@@ -209,71 +243,104 @@ cat('\n\t Var =: ', SS_stretched/length(score_stretched))
 
 
 
-# Why Divide by n−1?
+## Sample Variance
 
-Because:
-
-* SS grows with n
-* We want *average squared error*
-* Dividing makes it comparable
-
-Variance = average squared residual
-
-
-
-# Standard Deviation
-
-[
-s = \sqrt{s^2}
-]
+Random Samples and Sample Variance
 
 ```{webr}
-sd(small_sample)
-sd(large_sample)
+score <- c(5, 7, 7, 12, 20)
+x <- resample(score)
+x
 ```
 
+```{webr}
+pRelVar <- sum((score-mean(score))^2)/length(score)
+cat('Population Variance = ', pRelVar)
+sRelVar <- sum((x-mean(x))^2)/length(x)
+cat('\nSample Variance = ', sRelVar)
+
+```
+
+## Sampling Distribution of Variance
+
+Using the Law of Large Numbers for Distribution
+
+:::{.columns}
+:::{.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 3
+B <- 1000
+Rel_Var <- rep(NA, B)
+for(i in 1:B){
+  x <- resample(score)
+  Rel_Var[i] <- sum((x-mean(x))^2)/length(x)
+}
+gf_histogram(~Rel_Var)
+
+```
+
+:::
+:::{.column}
+
+```{webr}
+mean(Rel_Var)
+mean(Rel_Var)/pRelVar
+```
+
+ - Mean Sample Variance $\approx (4/5)$ Population Variance
+
+:::
+:::
+
+## Sample Variance
+
+- Sample Variance = $s^2 = \frac{SS}{n-1}$
+
+- Sample Standard Deviation = $s=\sqrt{\frac{SS}{n-1}}$
+  - A good measure of model error. 
+    - The typical size of prediction error when using the mean.
+- R Functions
 
 
-# Interpretation
-
-SD tells us:
-
-> The typical size of prediction error when using the mean.
-
-This is powerful.
-
-It tells us how wrong the empty model usually is.
+:::{.fragment}
+```{webr}
+x <- resample(score); x
+var(x) # returns sample variance
+sd(x) # returns sample Std. Dev.
+```
+:::
 
 
-
-# Important Distinction
+٫# Important Distinction
 
 | Quantity | Measures                 |
-| -- |  |
+| -- | - | -
 | Residual | Individual error         |
 | SS       | Total squared error      |
 | Variance | Average squared error    |
 | SD       | Typical prediction error |
 
 
-
-# Exit Question
+## Exit Question
 
 If we change one value to be extremely large, what happens?
 
-* A) Mean changes a little
-* B) Mean changes a lot
-* C) Variance increases
-* D) Both B and C
+:::{.nonincremental}
+A) Mean changes a little
+B) Mean changes a lot
+C) Variance increases
+D) Both B and C
+:::
 
-(Answer: D)
-
-
-
-# Big Idea Today
+## Big Idea Today
 
 The mean is not arbitrary.
 
+\
+
 It is the value that minimizes squared prediction error.
+
+\
 
 Variance and SD measure how wrong that model is.
