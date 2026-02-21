@@ -15,7 +15,7 @@ execute:
   echo: true
   warning: false
   message: false
-output-files: CK-ch5.html
+output-files: CK-ch5-full.html
 ---
 
 # Today: Representing Distributions with 1 Number

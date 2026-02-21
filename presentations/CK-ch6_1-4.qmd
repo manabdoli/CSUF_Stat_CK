@@ -15,7 +15,7 @@ execute:
   echo: true
   warning: false
   message: false
-output-files: CK-ch6_1-6_4.html
+output-files: CK-ch6_1-4.html
 ---
 
 # Today: Mean, SS, Variance and SD
