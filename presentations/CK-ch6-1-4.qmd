@@ -1,5 +1,5 @@
 ---
-title: "CourseKata Chapter 5"
+title: "CourseKata Chapter 6: Sec 1 to 4"
 subtitle: "Simple Model: Prediction + Residual"
 author: "Mansour Abdoli, PhD"
 format:

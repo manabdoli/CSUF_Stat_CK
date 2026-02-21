@@ -5,6 +5,7 @@ project:
       - "*.qmd"
       - "!dev/"
       - "!tst.qmd"
+      - "!exams/"
 website:
   title: "CSUF Statstics using CourseKata"
 
