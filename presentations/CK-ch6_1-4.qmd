@@ -1,6 +1,6 @@
 ---
 title: "CourseKata Chapter 6: Sec 1 to 4"
-subtitle: "Simple Model: Prediction + Residual"
+subtitle: "SS, Population Var, Sample Variance & SD"
 author: "Mansour Abdoli, PhD"
 format:
   live-revealjs:
