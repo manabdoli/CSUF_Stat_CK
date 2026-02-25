@@ -1,0 +1,379 @@
+---
+title: "CourseKata Chapter 6: Part II"
+subtitle: "Sampling"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 6-II"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch6_II.html
+---
+
+# Today: From Samples to Distributions
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+
+
+## Session Goals
+
+:::{.nonincremental}
+
+By the end of today, you can:
+
+* Simulate a sampling distribution of the mean
+* Connect LLN to sampling distributions
+* Identify unusual (unexpected) events
+* See why normal distributions appear naturally
+
+:::
+
+## Review: What Is a Statistic?
+
+* A **statistic** summarizes a sample.
+* Categorical → proportion
+* Quantitative → mean, SD, variance, median, IQR
+
+:::{.fragment}
+When samples change → statistics change.
+:::
+
+# Important Idea
+
+## Statistics Are Random Variables
+
+When we take random samples:
+
+$$\text{Statistic} = \text{Random Variable}$$
+
+So we can ask:
+
+* What is its mean?
+* What is its variance?
+* What does its distribution look like?
+
+## Law of Large Numbers (LLN)
+
+If we repeat a random process many times:
+
+* The average of results approaches the expected value.
+
+:::{.fragment}
+LLN allows us to:
+
+* Build distributions by simulation
+* Approximate theoretical behavior
+
+:::
+
+
+## Population Example: Rolling a Die
+
+::: {.columns}
+::: {.column}
+```{webr}
+#| fig-height: 3
+#| fig-width: 5
+Y <- 1:6
+gf_dhistogram(~Y, bins=6, fill="purple")
+```
+:::
+::: {.column}
+```{webr}
+#| fig-height: 3
+#| fig-width: 5
+cat('Mean = ', mean(Y), '\n')
+cat('Variance = ', sum((Y-mean(Y))^2))
+```
+
+:::
+:::
+<!-- end columns -->
+
+* Population mean?
+* Population variance?
+
+
+
+# Compute Population Variance
+
+```{webr}
+pop_mean <- mean(Y)
+pop_var <- mean((Y - pop_mean)^2)
+pop_var
+```
+
+
+
+# Sampling Distribution of the Mean
+
+Steps:
+
+1. Draw random sample
+2. Compute mean
+3. Repeat many times
+4. Plot distribution of sample means
+
+
+
+# Simulation: n = 2
+
+```{webr}
+Y <- 1:6
+n <- 2
+B <- 1000
+y.bars <- rep(NA, B)
+
+for(i in 1:B){
+  y <- sample(Y, n, replace = TRUE)
+  y.bars[i] <- mean(y)
+}
+
+gf_dhistogram(~y.bars, bins=6, fill='cyan')
+```
+
+
+
+# Compare Population vs Sampling Distribution
+
+```{webr}
+cat("Population Mean:", mean(Y), "\n")
+cat("Mean of Sample Means:", mean(y.bars), "\n\n")
+
+cat("Population Variance:", pop_var, "\n")
+cat("Variance of Sample Means:", var(y.bars))
+```
+
+:::{.fragment}
+What do you notice?
+:::
+
+* Means are similar
+* Variance is smaller
+
+
+
+# What Happens When n Increases?
+
+Change:
+
+```r
+n <- 2   # try 5, 10, 20, 50
+```
+
+What changes?
+
+* Center?
+* Spread?
+* Shape?
+
+
+
+# Key Patterns
+
+As sample size increases:
+
+* Mean of sample means ≈ population mean
+* Variance decreases
+* Distribution becomes smoother
+* Shape becomes more symmetric
+
+
+
+# Why Does Spread Shrink?
+
+[
+Var(\bar{Y}) = \frac{\sigma^2}{n}
+]
+
+Larger n → smaller variance.
+
+This is why larger samples give more stable estimates.
+
+
+
+# Transition Idea
+
+As n increases:
+
+Sampling distribution of mean → begins to look **normal**
+
+This is NOT coincidence.
+
+This is the beginning of the:
+
+# Central Limit Theorem (CLT)
+
+
+
+# Unusual Events
+
+An event is **unusual** if:
+
+[
+P(\text{event}) < 0.05
+]
+
+BUT…
+
+Not all unlikely events are unexpected.
+
+
+
+# Expected vs Unexpected
+
+Expected value = center of distribution.
+
+Unexpected events:
+
+* Are far from the center
+* Have small tail probability
+
+
+
+# Example: Coin Toss
+
+Fair coin, 1000 tosses.
+
+Expected heads = 500.
+
+* 500 heads → expected
+* 470 heads → unusual
+* Why?
+
+Because it is far from the center.
+
+
+
+# Distance Alone Is Not Enough
+
+Different variables have different spreads.
+
+We need something universal.
+
+So we use:
+
+[
+\text{Tail Probability}
+]
+
+Low probability = unusual.
+
+
+
+# Why This Matters
+
+We use unusual events to:
+
+* Question claims
+* Evaluate hypotheses
+* Assess models
+
+If an observed result is very unlikely under a claim,
+we question the claim.
+
+
+
+# Connecting to Sampling Distributions
+
+When we observe a sample mean:
+
+We ask:
+
+> How unusual is this mean under the assumed population?
+
+To answer this:
+
+We need the **sampling distribution**.
+
+
+
+# Big Picture So Far
+
+* Statistics vary from sample to sample
+* Their variability follows patterns
+* Means stay centered (LLN)
+* Spread shrinks with n
+* Shape becomes approximately normal
+
+
+
+# Where We Are Going
+
+Next:
+
+* Formal introduction of Normal Distribution
+* Standardizing (z-scores)
+* Using normal curves to compute tail probabilities
+* Making decisions about unusual events
+
+
+
+# Exit Reflection
+
+1. Why does the mean of sample means equal the population mean?
+2. Why does spread shrink as n increases?
+3. Why do we care about tail probabilities?
+
+
+
+# Preview
+
+The Normal Distribution gives us:
+
+* A mathematical shortcut
+* Exact tail probabilities
+* A universal model for sampling distributions
+
+Next class:
+We formalize this power.
+
+```
