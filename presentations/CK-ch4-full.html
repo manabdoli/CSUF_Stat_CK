@@ -747,7 +747,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOjMsImZpZy13aWR0aCI6
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -765,7 +765,7 @@ tab
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -784,7 +784,7 @@ Interpret: Which group has the higher pass rate?
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -799,7 +799,7 @@ gf_bar(~Pass, data = CatData, fill = ~Group, position = "fill")
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -819,7 +819,7 @@ Use 1 for Pass, 0 for Fail.
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -873,7 +873,7 @@ c(one_prob = mean(abs(CatData$Resid1)),
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -890,7 +890,7 @@ c(mean = mean(NumData$Score), median = median(NumData$Score))
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -932,7 +932,7 @@ Your team must produce:
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -955,7 +955,7 @@ Your team must produce:
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 overall_mean <- mean(NumData$Score)
@@ -968,7 +968,7 @@ overall_mean
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 group_means <- mean(Score ~ Gender, data = NumData)
@@ -983,7 +983,7 @@ group_means
 
 
 ::: {.cell}
-```ahtaru
+```bpterq
 #| echo: true
 #| output: true
 
@@ -1247,42 +1247,80 @@ W10=
     window._ojs.runtime.interpretFromScriptTags();
     </script>
     
+
     <script>
+
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
       // slide changes (different for each slide format).
+
       (function () {
+
         // dispatch for htmlwidgets
+
         function fireSlideEnter() {
+
           const event = window.document.createEvent("Event");
+
           event.initEvent("slideenter", true, true);
+
           window.document.dispatchEvent(event);
+
         }
+
+    
 
         function fireSlideChanged(previousSlide, currentSlide) {
+
           fireSlideEnter();
 
+    
+
           // dispatch for shiny
+
           if (window.jQuery) {
+
             if (previousSlide) {
+
               window.jQuery(previousSlide).trigger("hidden");
+
             }
+
             if (currentSlide) {
+
               window.jQuery(currentSlide).trigger("shown");
+
             }
+
           }
+
         }
+
+    
 
         // hookup for slidy
+
         if (window.w3c_slidy) {
+
           window.w3c_slidy.add_observer(function (slide_num) {
+
             // slide_num starts at position 1
+
             fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
           });
+
         }
 
+    
+
       })();
+
     </script>
+
+    
 
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
