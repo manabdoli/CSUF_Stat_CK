@@ -76,84 +76,89 @@ By the end of today, you can:
 
 :::
 
-## Review: What Is a Statistic?
-
-* A **statistic** summarizes a sample.
-* Categorical → proportion
-* Quantitative → mean, SD, variance, median, IQR
-
-:::{.fragment}
-When samples change → statistics change.
-:::
-
 # Important Idea
 
 ## Statistics Are Random Variables
 
-When we take random samples:
+:::{.columns}
+:::{.column}
+* A **statistic** summarizes a sample.
+* Categorical → proportion
+* Quantitative: mean, SD, median, ...
 
-$$\text{Statistic} = \text{Random Variable}$$
+:::
+:::{.column}
 
-So we can ask:
+:::{.fragment}
+Random samples → Variable statistics
+:::
 
-* What is its mean?
-* What is its variance?
-* What does its distribution look like?
+* Distribution of Statistics:
+  * What is its mean?
+  * What is its variance?
+  * What is its distribution shape?
+
+:::
+:::
+
 
 ## Law of Large Numbers (LLN)
 
-If we repeat a random process many times:
-
-* The average of results approaches the expected value.
+- Estimating the Distribution of a Statistic:
+  - Use a large number of observed statistic
+  - The mean converges faster than the distribution
 
 :::{.fragment}
-LLN allows us to:
 
-* Build distributions by simulation
-* Approximate theoretical behavior
-
-:::
-
-
-## Population Example: Rolling a Die
-
-::: {.columns}
-::: {.column}
-```{webr}
-#| fig-height: 3
+:::{.columns}
+:::{.column}
+```{r}
+#| fig-height: 3.5
 #| fig-width: 5
 Y <- 1:6
-gf_dhistogram(~Y, bins=6, fill="purple")
-```
-:::
-::: {.column}
-```{webr}
-#| fig-height: 3
-#| fig-width: 5
-cat('Mean = ', mean(Y), '\n')
-cat('Variance = ', sum((Y-mean(Y))^2))
-```
-
-:::
-:::
-<!-- end columns -->
-
-* Population mean?
-* Population variance?
-
-
-
-# Compute Population Variance
-
-```{webr}
 pop_mean <- mean(Y)
-pop_var <- mean((Y - pop_mean)^2)
-pop_var
+pop_var <- sum((Y-pop_mean)^2)/length(Y)
+gf_dhistogram(~Y, bins=6, fill="purple", color='black')+
+  labs(title=sprintf('Distribution of Rolling a Die: mean=%0.2f, var=%0.2f',
+                     pop_mean, pop_var))
 ```
 
+:::
+:::{.column}
+```{r}
+#| fig-height: 2
+#| fig-width: 5
+B <- 1000
+y <- resample(Y, B)
+cumMean <- cumsum(y)/(1:B)
+cols <- funs2teach::affin_color(cumMean, 'black', 'gold', center = mean(Y), deg=15)
+#alfa <- funs2teach::affin_rate(cumMean, center = mean(Y), lim = c(0.5, 1), deg=9)
+gf_point(cumMean~1:B,
+         color = adjustcolor(cols, .5)
+) |> gf_hline(yintercept = mean(Y), color='red', alpha=0.5) +
+  labs(x='Sample Size', y = 'Cumulative Mean', 
+       title='Cumulative Sample Means for Sample Sizes 1 to 1000') +
+  ylim(c(0,6))
+```
+
+```{r}
+#| fig-height: 1.5
+#| fig-width: 5
+gf_dhistogram(~y[1:500], bins=6, fill = adjustcolor('gold', 0.5), color='black') +
+  labs(x='Sampled Y', title='Distribution using first 500 samples')
+```
+:::
+:::
+
+:::
 
 
-# Sampling Distribution of the Mean
+
+## Sampling Distribution of the Mean
+
+:::{.columns}
+:::{.column}
+:::{.nonincremental}
 
 Steps:
 
@@ -162,218 +167,172 @@ Steps:
 3. Repeat many times
 4. Plot distribution of sample means
 
-
-
-# Simulation: n = 2
+:::
+:::
+:::{.column}
 
 ```{webr}
+#| fig-height: 3
+#| fig-width: 5
 Y <- 1:6
+pop_mean <- mean(Y)
+pop_var <- sum((Y-pop_mean)^2)/length(Y)
+gf_dhistogram(~Y, bins=6, fill="purple", color='black')+
+  labs(title=sprintf('Distribution of Rolling a Die: mean=%0.2f, var=%0.2f', pop_mean, pop_var))
+```
+
+:::
+:::
+
+## Sampling Distribution for Size $n$
+
+:::{.columns}
+:::{.column}
+:::{.fragment}
+
+```{webr}
+#| fig-height: 3
+#| fig-width: 5
 n <- 2
 B <- 1000
 y.bars <- rep(NA, B)
-
 for(i in 1:B){
-  y <- sample(Y, n, replace = TRUE)
-  y.bars[i] <- mean(y)
+  y.bars[i] <- mean( sample(Y, n, replace = TRUE) )
 }
-
-gf_dhistogram(~y.bars, bins=6, fill='cyan')
+gf_dhistogram(~Y, bins=6, fill="purple", color='black') |>
+  gf_dhistogram(~y.bars, bins=6, fill='cyan', alpha = .5) + theme_bw()
 ```
-
-
-
-# Compare Population vs Sampling Distribution
-
-```{webr}
-cat("Population Mean:", mean(Y), "\n")
-cat("Mean of Sample Means:", mean(y.bars), "\n\n")
-
-cat("Population Variance:", pop_var, "\n")
-cat("Variance of Sample Means:", var(y.bars))
-```
-
+:::
+:::
+:::{.column}
 :::{.fragment}
-What do you notice?
+
+```{webr, results='asis'}
+cat('- Population: \n\t- Mean = ', pop_mean, 
+    '\n\t- Variance = ', pop_var,
+    '\n\n- Sample: \n\t- Mean = ', mean(mean(y.bars), 3),
+    '\n\t- Variance = ', round(var(y.bars), 3))
+
+```
+
+
+\
+
+- What do you notice?
+- What happens if a larger $n$ is used?
+
+:::
+:::
 :::
 
-* Means are similar
-* Variance is smaller
 
 
-
-# What Happens When n Increases?
-
-Change:
-
-```r
-n <- 2   # try 5, 10, 20, 50
-```
-
-What changes?
-
-* Center?
-* Spread?
-* Shape?
-
-
-
-# Key Patterns
+## Key Patterns
 
 As sample size increases:
 
-* Mean of sample means ≈ population mean
-* Variance decreases
+* Mean of sample means ≈ population mean (LLN)
+* Variance decreases $$Var(\bar{Y}) = \frac{\sigma^2}{n}$$
 * Distribution becomes smoother
-* Shape becomes more symmetric
-
-
-
-# Why Does Spread Shrink?
-
-[
-Var(\bar{Y}) = \frac{\sigma^2}{n}
-]
-
-Larger n → smaller variance.
-
-This is why larger samples give more stable estimates.
-
-
-
-# Transition Idea
-
-As n increases:
-
-Sampling distribution of mean → begins to look **normal**
-
-This is NOT coincidence.
-
-This is the beginning of the:
-
-# Central Limit Theorem (CLT)
-
-
-
-# Unusual Events
-
-An event is **unusual** if:
-
-[
-P(\text{event}) < 0.05
-]
-
-BUT…
-
-Not all unlikely events are unexpected.
-
-
-
-# Expected vs Unexpected
-
-Expected value = center of distribution.
-
-Unexpected events:
-
-* Are far from the center
-* Have small tail probability
-
-
-
-# Example: Coin Toss
-
-Fair coin, 1000 tosses.
-
-Expected heads = 500.
-
-* 500 heads → expected
-* 470 heads → unusual
-* Why?
-
-Because it is far from the center.
-
-
-
-# Distance Alone Is Not Enough
-
-Different variables have different spreads.
-
-We need something universal.
-
-So we use:
-
-[
-\text{Tail Probability}
-]
-
-Low probability = unusual.
-
-
-
-# Why This Matters
-
-We use unusual events to:
-
-* Question claims
-* Evaluate hypotheses
-* Assess models
-
-If an observed result is very unlikely under a claim,
-we question the claim.
-
-
-
-# Connecting to Sampling Distributions
-
-When we observe a sample mean:
-
-We ask:
-
-> How unusual is this mean under the assumed population?
-
-To answer this:
-
-We need the **sampling distribution**.
-
-
-
-# Big Picture So Far
-
-* Statistics vary from sample to sample
-* Their variability follows patterns
-* Means stay centered (LLN)
-* Spread shrinks with n
-* Shape becomes approximately normal
-
-
-
-# Where We Are Going
-
-Next:
-
-* Formal introduction of Normal Distribution
-* Standardizing (z-scores)
-* Using normal curves to compute tail probabilities
-* Making decisions about unusual events
-
-
-
-# Exit Reflection
-
-1. Why does the mean of sample means equal the population mean?
-2. Why does spread shrink as n increases?
-3. Why do we care about tail probabilities?
-
-
-
-# Preview
-
-The Normal Distribution gives us:
-
-* A mathematical shortcut
-* Exact tail probabilities
-* A universal model for sampling distributions
-
-Next class:
-We formalize this power.
+  - More possible sample means.
+* Shape becomes more symmetric (bell-shaped)
+  - **Central Limit Theorem**
+
+
+
+## Central Limit Theorem (CLT)
+
+:::{style="font-size: 0.8em;"}
+- As $n$ increases, 
+  - $\bar Y$ distribution approaches a Normal shape
+  - with a mean equal to the population mean $\mu$
+  - and a smaller variance $\frac{\sigma^2}{n}$
+  
+- In other words: for large $n$'s $$\bar Y \hat \sim N(\mu, \sigma/\sqrt{n})$$
+
+:::
+
+## What is a Large $n$? 
+- Any $n$ works for $Y\sim N(\mu, \sigma)$
+- $n\ge30$ is good for approximately symmetric $Y$-distributions.
+- For heavily skewed distribution of $Y$, use simulation to check.
+
+## Checling $n$ by Simulation
+:::{.fragment}
+```{webr}
+#| fig-height: 3
+n <- 30; B <- 1000
+Y <- c(1, 2, 2, 2, 3, 3, 4, 8, 10)
+y.bars <- rep(NA, B)
+for(i in 1:B){
+  y.bars[i] <- mean( sample(Y, n, replace = TRUE) )
+}
+gf_dhistogram(~Y, binwidth = 1, fill="purple", color='black') |>
+  gf_dhistogram(~y.bars, bins=40, fill='cyan', alpha = .5) + theme_bw()
+```
+:::
+
+## Normal Density & Empirical Rule
+- Normal Distribution & Empirical Rule:
+  - 68% of values fall in $(\mu-\sigma, \mu+\sigma)$
+  - 95% of values fall in $(\mu-2\sigma, \mu+2\sigma)$
+  - 99.7% of values fall in $(\mu-3\sigma, \mu+3\sigma)$
+  
+```{r}
+#| fig-height: 3
+par(mar=c(1.5, 1, 0, 0), xpd=TRUE, mgp=c(.5,0,0))
+curve(dnorm(x), -3.7, 3.7, 100, col = 'blue',
+      ann=FALSE, axes=FALSE, lwd=2)
+axis(side = 1, labels = FALSE, at =c(-Inf, -3:3, 10), pos = 0)
+title(xlab = '')
+legend('topright', legend = expression('X ~ N('~mu*', '*sigma~')'),
+       cex = 1,  col = 'blue', lwd=2, bty = 'n')
+points(-3:3, dnorm(-3:3), type = 'h')
 
 ```
+## Unusual Events
+Expected events (e.g. sample mean = population mean) could be unusual:
+
+```{webr}
+Y <- 1:6
+pop_mean <- mean(Y)
+n <- 30
+B <- 1000
+y.bars <- rep(NA, B)
+for(i in 1:B){
+  y.bars[i] <- mean( sample(Y, n, replace = TRUE) )
+}
+sum(y.bars==pop_mean)
+mean(y.bars==pop_mean)
+
+```
+
+## Unexpected Unusual Events (Tails)
+Events away from expected events
+
+```{webr}
+#| fig-height: 3
+gf_dhistogram(~y.bars, fill = ~ (after_stat(x) < 3 | after_stat(x) > 4), show.legend = F)
+
+mean(y.bars<3 | y.bars>4)
+```
+
+- Farther away from the center:  Lower tail probability 
+
+
+## Testing Claims (Hypothesis Testing)
+- Claim: The die used is fair ($H_0$)
+- Roll a dies 40 times and get $\bar Y = 4.3$
+- Is it too far? Is it too unlikely?
+
+:::{.fragment}
+
+```{webr}
+#| fig-height: 3
+gf_dhistogram(~y.bars, fill = ~ abs(after_stat(x) - pop_mean) > abs(pop_mean-4.3), show.legend = F)
+
+
+mean(abs(pop_mean - y.bars) > abs(pop_mean - 4.3))
+```
+
+:::
