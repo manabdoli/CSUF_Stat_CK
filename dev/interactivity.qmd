@@ -137,3 +137,155 @@ install.packages("devtools")
 # Install ggformula from CRAN
 install.packages("ggformula")
 ```
+
+
+# New Search Results (2/27/2026)
+You can share a value **from WebR → JavaScript/HTML** using the small bridge that WebR exposes: `webr::js_eval()` (or `webr::eval_js()` depending on version). The key idea is:
+
+**Anything you assign to `globalThis` in JavaScript becomes visible to the HTML page.  
+Anything you return from R via `webr::js_eval()` becomes a JavaScript value.**
+
+To make this concrete, here are the three reliable patterns you can use in Quarto, revealjs, or any HTML page that embeds WebR.
+
+---
+
+## 🧩 1. WebR → JavaScript using `webr::js_eval()`
+
+Inside a WebR chunk:
+
+```r
+#| engine: webr
+
+x <- 42
+webr::js_eval(sprintf("globalThis.fromR = %s;", x))
+```
+
+Now in your HTML/JS:
+
+```js
+console.log(globalThis.fromR);   // 42
+```
+
+This is the simplest and most direct way to expose an R value to the page.
+
+---
+
+## 🧩 2. WebR → JavaScript for vectors, lists, data frames
+
+WebR automatically converts R objects to JS equivalents.
+
+### R vector → JS array
+
+```r
+#| engine: webr
+v <- c(10, 20, 30)
+webr::js_eval(sprintf("globalThis.rVector = %s;", jsonlite::toJSON(v)))
+```
+
+Then in JS:
+
+```js
+console.log(globalThis.rVector);   // [10, 20, 30]
+```
+
+### R data frame → JS array of objects
+
+```r
+#| engine: webr
+df <- data.frame(x = 1:3, y = c("a","b","c"))
+webr::js_eval(sprintf("globalThis.rData = %s;", jsonlite::toJSON(df)))
+```
+
+Then in JS:
+
+```js
+console.log(globalThis.rData);
+// [
+//   { "x": 1, "y": "a" },
+//   { "x": 2, "y": "b" },
+//   { "x": 3, "y": "c" }
+// ]
+```
+
+This is extremely useful for interactive dashboards.
+
+---
+
+## 🧩 3. WebR → HTML elements directly
+
+You can write into the DOM from R by calling JS that manipulates HTML.
+
+### HTML
+
+```html
+<div id="result"></div>
+```
+
+### WebR chunk
+
+```r
+#| engine: webr
+value <- mean(c(1,2,3,4))
+
+webr::js_eval(sprintf("
+  document.getElementById('result').textContent =
+    'Mean from R: %s';
+", value))
+```
+
+This updates the HTML page live.
+
+---
+
+## 🧩 4. WebR → JS callback functions
+
+You can even trigger JS functions defined in the page.
+
+### JS in your HTML
+
+```js
+function updatePlotFromR(val) {
+  console.log("R sent:", val);
+}
+```
+
+### WebR chunk
+
+```r
+#| engine: webr
+n <- 7
+webr::js_eval(sprintf("updatePlotFromR(%s);", n))
+```
+
+This is the cleanest pattern for interactive teaching demos.
+
+---
+
+## 🧩 5. WebR → OJS (if you use Observable cells)
+
+OJS can read any JS global:
+
+```ojs
+myValue = globalThis.fromR
+```
+
+So the pipeline becomes:
+
+**WebR → JS global → OJS**
+
+This is the mirror of the OJS → WebR pattern you already used.
+
+---
+
+## Summary of the bridge
+
+| Direction | Method | Notes |
+|----------|--------|-------|
+| **WebR → JS** | `webr::js_eval("...")` | Most direct and reliable |
+| **JS → HTML** | DOM manipulation | Use `document.getElementById()` etc. |
+| **WebR → HTML** | R calls JS that updates DOM | Great for teaching |
+| **WebR → OJS** | Write to `globalThis` | OJS can read globals |
+
+---
+
+If you want, I can show you a **minimal working Quarto example** where a WebR slider updates a JS chart, or where WebR computes a statistic and updates an HTML table live.

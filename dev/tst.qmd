@@ -1,0 +1,112 @@
+---
+title: "Test"
+subtitle: "JS and WebR"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "JS - WebR Test"
+#resources:
+#  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: test.html
+---
+
+# Today: Overview
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+#| eval: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+```
+
+```{r}
+#| eval: false
+#| echo: false
+#| results: 'asis'
+# create a webr to read the data
+source('./../presentations/data/embedData.R')
+source('./../presentations/assets/utils.R')
+load(file = "./../presentations/data/Fingers.rda")
+cat(embedData(Fingers))
+
+# for more data:
+## load(file =) # load a dataset
+## cat(embedData(dataset)) # Embed it 
+
+```
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+#| eval: false
+
+library(mosaic)
+library(ggformula)
+options(digits = 3)
+
+# Load helper functions if present (optional)
+helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+eval(parse(text = helpers))
+
+Fingers$MathAnxious <- 
+  factor(Fingers$MathAnxious,
+  levels=c('Strongly Disagree', 
+    'Disagree', 
+    'Neither Agree nor Disagree', 
+    'Agree', 'Strongly Agree'))
+Fingers$Job <- 
+  factor(Fingers$Job,
+         c("Not Working", "Part-time Job", "Full-time Job"))
+
+.webr_ready <- TRUE
+```
+
+
+## Session goals
+
+something
+
+Run this
+```{webr}
+x <- 42
+webr::eval_js(sprintf("globalThis.fromR = %s;", x))
+```
+
+<script>
+    console.log(globalThis.fromR);   // 42
+</script>
+
+```{webr}
+getNamespaceExports("webr")
+```
+
+## Another example
+
+<div id="result"></div>
+
+```{webr}
+value <- mean(c(1,2,3,4))
+
+webr::eval_js(sprintf("
+  document.getElementById('result').textContent =
+    'Mean from R: %s';
+", value))
+
+```
+
