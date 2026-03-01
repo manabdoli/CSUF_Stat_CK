@@ -4,7 +4,7 @@
     "jupyter.interpreter": {
         "path": "/Users/mabdoli/mamba/envs/rpy/bin/python"
     },
-    //"r.rpath.mac": "/Users/mabdoli/mamba/envs/rpy/bin/R",
+    "r.rpath.mac": "/Users/mabdoli/mamba/envs/rpy/bin/R",
     //"r.rterm.mac": "/Users/mabdoli/mamba/envs/rpy/bin/R",
     //"r.rterm.mac": "/Library/Frameworks/R.framework/Resources/bin/R",
     "r.sessionWatcher": true,
