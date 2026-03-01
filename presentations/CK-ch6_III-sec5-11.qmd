@@ -15,7 +15,7 @@ execute:
   echo: true
   warning: false
   message: false
-output-files: CK-ch6_III.html
+output-files: CK-ch6_III-sec5-11.html
 ---
 
 # Today: Normal Approximation & Applications
@@ -52,8 +52,10 @@ cat(embedData(Fingers))
 #| warning: false
 #| message: false
 
-library(mosaic)
-library(ggformula)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
 options(digits = 3)
 
 .webr_ready <- TRUE
@@ -268,15 +270,27 @@ $$X = \mu + Z\cdot \sigma \Leftrightarrow Z=\frac{X-\mu}{\sigma}$$
   $X$ is $Z$-many standard deviation above $\mu$
   
 - Example: $T\sim N(75, 5)$:
-  - $T=82$ is $1.4 (=\frac{82-75}{5})$ standard deviation above the mean.
+  - $T=82$
+  - Equivalant $Z=1.4 (=\frac{82-75}{5})$
+  - $T=82$ is $1.4$ standard deviation above the mean
 
-## Application of $Z$: Within Group Comparison
+## Application of $Z$: <br/> Within Group Comparison
+
+:::{.columns}
+:::{.column}
+```{r}
+favstats(Height~Gender, data=Fingers)[,c(1,7:8)]
+```
+:::
+:::{.column}
 
 :::{.nonincremental style="font-size:.8em"}
 - Which one is taller in their group:
   - A 66-inch female student
   - A 72-inch female student
 
+:::
+:::
 :::
 
 :::{.columns}
@@ -307,10 +321,12 @@ gf_dhistogram(~Height, data=Fingers, fill=~Gender) |>
 ```{r}
 HGmeans <- mean(Height~Gender, data=Fingers)
 HGsd <- sd(Height~Gender, data=Fingers)
-cat(sprintf('Female: Z = (%0.2f-%0.2f)/(%0.3f) = %0.3f', 
+cat('\n')
+cat(sprintf('Female: Z = (%0.2f-%0.2f)/(%0.3f) \n\t= %0.3f', 
   heights[1], HGmeans['female'], HGsd['female'], 
   (heights[1]- HGmeans['female'])/HGsd['female']), '\n',
-  sprintf('Male: Z = (%0.2f-%0.2f)/(%0.3f) = %0.3f', 
+  '\n',
+  sprintf('Male: Z = (%0.2f-%0.2f)/(%0.3f) \n\t= %0.3f', 
   heights[2], HGmeans['male'], HGsd['male'], 
   (heights[2]- HGmeans['male'])/HGsd['male']), '\n', sep='')
 ```
@@ -319,7 +335,7 @@ cat(sprintf('Female: Z = (%0.2f-%0.2f)/(%0.3f) = %0.3f',
 :::
 :::
 
-## Application of $Z$: Between Group Decision
+## Application of $Z$: <br/> Between Group Decision
 
 :::{.nonincremental style="font-size:.8em"}
 
@@ -356,11 +372,12 @@ gf_dhistogram(~Height, data=Fingers, fill=~Gender) |>
 :::{.fragment}
 
 ```{r, result='asis'}
-cat(sprintf('P(Female>68): %0.4f', 
-  mean(Fingers$Height>68 & Fingers$Gender=='female')), '\n',
-  sprintf('P(Male<68): %0.4f', 
-  mean(Fingers$Height<68 & 
-    Fingers$Gender=='male')), '\n', sep='')
+cat(sprintf('Female: P(Height>68)=P(Z>%0.2f)=%0.4f', 
+  (68-HGmeans[1])/HGsd[1],
+  mean(Fingers$Height[Fingers$Gender=='female']>68)), '\n',
+  sprintf('Male: P(Height<68)=P(Z<%0.2f)=%0.4f', 
+  (68-HGmeans[2])/HGsd[2],
+  mean(Fingers$Height[Fingers$Gender=='male']<68)), '\n', sep='')
 ```
 :::
 
