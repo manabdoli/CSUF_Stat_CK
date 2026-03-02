@@ -70,7 +70,7 @@
     "href": "presentations/CK-ch6_III-sec5-11.html#application-of-z-within-group-comparison",
     "title": "CourseKata Chapter 6: Part III (Sec 5 to 11)",
     "section": "Application of \\(Z\\):  Within Group Comparison",
-    "text": "Application of \\(Z\\):  Within Group Comparison\n\n\n\n\n  Gender     mean       sd\n1 female 64.51830 2.662054\n2   male 69.50222 2.937647\n\n\n\n\n\nWhich one is taller in their group:\n\nA 66-inch female student\nA 72-inch female student\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFemale: Z = (68.00-64.52)/(2.662) \n    = 1.308\n\nMale: Z = (72.00-69.50)/(2.938) \n    = 0.850",
+    "text": "Application of \\(Z\\):  Within Group Comparison\n\n\n\n\n  Gender     mean       sd\n1 female 64.51830 2.662054\n2   male 69.50222 2.937647\n\n\n\n\n\nWhich one is taller in their group:\n\nA 68-inch female student\nA 72-inch female student\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFemale: Z = (68.00-64.52)/(2.662) \n    = 1.308\n\nMale: Z = (72.00-69.50)/(2.938) \n    = 0.850",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 6: Part III (Sec 5 to 11)"
