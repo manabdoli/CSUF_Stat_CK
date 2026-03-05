@@ -20,7 +20,7 @@ execute:
 output-files: CK-ch-x.html
 ---
 
-# Today: Overview
+## Overview/Goals
 
 {{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
@@ -73,9 +73,6 @@ Fingers$Job <-
 
 .webr_ready <- TRUE
 ```
-
-
-## Session goals
 
 :::{.nonincremental}
 By the end of today, you can:

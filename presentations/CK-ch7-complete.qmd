@@ -1,0 +1,286 @@
+---
+title: "CourseKata Chapter 7"
+subtitle: "Modeling by Group Means"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. X"
+#resources:
+#  - assets/webr_helpers.R
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch7-complete.html
+---
+
+## Session Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+})
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+# create a webr to read the data
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+# for more data:
+## load(file =) # load a dataset
+## cat(embedData(dataset)) # Embed it 
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: false
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+options(digits = 3)
+
+# Load helper functions if present (optional)
+helpers <- readLines("assets/webr_helpers.R", warn = FALSE)
+eval(parse(text = helpers))
+
+Fingers$MathAnxious <- 
+  factor(Fingers$MathAnxious,
+  levels=c('Strongly Disagree', 
+    'Disagree', 
+    'Neither Agree nor Disagree', 
+    'Agree', 'Strongly Agree'))
+Fingers$Job <- 
+  factor(Fingers$Job,
+         c("Not Working", "Part-time Job", "Full-time Job"))
+
+.webr_ready <- TRUE
+```
+
+:::{.nonincremental}
+By the end of today you can:
+
+* Explain what a group model does
+* Fit `lm(y ~ group)`
+* Interpret intercept and coefficients
+* Explain how predictions change from the empty model
+
+:::
+
+## Review: The Empty Model
+
+- DATA = Mean + Error
+
+:::{.fragment .nonincremental}
+- Assumption:
+  - Everyone is the same (One Mean)
+  - Variations are by Chance (Error)
+:::
+- Formula: $$\hat{y} = \bar{y}$$
+
+- Application: <br/> Everyone gets the same prediction.
+
+## Example: Thumb Length
+
+::: {.columns}
+::: {.column width="40%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+
+gf_boxplot(Thumb~1, data=Fingers) |>
+  gf_hline(yintercept=mean(Fingers$Thumb), color='red', linetype=2)
+```
+:::
+::: {.column width="60%" style="font-size:.8em"}
+Model:
+
+```{webr}
+#| results: 'asis'
+empty_model <- lm(Thumb~NULL, data=Fingers)
+
+empty_model
+
+```
+
+:::
+:::
+<!-- end columns -->
+
+## Empty-Model Residual
+
+::: {.columns}
+::: {.column width="40%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+
+gf_histogram(Thumb~., data=Fingers, bins=10) |> 
+  gf_boxplot(width=10) |>
+  gf_hline(yintercept=mean(Fingers$Thumb), color='red', linetype=2)
+```
+:::
+::: {.column width="60%" style="font-size:.8em"}
+Residual = Observed − Predicted
+
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+gf_histogram(resid(empty_model)~., bins=10) |> 
+  gf_boxplot(width=10) |>
+  gf_hline(yintercept=0, color='blue', linetype=2)
+```
+
+:::
+:::
+
+# Modeling with Group Means
+## Grouping by Gender
+
+::: {.columns}
+::: {.column}
+:::{.incremental}
+```{webr}
+#| fig-height: 3
+#| fig-width: 5
+gf_dhistogram(Thumb~., data=Fingers, bins=10, fill=~Gender) |> 
+  gf_boxplot(width=10, fill='yellow') |>
+  #gf_hline(yintercept=gMeans, color=c('red', 'blue'), linetype=2) |>
+  gf_facet_grid(.~Gender)
+```
+:::
+:::
+::: {.column}
+:::{.fragment .nonincremental}
+- Questions:
+  - Does thumb length differ by gender?
+  - Does one overall mean seem reasonable?
+:::
+:::
+:::
+<!-- end columns -->
+
+## Model by Group (Gender)
+
+- In word:
+$$\text{Thumb} = \text{Gender} + \text{Error}$$
+
+- In Application:
+  - Each gender gets its own mean as prediction.
+
+
+## Fit the Group Model
+
+::: {.columns}
+::: {.column style="font-size: .7em;" width="60%"}
+```{webr}
+group_model <- lm(Thumb ~ Gender, data = Fingers)
+summary(group_model)
+```
+:::
+::: {.column width="40%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+gMeans=mean(Thumb~Gender, data=Fingers)
+gf_boxplot(Thumb~Gender, data=Fingers, fill=~Gender) |> 
+  #gf_hline(yintercept=gMeans, color=c('red', 'blue'), linetype=2) |>
+  #gf_abline(intercept=gMeans[1]-diff(gMeans), slope=diff(gMeans), linewidth=1.5) |>
+  gf_labs()
+```
+:::
+:::
+<!-- end columns -->
+
+## Interpreting Coefficients
+- Here, Female is the reference:
+  - Intercept = mean thumb for females
+  - GenderMale = difference (Male − Female)
+
+::: {.columns}
+::: {.column}
+:::{.fragment}
+```{webr}
+mean(Thumb~Gender, data=Fingers)
+```
+:::
+:::
+::: {.column}
+:::{.fragment}
+```{webr}
+head(predict(group_model))
+```
+:::
+:::
+:::
+<!-- end columns -->
+
+
+## Visualizing Predictions
+
+```{webr}
+gf_jitter(Thumb ~ Gender, data = Fingers, width = 0.1) |>
+  gf_hline(yintercept=gMeans, color=c('red', 'blue'), linetype=2)
+  #gf_model(group_model)
+```
+
+- Interpretation:
+  * Black points: observed data
+  * Red/Blue lines: predicted group means
+
+
+## Compare to Empty Model
+
+```{webr}
+gf_jitter(Thumb ~ Gender, data = Fingers, width = 0.1) %>%
+  gf_model(empty_model, color = "blue")
+```
+
+
+## Residual Comparison (Conceptual)
+
+```{webr}
+sd(resid(empty_model))
+sd(resid(group_model))
+```
+
+- Discussion:
+
+  - Which model has smaller residual spread?
+  - What does that imply?
+
+
+# Key Insight
+:::{.nonincremental}
+- The group model:
+  * Allows different means
+  * Reduces prediction error
+  * Uses information from explanatory variable
+
+- But…
+  - Is the reduction large enough to matter?
+
+:::

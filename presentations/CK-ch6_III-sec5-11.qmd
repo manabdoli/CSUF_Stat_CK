@@ -292,8 +292,8 @@ favstats(Height~Gender, data=Fingers)[,c(1,7:8)]
 
 :::{.nonincremental style="font-size:.8em"}
 - Which one is taller in their group:
-  - A 66-inch female student
-  - A 72-inch female student
+  - A 68-inch female student
+  - A 72-inch male student
 
 :::
 :::
