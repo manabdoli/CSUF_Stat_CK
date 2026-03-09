@@ -1,23 +1,30 @@
 # adding model to graphs
 library(ggformula)
+library(mosaic)
+
+
+
+df <- coursekata::Fingers
+K <-20
+pres <- rep(NA, K-1)
+for(k in 2:K){
+    df$cat <- ntile(df$Height, k)
+    pres[k-1] <- f(lm(Thumb~cat, data=df))
+}
+plot(x=2:K, y=pres, type='b')
+
+
 
 df <- coursekata::Fingers
 df$Gender <- factor(df$Gender)
-mod <- lm(Thumb~Gender, data=df)
-x <- 'Gender'
-y <- 'Thumb'
+gn <- 3
+df$h <- mosaic::ntiles(df$Height, gn)
 
-mod.df <- data.frame(
-    setNames(
-        list(factor(levels(df[[x]]), 
-          levels = levels(df[[x]]))),
-        x)
-)
-mod.df$pred <- mod.df$ymin <- mod.df$ymax <- predict(mod, newdata=mod.df)
-mod.df
-gf_jitter(Thumb~Gender, data=coursekata::Fingers) |>
-  gf_crossbar(pred+ymin+ymax~Gender, data=mod.df, inherit = TRUE)
+mod <- lm(Thumb~h, data=df)
+supernova::supernova(mod)
+lsr::cohensD(Thumb~h, data=df)
 
-gf_jitter(Thumb~Gender, data=coursekata::Fingers) |>
-  gf_model(mod) |> gf_model_text(mod)
 
+mod<- lm(Thumb~NULL, data=df)
+mod
+gf_jitter(Thumb~'NULL', data=df) |> gf_model(mod)

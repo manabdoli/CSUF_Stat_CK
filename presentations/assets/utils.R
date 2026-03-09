@@ -10,12 +10,12 @@ indent_print <- function(x, spaces = 4) {
 # Mimicing gf_model of coursekata::
 gf_model <- function(object, model,
                            width = 0.5,
-                           bar_args = list()) {
-
+                           ...) {
+  #browser()
   if (!inherits(object, c("gg", "ggplot"))) {
     rlang::abort("Layer on top of a ggformula/ggplot object.")
   }
-
+  bar_args <- list(...)
   # infer x/y from the plot mapping
   mapping <- object$mapping
   if (is.null(mapping$x) || is.null(mapping$y)) {
@@ -25,6 +25,12 @@ gf_model <- function(object, model,
   y <- rlang::as_name(mapping$y)
 
   dat <- model$model
+  cur_names <- names(dat)
+  if (!x %in% cur_names){
+    if(x %in% c('NULL', '.')) x <- 'Overall'
+    dat[x] <- factor(1, levels=1, labels=rlang::as_name(mapping$x)) # keep the original value
+    x <- setdiff(names(dat), cur_names)
+  }
   if (!x %in% names(dat) || !y %in% names(dat)) {
     rlang::abort("Model variables don't match the plot variables.")
   }
@@ -34,13 +40,12 @@ gf_model <- function(object, model,
 
   # one row per group in model order
   levs <- levels(factor(dat[[x]]))
-  newdata <- data.frame(setNames(list(factor(levs, levels = levs)), x))
+  newdata <- data.frame(setNames(list(factor(levs, levels = levs)), x), check.names = FALSE)
 
   # predicted group means
   newdata$pred <- as.numeric(stats::predict(model, newdata = newdata))
   newdata$ymin <- newdata$pred
   newdata$ymax <- newdata$pred
-  newdata$lab  <- format(round(newdata$pred, label_digits), nsmall = label_digits)
 
   # -------- mean "bars" as errorbars with ymin=ymax ----------
   # Build explicit aesthetics: ymin/ymax ~ x
@@ -134,13 +139,90 @@ gf_model_text <- function(object, model,
         inherit = FALSE
     )
     lab_call <- c(
-        list(object = p, gformula = f_lab, data = newdata),
+        list(object = object, gformula = f_lab, data = newdata),
         utils::modifyList(defaults, label_args)
     )
 
-    p <- if(label=='label')  do.call(ggformula::gf_label, lab_call) else 
+    p <- if(label[1]=='label')  do.call(ggformula::gf_label, lab_call) else 
         do.call(ggformula::gf_text, lab_call)
 
-
   p
+}
+
+b1 <- function(mod){
+  mod$coefficients[2]
+}
+
+b0 <- function(mod){
+  mod$coefficients[1]
+}
+
+pre <- function(mod){
+  summary(mod)$r.squared
+}
+
+
+# Calude generated
+cohensD <- function(x = NULL, y = NULL, data = NULL, method = "pooled", mu = 0, formula = NULL) {
+  
+  # Handle formula interface
+  if (!is.null(formula)) {
+    if (is.null(data)) stop("'data' must be provided when using a formula")
+    mf <- model.frame(formula, data)
+    if (ncol(mf) != 2) stop("Formula must be of the form: numeric ~ factor")
+    x <- mf[[1]][mf[[2]] == levels(factor(mf[[2]]))[1]]
+    y <- mf[[1]][mf[[2]] == levels(factor(mf[[2]]))[2]]
+  }
+  
+  # Handle lm object passed as x
+  if (inherits(x, "lm")) {
+    model <- x
+    mf <- model.frame(model)
+    if (ncol(mf) != 2) stop("lm model must have exactly one binary predictor")
+    outcome <- mf[[1]]
+    predictor <- factor(mf[[2]])
+    if (nlevels(predictor) != 2) stop("Predictor must have exactly 2 levels")
+    x <- outcome[predictor == levels(predictor)[1]]
+    y <- outcome[predictor == levels(predictor)[2]]
+  }
+  
+  if (is.null(y)) {
+    # One-sample case: compare x to mu
+    d <- (mean(x, na.rm = TRUE) - mu) / sd(x, na.rm = TRUE)
+    return(abs(d))
+  }
+  
+  # Two-sample case
+  nx <- length(x)
+  ny <- length(y)
+  mx <- mean(x, na.rm = TRUE)
+  my <- mean(y, na.rm = TRUE)
+  sx <- sd(x, na.rm = TRUE)
+  sy <- sd(y, na.rm = TRUE)
+  
+  pooled_sd <- switch(method,
+    pooled   = sqrt(((nx - 1) * sx^2 + (ny - 1) * sy^2) / (nx + ny - 2)),
+    x        = sx,
+    y        = sy,
+    raw      = 1,
+    paired   = sd(x - y, na.rm = TRUE),
+    corrected = sqrt(((nx - 1) * sx^2 + (ny - 1) * sy^2) / (nx + ny - 2)) *
+                  sqrt(2 * (nx + ny) / (nx * ny)),  # unbiased correction
+    stop("Unknown method: '", method, "'. Choose from: pooled, x, y, raw, paired, corrected")
+  )
+  
+  d <- (mx - my) / pooled_sd
+  return(abs(d))
+}
+
+sse <- function(mod){
+  sum(mod$residuals^2)
+}
+
+sst <- function(y){
+  sum((y-mean(y))^2)
+}
+
+f <- function(mod) {
+  anova(mod)[1, "F value"]
 }

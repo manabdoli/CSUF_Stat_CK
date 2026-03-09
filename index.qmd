@@ -13,3 +13,5 @@ Welcome! Choose a deck:
 - [Chapter 6 (Sections 1-4)](presentations/CK-ch6_1-4.html)
 - [Chapter 6 (Added Part II)](presentations/CK-ch6_II.html)
 - [Chapter 6 (Added Part III)](presentations/CK-ch6_III-sec5-11.html)
+- [Chapter 7 ](presentations/CK-ch7-complete.html)
+- [Chapter 8 ](presentations/CK-ch8-complete.html)

@@ -1,0 +1,431 @@
+---
+title: "CourseKata Chapter 8"
+subtitle: "PRE, F, Cohen's D"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 8"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch8-complete.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+By the end of today, you can:
+
+- fit and interpret **multi‑group (3+ groups)** models using `lm()`
+- compare group models using **PRE**, **df**, **MS**, and the **F ratio**
+- describe and compute **effect sizes** (mean differences, PRE, Cohen’s *d*)
+- use **shuffle/simulation** to ask whether an effect could plausibly be due to randomness
+
+:::
+
+## Review: Group Models
+:::{.nonincremental}
+- Data:
+  - Outcome: $Y$ (A numerical Variable)
+  - Explanatory: A Categorical Variable
+- Models:
+  - **Empty model**: one mean for everyone
+  - **Group model**: *separate mean* for each group.
+
+:::
+
+## Example
+
+::: {.columns}
+::: {.column width='33%'}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+gf_jitter(Thumb ~ 'NULL', data = Fingers, width = 0.15, alpha = 0.6) |> 
+gf_model(lm(Thumb~NULL, data=Fingers), color='orange')
+```
+:::
+::: {.column width='33%'}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+gf_jitter(Thumb ~ Gender, data = Fingers, width = 0.15, alpha = 0.6) |> 
+gf_model(lm(Thumb~Gender, data=Fingers), color='orange')
+```
+:::
+::: {.column width='33%'}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3 
+gf_jitter(Thumb ~ Interest, data = Fingers, width = 0.15, alpha = 0.6) |> 
+gf_model(lm(Thumb~Interest, data=Fingers), color='orange')
+```
+:::
+:::
+<!-- end columns -->
+
+
+## Comparing Models
+
+::: {.columns}
+::: {.column}
+:::{style="font-size: .5em;"}
+
+```{webr}
+cat('Gender: 2-Level Category Explanatory:')
+supernova(lm(Thumb~Gender, data=Fingers))
+cat('\nInterest 3-Level Category Explanatory:')
+supernova(lm(Thumb~Interest, data=Fingers))
+```
+
+:::
+:::
+::: {.column}
+
+```{r, echo=FALSE}
+modG <- lm(Thumb~Gender, data=Fingers)
+modI <- lm(Thumb~Interest, data=Fingers)
+```
+
+:::{.fragment .nonincremental}
+
+- Model Measures:
+
+```{r}
+data.frame(
+  Gender = c(sse(modG), pre(modG), f(modG)) |>
+    formatC(digits = 5),
+  Interest = c(sse(modI), pre(modI), f(modI)) |>
+    formatC(digits = 5),
+  row.names = c('SSE', 'PRE', 'F')
+)
+
+```
+
+- Which one is better?
+:::
+:::
+:::
+<!-- end columns -->
+
+# Effect of Increasing Levels
+## Example: 2-Level Explanatory
+
+::: {.columns}
+::: {.column}
+```{webr}
+#| fig-height: 3
+#| fig-width: 5
+Fingers$Height2 <- ntile(Fingers$Height, n=2) |>
+  factor(1:2, c('short', 'tall'))
+mod2 <- lm(Thumb~Height2, data=Fingers)
+gf_jitter(Thumb ~ Height2, data = Fingers, width = 0.15, alpha = 0.6) |> 
+  gf_model(mod2, color='orange')
+```
+:::
+::: {.column style="font-size: .7em;"}
+::: {.fragment .nonincremental style="font-size: .7em;"}
+- $Y_i = b_0 + b_1 \cdot X_{1i} + e_i$ </br>
+  - $b_0 = \text{mean}(\text{Thumb}_\text{short})$
+  - $b_1 = \text{mean}(\text{Thumb}_\text{tall})-\text{mean}(\text{Thumb}_\text{short})$
+  - $X_{1i} = 1 \text{ for Height}==\text{tall}$ 
+:::
+:::{.fragment}
+```{webr}
+mod2
+```
+:::
+:::
+:::
+
+## Example: 3-Level Explanatory
+
+::: {.columns}
+::: {.column}
+```{webr}
+#| fig-height: 3
+#| fig-width: 5
+Fingers$Height3 <- ntile(Fingers$Height, n=3) |>
+  factor(1:3, c('Short', 'Med.', 'Tall'))
+mod3 <- lm(Thumb~Height3, data=Fingers)
+gf_jitter(Thumb ~ Height3, data = Fingers, width = 0.15, alpha = 0.6) |> 
+  gf_model(mod3, color='orange')
+```
+:::
+::: {.column style="font-size: .7em;"}
+::: {.fragment .nonincremental style="font-size: .7em;"}
+- $Y_i = b_0 + b_1 \cdot X_{1i} + b_2 \cdot X_{2i} + e_i$ </br>
+  - $b_0 = \text{mean}(\text{Thumb}_\text{Short})$
+  - $b_1 = \text{mean}(\text{Thumb}_\text{Med.})-\text{mean}(\text{Thumb}_\text{Short})$
+    - $X_{1i} = 1 \text{ for Height}==\text{Med.}$ 
+  - $b_2 = \text{mean}(\text{Thumb}_\text{Tall})-\text{mean}(\text{Thumb}_\text{Short})$
+    - $X_{2i} = 1 \text{ for Height}==\text{Tall}$ 
+:::
+
+:::{.fragment}
+```{webr}
+mod3
+```
+:::
+:::
+:::
+
+<!-- end columns -->
+
+## Comparing Model Measures
+::: {.columns style="font-size:.7em"}
+::: {.column width="65%"}
+```{webr}
+supernova(mod2)
+
+cat('\n')
+supernova(mod3)
+```
+:::
+::: {.column width="35%"}
+- Notice anything?
+:::
+:::
+<!-- end columns -->
+
+## Level Size and Model Measures
+
+::: {.columns style="font-size: .9em;"}
+::: {.column}
+### SSE (SSR):
+- How much of error is not explained.
+
+:::
+::: {.column}
+
+### PRE = (1-SSE)/SST
+- Proportion of Explained variability
+
+:::
+:::
+
+  - More levels, more complex models, more explained variability
+
+::: {.fragment style="font-size: .9em;"}
+### F = MSM/MSE
+:::
+
+:::{style="font-size: .9em;"}
+- Ratio of average explained variability to unexplained variablity
+  - Less sensetive to larger number of levels
+:::
+
+# The F Ratio
+
+## Why we need F
+
+:::{style="font-size: .85em;"}
+PRE alone doesn’t “penalize” complexity.
+
+- Adding parameters almost always reduces SSE.
+  - *Is the reduction big enough to be worth the extra parameters?*
+
+:::{.fragment}
+### F ratio $$F = \frac{MS_{\text{Model}}}{MS_{\text{Error}}}$$
+:::
+
+- Large $F$ means: *error reduced per parameter is large relative to remaining error.*
+:::
+
+# Effect Size in Group Models
+
+## Why effect size?
+
+- With large $n$, tiny effects can look convincing.
+- Effect size says: *How big is the difference?*
+
+::: {.fragment}
+Common group-model effect sizes:
+:::
+
+- **Mean differences** (model parameters)
+- **PRE** (variance explained relative to empty model)
+- **Cohen’s $d$** (standardized mean difference)
+
+## Cohen’s d (two groups)
+:::{.columns}
+:::{.column width="35%"}
+:::{style="font-size:.7em;"}
+- Standardized Difference: $$d = \frac{\bar Y_1 - \bar Y_2}{s_{pooled}}$$
+  - $s_{pooled}^2 = MSE = \frac{SSE}{df_E}$
+  - In general: $s_{pooled}^2 = \frac{df_1\cdot s_1^2+df_2\cdot s_2^2}{df_1+df_2}$
+:::
+:::
+:::{.column width="65%"}
+:::{.fragment style="font-size:.7em;"} 
+```{webr}
+modG <- lm(Thumb~Gender, data=Fingers)
+coef(modG)
+supernova(modG)
+```
+:::
+:::
+:::
+
+:::{.columns}
+:::{.column width="35%"}
+:::{.fragment style="font-size:.8em;"}
+```{webr}
+cohensD(modG)
+```
+:::
+:::
+
+:::{.column width="65%"}
+:::{style="font-size:.8em;"}
+  - Verify the calculation.
+:::
+:::
+:::
+
+## Effect size ≠ causality
+
+- Large difference between groups:
+  - Practical Effect
+  - Nor a proof of causal effect
+
+\
+
+- Group models show association
+- Causal claims need stronger design / evidence
+
+# Thinking about DGP
+
+## Observed Sample to Population Inference
+
+- The observed effect:
+  - A real systematic difference,
+  - Or a **random variation** (noise)
+
+- A Test Approach
+  - Assume *random variation* (the true effect = 0) 
+    - Null Hypothesis ($H_0$)
+  - Find Null Distribution of effect
+    - Sampling Distribution under the Null
+  - Measure how often effects are as large as observed one
+
+# Shuffle-based Simulation (Conceptual Inference)
+
+## Shuffle logic
+
+- Keep the same $Y$ values
+- Randomly reassign them to groups
+- Refit the model
+- Record the effect size (e.g., $b_1$ or PRE)
+- Repeat many times to get a **shuffle distribution**
+  - A.k.a. **Null Distribution**
+
+## Example: Two-group Model
+
+:::{.fragment}
+```{webr}
+# To get the same results
+set.seed(123) 
+# observed effect
+m_obs <- lm(Thumb ~ Sex, data = Fingers)
+b_obs <- b1(m_obs)
+
+# shuffle distribution of b1
+shuf_b1 <- rep(NA, 500)
+for(k in 1:500){
+  d <- Fingers
+  d$Thumb <- shuffle(d$Thumb)
+  shuf_b1[k] <- b1(lm(Thumb ~ Sex, data = d))
+}
+
+c(observed_b1 = b_obs,
+  shuf_mean = mean(shuf_b1),
+  shuf_sd = sd(shuf_b1))
+```
+:::
+
+## Visualize the shuffle distribution
+
+:::{.fragment}
+```{webr}
+#| fig-height: 3
+#| fig-width: 7
+
+gf_histogram(~shuf_b1, bins = 30) %>%
+  gf_vline(xintercept = b_obs)
+```
+:::
+
+## Interpreting the shuffle plot
+
+:::{.nonincremental}
+- The histogram:
+  - **effects expected by chance** <br/>(if the DGP had no group effect)
+- The vertical line is the **observed effect**
+:::
+
+:::{.fragment .nonincremental}
+- If the observed effect is far out in the tails:  
+  - The “no-effect” DGP is **unlikely** 
+:::
+
+# Wrap-up
+
+## What Chapter 8 emphasizes
+:::{style="font-size:0.85em;"}
+- **Multi-group models**: <br/> baseline mean and group changes
+- **Model comparison**: <br/>fit (PRE) + complexity (df)
+- **F ratio**: <br/>a complexity-aware comparison tool
+- **Effect sizes**: <br/> Statistical vs Practical Difference
+- **Shuffle simulation**: <br/>Could the effect be due to Noise?
+:::
