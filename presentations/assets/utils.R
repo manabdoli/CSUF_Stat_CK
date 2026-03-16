@@ -149,15 +149,45 @@ gf_model_text <- function(object, model,
   p
 }
 
-b1 <- function(mod){
+b1 <- function(mod, data=NULL){
+  if(!is.null(data) && !is.data.frame(data)){
+    data <- as.data.frame(data)
+    stop('data should be a data.frame!')
+  }
+  if(is.character(mod)){
+    mod <- as.formula(mod)
+  }
+  if("formula" == class(mod)){
+    mod <- lm(mod, data=data)
+  }
   mod$coefficients[2]
 }
 
-b0 <- function(mod){
+b0 <- function(mod, data=NULL){
+  if(!is.null(data) && !is.data.frame(data)){
+    data <- as.data.frame(data)
+    stop('data should be a data.frame!')
+  }
+  if(is.character(mod)){
+    mod <- as.formula(mod)
+  }
+  if("formula" == class(mod)){
+    mod <- lm(mod, data=data)
+  }
   mod$coefficients[1]
 }
 
-pre <- function(mod){
+pre <- function(mod, data=NULL){
+  if(!is.null(data) && !is.data.frame(data)){
+    data <- as.data.frame(data)
+    stop('data should be a data.frame!')
+  }
+  if(is.character(mod)){
+    mod <- as.formula(mod)
+  }
+  if("formula" == class(mod)){
+    mod <- lm(mod, data=data)
+  }
   summary(mod)$r.squared
 }
 

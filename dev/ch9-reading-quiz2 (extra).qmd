@@ -1,0 +1,148 @@
+Here is a **simple 10-question reading quiz** for **CourseKata Chapter 9, Sections 9.8–9.10**.
+All questions are **multiple choice** so they work easily as a **Canvas auto-graded quiz**. The questions focus on the key ideas: **correlation (r), relationship between (r) and (R^2), correlation matrices, shuffle logic for slopes, and interpretation of slopes under randomness**.
+
+---
+
+# Reading Quiz: Chapter 9 (Sections 9.8–9.10)
+
+## Question 1
+
+Pearson’s correlation coefficient (r) measures:
+
+A. The difference between two group means
+B. The strength and direction of a **linear relationship** between two quantitative variables
+C. The slope of the regression line
+D. The average value of a variable
+
+**Answer:** B
+
+---
+
+## Question 2
+
+The value of Pearson’s (r) must always fall between:
+
+A. 0 and 1
+B. −1 and 1
+C. −10 and 10
+D. −100 and 100
+
+**Answer:** B
+
+---
+
+## Question 3
+
+If two variables have (r = 0.80), this indicates:
+
+A. A strong positive linear relationship
+B. A strong negative linear relationship
+C. No relationship
+D. A curved relationship
+
+**Answer:** A
+
+---
+
+## Question 4
+
+If the correlation between two variables is (r = -0.60), then the relationship is:
+
+A. Positive and strong
+B. Negative and moderate
+C. Positive and weak
+D. Exactly zero
+
+**Answer:** B
+
+---
+
+## Question 5
+
+In simple linear regression with one quantitative predictor, the relationship between correlation and (R^2) is:
+
+A. (R^2 = r)
+B. (R^2 = r^2)
+C. (R^2 = \sqrt{r})
+D. (R^2 = 1-r)
+
+**Answer:** B
+
+---
+
+## Question 6
+
+If (r = 0.70), what is (R^2)?
+
+A. 0.49
+B. 0.70
+C. 1.40
+D. 0.35
+
+**Answer:** A
+
+---
+
+## Question 7
+
+A **correlation matrix** shows:
+
+A. The regression slopes for many models
+B. The correlations between several quantitative variables at the same time
+C. The means of several variables
+D. The p-values of many models
+
+**Answer:** B
+
+---
+
+## Question 8
+
+In a shuffle simulation for regression slopes, we shuffle one variable in order to:
+
+A. Increase the correlation
+B. Create a distribution of slopes expected **if there is no real relationship**
+C. Remove outliers from the data
+D. Make the regression line steeper
+
+**Answer:** B
+
+---
+
+## Question 9
+
+When we shuffle the outcome variable many times and compute slopes, the distribution of slopes will usually be centered near:
+
+A. −1
+B. The observed slope
+C. 0
+D. 1
+
+**Answer:** C
+
+---
+
+## Question 10
+
+If the observed regression slope is far from the center of the shuffled slope distribution, this suggests:
+
+A. The relationship could easily occur by chance
+B. There is evidence of a real association between the variables
+C. The regression model is incorrect
+D. The intercept must be zero
+
+**Answer:** B
+
+---
+
+✅ These questions emphasize the **core reading ideas** students should extract from the sections:
+
+* Meaning and range of **Pearson’s (r)**
+* Relationship **(R^2 = r^2)**
+* Purpose of a **correlation matrix**
+* Logic of **shuffle simulations for slopes**
+* Interpreting slopes relative to a **null distribution**
+
+---
+
+If you'd like, I can also make a **Version B of this quiz** (same difficulty, different numbers/wording) so you can **randomize between two quizzes in Canvas**.

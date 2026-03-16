@@ -1,0 +1,375 @@
+---
+title: "CourseKata Chapter 9 (9 to 11)"
+subtitle: "Linear Regression"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 9"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch9-sec9-11.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- **Correlation (r)**
+- **Correlation matrices**
+- Relationship between **r and R²**
+- **Null distribution of slopes**
+- **Limits of regression models**
+
+:::
+
+## Two Numerical Variables
+
+:::{.nonincremental}
+Previously we modeled:
+
+- response variable \(y\)
+- explanatory variable \(x\)
+
+with regression
+
+$$
+\hat{y} = b_0 + b_1x
+$$
+
+Key question:
+
+> How strong is the relationship?
+
+:::
+
+## Pearson's Correlation \(r\)
+
+Pearson’s \(r\):
+
+- measures **strength and direction**
+- of a **linear relationship**
+- between **two quantitative variables**
+
+:::{.fragment}
+Range:
+
+$$
+-1 \le r \le 1
+$$
+:::
+
+## Interpreting r
+
+| r value | Meaning |
+|------|------|
+| close to 1 | strong positive relationship |
+| close to -1 | strong negative relationship |
+| close to 0 | weak or no linear relationship |
+
+::: {.fragment}
+Important:
+
+> Correlation measures **linear association**.
+
+:::
+
+## Example Scatterplot
+
+::: {.columns}
+::: {.column}
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_point(mpg ~ wt, data = mtcars) |>
+  gf_lm()
+```
+:::
+::: {.column}
+::: {.fragment .nonincremental}
+Questions:
+
+- What direction is the relationship?
+- How strong is the relationship? 
+:::
+:::
+:::
+<!-- end columns -->
+
+## Calculating Correlation
+**Pearson's r** (using R):
+
+```{r, echo=TRUE}
+cor(mtcars$wt, mtcars$mpg)
+```
+
+Interpretation:
+
+* sign → direction
+* magnitude → strength
+
+## Correlation Matrix
+**Pairwise correlations** for multiple variables:
+
+Example:
+
+```{r, echo=TRUE}
+round(cor(mtcars[,c("mpg","wt","hp","disp")]),2)
+```
+
+- **Practice:** Interpret some the values.
+
+## Relationship Between r and R²
+::: {.columns}
+::: {.column}
+For **simple linear regression**:
+$$R^2 = r^2$$
+Where:
+
+:::{.nonincremental}
+* $r$ = correlation
+* $R^2$ = proportion of variation explained
+:::
+:::
+::: {.column}
+::: {.fragment}
+Example: 
+
+$r^2:$
+```{r, echo=TRUE}
+cor(mtcars$wt, mtcars$mpg)^2
+```
+
+PRE:
+
+```{r, echo=TRUE}
+pre(lm(mpg ~ wt, data = mtcars))
+```
+:::
+
+:::
+:::
+<!-- end columns -->
+
+## Understanding the Slope
+
+Recall the regression model:
+$$\hat{y} = b_0 + b_1x$$
+
+The slope (b_1):
+
+> change in predicted (y) for a one-unit increase in (x).
+
+But how do we know if this slope is meaningful?
+
+
+## Null Model Idea
+::: {.columns}
+::: {.column}
+::: {.nonincremental}
+- The slope is zero: $\beta_1=0$
+
+- **No relationship** between $x$ and $y$
+
+- Any observed relation is due to **random variation**.
+:::
+:::
+::: {.column}
+::: {.fragment .nonincremental}
+- Simulate random variation:
+  1. Shuffle the response variable.
+  2. Recalculate the slope.
+  3. Repeat many times.
+:::
+:::
+:::
+<!-- end columns -->
+
+## Simulation Example
+::: {.columns}
+::: {.column}
+
+```{webr}
+null_slopes <- do(500) * 
+  b1(shuffle(mpg) ~ wt, data = mtcars)
+head(null_slopes)
+```
+:::
+::: {.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+#| warning: FALSE
+gf_histogram(~wt, data = null_slopes) |>
+  gf_point(0~b1(mpg ~ wt, data = mtcars),
+    color='red', size=2)
+```
+:::
+:::
+<!-- end columns -->
+
+# Limitation of Regression
+:::{.nonincremental}
+1. **Association vs causation**
+2. **Extrapolation**
+3. **Linearity assumption**
+:::
+
+## Association vs Causation
+
+Regression detects **association**, not causation.
+
+::: {.fragment .nonincremental}
+
+Example:
+
+Ice cream sales ↑  
+Drowning incidents ↑
+:::
+
+- Does ice cream cause drowning?
+
+## Extrapolation
+::: {.columns}
+::: {.column}
+Where models are reliable?
+
+  - **within the observed data range**.
+
+:::
+::: {.column}
+
+::: {.fragment}
+Example:
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+gf_point(Petal.Length~Petal.Width, data=iris) |>
+  gf_lm(Petal.Length~Petal.Width, data = iris[iris$Species=='setosa', ],
+        color = "red")
+```
+:::
+:::
+:::
+<!-- end columns -->
+
+## Linearity Assumption
+
+Linear regression assumes:
+
+$$\text{relationship = straight line}$$
+
+But some relationships are **curved**.
+
+Example patterns:
+
+* quadratic
+* exponential
+* saturation effects
+
+---
+
+## Example Nonlinear Pattern
+
+```{r}
+x <- 1:100
+y <- x^2 + rnorm(length(x), 0, 100)
+
+gf_point(y ~ x)
+```
+
+A straight line would not describe this well.
+
+
+## Diagnosing Linearity
+::: {.columns}
+::: {.column}
+::: {.nonincremental}
+We check:
+
+* scatterplots
+  - Linear relation
+* residual plots
+  - **No systematic pattern**.
+
+:::
+:::
+::: {.column}
+::: {.fragment}
+```{r}
+x <- 50:100
+y <- x^2 + rnorm(length(x), 0, 100)
+mod <- lm(y~x)
+gf_point(y~x) |> gf_lm()
+gf_point(resid(mod)~x) |> 
+  gf_abline(intercept = 0, slope=0, color='blue')
+```
+
+:::
+:::
+:::
+<!-- end columns -->
+
+
+
+## Key Takeaways
+:::{.nonincremental}
+- Correlation (r): measures strength of linear association
+- Relationship: $R^2 = r^2$
+- Null slope distribution:
+  * helps evaluate whether slopes occur by chance
+- Regression limitations:
+  * association ≠ causation
+  * avoid extrapolation
+  * check linearity
+:::
