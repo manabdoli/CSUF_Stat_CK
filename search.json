@@ -1,5 +1,192 @@
 [
   {
+    "objectID": "presentations/CK-ch9-sec9-11.html#overview-goals",
+    "href": "presentations/CK-ch9-sec9-11.html#overview-goals",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Overview / Goals",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCorrelation (r)\nCorrelation matrices\nRelationship between r and R²\nNull distribution of slopes\nLimits of regression models",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#two-numerical-variables",
+    "href": "presentations/CK-ch9-sec9-11.html#two-numerical-variables",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Two Numerical Variables",
+    "text": "Two Numerical Variables\nPreviously we modeled:\n\nresponse variable (y)\nexplanatory variable (x)\n\nwith regression\n\\[\n\\hat{y} = b_0 + b_1x\n\\]\nKey question:\n\nHow strong is the relationship?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#pearsons-correlation-r",
+    "href": "presentations/CK-ch9-sec9-11.html#pearsons-correlation-r",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Pearson’s Correlation (r)",
+    "text": "Pearson’s Correlation (r)\nPearson’s (r):\n\nmeasures strength and direction\nof a linear relationship\nbetween two quantitative variables\n\n\nRange:\n\\[\n-1 \\le r \\le 1\n\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#interpreting-r",
+    "href": "presentations/CK-ch9-sec9-11.html#interpreting-r",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Interpreting r",
+    "text": "Interpreting r\n\n\n\nr value\nMeaning\n\n\n\n\nclose to 1\nstrong positive relationship\n\n\nclose to -1\nstrong negative relationship\n\n\nclose to 0\nweak or no linear relationship\n\n\n\n\nImportant:\n\nCorrelation measures linear association.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#example-scatterplot",
+    "href": "presentations/CK-ch9-sec9-11.html#example-scatterplot",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Example Scatterplot",
+    "text": "Example Scatterplot\n\n\n\n\n\n\n\n\n\n\n\n\nQuestions:\n\nWhat direction is the relationship?\nHow strong is the relationship?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#calculating-correlation",
+    "href": "presentations/CK-ch9-sec9-11.html#calculating-correlation",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Calculating Correlation",
+    "text": "Calculating Correlation\nPearson’s r (using R):\n\ncor(mtcars$wt, mtcars$mpg)\n\n[1] -0.8676594\n\n\nInterpretation:\n\nsign → direction\nmagnitude → strength",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#correlation-matrix",
+    "href": "presentations/CK-ch9-sec9-11.html#correlation-matrix",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Correlation Matrix",
+    "text": "Correlation Matrix\nPairwise correlations for multiple variables:\nExample:\n\nround(cor(mtcars[,c(\"mpg\",\"wt\",\"hp\",\"disp\")]),2)\n\n       mpg    wt    hp  disp\nmpg   1.00 -0.87 -0.78 -0.85\nwt   -0.87  1.00  0.66  0.89\nhp   -0.78  0.66  1.00  0.79\ndisp -0.85  0.89  0.79  1.00\n\n\n\nPractice: Interpret some the values.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#relationship-between-r-and-r²",
+    "href": "presentations/CK-ch9-sec9-11.html#relationship-between-r-and-r²",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Relationship Between r and R²",
+    "text": "Relationship Between r and R²\n\n\nFor simple linear regression: \\[R^2 = r^2\\] Where:\n\n\\(r\\) = correlation\n\\(R^2\\) = proportion of variation explained\n\n\n\nExample:\n\\(r^2:\\)\n\ncor(mtcars$wt, mtcars$mpg)^2\n\n[1] 0.7528328\n\n\nPRE:\n\npre(lm(mpg ~ wt, data = mtcars))\n\n[1] 0.7528328",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#understanding-the-slope",
+    "href": "presentations/CK-ch9-sec9-11.html#understanding-the-slope",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Understanding the Slope",
+    "text": "Understanding the Slope\nRecall the regression model: \\[\\hat{y} = b_0 + b_1x\\]\nThe slope (b_1):\n\nchange in predicted (y) for a one-unit increase in (x).\n\nBut how do we know if this slope is meaningful?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#null-model-idea",
+    "href": "presentations/CK-ch9-sec9-11.html#null-model-idea",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Null Model Idea",
+    "text": "Null Model Idea\n\n\n\nThe slope is zero: \\(\\beta_1=0\\)\nNo relationship between \\(x\\) and \\(y\\)\nAny observed relation is due to random variation.\n\n\n\n\nSimulate random variation:\n\nShuffle the response variable.\nRecalculate the slope.\nRepeat many times.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#simulation-example",
+    "href": "presentations/CK-ch9-sec9-11.html#simulation-example",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Simulation Example",
+    "text": "Simulation Example",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#association-vs-causation",
+    "href": "presentations/CK-ch9-sec9-11.html#association-vs-causation",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Association vs Causation",
+    "text": "Association vs Causation\nRegression detects association, not causation.\n\nExample:\nIce cream sales ↑\nDrowning incidents ↑\n\n\nDoes ice cream cause drowning?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#extrapolation",
+    "href": "presentations/CK-ch9-sec9-11.html#extrapolation",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Extrapolation",
+    "text": "Extrapolation\n\n\nWhere models are reliable?\n\nwithin the observed data range.\n\n\n\nExample:",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#linearity-assumption",
+    "href": "presentations/CK-ch9-sec9-11.html#linearity-assumption",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Linearity Assumption",
+    "text": "Linearity Assumption\nLinear regression assumes:\n\\[\\text{relationship = straight line}\\]\nBut some relationships are curved.\nExample patterns:\n\nquadratic\nexponential\nsaturation effects",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#example-nonlinear-pattern",
+    "href": "presentations/CK-ch9-sec9-11.html#example-nonlinear-pattern",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Example Nonlinear Pattern",
+    "text": "Example Nonlinear Pattern\n\nA straight line would not describe this well.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#diagnosing-linearity",
+    "href": "presentations/CK-ch9-sec9-11.html#diagnosing-linearity",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Diagnosing Linearity",
+    "text": "Diagnosing Linearity\n\n\nWe check:\n\nscatterplots\n\nLinear relation\n\nresidual plots\n\nNo systematic pattern.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec9-11.html#key-takeaways",
+    "href": "presentations/CK-ch9-sec9-11.html#key-takeaways",
+    "title": "CourseKata Chapter 9 (9 to 11)",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nCorrelation (r): measures strength of linear association\nRelationship: \\(R^2 = r^2\\)\nNull slope distribution:\n\nhelps evaluate whether slopes occur by chance\n\nRegression limitations:\n\nassociation ≠ causation\navoid extrapolation\ncheck linearity",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (9 to 11)"
+    ]
+  },
+  {
     "objectID": "presentations/CK-ch8-complete.html#overview-goals",
     "href": "presentations/CK-ch8-complete.html#overview-goals",
     "title": "CourseKata Chapter 8",
@@ -1048,7 +1235,7 @@
     "href": "index.html",
     "title": "CSUF Statistics using CourseKata",
     "section": "",
-    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8",
+    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)",
     "crumbs": [
       "CSUF Statistics using CourseKata"
     ]
@@ -1777,6 +1964,204 @@
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 7"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#overview-goals",
+    "href": "presentations/CK-ch9-sec1-8.html#overview-goals",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Overview / Goals",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBy the end of today, you can:\n\nfit and interpret multi‑group (3+ groups) models using lm()\ncompare group models using PRE, df, MS, and the F ratio\ndescribe and compute effect sizes (mean differences, PRE, Cohen’s d)\nuse shuffle/simulation to ask whether an effect could plausibly be due to randomness",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#review-group-models",
+    "href": "presentations/CK-ch9-sec1-8.html#review-group-models",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Review: Group Models",
+    "text": "Review: Group Models\n\nData:\n\nOutcome: \\(Y\\) (A numerical Variable)\nExplanatory: A Categorical Variable\n\nModels:\n\nEmpty model: one mean for everyone\nGroup model: separate mean for each group.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#example",
+    "href": "presentations/CK-ch9-sec1-8.html#example",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Example",
+    "text": "Example",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#comparing-models",
+    "href": "presentations/CK-ch9-sec1-8.html#comparing-models",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Comparing Models",
+    "text": "Comparing Models\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel Measures:\n\n\n\n    Gender Interest\nSSE  10546    11567\nPRE 0.1123 0.026324\nF   19.609   2.0818\n\n\n\nWhich one is better?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#example-2-level-explanatory",
+    "href": "presentations/CK-ch9-sec1-8.html#example-2-level-explanatory",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Example: 2-Level Explanatory",
+    "text": "Example: 2-Level Explanatory\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(Y_i = b_0 + b_1 \\cdot X_{1i} + e_i\\) \n\n\\(b_0 = \\text{mean}(\\text{Thumb}_\\text{short})\\)\n\\(b_1 = \\text{mean}(\\text{Thumb}_\\text{tall})-\\text{mean}(\\text{Thumb}_\\text{short})\\)\n\\(X_{1i} = 1 \\text{ for Height}==\\text{tall}\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#example-3-level-explanatory",
+    "href": "presentations/CK-ch9-sec1-8.html#example-3-level-explanatory",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Example: 3-Level Explanatory",
+    "text": "Example: 3-Level Explanatory\n\n\n\n\n\n\n\n\n\n\n\n\n\n\\(Y_i = b_0 + b_1 \\cdot X_{1i} + b_2 \\cdot X_{2i} + e_i\\) \n\n\\(b_0 = \\text{mean}(\\text{Thumb}_\\text{Short})\\)\n\\(b_1 = \\text{mean}(\\text{Thumb}_\\text{Med.})-\\text{mean}(\\text{Thumb}_\\text{Short})\\)\n\n\\(X_{1i} = 1 \\text{ for Height}==\\text{Med.}\\)\n\n\\(b_2 = \\text{mean}(\\text{Thumb}_\\text{Tall})-\\text{mean}(\\text{Thumb}_\\text{Short})\\)\n\n\\(X_{2i} = 1 \\text{ for Height}==\\text{Tall}\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#comparing-model-measures",
+    "href": "presentations/CK-ch9-sec1-8.html#comparing-model-measures",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Comparing Model Measures",
+    "text": "Comparing Model Measures\n\n\n\n\n\n\n\n\n\n\n\n\nNotice anything?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#level-size-and-model-measures",
+    "href": "presentations/CK-ch9-sec1-8.html#level-size-and-model-measures",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Level Size and Model Measures",
+    "text": "Level Size and Model Measures\n\n\nSSE (SSR):\n\nHow much of error is not explained.\n\n\nPRE = (1-SSE)/SST\n\nProportion of Explained variability\n\n\n\nMore levels, more complex models, more explained variability\n\n\nF = MSM/MSE\n\n\n\nRatio of average explained variability to unexplained variablity\n\nLess sensetive to larger number of levels",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#why-we-need-f",
+    "href": "presentations/CK-ch9-sec1-8.html#why-we-need-f",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Why we need F",
+    "text": "Why we need F\n\nPRE alone doesn’t “penalize” complexity.\n\nAdding parameters almost always reduces SSE.\n\nIs the reduction big enough to be worth the extra parameters?\n\n\n\nF ratio \\[F = \\frac{MS_{\\text{Model}}}{MS_{\\text{Error}}}\\]\n\n\nLarge \\(F\\) means: error reduced per parameter is large relative to remaining error.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#why-effect-size",
+    "href": "presentations/CK-ch9-sec1-8.html#why-effect-size",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Why effect size?",
+    "text": "Why effect size?\n\nWith large \\(n\\), tiny effects can look convincing.\nEffect size says: How big is the difference?\n\n\nCommon group-model effect sizes:\n\n\nMean differences (model parameters)\nPRE (variance explained relative to empty model)\nCohen’s \\(d\\) (standardized mean difference)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#cohens-d-two-groups",
+    "href": "presentations/CK-ch9-sec1-8.html#cohens-d-two-groups",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Cohen’s d (two groups)",
+    "text": "Cohen’s d (two groups)\n\n\n\n\nStandardized Difference: \\[d = \\frac{\\bar Y_1 - \\bar Y_2}{s_{pooled}}\\]\n\n\\(s_{pooled}^2 = MSE = \\frac{SSE}{df_E}\\)\nIn general: \\(s_{pooled}^2 = \\frac{df_1\\cdot s_1^2+df_2\\cdot s_2^2}{df_1+df_2}\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVerify the calculation.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#effect-size-causality",
+    "href": "presentations/CK-ch9-sec1-8.html#effect-size-causality",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Effect size ≠ causality",
+    "text": "Effect size ≠ causality\n\nLarge difference between groups:\n\nPractical Effect\nNor a proof of causal effect\n\n\n\n\n\nGroup models show association\nCausal claims need stronger design / evidence",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#observed-sample-to-population-inference",
+    "href": "presentations/CK-ch9-sec1-8.html#observed-sample-to-population-inference",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Observed Sample to Population Inference",
+    "text": "Observed Sample to Population Inference\n\nThe observed effect:\n\nA real systematic difference,\nOr a random variation (noise)\n\nA Test Approach\n\nAssume random variation (the true effect = 0)\n\nNull Hypothesis (\\(H_0\\))\n\nFind Null Distribution of effect\n\nSampling Distribution under the Null\n\nMeasure how often effects are as large as observed one",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#shuffle-logic",
+    "href": "presentations/CK-ch9-sec1-8.html#shuffle-logic",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Shuffle logic",
+    "text": "Shuffle logic\n\nKeep the same \\(Y\\) values\nRandomly reassign them to groups\nRefit the model\nRecord the effect size (e.g., \\(b_1\\) or PRE)\nRepeat many times to get a shuffle distribution\n\nA.k.a. Null Distribution",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#example-two-group-model",
+    "href": "presentations/CK-ch9-sec1-8.html#example-two-group-model",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Example: Two-group Model",
+    "text": "Example: Two-group Model",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#visualize-the-shuffle-distribution",
+    "href": "presentations/CK-ch9-sec1-8.html#visualize-the-shuffle-distribution",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Visualize the shuffle distribution",
+    "text": "Visualize the shuffle distribution",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#interpreting-the-shuffle-plot",
+    "href": "presentations/CK-ch9-sec1-8.html#interpreting-the-shuffle-plot",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "Interpreting the shuffle plot",
+    "text": "Interpreting the shuffle plot\n\nThe histogram:\n\neffects expected by chance (if the DGP had no group effect)\n\nThe vertical line is the observed effect\n\n\n\nIf the observed effect is far out in the tails:\n\nThe “no-effect” DGP is unlikely",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch9-sec1-8.html#what-chapter-8-emphasizes",
+    "href": "presentations/CK-ch9-sec1-8.html#what-chapter-8-emphasizes",
+    "title": "CourseKata Chapter 9 (1 to 8)",
+    "section": "What Chapter 8 emphasizes",
+    "text": "What Chapter 8 emphasizes\n\n\nMulti-group models:  baseline mean and group changes\nModel comparison: fit (PRE) + complexity (df)\nF ratio: a complexity-aware comparison tool\nEffect sizes:  Statistical vs Practical Difference\nShuffle simulation: Could the effect be due to Noise?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 9 (1 to 8)"
     ]
   }
 ]
