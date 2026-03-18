@@ -1,0 +1,199 @@
+---
+title: "CourseKata Chapter 10"
+subtitle: "Logic of Inference"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 9"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch10-complete.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- **Modeling Data vs DGP**
+- **Sampling Distribution**
+- **Null Distribution of $b_1: (\mu_1-\mu_2)$**
+- **Unlikely (unexpected) Events**
+- **$\alpha$ vs. p-value**
+- **Testing $b_1: \beta_1$**
+
+:::
+
+# Inference vs Fit
+## Modeling Data vs DGP
+::: {.columns}
+::: {.column}
+Modeling Data (Fit)
+
+- Observed:
+  - DATA = Model + Error
+  - More complex, Better Fit
+    - Fit: PRE
+:::
+::: {.column}
+Modeling DGP (Inference)
+
+- Unknown:
+  - Hypothesis (Claim)
+  - Null Hypothesis
+    - Chance Model
+:::
+:::
+<!-- end columns -->
+
+- How good a model estimates DGP?
+  - not sure, but it is not by chance => **Test of Hypothesis**
+  - useful for prediction => **Cross-validation**
+
+## Models
+- Quantitative Response: $Y = Model + Error$
+  - Categorical Explanatory $\Rightarrow b_0=\bar x_1$, $b_1=\bar x_2-\bar x_1$
+  - Quantitative Explanatory $\Rightarrow b_0=\hat y_{x=0}$, $b_1=\text{slope}$
+  
+- Models have assumptions:
+  - We focus on the parameter(s): $\beta_0$ or $\beta_1$
+
+## Distributions
+- Population Distribution (DGP)
+  - Empty Model: $\beta_0 + \varepsilon$
+  - Fixed shape, center and spread
+  
+- Sample Distribution
+  - Data: $\bar x + e$
+  - Everything may change per sample
+  
+- Distribution of a Sample Statistics
+  - Sample Mean: $\beta_0 + \epsilon$
+  - May change per sample size.
+
+# Quantitative ~ Categorical
+## Null Distribution of $b_1: (\mu_1-\mu_2)$
+- Null: Empty Model
+- $Y$ is independent of $X$
+- Simulate Null Distribution of $\bar y$
+  - Shuffle $Y$
+  - Compute $b_1=\mu_2-\mu_1$
+  - Repeat many times
+- Visualize with a histogram
+  
+## Null Distribution Example
+::: {.columns}
+::: {.column}
+
+```{webr}
+breath<- read.csv('https://docs.google.com/spreadsheets/d/1y_imT-n_IyONZyvsFsGbUdRVYbJRxol-ODNPEGYe4_w/export?format=csv')
+breath$swimmer <- factor(breath$swim_ability=="strong", 0:1, c('No', 'Yes'))
+null_slopes <- do(500) * 
+  b1(shuffle(breath_time) ~ swimmer, data = breath)
+head(null_slopes)
+```
+:::
+::: {.column}
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
+#| warning: FALSE
+gf_histogram(~swimmerYes, data = null_slopes) |>
+  gf_point(0~b1(breath_time ~ swimmer, data = breath),
+    color='red', size=2)
+
+```
+:::
+:::
+
+## Unlikely (unexpected) Events
+- Observed Statistics far from Expected value
+  - Distance in not universal
+    - Use standardized value
+    - Use Probability
+- If **tail probability** is low,
+  - observed statistic is unlikely
+
+## Example
+```{webr}
+obs_b1<- b1(breath_time ~ swimmer, data = breath)
+cat('Observed b1: ', obs_b1)
+cat('Prop of b1>obs_b1: ', mean(null_slopes$swimmerYes>obs_b1))
+gf_histogram(~swimmerYes, data = null_slopes, fill=~swimmerYes>obs_b1, bins=35) |>
+  gf_point(0~obs_b1,
+    color='red', size=2)
+
+```
+
+## $\alpha$ vs. $p$-value
+How far is **far**?
+
+- How low is an **unusual probability**?
+  - Depends! But typically 5%.
+  - We call this **Significance Level** ($\alpha$)
+
+- Far: 
+  - $p$-value$<  \alpha$
+  - Observed statistic in $\alpha$ portion of tail(s) 
+
+## Testing $b_1: (\mu_1-\mu_2)$
+- Null Hypothesis: Empty Model DGP
+  - Reject this if observed statistics in unusually far.
+
+- In what direction?
+  - The Alternative:
+    - $\beta_1>0$: right tail
+    - $\beta_1<0$: Left tail
+    - $\beta_1\ne0$: both tails 
+  
+# Quantitative ~ Quantitative
+## Testing $b_1: \beta_1$

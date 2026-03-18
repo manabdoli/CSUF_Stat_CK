@@ -15,5 +15,6 @@ Welcome! Choose a deck:
 - [Chapter 6 (Added Part III)](presentations/CK-ch6_III-sec5-11.html)
 - [Chapter 7 ](presentations/CK-ch7-complete.html)
 - [Chapter 8 ](presentations/CK-ch8-complete.html)
-- [Chapter 9 (Sections 1-8)](CK-ch9-sec1-8.html)
-- [Chapter 9 (Sections 9-11)](CK-ch9-sec9-11.html)
+- [Chapter 9 (Sections 1-8)](presentations/CK-ch9-sec1-8.html)
+- [Chapter 9 (Sections 9-11)](presentations/CK-ch9-sec9-11.html)
+- [Chapter 10](presentations/CK-ch10-complete.html)
