@@ -1221,6 +1221,16 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSUF Statistics using CourseKata",
+    "section": "",
+    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)\nChapter 10",
+    "crumbs": [
+      "CSUF Statistics using CourseKata"
+    ]
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About CSUF Statistics and CourseKata",
@@ -1231,13 +1241,157 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSUF Statistics using CourseKata",
-    "section": "",
-    "text": "Welcome! Choose a deck:\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)",
+    "objectID": "presentations/CK-ch10-complete.html#overview-goals",
+    "href": "presentations/CK-ch10-complete.html#overview-goals",
+    "title": "CourseKata Chapter 10",
+    "section": "Overview / Goals",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModeling Data vs DGP\nSampling Distribution\nNull Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\nUnlikely (unexpected) Events\n\\(\\alpha\\) vs. p-value\nTesting \\(b_1: \\beta_1\\)",
     "crumbs": [
-      "CSUF Statistics using CourseKata"
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#modeling-data-vs-dgp",
+    "href": "presentations/CK-ch10-complete.html#modeling-data-vs-dgp",
+    "title": "CourseKata Chapter 10",
+    "section": "Modeling Data vs DGP",
+    "text": "Modeling Data vs DGP\n\n\nModeling Data (Fit)\n\nObserved:\n\nDATA = Model + Error\nMore complex, Better Fit\n\nFit: PRE\n\n\n\n\nModeling DGP (Inference)\n\nUnknown:\n\nHypothesis (Claim)\nNull Hypothesis\n\nChance Model\n\n\n\n\n\n\nHow good a model estimates DGP?\n\nnot sure, but it is not by chance =&gt; Test of Hypothesis\nuseful for prediction =&gt; Cross-validation",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#models",
+    "href": "presentations/CK-ch10-complete.html#models",
+    "title": "CourseKata Chapter 10",
+    "section": "Models",
+    "text": "Models\n\nQuantitative Response: \\(Y = Model + Error\\)\n\nCategorical Explanatory \\(\\Rightarrow b_0=\\bar x_1\\), \\(b_1=\\bar x_2-\\bar x_1\\)\nQuantitative Explanatory \\(\\Rightarrow b_0=\\hat y_{x=0}\\), \\(b_1=\\text{slope}\\)\n\nModels have assumptions:\n\nWe focus on the parameter(s): \\(\\beta_0\\) or \\(\\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#distributions",
+    "href": "presentations/CK-ch10-complete.html#distributions",
+    "title": "CourseKata Chapter 10",
+    "section": "Distributions",
+    "text": "Distributions\n\nPopulation Distribution (DGP)\n\nEmpty Model: \\(\\beta_0 + \\varepsilon\\)\nFixed shape, center and spread\n\nSample Distribution\n\nData: \\(\\bar x + e\\)\nEverything may change per sample\n\nDistribution of a Sample Statistics\n\nSample Mean: \\(\\beta_0 + \\epsilon\\)\nMay change per sample size.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#null-distribution-of-b_1-mu_1-mu_2",
+    "href": "presentations/CK-ch10-complete.html#null-distribution-of-b_1-mu_1-mu_2",
+    "title": "CourseKata Chapter 10",
+    "section": "Null Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)",
+    "text": "Null Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\n\nNull: Empty Model\n\\(Y\\) is independent of \\(X\\)\nSimulate Null Distribution of \\(\\bar y\\)\n\nShuffle \\(Y\\)\nCompute \\(b_1=\\mu_2-\\mu_1\\)\nRepeat many times\n\nVisualize with a histogram",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#null-distribution-example",
+    "href": "presentations/CK-ch10-complete.html#null-distribution-example",
+    "title": "CourseKata Chapter 10",
+    "section": "Null Distribution Example",
+    "text": "Null Distribution Example",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#unlikely-unexpected-events",
+    "href": "presentations/CK-ch10-complete.html#unlikely-unexpected-events",
+    "title": "CourseKata Chapter 10",
+    "section": "Unlikely (unexpected) Events",
+    "text": "Unlikely (unexpected) Events\n\nObserved Statistics far from Expected value\n\nDistance in not universal\n\nUse standardized value\nUse Probability\n\n\nIf tail probability is low,\n\nobserved statistic is unlikely",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#example",
+    "href": "presentations/CK-ch10-complete.html#example",
+    "title": "CourseKata Chapter 10",
+    "section": "Example",
+    "text": "Example",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#alpha-vs.-p-value",
+    "href": "presentations/CK-ch10-complete.html#alpha-vs.-p-value",
+    "title": "CourseKata Chapter 10",
+    "section": "\\(\\alpha\\) vs. \\(p\\)-value",
+    "text": "\\(\\alpha\\) vs. \\(p\\)-value\nHow far is far?\n\nHow low is an unusual probability?\n\nDepends! But typically 5%.\nWe call this Significance Level (\\(\\alpha\\))\n\nFar:\n\n\\(p\\)-value\\(&lt;  \\alpha\\)\nObserved statistic in \\(\\alpha\\) portion of tail(s)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#testing-b_1-mu_1-mu_2",
+    "href": "presentations/CK-ch10-complete.html#testing-b_1-mu_1-mu_2",
+    "title": "CourseKata Chapter 10",
+    "section": "Testing \\(b_1: (\\mu_1-\\mu_2)\\)",
+    "text": "Testing \\(b_1: (\\mu_1-\\mu_2)\\)\n\nNull Hypothesis: Empty Model DGP\n\nReject this if observed statistics in unusually far.\n\nIn what direction?\n\nThe Alternative:\n\n\\(\\beta_1&gt;0\\): right tail\n\\(\\beta_1&lt;0\\): Left tail\n\\(\\beta_1\\ne0\\): both tails",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#example-one-tail-tests",
+    "href": "presentations/CK-ch10-complete.html#example-one-tail-tests",
+    "title": "CourseKata Chapter 10",
+    "section": "Example: One-Tail Tests",
+    "text": "Example: One-Tail Tests\n\n\n\\(H_a: \\beta_1&gt;0\\)\n\n\n\n\n\n\n\n\n\n\\(H_a: \\beta_1&lt;0\\)\n\n\n\n\n\n\n\n\n\nExample: Two-Tail Tests\n\n\n\\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\n\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#example-two-tail-tests",
+    "href": "presentations/CK-ch10-complete.html#example-two-tail-tests",
+    "title": "CourseKata Chapter 10",
+    "section": "Example: Two-Tail Tests",
+    "text": "Example: Two-Tail Tests\n\n\n\\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\n\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#f-and-t-distributions",
+    "href": "presentations/CK-ch10-complete.html#f-and-t-distributions",
+    "title": "CourseKata Chapter 10",
+    "section": "\\(F\\) and \\(t\\) Distributions",
+    "text": "\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#testing-b_1-beta_1",
+    "href": "presentations/CK-ch10-complete.html#testing-b_1-beta_1",
+    "title": "CourseKata Chapter 10",
+    "section": "Testing \\(b_1: \\beta_1\\)",
+    "text": "Testing \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
     ]
   },
   {
