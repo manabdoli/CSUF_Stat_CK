@@ -1,0 +1,805 @@
+---
+title: "CourseKata Chapter 11"
+subtitle: "Model Significance (1)"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 11"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch11-sec1-9.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- **Assumption $\rightarrow$ Null Dist. $\rightarrow$ Observation**
+- **Theoretical Null Distribution**
+- **Test of Significance: $\beta_1$**
+- **Type I and Type II Errors**
+- **Complex v. Simple Models**
+- **Type I Error Inflation**
+
+- **PRE Theoretical Distributions**
+- **F Theoretical Distributions**
+- **Pairwise Comparisons**
+- **Test of Independence**
+
+:::
+
+
+# Assumption $\rightarrow$ Null Dist. $\rightarrow$ Observation
+
+## Sampling Variability
+
+* Different samples → different statistics
+* Statistics **vary naturally**
+
+:::{.fragment}
+Key idea:
+
+> Variation is normal, not suspicious
+:::
+
+## Sampling Distribution
+
+* Distribution of a statistic across many samples
+* Built by:
+  * Re-sampling OR
+  * Mathematical theory
+
+## Null Distribution
+**Null Hypothesis ($H_0$):**
+
+:::{.columns}
+:::{.column}
+:::{.fragment .nonincremental}
+* Assumption:
+  * No effect
+  * No difference
+  * No relationship
+:::
+:::
+:::{.column}
+* Null Distribution of $b_1$:
+  * Categorical Explanatory
+    * Mean difference = 0 
+  * Quantitative Explanatory
+    * Slope = 0
+:::
+:::
+
+## Null Distribution: Simulation
+:::{.columns}
+:::{.column}
+
+* Simulate no Association:
+  * Shuffle Outcome
+* Compute $b_1$
+* Repeat many times
+* Visualize (Histogram)
+* Add the observed value
+:::
+:::{.column}
+:::{.fragment}
+```{webr}
+#| fig-width: 5
+#| fig-heigh: 3
+sdob1 <- do(500) *
+  b1(shuffle(Thumb)~Gender, data=Fingers) |> 
+  setNames('b1')
+gf_dhistogram(~b1, data = sdob1, binwidth=1) |>
+  gf_point(0~x, data=data.frame(x=b1(Thumb~Gender, data=Fingers)), color='red', size=3)
+```
+:::
+:::
+:::
+
+# Theotetical Null Distribution
+## Null Distribution: Mathematical Model
+
+:::{.fragment .nonincremental}
+
+- Assumption: Error Distribution $\sim N(0, \sigma)$
+
+::: 
+ 
+:::{.columns}
+:::{.column .fragment .nonincremental}
+Categorical Explanatory
+
+  * Normal
+  * Mean of 0
+  * Same group variances  
+:::
+:::{.column .fragment .nonincremental}
+Quantitative Explanatory
+
+  * Normal
+  * Mean of 0
+  * Variance constant across $X$
+:::
+:::
+
+- Null Distribution: $\frac{b_1}{s_{b1}}\sim t(df=n-2)$
+
+## Example 1: Categorical Explanatory
+$$Y_A\sim N(20, 3), \quad Y_B\sim N(20, 3), \quad n_1=n_2=10$$
+
+:::{.columns}
+:::{.column width="33%"}
+```{r}
+#| fig-width: 3
+#| fig-height: 5
+set.seed(123)
+mu<- c(20, 20); sd<- c(1, 1)*3; n<-c(1, 1)*10
+skw <- c(1, 1)
+w<- 0.5 # binwidth
+dset<- data.frame(
+    x=c(rep('A', n[1]), rep('B', n[2])),
+    y=c(rskw(n[1], mu[1], sd[1], skw),
+        rskw(n[2], mu[2], sd[2], 1)
+        ))
+gf_histogram(~y, data=dset, binwidth=w) |>
+  gf_facet_grid(x~.)
+```
+:::
+:::{.column width="33%"}
+```{r}
+#| fig-width: 3
+#| fig-height: 5
+gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
+  gf_facet_grid(~x)
+```
+:::
+:::{.column width="33%"}
+```{r}
+#| fig-width: 3
+#| fig-height: 5
+gf_boxplot(y~x, data=dset)    
+```
+:::
+:::
+
+## Example 1: Null Distributions
+
+```{r}
+  sdob1 <- do(1000) *
+    b1(shuffle(y)~x, data=dset) |>
+    setNames('b1')
+  b1.bar <- mean(sdob1$b1)
+  b1.sd <- sd(sdob1$b1)
+  n<- length(sdob1$b1)
+  x.lim<- b1.bar+c(-1,1)*4*b1.sd
+
+  b1.qts<- quantile(sdob1$b1, c(.025, 0.975))
+  th.qts<- b1.bar+b1.sd*qt(c(.025, 0.975), df=n-2)
+  sdob1$tail<- factor(sdob1$b1<b1.qts[1] | sdob1$b1>b1.qts[2])
+  gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
+    gf_function(fun=b1dt, args=list(df=n-2, b1=sdob1$b1, w=w),xlim=x.lim)|>
+    gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from = x.lim[1], to = th.qts[1], color='red') |>
+    gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from=th.qts[2], to=x.lim[2], color='red')
+```
+
+## Example (2): Different Variance
+$$Y_A\sim N(20, 6), \quad Y_B\sim N(20, 3), \quad n_1=n_2=10$$
+
+:::{.columns}
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+set.seed(123)
+mu<- c(20, 20); sd<- c(2, 1)*3; n<-c(1, 1)*10
+skw <- c(1, 1)
+w<- 0.5 # binwidth
+dset<- data.frame(
+    x=c(rep('A', n[1]), rep('B', n[2])),
+    y=c(rskw(n[1], mu[1], sd[1], skw),
+        rskw(n[2], mu[2], sd[2], 1)
+        ))
+gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
+  gf_facet_grid(~x)
+```
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+gf_boxplot(x~y, data=dset)    
+```
+:::
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+sdob1 <- do(1000) *
+  b1(shuffle(y)~x, data=dset) |>
+  setNames('b1')
+b1.bar <- mean(sdob1$b1)
+b1.sd <- sd(sdob1$b1)
+n<- length(sdob1$b1)
+x.lim<- b1.bar+c(-1,1)*4*b1.sd
+
+b1.qts<- quantile(sdob1$b1, c(.025, 0.975))
+th.qts<- b1.bar+b1.sd*qt(c(.025, 0.975), df=n-2)
+sdob1$tail<- factor(sdob1$b1<b1.qts[1] | sdob1$b1>b1.qts[2])
+gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
+  gf_function(fun=b1dt, args=list(df=n-2, b1=sdob1$b1, w=w),xlim=x.lim)|>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from = x.lim[1], to = th.qts[1], color='red') |>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from=th.qts[2], to=x.lim[2], color='red')
+```
+:::
+:::
+
+## Example (3): Unbalanced Data
+$$Y_A\sim N(20, 6), \quad Y_B\sim N(20, 3), \quad n_1=10, n_2=15$$
+
+:::{.columns}
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+set.seed(123)
+mu<- c(20, 20); sd<- c(2, 1)*3; n<-c(1, 1.5)*10
+skw <- c(1, 1)
+w<- 0.5 # binwidth
+dset<- data.frame(
+    x=c(rep('A', n[1]), rep('B', n[2])),
+    y=c(rskw(n[1], mu[1], sd[1], skw),
+        rskw(n[2], mu[2], sd[2], 1)
+        ))
+gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
+  gf_facet_grid(~x)
+```
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+gf_boxplot(x~y, data=dset)    
+```
+:::
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+sdob1 <- do(1000) *
+  b1(shuffle(y)~x, data=dset) |>
+  setNames('b1')
+b1.bar <- mean(sdob1$b1)
+b1.sd <- sd(sdob1$b1)
+n<- length(sdob1$b1)
+x.lim<- b1.bar+c(-1,1)*4*b1.sd
+
+b1.qts<- quantile(sdob1$b1, c(.025, 0.975))
+th.qts<- b1.bar+b1.sd*qt(c(.025, 0.975), df=n-2)
+sdob1$tail<- factor(sdob1$b1<b1.qts[1] | sdob1$b1>b1.qts[2])
+gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
+  gf_function(fun=b1dt, args=list(df=n-2, b1=sdob1$b1, w=w),xlim=x.lim)|>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from = x.lim[1], to = th.qts[1], color='red') |>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from=th.qts[2], to=x.lim[2], color='red')
+```
+:::
+:::
+
+## Example (4): Skewed Distribution
+$$Y_A\sim N(20, 3), \quad Y_B\sim \text{skewed right}, \quad n_1=10, n_2=15$$
+
+:::{.columns}
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+set.seed(123)
+mu<- c(20, 20); sd<- c(1, 1)*3; n<-c(1, 1.5)*10
+skw <- c(1, 5)
+w<- 0.5 # binwidth
+dset<- data.frame(
+    x=c(rep('A', n[1]), rep('B', n[2])),
+    y=c(rskw(n[1], mu[1], sd[1], skw),
+        rskw(n[2], mu[2], sd[2], 1)
+        ))
+gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
+  gf_facet_grid(~x)
+```
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+gf_boxplot(x~y, data=dset)    
+```
+:::
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+sdob1 <- do(1000) *
+  b1(shuffle(y)~x, data=dset) |>
+  setNames('b1')
+b1.bar <- mean(sdob1$b1)
+b1.sd <- sd(sdob1$b1)
+n<- length(sdob1$b1)
+x.lim<- b1.bar+c(-1,1)*4*b1.sd
+
+b1.qts<- quantile(sdob1$b1, c(.025, 0.975))
+th.qts<- b1.bar+b1.sd*qt(c(.025, 0.975), df=n-2)
+sdob1$tail<- factor(sdob1$b1<b1.qts[1] | sdob1$b1>b1.qts[2])
+gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
+  gf_function(fun=b1dt, args=list(df=n-2, b1=sdob1$b1, w=w),xlim=x.lim)|>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from = x.lim[1], to = th.qts[1], color='red') |>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from=th.qts[2], to=x.lim[2], color='red')
+```
+:::
+:::
+
+## Example (5): Skewed & large $n$
+$$Y_A\sim N(20, 3), \quad Y_B\sim \text{skewed right}, \quad n_1=100, n_2=150$$
+
+
+:::{.columns}
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+set.seed(123)
+mu<- c(20, 20); sd<- c(1, 1)*3; n<-c(1, 1.5)*100
+skw <- c(1, 5)
+w<- 0.5 # binwidth
+dset<- data.frame(
+    x=c(rep('A', n[1]), rep('B', n[2])),
+    y=c(rskw(n[1], mu[1], sd[1], skw),
+        rskw(n[2], mu[2], sd[2], 1)
+        ))
+gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
+  gf_facet_grid(~x)
+```
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+gf_boxplot(x~y, data=dset)    
+```
+:::
+:::{.column}
+```{r}
+#| fig-width: 5
+#| fig-height: 5
+sdob1 <- do(1000) *
+  b1(shuffle(y)~x, data=dset) |>
+  setNames('b1')
+b1.bar <- mean(sdob1$b1)
+b1.sd <- sd(sdob1$b1)
+n<- length(sdob1$b1)
+x.lim<- b1.bar+c(-1,1)*4*b1.sd
+
+b1.qts<- quantile(sdob1$b1, c(.025, 0.975))
+th.qts<- b1.bar+b1.sd*qt(c(.025, 0.975), df=n-2)
+sdob1$tail<- factor(sdob1$b1<b1.qts[1] | sdob1$b1>b1.qts[2])
+gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
+  gf_function(fun=b1dt, args=list(df=n-2, b1=sdob1$b1, w=w),xlim=x.lim)|>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from = x.lim[1], to = th.qts[1], color='red') |>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from=th.qts[2], to=x.lim[2], color='red')
+```
+:::
+:::
+
+## Null Distribution Summary
+For **binary** of **numeriacl** $X$:
+$$Y=\beta_0+\beta_1 X + \varepsilon$$
+
+- If assumptions met: Error Distribution $\sim N(0, \sigma)$
+  - $\frac{b_1-\beta_1}{s_{b_1}} \sim t(df=n-2)$
+
+:::{style="font-size:.7em;"}
+  - $t(df)$:
+    - a density centered at $0$
+    - more spread than $Z$
+    - as $df (n)\to \infty, \quad t\xrightarrow{D} z$
+:::
+
+# Test of Significance $\beta_1$
+
+## $H_a$ & Unusual (Unexpected) Event
+- Assumption & $H_0 \to $ Null Distribution
+- Alternative:
+  - $\beta_1>0$: Reject $H_0$ if too far to the right.
+  - $\beta_1<0$: Reject $H_0$ if too far to the left.
+  - $\beta_1\ne0$: Reject $H_0$ if too far from the middle (expected).
+
+## Thumb~Gender Example
+$$Thumb=\beta_0+\beta_1 Gender_{Male} + \varepsilon$$
+- $H_0: \beta_1=0$ vs. $H_a: \beta_1\ne 0$
+
+:::{.columns}
+:::{.column}
+:::{.fragment}
+```{r}
+#| fig-width: 5
+#| fig-heigh: 3
+sdob1 <- do(500) *
+  b1(shuffle(Thumb)~Gender, data=Fingers)  |>
+  setNames('b1')
+b1.bar <- mean(sdob1$b1)
+b1.sd <- sd(sdob1$b1)
+n<- length(sdob1$b1)
+obs_b1 <- b1(Thumb~Gender, data=Fingers)
+x.lim<- b1.bar+c(-1,1)*4*b1.sd
+w<- 0.5 # binwidth
+
+b1.qts<- quantile(sdob1$b1, c(.025, 0.975))
+th.qts<- b1.bar+b1.sd*qt(c(.025, 0.975), df=n-2)
+sdob1$tail<- factor(sdob1$b1<b1.qts[1] | sdob1$b1>b1.qts[2])
+gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
+  gf_function(fun=b1dt, args=list(df=n-2, b1=sdob1$b1, w=w),xlim=x.lim)|>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from = x.lim[1], to = th.qts[1], color='red') |>
+  gf_fun_fill(fun=function(x) b1dt(x, df=n-2, b1=sdob1$b1, w=w), from=th.qts[2], to=x.lim[2], color='red') |>
+  gf_point(0~b1, data=data.frame(b1=obs_b1, tail=TRUE), color='red', size=3, show.legend=FALSE) |>
+  gf_labs(title=expression('Rejection Region(' * alpha==0.05 * ')'))
+```
+:::
+:::
+:::{.column}
+:::{.fragment}
+```{r}
+#| fig-width: 5
+#| fig-heigh: 3
+sdob1$pval.tail<- factor(abs(sdob1$b1)>abs(obs_b1))
+gf_histogram(~b1, data = sdob1, binwidth=w, fill=~pval.tail, show.legend = FALSE) |>
+  gf_point(0~b1, data=data.frame(b1=obs_b1, pval.tail=TRUE), color='red', size=3, show.legend=FALSE) |>
+  gf_labs(title='p-value')
+```
+
+:::
+:::
+:::
+
+> Probability of getting a result this extreme (or more)
+> **if the null is true**
+
+## Decision
+Reject $H_0$, at $\alpha$ significance level, if:
+
+:::{.columns}
+:::{.column}
+- Observed $b_1$ is in Rejection Region
+:::
+:::{.column}
+- $p$-value is less than $\alpha$
+:::
+:::
+
+:::{.fragment}
+otherwise,
+:::
+- Fail to reject $H_0$
+- Both $H_a$ and $H_0$ are plausible.
+
+# Type I & II Errors
+
+
+## Type I Error
+
+Rejecting a **true** null
+
+:::{.columns}
+:::{.column .fragment .nonincremental}
+- False Positive
+- False Alarm
+:::
+:::{.column .fragment .nonincremental}
+$$\begin{align*}\alpha &= P(\text{Rejecting } H_0|H_0) \\
+\\
+&=\frac{FP}{FP+TN}\end{align*}$$
+:::
+:::
+
+---
+
+## Type II Error
+
+Failing to reject a **false** null
+
+:::{.columns}
+:::{.column .fragment .nonincremental}
+- False Negative
+- Missed Opportunity
+:::
+:::{.column .fragment .nonincremental}
+$$\begin{align*}\beta &= P(\text{Not Rejecting } H_0|H_a) \\
+\\
+&=\frac{FN}{FN+TP}\end{align*}$$
+:::
+:::
+
+## Full Workflow
+
+1. State null
+2. Compute statistic
+3. Find null distribution
+4. Compute p-value
+5. Decide
+
+---
+
+## 🧪 Slide 17 — One Full Example (IMPORTANT)
+
+Use:
+
+* Mean test OR slope test
+
+Walk through:
+
+* Null: slope = 0
+* Observed slope
+* Null distribution
+* p-value
+* Decision
+
+👉 This is the anchor of the session
+
+---
+
+## 🔍 Slide 18 — Assumptions (Light Touch)
+
+* Independence
+* Approximate normality (or large n)
+
+👉 Why:
+
+> Needed for mathematical null distributions
+
+---
+
+## 🔄 Slide 19 — Simulation vs Mathematical
+
+* Simulation = flexible, intuitive
+* Mathematical = faster, standard
+
+👉 Same logic underneath
+
+---
+
+## 🎯 Slide 20 — Takeaway
+
+> All inference = comparing data to a world where nothing is happening
+
+---
+
+---
+
+# 📗 **Session 2 Slides: Extending the Framework**
+
+## 🎯 Slide 1 — Title
+
+**One Logic, Many Tests**
+
+---
+
+## 🔁 Slide 2 — Review
+
+* Null hypothesis
+* Null distribution
+* P-value
+
+👉 Same process every time
+
+---
+
+## 🧠 Slide 3 — Big Idea
+
+> Different tests = different statistics
+> Same logic = always compare to null
+
+---
+
+## 📊 Slide 4 — Multiple Groups (ANOVA Idea)
+
+* Compare more than 2 means
+
+Null:
+
+> All group means are equal
+
+---
+
+## ⚖️ Slide 5 — ANOVA Statistic
+
+* Measures:
+
+  * Between-group variability
+  * Relative to within-group variability
+
+👉 Big value → evidence against null
+
+---
+
+## 📈 Slide 6 — Regression Test
+
+Null:
+
+> Slope ($b_1$) = 0
+
+👉 No relationship
+
+---
+
+## 📊 Slide 7 — Regression Logic
+
+* Compare observed slope
+* To slopes expected by chance
+
+👉 Same workflow as Session 1
+
+---
+
+## 🧮 Slide 8 — Chi-Square (New Context)
+
+* Two categorical variables
+
+Null:
+
+> Variables are independent
+
+---
+
+## 📉 Slide 9 — Chi-Square Idea
+
+* Compare:
+
+  * Observed counts
+  * Expected counts under independence
+
+---
+
+## 📊 Slide 10 — Shape of χ² Distribution
+
+* Not symmetric
+* Right-skewed
+
+👉 Important conceptual shift
+
+---
+
+## 🎯 Slide 11 — Unifying Slide (VERY IMPORTANT)
+
+| Test       | Statistic  | Null          |
+| ---------- | ---------- | ------------- |
+| Mean       | difference | no difference |
+| Regression | slope      | slope = 0     |
+| ANOVA      | F          | equal means   |
+| Chi-square | χ²         | independence  |
+
+👉 Same logic across all
+
+---
+
+## 🚨 Slide 12 — Type I Error Reminder
+
+* False positive
+
+---
+
+## ⚠️ Slide 13 — Type I Error Inflation
+
+* More tests → more false positives
+
+---
+
+## 📊 Slide 14 — Example
+
+If α = 0.05:
+
+* 1 test → 5% chance false positive
+* 20 tests → much higher chance
+
+---
+
+## 🧠 Slide 15 — Why This Matters
+
+* Real-world research
+* Multiple comparisons
+
+---
+
+## 🛠️ Slide 16 — Practical Thinking
+
+* Be cautious with many tests
+* Look for patterns, not isolated results
+
+---
+
+## 🔁 Slide 17 — Full Circle
+
+> Same 5-step process:
+
+1. Null
+2. Statistic
+3. Null distribution
+4. P-value
+5. Decision
+
+---
+
+## 🎯 Slide 18 — Final Takeaway
+
+> Inference is not about formulas
+> It’s about comparing reality to randomness
+
+---
+
+---
+
+# 💡 Optional Add-Ons (Highly Recommended)
+
+### In-class activities
+
+* **Session 1:** simulate null distribution (shuffle slope)
+* **Session 2:** match test → null → statistic activity
+
+-->

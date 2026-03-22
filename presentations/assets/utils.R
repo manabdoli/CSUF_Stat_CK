@@ -8,9 +8,7 @@ indent_print <- function(x, spaces = 4) {
 }
 
 # Mimicing gf_model of coursekata::
-gf_model <- function(object, model,
-                           width = 0.5,
-                           ...) {
+gf_model <- function(object, model, width = 0.5, ...) {
   #browser()
   if (!inherits(object, c("gg", "ggplot"))) {
     rlang::abort("Layer on top of a ggformula/ggplot object.")
@@ -256,3 +254,55 @@ sst <- function(y){
 f <- function(mod) {
   anova(mod)[1, "F value"]
 }
+
+# 
+gf_fun_fill <- function(object=NULL, fun=NULL, ..., from = -4, to = 4, n=100, fill='orange', alpha=.5) {
+  if(!is.null(object)) {
+    if("function" %in% class(object)){
+        if("function" %in% class(fun)){
+            stop('Two functions are passed!')
+        } else{
+            fun <- object
+            object <- ggplot2::ggplot()
+        }
+    } else{
+        if(!"ggplot" %in% class(object) && !"gf_ggplot" %in% class(object)) {
+            stop('Object is not a ggplot object!')
+        } else
+            if(is.null(object)) object<- ggplot()
+    }
+  }
+
+  x <- seq(from, to, length.out = n)
+  object<- (object |> gf_area(y ~ x, 
+  data=data.frame(x=x, y=fun(x)),
+    fill = fill, alpha = alpha)) |>
+    gf_function(fun = fun, ...)
+  object
+}
+
+b1dt <- function(x, df, b1, w=1) {
+    b1.n<- length(b1)
+    b1.bar<- mean(b1)
+    b1.sd<- sd(b1)
+    dt((x-b1.bar)/b1.sd, df=df)/b1.sd*b1.n*w
+}
+
+#
+rskw <- function(n, mu=0, sd=1, skw=2){
+    x <- rnorm(n, mu, sd)
+    if(length(skw)==1) 
+        skw<- c(if(skw<0) c(abs(skw), NA),
+                if(skw>0) c(NA, skw))
+    if(!is.na(skw[1])){
+        idx<- which(x<mu)
+        x[idx] <- mu + (x[idx]-mu)*skw[1]
+    }
+    if(!is.na(skw[2])){
+        idx<- which(x>mu)
+        x[idx] <- mu + (x[idx]-mu)*skw[2]
+    }
+    x
+}
+
+# 

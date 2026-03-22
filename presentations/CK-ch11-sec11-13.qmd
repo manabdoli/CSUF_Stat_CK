@@ -1,0 +1,458 @@
+---
+title: "CourseKata Chapter 11"
+subtitle: "Model Significance (2)"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 11 (2)"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch11-sec11-13.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Fingers.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Fingers))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- **Modeling Data vs DGP**
+- **Sampling Distribution**
+- **Null Distribution of $b_1: (\mu_1-\mu_2)$**
+- **Unlikely (unexpected) Events**
+- **$\alpha$ vs. p-value**
+- **Testing $b_1: \beta_1$**
+
+:::
+
+Perfect—this is where we can really shape the learning experience. I’ll give you **clean, ready-to-build slide structures** (works great for Quarto/RevealJS or PowerPoint), aligned with your quizzes and CourseKata flow.
+
+I’ll keep:
+
+* Minimal text per slide
+* Strong narrative flow
+* Built-in moments for questions/simulation
+
+---
+
+# 📘 **Session 1 Slides: Foundations of Inference**
+
+## 🎯 Slide 1 — Title
+
+**From Sampling to Inference**
+*Subtitle: How do we decide if a result is “real”?*
+
+---
+
+## 🧠 Slide 2 — Big Question
+
+> If we see a pattern in data…
+> **Is it real or just random chance?**
+
+---
+
+## 🔁 Slide 3 — Recall: Sampling Variability
+
+* Different samples → different statistics
+* Statistics **vary naturally**
+
+👉 Key idea:
+
+> Variation is normal, not suspicious
+
+---
+
+## 📊 Slide 4 — Sampling Distribution
+
+* Distribution of a statistic across many samples
+* Built by:
+
+  * Re-sampling OR
+  * Mathematical theory
+
+---
+
+## 🔗 Slide 5 — Bridge to Inference
+
+> What if there is **no real effect**?
+
+We can ask:
+
+* What would statistics look like **just by chance**?
+
+👉 This leads to…
+
+---
+
+## ⚖️ Slide 6 — Null Hypothesis
+
+**Null ($H_0$):**
+
+* No effect
+* No difference
+* No relationship
+
+Examples:
+
+* Mean difference = 0
+* Slope = 0
+
+---
+
+## 📉 Slide 7 — Null Distribution
+
+* Distribution of a statistic **assuming $H_0$ is true**
+
+👉 Built by:
+
+* Simulation (shuffle)
+* Mathematical models (normal, t, etc.)
+
+---
+
+## 🎯 Slide 8 — Key Idea
+
+> We compare what we **observed**
+> to what we would expect **by chance**
+
+---
+
+## 📏 Slide 9 — Test Statistic
+
+* A number summarizing the effect
+
+  * Mean difference
+  * Slope
+  * etc.
+
+👉 Question:
+
+> Is it unusually large (or small)?
+
+---
+
+## 📊 Slide 10 — Visual Idea
+
+Sketch:
+
+* Bell curve (null distribution)
+* Mark observed statistic
+
+---
+
+## 📉 Slide 11 — P-value
+
+**Definition:**
+
+> Probability of getting a result this extreme (or more)
+> **if the null is true**
+
+---
+
+## 🧠 Slide 12 — Interpretation
+
+* Small p-value → unusual under null
+* Large p-value → consistent with null
+
+👉 Not:
+
+* “Probability null is true”
+
+---
+
+## 🚨 Slide 13 — Decision Rule
+
+* If p-value < α (e.g., 0.05)
+  → Reject $H_0$
+
+---
+
+## ⚠️ Slide 14 — Type I Error
+
+Rejecting a **true** null
+
+👉 False positive
+
+---
+
+## ⚠️ Slide 15 — Type II Error
+
+Failing to reject a **false** null
+
+👉 Missed detection
+
+---
+
+## 🔁 Slide 16 — Full Workflow
+
+1. State null
+2. Compute statistic
+3. Find null distribution
+4. Compute p-value
+5. Decide
+
+---
+
+## 🧪 Slide 17 — One Full Example (IMPORTANT)
+
+Use:
+
+* Mean test OR slope test
+
+Walk through:
+
+* Null: slope = 0
+* Observed slope
+* Null distribution
+* p-value
+* Decision
+
+👉 This is the anchor of the session
+
+---
+
+## 🔍 Slide 18 — Assumptions (Light Touch)
+
+* Independence
+* Approximate normality (or large n)
+
+👉 Why:
+
+> Needed for mathematical null distributions
+
+---
+
+## 🔄 Slide 19 — Simulation vs Mathematical
+
+* Simulation = flexible, intuitive
+* Mathematical = faster, standard
+
+👉 Same logic underneath
+
+---
+
+## 🎯 Slide 20 — Takeaway
+
+> All inference = comparing data to a world where nothing is happening
+
+---
+
+---
+
+# 📗 **Session 2 Slides: Extending the Framework**
+
+## 🎯 Slide 1 — Title
+
+**One Logic, Many Tests**
+
+---
+
+## 🔁 Slide 2 — Review
+
+* Null hypothesis
+* Null distribution
+* P-value
+
+👉 Same process every time
+
+---
+
+## 🧠 Slide 3 — Big Idea
+
+> Different tests = different statistics
+> Same logic = always compare to null
+
+---
+
+## 📊 Slide 4 — Multiple Groups (ANOVA Idea)
+
+* Compare more than 2 means
+
+Null:
+
+> All group means are equal
+
+---
+
+## ⚖️ Slide 5 — ANOVA Statistic
+
+* Measures:
+
+  * Between-group variability
+  * Relative to within-group variability
+
+👉 Big value → evidence against null
+
+---
+
+## 📈 Slide 6 — Regression Test
+
+Null:
+
+> Slope ($b_1$) = 0
+
+👉 No relationship
+
+---
+
+## 📊 Slide 7 — Regression Logic
+
+* Compare observed slope
+* To slopes expected by chance
+
+👉 Same workflow as Session 1
+
+---
+
+## 🧮 Slide 8 — Chi-Square (New Context)
+
+* Two categorical variables
+
+Null:
+
+> Variables are independent
+
+---
+
+## 📉 Slide 9 — Chi-Square Idea
+
+* Compare:
+
+  * Observed counts
+  * Expected counts under independence
+
+---
+
+## 📊 Slide 10 — Shape of χ² Distribution
+
+* Not symmetric
+* Right-skewed
+
+👉 Important conceptual shift
+
+---
+
+## 🎯 Slide 11 — Unifying Slide (VERY IMPORTANT)
+
+| Test       | Statistic  | Null          |
+| ---------- | ---------- | ------------- |
+| Mean       | difference | no difference |
+| Regression | slope      | slope = 0     |
+| ANOVA      | F          | equal means   |
+| Chi-square | χ²         | independence  |
+
+👉 Same logic across all
+
+---
+
+## 🚨 Slide 12 — Type I Error Reminder
+
+* False positive
+
+---
+
+## ⚠️ Slide 13 — Type I Error Inflation
+
+* More tests → more false positives
+
+---
+
+## 📊 Slide 14 — Example
+
+If α = 0.05:
+
+* 1 test → 5% chance false positive
+* 20 tests → much higher chance
+
+---
+
+## 🧠 Slide 15 — Why This Matters
+
+* Real-world research
+* Multiple comparisons
+
+---
+
+## 🛠️ Slide 16 — Practical Thinking
+
+* Be cautious with many tests
+* Look for patterns, not isolated results
+
+---
+
+## 🔁 Slide 17 — Full Circle
+
+> Same 5-step process:
+
+1. Null
+2. Statistic
+3. Null distribution
+4. P-value
+5. Decision
+
+---
+
+## 🎯 Slide 18 — Final Takeaway
+
+> Inference is not about formulas
+> It’s about comparing reality to randomness
+
+---
+
+---
+
+# 💡 Optional Add-Ons (Highly Recommended)
+
+### In-class activities
+
+* **Session 1:** simulate null distribution (shuffle slope)
+* **Session 2:** match test → null → statistic activity
+

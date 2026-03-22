@@ -9,7 +9,7 @@ format:
     chalkboard: true
     preview-links: true
     code-overflow: wrap
-    footer: "CourseKata Ch. 9"
+    footer: "CourseKata Ch. 10"
 engine: knitr
 execute:
   echo: true
@@ -195,5 +195,86 @@ How far is **far**?
     - $\beta_1<0$: Left tail
     - $\beta_1\ne0$: both tails 
   
+## Example: One-Tail Tests
+:::{.columns}
+:::{.column}
+$H_a: \beta_1>0$
+```{webr}
+#| fig-width: 5
+#| figfig-height: 3
+gf_histogram(~swimmerYes, data = null_slopes, 
+             fill=~swimmerYes>obs_b1, bins=35) |>
+  gf_point(0~obs_b1, color='red', size=2) |>
+  gf_labs(title=sprintf('p-value=%g', mean(null_slopes$swimmerYes>obs_b1)))
+
+```
+:::
+:::{.column}
+$H_a: \beta_1<0$
+```{webr}
+#| fig-width: 5
+#| figfig-height: 3
+gf_histogram(~swimmerYes, data = null_slopes, 
+             fill=~swimmerYes<obs_b1, bins=35) |>
+  gf_point(0~obs_b1, color='red', size=2) |>
+  gf_labs(title=sprintf('p-value=%g', mean(null_slopes$swimmerYes<obs_b1)))
+
+```
+:::
+
+## Example: Two-Tail Tests
+:::{.columns}
+:::{.column}
+$H_a: \beta_1\ne 0$
+```{webr}
+#| fig-width: 5
+#| figfig-height: 3
+gf_histogram(~swimmerYes, data = null_slopes, 
+             fill=~abs(swimmerYes)>abs(obs_b1), bins=35) |>
+  gf_point(0~obs_b1, color='red', size=2) |>
+  gf_labs(title=sprintf('p-value=%g',
+                        mean(abs(null_slopes$swimmerYes)>abs(obs_b1))))
+
+```
+:::
+:::{.column}
+$F$ p-value
+```{webr}
+#| fig-width: 5
+#| figfig-height: 3
+supernova(lm(breath_time~swimmer, data = breath))
+
+```
+:::
+
+## $F$ and $t$ Distributions
+$F$ statistics in ANOVA:
+  - Follows $F(df_{num}, df_{denum})$
+
+:::{.columns}
+:::{.column}
+```{webr}
+#| fig-width: 5
+#| figfig-height: 3
+supernova(lm(breath_time~swimmer, data = breath))
+
+```
+:::
+:::{.column}
+$F$ p-value
+```{webr}
+#| fig-width: 5
+#| figfig-height: 3
+df1<- 1; df2<- 41;
+gf_dist("density", dist = "f", df1 = df1, df2 = df2, color = "blue") |>
+  gf_ribbon(
+    ymin = 0,
+    ymax = ~df(x, df1, df2),
+    data = data.frame(x = seq(3.651, 6, length.out = 200)),
+    fill = "red", alpha = 0.4
+  )
+```
+:::
+
 # Quantitative ~ Quantitative
 ## Testing $b_1: \beta_1$
