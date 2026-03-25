@@ -1423,7 +1423,7 @@
     "href": "presentations/CK-ch11-sec1-9.html#full-workflow",
     "title": "CourseKata Chapter 11",
     "section": "Full Workflow",
-    "text": "Full Workflow\n\nState the null hypothesis\nCompute (test) statistic\nFind the null distribution\nCompute p-value or check against R.R.\nDecide & Conclude\nCheck assumptions",
+    "text": "Full Workflow\n\nState the null & Alt. hypothesis\nFind the null distribution of the test statistic\nCompute the observed (test) statistic\nCompute p-value or check against R.R.\nMake a decision & write a conclusion\nCheck assumptions",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
@@ -1608,425 +1608,238 @@
     "href": "presentations/CK-ch11-sec11-13.html#overview-goals",
     "title": "CourseKata Chapter 11",
     "section": "Overview / Goals",
-    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModeling Data vs DGP\nSampling Distribution\nNull Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\nUnlikely (unexpected) Events\n\\(\\alpha\\) vs. p-value\nTesting \\(b_1: \\beta_1\\)\n\nPerfect—this is where we can really shape the learning experience. I’ll give you clean, ready-to-build slide structures (works great for Quarto/RevealJS or PowerPoint), aligned with your quizzes and CourseKata flow.\nI’ll keep:\n\nMinimal text per slide\nStrong narrative flow\nBuilt-in moments for questions/simulation",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComplex v. Simple Models\nType I Error Inflation\nSingle Model Test\nPairwise Comparisons\nTest of Independence",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-1-title",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-1-title",
+    "objectID": "presentations/CK-ch11-sec11-13.html#test-procedure-workflow",
+    "href": "presentations/CK-ch11-sec11-13.html#test-procedure-workflow",
     "title": "CourseKata Chapter 11",
-    "section": "🎯 Slide 1 — Title",
-    "text": "🎯 Slide 1 — Title\nFrom Sampling to Inference Subtitle: How do we decide if a result is “real”?",
+    "section": "Test Procedure Workflow",
+    "text": "Test Procedure Workflow\n\nState the null & Alt. hypothesis\nFind the null distribution of the test statistic\nCompute the observed (test) statistic\nCompute p-value or check against R.R.\nMake a decision & write a conclusion\nCheck assumptions",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-2-big-question",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-2-big-question",
+    "objectID": "presentations/CK-ch11-sec11-13.html#empty-model-vs-2-parameter-model",
+    "href": "presentations/CK-ch11-sec11-13.html#empty-model-vs-2-parameter-model",
     "title": "CourseKata Chapter 11",
-    "section": "🧠 Slide 2 — Big Question",
-    "text": "🧠 Slide 2 — Big Question\n\nIf we see a pattern in data… Is it real or just random chance?",
+    "section": "Empty Model vs 2-Parameter Model",
+    "text": "Empty Model vs 2-Parameter Model\n\nEmpty Model: \\[Y = \\beta_0 + \\varepsilon\\]\nBinary Explanatory: \\[Y = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\beta_0=\\mu_1, \\beta_1=\\mu_2-\\mu_1\\]\nSimple Linear Regression: \\[Y = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\ \\beta_0=\\mu_{X=0},\\  \\beta_1=\\frac{\\Delta Y}{\\Delta X}\\]",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-3-recall-sampling-variability",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-3-recall-sampling-variability",
+    "objectID": "presentations/CK-ch11-sec11-13.html#complex-models",
+    "href": "presentations/CK-ch11-sec11-13.html#complex-models",
     "title": "CourseKata Chapter 11",
-    "section": "🔁 Slide 3 — Recall: Sampling Variability",
-    "text": "🔁 Slide 3 — Recall: Sampling Variability\n\nDifferent samples → different statistics\nStatistics vary naturally\n\n👉 Key idea:\n\nVariation is normal, not suspicious",
+    "section": "Complex Models",
+    "text": "Complex Models\nModels with more than two parameters:\n\nMulti-level Categorical Explanatory: \\[\\text{Thumb}=\\beta_0 + \\beta_1 X_{[\\text{Part-time Job}]} + \\beta_2 X_{[\\text{Full-time Job}]} + \\varepsilon\\]\nMultiple Numerical Explanatory: \\[\\text{Thumb}=\\beta_0 + \\beta_1 \\text{Height} + \\beta_2 \\text{GradePredict} + \\varepsilon\\]\nCombination of Numerical and Categorical: \\[\\text{Thumb}\\sim \\text{Height}+\\text{Job}\\]",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-4-sampling-distribution",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-4-sampling-distribution",
+    "objectID": "presentations/CK-ch11-sec11-13.html#testing-complex-vs-empty-models",
+    "href": "presentations/CK-ch11-sec11-13.html#testing-complex-vs-empty-models",
     "title": "CourseKata Chapter 11",
-    "section": "📊 Slide 4 — Sampling Distribution",
-    "text": "📊 Slide 4 — Sampling Distribution\n\nDistribution of a statistic across many samples\nBuilt by:\n\nRe-sampling OR\nMathematical theory",
+    "section": "Testing Complex vs Empty Models",
+    "text": "Testing Complex vs Empty Models\n\n\nTesting non-empty model parameters one at a time \\[\\begin{align} H_0:& \\beta_1=0\\text{ vs. }H_a: \\beta_1\\ne 0\\\\\n\\vdots&\\\\\nH_0:& \\beta_k=0\\text{ vs. }H_a: \\beta_k\\ne 0\n\\end{align}\\]\nTesting all model at once \\[\\begin{align} H_0:& \\beta_1=\\cdots=\\beta_k=0 \\\\ H_a:& \\text{At least one }\\beta_i\\ne 0, i=1, \\cdots, k\\end{align} \\]",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-5-bridge-to-inference",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-5-bridge-to-inference",
+    "objectID": "presentations/CK-ch11-sec11-13.html#testing-two-complex-models",
+    "href": "presentations/CK-ch11-sec11-13.html#testing-two-complex-models",
     "title": "CourseKata Chapter 11",
-    "section": "🔗 Slide 5 — Bridge to Inference",
-    "text": "🔗 Slide 5 — Bridge to Inference\n\nWhat if there is no real effect?\n\nWe can ask:\n\nWhat would statistics look like just by chance?\n\n👉 This leads to…",
+    "section": "Testing Two Complex Models",
+    "text": "Testing Two Complex Models\n\nTesting Model, so far:\n\nModel vs Empty Model\n\nOther types of comparisons\n\nComplex vs Simple Models\n\nExample:\n\n\\(\\text{Thumb}\\sim \\text{Gender}\\) vs. \\(\\text{Thumb}\\sim \\text{Job}\\)\n\\(\\text{Thumb}\\sim \\text{Heigh}\\) vs. \\(\\text{Thumb}\\sim \\text{Heigh} + \\text{Gender}\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-6-null-hypothesis",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-6-null-hypothesis",
+    "objectID": "presentations/CK-ch11-sec11-13.html#k-simultaneous-tests",
+    "href": "presentations/CK-ch11-sec11-13.html#k-simultaneous-tests",
     "title": "CourseKata Chapter 11",
-    "section": "⚖️ Slide 6 — Null Hypothesis",
-    "text": "⚖️ Slide 6 — Null Hypothesis\nNull (\\(H_0\\)):\n\nNo effect\nNo difference\nNo relationship\n\nExamples:\n\nMean difference = 0\nSlope = 0",
+    "section": "\\(k\\) Simultaneous Tests",
+    "text": "\\(k\\) Simultaneous Tests\nWhen testing \\(k\\) separate tests at \\(\\alpha\\) sig. level:\n\nFor each test: \\(P(\\text{Type I Error})=\\alpha\\)\nThe over all Type I Error:\n\nTo reject at least one in error, which is\nThe complement of rejecting all correctly; that is,\n\n\n\n\\[\\begin{align} P(\\text{Overall Type I Error})=& 1-P(\\text{All correctly rejected})\\\\\n  =&1-(1-\\alpha)^k\\end{align}\\]",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-7-null-distribution",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-7-null-distribution",
+    "objectID": "presentations/CK-ch11-sec11-13.html#mulriple-tests-correction",
+    "href": "presentations/CK-ch11-sec11-13.html#mulriple-tests-correction",
     "title": "CourseKata Chapter 11",
-    "section": "📉 Slide 7 — Null Distribution",
-    "text": "📉 Slide 7 — Null Distribution\n\nDistribution of a statistic assuming \\(H_0\\) is true\n\n👉 Built by:\n\nSimulation (shuffle)\nMathematical models (normal, t, etc.)",
+    "section": "Mulriple Tests Correction",
+    "text": "Mulriple Tests Correction\n\nSimultaneous multiple tests inflates Type I Error.\nBonferroni’s Correction for \\(g\\) comparisons:\n\nFor each test:\n\nUse \\(\\alpha/g\\) as Significance Level\nReport \\(g\\times p\\text{-value}\\)\n\nGood for small \\(g\\)\n\nTukey’s Correction\n\nMore complex and more powerful",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-8-key-idea",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-8-key-idea",
+    "objectID": "presentations/CK-ch11-sec11-13.html#pre-and-f-tests",
+    "href": "presentations/CK-ch11-sec11-13.html#pre-and-f-tests",
     "title": "CourseKata Chapter 11",
-    "section": "🎯 Slide 8 — Key Idea",
-    "text": "🎯 Slide 8 — Key Idea\n\nWe compare what we observed to what we would expect by chance",
+    "section": "PRE and \\(F\\) Tests",
+    "text": "PRE and \\(F\\) Tests\n\nPRE and \\(F\\):\n\nThe whole model performance\nTesting all parameters at once\nComparing complex vs simple models\n\nTest Procedure\n\nAssumption \\(\\to\\) Null Distribution \\(\\to\\) Observed Value",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-9-test-statistic",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-9-test-statistic",
+    "objectID": "presentations/CK-ch11-sec11-13.html#f-null-distributions",
+    "href": "presentations/CK-ch11-sec11-13.html#f-null-distributions",
     "title": "CourseKata Chapter 11",
-    "section": "📏 Slide 9 — Test Statistic",
-    "text": "📏 Slide 9 — Test Statistic\n\nA number summarizing the effect\n\nMean difference\nSlope\netc.\n\n\n👉 Question:\n\nIs it unusually large (or small)?",
+    "section": "\\(F\\) Null Distributions",
+    "text": "\\(F\\) Null Distributions\n\nSimulation Null Distribution\n\nAssumption: No Association\nDistribution: Histogram of many replications\n\nTheoretical Null Distribution\n\nAssumption: No Association & \\(\\varepsilon\\sim N(0, \\sigma)\\)\nDistribution: \\(\\text{F}\\sim \\text{F}\\left(DF_M, DF_E\\right)\\)\n\nUsed in ANOVA",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-10-visual-idea",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-10-visual-idea",
+    "objectID": "presentations/CK-ch11-sec11-13.html#f-theoretical-distribution-example",
+    "href": "presentations/CK-ch11-sec11-13.html#f-theoretical-distribution-example",
     "title": "CourseKata Chapter 11",
-    "section": "📊 Slide 10 — Visual Idea",
-    "text": "📊 Slide 10 — Visual Idea\nSketch:\n\nBell curve (null distribution)\nMark observed statistic",
+    "section": "\\(F\\) Theoretical Distribution Example",
+    "text": "\\(F\\) Theoretical Distribution Example",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-11-p-value",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-11-p-value",
+    "objectID": "presentations/CK-ch11-sec11-13.html#pre-null-distributions",
+    "href": "presentations/CK-ch11-sec11-13.html#pre-null-distributions",
     "title": "CourseKata Chapter 11",
-    "section": "📉 Slide 11 — P-value",
-    "text": "📉 Slide 11 — P-value\nDefinition:\n\nProbability of getting a result this extreme (or more) if the null is true",
+    "section": "PRE Null Distributions",
+    "text": "PRE Null Distributions\n\nSimulation Null Distribution\n\nAssumption: No Association\nDistribution: Histogram of many replications\n\nTheoretical Null Distribution\n\nAssumption: No Association & \\(\\varepsilon\\sim N(0, \\sigma)\\)\nDistribution: \\(\\text{PRE}\\sim \\text{Beta}\\left(\\alpha=\\frac{DF_M}{2}, \\beta=\\frac{DF_E}{2}\\right)\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-12-interpretation",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-12-interpretation",
+    "objectID": "presentations/CK-ch11-sec11-13.html#pre-theoretical-distribution-example",
+    "href": "presentations/CK-ch11-sec11-13.html#pre-theoretical-distribution-example",
     "title": "CourseKata Chapter 11",
-    "section": "🧠 Slide 12 — Interpretation",
-    "text": "🧠 Slide 12 — Interpretation\n\nSmall p-value → unusual under null\nLarge p-value → consistent with null\n\n👉 Not:\n\n“Probability null is true”",
+    "section": "PRE Theoretical Distribution Example",
+    "text": "PRE Theoretical Distribution Example",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-13-decision-rule",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-13-decision-rule",
+    "objectID": "presentations/CK-ch11-sec11-13.html#testing-complex-vs-simple",
+    "href": "presentations/CK-ch11-sec11-13.html#testing-complex-vs-simple",
     "title": "CourseKata Chapter 11",
-    "section": "🚨 Slide 13 — Decision Rule",
-    "text": "🚨 Slide 13 — Decision Rule\n\nIf p-value &lt; α (e.g., 0.05) → Reject \\(H_0\\)",
+    "section": "Testing Complex vs Simple",
+    "text": "Testing Complex vs Simple\n\n\\(F\\) and PRE:\n\nUse Variations reduction from Empty Model\n\nComparing Complex vs. Simple\n\nError reduction \\(= SSE_{Simple} - SSE_{Complex}\\)\nDF of the reduction \\(= DF_{Simple} - DF_{Complex}\\)\n\nCompare Complex Model:\n\nUse PRE & \\(F\\) of Reduction",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-14-type-i-error",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-14-type-i-error",
+    "objectID": "presentations/CK-ch11-sec11-13.html#example-comparing-complex-vs-simple",
+    "href": "presentations/CK-ch11-sec11-13.html#example-comparing-complex-vs-simple",
     "title": "CourseKata Chapter 11",
-    "section": "⚠️ Slide 14 — Type I Error",
-    "text": "⚠️ Slide 14 — Type I Error\nRejecting a true null\n👉 False positive",
+    "section": "Example: Comparing Complex vs Simple",
+    "text": "Example: Comparing Complex vs Simple",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-15-type-ii-error",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-15-type-ii-error",
+    "objectID": "presentations/CK-ch11-sec11-13.html#controlling-type-i-error",
+    "href": "presentations/CK-ch11-sec11-13.html#controlling-type-i-error",
     "title": "CourseKata Chapter 11",
-    "section": "⚠️ Slide 15 — Type II Error",
-    "text": "⚠️ Slide 15 — Type II Error\nFailing to reject a false null\n👉 Missed detection",
+    "section": "Controlling Type I Error",
+    "text": "Controlling Type I Error\n\nTest the whole model at once (\\(F\\) or \\(PR\\))\n\nIf Significant, run post-hoc analysis\n\nPairwise Post-hoc Tests:\n\nMultiple Levels (for categorical)\nMultiple Variables (for numerical and categorical)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-16-full-workflow",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-16-full-workflow",
+    "objectID": "presentations/CK-ch11-sec11-13.html#example-post-hoc-on-categorical",
+    "href": "presentations/CK-ch11-sec11-13.html#example-post-hoc-on-categorical",
     "title": "CourseKata Chapter 11",
-    "section": "🔁 Slide 16 — Full Workflow",
-    "text": "🔁 Slide 16 — Full Workflow\n\nState null\nCompute statistic\nFind null distribution\nCompute p-value\nDecide",
+    "section": "Example: Post-hoc on Categorical",
+    "text": "Example: Post-hoc on Categorical\n\n\n Analysis of Variance Table (Type III SS)\n Model: Thumb ~ RaceEthnic\n\n                                SS  df      MS     F   PRE     p\n ----- --------------- | --------- --- ------- ----- ----- -----\n Model (error reduced) |   662.334   4 165.583 2.244 .0558 .0669\n Error (from model)    | 11217.877 152  73.802                  \n ----- --------------- | --------- --- ------- ----- ----- -----\n Total (empty model)   | 11880.211 156  76.155                  \n\n\n\nBonferroni Correction:\n\n\n\n   group_1          group_2    diff pooled_se      t    df   lower  upper  p_adj\n   &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 African American White     2.985     2.023  1.476   152  -2.292  8.263 1.0000\n 2 Asian            White    -0.964     1.182 -0.816   152  -4.047  2.119 1.0000\n 3 Latino           White    -1.796     1.434 -1.253   152  -5.536  1.944 1.0000\n 4 Other            White     5.929     1.953  3.037   152   0.836 11.023  .0282\n 5 Asian            African… -3.949     2.003 -1.971   152  -9.175  1.276  .5049\n 6 Latino           African… -4.782     2.162 -2.212   152 -10.420  0.857  .2845\n 7 Other            African…  2.944     2.536  1.161   152  -3.670  9.559 1.0000\n 8 Latino           Asian    -0.832     1.406 -0.592   152  -4.500  2.835 1.0000\n 9 Other            Asian     6.894     1.932  3.567   152   1.853 11.934  .0048\n10 Other            Latino    7.726     2.096  3.686   152   2.258 13.193  .0032\n\n\n\nTukey Correction:\n\n\n\n   group_1          group_2     diff pooled_se      q    df   lower  upper p_adj\n   &lt;chr&gt;            &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n 1 African American White      2.985     2.023  1.476   152  -4.913 10.884 .8347\n 2 Asian            White     -0.964     1.182 -0.816   152  -5.579  3.651 .9783\n 3 Latino           White     -1.796     1.434 -1.253   152  -7.394  3.802 .9018\n 4 Other            White      5.929     1.953  3.037   152  -1.695 13.554 .2058\n 5 Asian            African … -3.949     2.003 -1.971   152 -11.771  3.872 .6325\n 6 Latino           African … -4.782     2.162 -2.212   152 -13.221  3.658 .5227\n 7 Other            African …  2.944     2.536  1.161   152  -6.956 12.844 .9238\n 8 Latino           Asian     -0.832     1.406 -0.592   152  -6.322  4.657 .9935\n 9 Other            Asian      6.894     1.932  3.567   152  -0.651 14.438 .0910\n10 Other            Latino     7.726     2.096  3.686   152  -0.458 15.909 .0742",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-17-one-full-example-important",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-17-one-full-example-important",
+    "objectID": "presentations/CK-ch11-sec11-13.html#recall-test-procedure-workflow",
+    "href": "presentations/CK-ch11-sec11-13.html#recall-test-procedure-workflow",
     "title": "CourseKata Chapter 11",
-    "section": "🧪 Slide 17 — One Full Example (IMPORTANT)",
-    "text": "🧪 Slide 17 — One Full Example (IMPORTANT)\nUse:\n\nMean test OR slope test\n\nWalk through:\n\nNull: slope = 0\nObserved slope\nNull distribution\np-value\nDecision\n\n👉 This is the anchor of the session",
+    "section": "Recall: Test Procedure Workflow",
+    "text": "Recall: Test Procedure Workflow\n\nState the null & Alt. hypothesis\nFind the null distribution of the test statistic\nCompute the observed (test) statistic\nCompute p-value or check against R.R.\nMake a decision & write a conclusion\nCheck assumptions\n\n\nWorks for any test statistics",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-18-assumptions-light-touch",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-18-assumptions-light-touch",
+    "objectID": "presentations/CK-ch11-sec11-13.html#independence-of-categorical-variables",
+    "href": "presentations/CK-ch11-sec11-13.html#independence-of-categorical-variables",
     "title": "CourseKata Chapter 11",
-    "section": "🔍 Slide 18 — Assumptions (Light Touch)",
-    "text": "🔍 Slide 18 — Assumptions (Light Touch)\n\nIndependence\nApproximate normality (or large n)\n\n👉 Why:\n\nNeeded for mathematical null distributions",
+    "section": "Independence of Categorical Variables",
+    "text": "Independence of Categorical Variables\nExample: Are Gender and Job independent?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n               \n                    female       male\n  Not Working   0.58035714 0.55555556\n  Part-time Job 0.41964286 0.42222222\n  Full-time Job 0.00000000 0.02222222",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-19-simulation-vs-mathematical",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-19-simulation-vs-mathematical",
+    "objectID": "presentations/CK-ch11-sec11-13.html#what-does-independent-means",
+    "href": "presentations/CK-ch11-sec11-13.html#what-does-independent-means",
     "title": "CourseKata Chapter 11",
-    "section": "🔄 Slide 19 — Simulation vs Mathematical",
-    "text": "🔄 Slide 19 — Simulation vs Mathematical\n\nSimulation = flexible, intuitive\nMathematical = faster, standard\n\n👉 Same logic underneath",
+    "section": "What does Independent Means?",
+    "text": "What does Independent Means?\n\n\nObserved Proportions:\n\n\n               \n                    female       male\n  Not Working   0.58035714 0.55555556\n  Part-time Job 0.41964286 0.42222222\n  Full-time Job 0.00000000 0.02222222\n\n\n\nObserved Counts \\(n_{ij}\\):\n\n\n               \n                female male\n  Not Working       65   25\n  Part-time Job     47   19\n  Full-time Job      0    1\n\n\n\nExpected Counts under the Null (Independence): | Job |female|male| Total| |———–|—–|—–|—–| |Not Working| | | | |Part-time Job| | | | |Full-time Job| | | | |. Total| | | |",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-20-takeaway",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-20-takeaway",
+    "objectID": "presentations/CK-ch11-sec11-13.html#deviasion-based-test-statistic",
+    "href": "presentations/CK-ch11-sec11-13.html#deviasion-based-test-statistic",
     "title": "CourseKata Chapter 11",
-    "section": "🎯 Slide 20 — Takeaway",
-    "text": "🎯 Slide 20 — Takeaway\n\nAll inference = comparing data to a world where nothing is happening",
+    "section": "Deviasion-based Test Statistic",
+    "text": "Deviasion-based Test Statistic\n\nExpected Counts: \\(e_{ij}=\\frac{n_{i+}\\times n_{+j}}{n}\\)\nDeviation: \\(n_{ij}-e_{ij}\\)\nTest Statistic: \\(\\chi^2 = \\sum_{all\\ cells} \\frac{(n_{ij}-e_{ij})^2}{e_{ij}}\\)\nAssumption: Independence & Large \\(n_{ij}\\): -\\(\\chi^2\\sim \\text{ch-square}\\left(df=(n_{row}-1)(n_{col}-1)\\right)\\)\n\n\n\n\n    Pearson's Chi-squared test\n\ndata:  Fingers$Gender and Fingers$Job\nX-squared = 2.5238, df = 2, p-value = 0.2831",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-1-title-1",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-1-title-1",
+    "objectID": "presentations/CK-ch11-sec11-13.html#simulation-based-test-of-independence",
+    "href": "presentations/CK-ch11-sec11-13.html#simulation-based-test-of-independence",
     "title": "CourseKata Chapter 11",
-    "section": "🎯 Slide 1 — Title",
-    "text": "🎯 Slide 1 — Title\nOne Logic, Many Tests",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-2-review",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-2-review",
-    "title": "CourseKata Chapter 11",
-    "section": "🔁 Slide 2 — Review",
-    "text": "🔁 Slide 2 — Review\n\nNull hypothesis\nNull distribution\nP-value\n\n👉 Same process every time",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-3-big-idea",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-3-big-idea",
-    "title": "CourseKata Chapter 11",
-    "section": "🧠 Slide 3 — Big Idea",
-    "text": "🧠 Slide 3 — Big Idea\n\nDifferent tests = different statistics Same logic = always compare to null",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-4-multiple-groups-anova-idea",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-4-multiple-groups-anova-idea",
-    "title": "CourseKata Chapter 11",
-    "section": "📊 Slide 4 — Multiple Groups (ANOVA Idea)",
-    "text": "📊 Slide 4 — Multiple Groups (ANOVA Idea)\n\nCompare more than 2 means\n\nNull:\n\nAll group means are equal",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-5-anova-statistic",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-5-anova-statistic",
-    "title": "CourseKata Chapter 11",
-    "section": "⚖️ Slide 5 — ANOVA Statistic",
-    "text": "⚖️ Slide 5 — ANOVA Statistic\n\nMeasures:\n\nBetween-group variability\nRelative to within-group variability\n\n\n👉 Big value → evidence against null",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-6-regression-test",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-6-regression-test",
-    "title": "CourseKata Chapter 11",
-    "section": "📈 Slide 6 — Regression Test",
-    "text": "📈 Slide 6 — Regression Test\nNull:\n\nSlope (\\(b_1\\)) = 0\n\n👉 No relationship",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-7-regression-logic",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-7-regression-logic",
-    "title": "CourseKata Chapter 11",
-    "section": "📊 Slide 7 — Regression Logic",
-    "text": "📊 Slide 7 — Regression Logic\n\nCompare observed slope\nTo slopes expected by chance\n\n👉 Same workflow as Session 1",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-8-chi-square-new-context",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-8-chi-square-new-context",
-    "title": "CourseKata Chapter 11",
-    "section": "🧮 Slide 8 — Chi-Square (New Context)",
-    "text": "🧮 Slide 8 — Chi-Square (New Context)\n\nTwo categorical variables\n\nNull:\n\nVariables are independent",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-9-chi-square-idea",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-9-chi-square-idea",
-    "title": "CourseKata Chapter 11",
-    "section": "📉 Slide 9 — Chi-Square Idea",
-    "text": "📉 Slide 9 — Chi-Square Idea\n\nCompare:\n\nObserved counts\nExpected counts under independence",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-10-shape-of-χ²-distribution",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-10-shape-of-χ²-distribution",
-    "title": "CourseKata Chapter 11",
-    "section": "📊 Slide 10 — Shape of χ² Distribution",
-    "text": "📊 Slide 10 — Shape of χ² Distribution\n\nNot symmetric\nRight-skewed\n\n👉 Important conceptual shift",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-11-unifying-slide-very-important",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-11-unifying-slide-very-important",
-    "title": "CourseKata Chapter 11",
-    "section": "🎯 Slide 11 — Unifying Slide (VERY IMPORTANT)",
-    "text": "🎯 Slide 11 — Unifying Slide (VERY IMPORTANT)\n\n\n\nTest\nStatistic\nNull\n\n\n\n\nMean\ndifference\nno difference\n\n\nRegression\nslope\nslope = 0\n\n\nANOVA\nF\nequal means\n\n\nChi-square\nχ²\nindependence\n\n\n\n👉 Same logic across all",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-12-type-i-error-reminder",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-12-type-i-error-reminder",
-    "title": "CourseKata Chapter 11",
-    "section": "🚨 Slide 12 — Type I Error Reminder",
-    "text": "🚨 Slide 12 — Type I Error Reminder\n\nFalse positive",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-13-type-i-error-inflation",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-13-type-i-error-inflation",
-    "title": "CourseKata Chapter 11",
-    "section": "⚠️ Slide 13 — Type I Error Inflation",
-    "text": "⚠️ Slide 13 — Type I Error Inflation\n\nMore tests → more false positives",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-14-example",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-14-example",
-    "title": "CourseKata Chapter 11",
-    "section": "📊 Slide 14 — Example",
-    "text": "📊 Slide 14 — Example\nIf α = 0.05:\n\n1 test → 5% chance false positive\n20 tests → much higher chance",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-15-why-this-matters",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-15-why-this-matters",
-    "title": "CourseKata Chapter 11",
-    "section": "🧠 Slide 15 — Why This Matters",
-    "text": "🧠 Slide 15 — Why This Matters\n\nReal-world research\nMultiple comparisons",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-16-practical-thinking",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-16-practical-thinking",
-    "title": "CourseKata Chapter 11",
-    "section": "🛠️ Slide 16 — Practical Thinking",
-    "text": "🛠️ Slide 16 — Practical Thinking\n\nBe cautious with many tests\nLook for patterns, not isolated results",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-17-full-circle",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-17-full-circle",
-    "title": "CourseKata Chapter 11",
-    "section": "🔁 Slide 17 — Full Circle",
-    "text": "🔁 Slide 17 — Full Circle\n\nSame 5-step process:\n\n\nNull\nStatistic\nNull distribution\nP-value\nDecision",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec11-13.html#slide-18-final-takeaway",
-    "href": "presentations/CK-ch11-sec11-13.html#slide-18-final-takeaway",
-    "title": "CourseKata Chapter 11",
-    "section": "🎯 Slide 18 — Final Takeaway",
-    "text": "🎯 Slide 18 — Final Takeaway\n\nInference is not about formulas It’s about comparing reality to randomness",
+    "section": "Simulation-Based Test of Independence",
+    "text": "Simulation-Based Test of Independence\n\nTest Statistic: \\(\\chi^2 = \\sum_{all\\ cells} \\frac{(n_{ij}-e_{ij})^2}{e_{ij}}\\)\nAssumption: Independence\n\nShuffle one variable\nCalculate test statistics\nRepeat many times\nCreate a histogram as Null Distributoin",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
