@@ -1817,7 +1817,7 @@
     "href": "presentations/CK-ch11-sec11-13.html#what-does-independent-means",
     "title": "CourseKata Chapter 11",
     "section": "What does Independent Means?",
-    "text": "What does Independent Means?\n\n\nObserved Proportions:\n\n\n               \n                    female       male\n  Not Working   0.58035714 0.55555556\n  Part-time Job 0.41964286 0.42222222\n  Full-time Job 0.00000000 0.02222222\n\n\n\nObserved Counts \\(n_{ij}\\):\n\n\n               \n                female male\n  Not Working       65   25\n  Part-time Job     47   19\n  Full-time Job      0    1\n\n\n\nExpected Counts under the Null (Independence): | Job |female|male| Total| |———–|—–|—–|—–| |Not Working| | | | |Part-time Job| | | | |Full-time Job| | | | |. Total| | | |",
+    "text": "What does Independent Means?\n\n\nObserved Proportions:\n\n\n               \n                    female       male\n  Not Working   0.58035714 0.55555556\n  Part-time Job 0.41964286 0.42222222\n  Full-time Job 0.00000000 0.02222222\n\n\n\nObserved Counts \\(n_{ij}\\):\n\n\n               \n                female male\n  Not Working       65   25\n  Part-time Job     47   19\n  Full-time Job      0    1\n\n\n\nExpected Counts under the Null (Independence):\n\n\n\nJob\nfemale\nmale\nTotal\n\n\n\n\nNot Working\n\n\n\n\n\nPart-time Job\n\n\n\n\n\nFull-time Job\n\n\n\n\n\nTotal",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
@@ -1828,7 +1828,7 @@
     "href": "presentations/CK-ch11-sec11-13.html#deviasion-based-test-statistic",
     "title": "CourseKata Chapter 11",
     "section": "Deviasion-based Test Statistic",
-    "text": "Deviasion-based Test Statistic\n\nExpected Counts: \\(e_{ij}=\\frac{n_{i+}\\times n_{+j}}{n}\\)\nDeviation: \\(n_{ij}-e_{ij}\\)\nTest Statistic: \\(\\chi^2 = \\sum_{all\\ cells} \\frac{(n_{ij}-e_{ij})^2}{e_{ij}}\\)\nAssumption: Independence & Large \\(n_{ij}\\): -\\(\\chi^2\\sim \\text{ch-square}\\left(df=(n_{row}-1)(n_{col}-1)\\right)\\)\n\n\n\n\n    Pearson's Chi-squared test\n\ndata:  Fingers$Gender and Fingers$Job\nX-squared = 2.5238, df = 2, p-value = 0.2831",
+    "text": "Deviasion-based Test Statistic\n\nExpected Counts: \\(e_{ij}=\\frac{n_{i+}\\times n_{+j}}{n}\\)\nDeviation: \\(n_{ij}-e_{ij}\\)\nTest Statistic: \\(\\chi^2 = \\sum_{all\\ cells} \\frac{(n_{ij}-e_{ij})^2}{e_{ij}}\\)\nAssumption: Independence & Large \\(n_{ij}\\): -\\(\\chi^2\\sim \\text{ch-square}\\left(df=(n_{row}-1)(n_{col}-1)\\right)\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
