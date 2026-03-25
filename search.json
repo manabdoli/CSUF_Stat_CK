@@ -1630,7 +1630,7 @@
     "href": "presentations/CK-ch11-sec11-13.html#empty-model-vs-2-parameter-model",
     "title": "CourseKata Chapter 11",
     "section": "Empty Model vs 2-Parameter Model",
-    "text": "Empty Model vs 2-Parameter Model\n\nEmpty Model: \\[Y = \\beta_0 + \\varepsilon\\]\nBinary Explanatory: \\[Y = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\beta_0=\\mu_1, \\beta_1=\\mu_2-\\mu_1\\]\nSimple Linear Regression: \\[Y = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\ \\beta_0=\\mu_{X=0},\\  \\beta_1=\\frac{\\Delta Y}{\\Delta X}\\]",
+    "text": "Empty Model vs 2-Parameter Model\n\nEmpty Model: \\[Y = \\beta_0 + \\varepsilon\\]\nBinary Explanatory: \\[Y = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\beta_0=\\mu_1, \\beta_1=\\mu_2-\\mu_1\\]\nSimple Linear Regression: \\[Y = \\beta_0 + \\beta_1 X + \\varepsilon, \\quad \\ \\beta_0=\\mu_{|X=0},\\  \\beta_1=\\frac{\\Delta \\mu}{\\Delta X}\\]",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
@@ -1751,7 +1751,7 @@
     "href": "presentations/CK-ch11-sec11-13.html#testing-complex-vs-simple",
     "title": "CourseKata Chapter 11",
     "section": "Testing Complex vs Simple",
-    "text": "Testing Complex vs Simple\n\n\\(F\\) and PRE:\n\nUse Variations reduction from Empty Model\n\nComparing Complex vs. Simple\n\nError reduction \\(= SSE_{Simple} - SSE_{Complex}\\)\nDF of the reduction \\(= DF_{Simple} - DF_{Complex}\\)\n\nCompare Complex Model:\n\nUse PRE & \\(F\\) of Reduction",
+    "text": "Testing Complex vs Simple\n\n\\(F\\) and PRE:\n\nUse Variations reduction from Empty Model\n\nComparing Complex vs. Simple\n\nError reduction \\(= SSE_{Simple} - SSE_{Complex}\\)\nDF of the reduction \\(= DFE_{Simple} - DFE_{Complex}\\)\n\nCompare Complex Model:\n\nUse PRE & \\(F\\) of Reduction",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
@@ -1773,7 +1773,7 @@
     "href": "presentations/CK-ch11-sec11-13.html#controlling-type-i-error",
     "title": "CourseKata Chapter 11",
     "section": "Controlling Type I Error",
-    "text": "Controlling Type I Error\n\nTest the whole model at once (\\(F\\) or \\(PR\\))\n\nIf Significant, run post-hoc analysis\n\nPairwise Post-hoc Tests:\n\nMultiple Levels (for categorical)\nMultiple Variables (for numerical and categorical)",
+    "text": "Controlling Type I Error\n\nTest the whole model at once (\\(F\\) or \\(PRE\\))\n\nIf Significant, run post-hoc analysis\n\nPairwise Post-hoc Tests:\n\nMultiple Levels (for categorical)\nMultiple Variables (for numerical and categorical)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
@@ -1784,7 +1784,7 @@
     "href": "presentations/CK-ch11-sec11-13.html#example-post-hoc-on-categorical",
     "title": "CourseKata Chapter 11",
     "section": "Example: Post-hoc on Categorical",
-    "text": "Example: Post-hoc on Categorical\n\n\n Analysis of Variance Table (Type III SS)\n Model: Thumb ~ RaceEthnic\n\n                                SS  df      MS     F   PRE     p\n ----- --------------- | --------- --- ------- ----- ----- -----\n Model (error reduced) |   662.334   4 165.583 2.244 .0558 .0669\n Error (from model)    | 11217.877 152  73.802                  \n ----- --------------- | --------- --- ------- ----- ----- -----\n Total (empty model)   | 11880.211 156  76.155                  \n\n\n\nBonferroni Correction:\n\n\n\n   group_1          group_2    diff pooled_se      t    df   lower  upper  p_adj\n   &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;\n 1 African American White     2.985     2.023  1.476   152  -2.292  8.263 1.0000\n 2 Asian            White    -0.964     1.182 -0.816   152  -4.047  2.119 1.0000\n 3 Latino           White    -1.796     1.434 -1.253   152  -5.536  1.944 1.0000\n 4 Other            White     5.929     1.953  3.037   152   0.836 11.023  .0282\n 5 Asian            African… -3.949     2.003 -1.971   152  -9.175  1.276  .5049\n 6 Latino           African… -4.782     2.162 -2.212   152 -10.420  0.857  .2845\n 7 Other            African…  2.944     2.536  1.161   152  -3.670  9.559 1.0000\n 8 Latino           Asian    -0.832     1.406 -0.592   152  -4.500  2.835 1.0000\n 9 Other            Asian     6.894     1.932  3.567   152   1.853 11.934  .0048\n10 Other            Latino    7.726     2.096  3.686   152   2.258 13.193  .0032\n\n\n\nTukey Correction:\n\n\n\n   group_1          group_2     diff pooled_se      q    df   lower  upper p_adj\n   &lt;chr&gt;            &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;\n 1 African American White      2.985     2.023  1.476   152  -4.913 10.884 .8347\n 2 Asian            White     -0.964     1.182 -0.816   152  -5.579  3.651 .9783\n 3 Latino           White     -1.796     1.434 -1.253   152  -7.394  3.802 .9018\n 4 Other            White      5.929     1.953  3.037   152  -1.695 13.554 .2058\n 5 Asian            African … -3.949     2.003 -1.971   152 -11.771  3.872 .6325\n 6 Latino           African … -4.782     2.162 -2.212   152 -13.221  3.658 .5227\n 7 Other            African …  2.944     2.536  1.161   152  -6.956 12.844 .9238\n 8 Latino           Asian     -0.832     1.406 -0.592   152  -6.322  4.657 .9935\n 9 Other            Asian      6.894     1.932  3.567   152  -0.651 14.438 .0910\n10 Other            Latino     7.726     2.096  3.686   152  -0.458 15.909 .0742",
+    "text": "Example: Post-hoc on Categorical",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 11"
