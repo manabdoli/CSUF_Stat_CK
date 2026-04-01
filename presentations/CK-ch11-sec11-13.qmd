@@ -33,6 +33,16 @@ suppressPackageStartupMessages({
 def.par <- par(no.readonly = TRUE)
 on.exit(par(def.par))
 
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
 source('./assets/utils.R')
 source('./assets/embedR.R')
 source('./data/embedData.R')
@@ -58,401 +68,311 @@ library(ggformula)
 library(supernova)
 options(digits = 3)
 
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
 .webr_ready <- TRUE
 set.seed(123)
 ```
 
 
 :::{.nonincremental}
-- **Modeling Data vs DGP**
-- **Sampling Distribution**
-- **Null Distribution of $b_1: (\mu_1-\mu_2)$**
-- **Unlikely (unexpected) Events**
-- **$\alpha$ vs. p-value**
-- **Testing $b_1: \beta_1$**
-
+- **Complex v. Simple Models**
+- **Type I Error Inflation**
+- **Single Model Test**
+- **Pairwise Comparisons**
+- **Test of Independence**
 :::
 
-Perfect—this is where we can really shape the learning experience. I’ll give you **clean, ready-to-build slide structures** (works great for Quarto/RevealJS or PowerPoint), aligned with your quizzes and CourseKata flow.
 
-I’ll keep:
-
-* Minimal text per slide
-* Strong narrative flow
-* Built-in moments for questions/simulation
-
----
-
-# 📘 **Session 1 Slides: Foundations of Inference**
-
-## 🎯 Slide 1 — Title
-
-**From Sampling to Inference**
-*Subtitle: How do we decide if a result is “real”?*
-
----
-
-## 🧠 Slide 2 — Big Question
-
-> If we see a pattern in data…
-> **Is it real or just random chance?**
-
----
-
-## 🔁 Slide 3 — Recall: Sampling Variability
-
-* Different samples → different statistics
-* Statistics **vary naturally**
-
-👉 Key idea:
-
-> Variation is normal, not suspicious
-
----
-
-## 📊 Slide 4 — Sampling Distribution
-
-* Distribution of a statistic across many samples
-* Built by:
-
-  * Re-sampling OR
-  * Mathematical theory
-
----
-
-## 🔗 Slide 5 — Bridge to Inference
-
-> What if there is **no real effect**?
-
-We can ask:
-
-* What would statistics look like **just by chance**?
-
-👉 This leads to…
-
----
-
-## ⚖️ Slide 6 — Null Hypothesis
-
-**Null ($H_0$):**
-
-* No effect
-* No difference
-* No relationship
-
-Examples:
-
-* Mean difference = 0
-* Slope = 0
-
----
-
-## 📉 Slide 7 — Null Distribution
-
-* Distribution of a statistic **assuming $H_0$ is true**
-
-👉 Built by:
-
-* Simulation (shuffle)
-* Mathematical models (normal, t, etc.)
-
----
-
-## 🎯 Slide 8 — Key Idea
-
-> We compare what we **observed**
-> to what we would expect **by chance**
-
----
-
-## 📏 Slide 9 — Test Statistic
-
-* A number summarizing the effect
-
-  * Mean difference
-  * Slope
-  * etc.
-
-👉 Question:
-
-> Is it unusually large (or small)?
-
----
-
-## 📊 Slide 10 — Visual Idea
-
-Sketch:
-
-* Bell curve (null distribution)
-* Mark observed statistic
-
----
-
-## 📉 Slide 11 — P-value
-
-**Definition:**
-
-> Probability of getting a result this extreme (or more)
-> **if the null is true**
-
----
-
-## 🧠 Slide 12 — Interpretation
-
-* Small p-value → unusual under null
-* Large p-value → consistent with null
-
-👉 Not:
-
-* “Probability null is true”
-
----
-
-## 🚨 Slide 13 — Decision Rule
-
-* If p-value < α (e.g., 0.05)
-  → Reject $H_0$
-
----
-
-## ⚠️ Slide 14 — Type I Error
-
-Rejecting a **true** null
-
-👉 False positive
-
----
-
-## ⚠️ Slide 15 — Type II Error
-
-Failing to reject a **false** null
-
-👉 Missed detection
-
----
-
-## 🔁 Slide 16 — Full Workflow
-
-1. State null
-2. Compute statistic
-3. Find null distribution
-4. Compute p-value
-5. Decide
-
----
-
-## 🧪 Slide 17 — One Full Example (IMPORTANT)
-
-Use:
-
-* Mean test OR slope test
-
-Walk through:
-
-* Null: slope = 0
-* Observed slope
-* Null distribution
-* p-value
-* Decision
-
-👉 This is the anchor of the session
-
----
-
-## 🔍 Slide 18 — Assumptions (Light Touch)
-
-* Independence
-* Approximate normality (or large n)
-
-👉 Why:
-
-> Needed for mathematical null distributions
-
----
-
-## 🔄 Slide 19 — Simulation vs Mathematical
-
-* Simulation = flexible, intuitive
-* Mathematical = faster, standard
-
-👉 Same logic underneath
-
----
-
-## 🎯 Slide 20 — Takeaway
-
-> All inference = comparing data to a world where nothing is happening
-
----
-
----
-
-# 📗 **Session 2 Slides: Extending the Framework**
-
-## 🎯 Slide 1 — Title
-
-**One Logic, Many Tests**
-
----
-
-## 🔁 Slide 2 — Review
-
-* Null hypothesis
-* Null distribution
-* P-value
-
-👉 Same process every time
-
----
-
-## 🧠 Slide 3 — Big Idea
-
-> Different tests = different statistics
-> Same logic = always compare to null
-
----
-
-## 📊 Slide 4 — Multiple Groups (ANOVA Idea)
-
-* Compare more than 2 means
-
-Null:
-
-> All group means are equal
-
----
-
-## ⚖️ Slide 5 — ANOVA Statistic
-
-* Measures:
-
-  * Between-group variability
-  * Relative to within-group variability
-
-👉 Big value → evidence against null
-
----
-
-## 📈 Slide 6 — Regression Test
-
-Null:
-
-> Slope ($b_1$) = 0
-
-👉 No relationship
-
----
-
-## 📊 Slide 7 — Regression Logic
-
-* Compare observed slope
-* To slopes expected by chance
-
-👉 Same workflow as Session 1
-
----
-
-## 🧮 Slide 8 — Chi-Square (New Context)
-
-* Two categorical variables
-
-Null:
-
-> Variables are independent
-
----
-
-## 📉 Slide 9 — Chi-Square Idea
-
-* Compare:
-
-  * Observed counts
-  * Expected counts under independence
-
----
-
-## 📊 Slide 10 — Shape of χ² Distribution
-
-* Not symmetric
-* Right-skewed
-
-👉 Important conceptual shift
-
----
-
-## 🎯 Slide 11 — Unifying Slide (VERY IMPORTANT)
-
-| Test       | Statistic  | Null          |
-| ---------- | ---------- | ------------- |
-| Mean       | difference | no difference |
-| Regression | slope      | slope = 0     |
-| ANOVA      | F          | equal means   |
-| Chi-square | χ²         | independence  |
-
-👉 Same logic across all
-
----
-
-## 🚨 Slide 12 — Type I Error Reminder
-
-* False positive
-
----
-
-## ⚠️ Slide 13 — Type I Error Inflation
-
-* More tests → more false positives
-
----
-
-## 📊 Slide 14 — Example
-
-If α = 0.05:
-
-* 1 test → 5% chance false positive
-* 20 tests → much higher chance
-
----
-
-## 🧠 Slide 15 — Why This Matters
-
-* Real-world research
-* Multiple comparisons
-
----
-
-## 🛠️ Slide 16 — Practical Thinking
-
-* Be cautious with many tests
-* Look for patterns, not isolated results
-
----
-
-## 🔁 Slide 17 — Full Circle
-
-> Same 5-step process:
-
-1. Null
-2. Statistic
-3. Null distribution
-4. P-value
-5. Decision
-
----
-
-## 🎯 Slide 18 — Final Takeaway
-
-> Inference is not about formulas
-> It’s about comparing reality to randomness
-
----
-
----
-
-# 💡 Optional Add-Ons (Highly Recommended)
-
-### In-class activities
-
-* **Session 1:** simulate null distribution (shuffle slope)
-* **Session 2:** match test → null → statistic activity
+## Test Procedure Workflow
+
+:::{.nonincremental}
+1. State the null & Alt. hypothesis
+2. Find the null distribution of the test statistic
+3. Compute the observed (test) statistic
+4. Compute p-value or check against R.R.
+5. Make a decision & write a conclusion
+6. Check assumptions
+:::
+
+# Complex v. Simple Models
+## Empty Model vs 2-Parameter Model 
+- Empty Model: $$Y = \beta_0 + \varepsilon$$
+- Binary Explanatory: $$Y = \beta_0 + \beta_1 X + \varepsilon, \quad \beta_0=\mu_1, \beta_1=\mu_2-\mu_1$$
+- Simple Linear Regression: $$Y = \beta_0 + \beta_1 X + \varepsilon, \quad \ \beta_0=\mu_{|X=0},\  \beta_1=\frac{\Delta \mu}{\Delta X}$$
+
+## Complex Models
+Models with more than two parameters:
+
+- Multi-level Categorical Explanatory: 
+$$\text{Thumb}=\beta_0 + \beta_1 X_{[\text{Part-time Job}]} + \beta_2 X_{[\text{Full-time Job}]} + \varepsilon$$
+- Multiple Numerical Explanatory:
+$$\text{Thumb}=\beta_0 + \beta_1 \text{Height} + \beta_2 \text{GradePredict} + \varepsilon$$
+- Combination of Numerical and Categorical: $$\text{Thumb}\sim \text{Height}+\text{Job}$$
+
+## Testing Complex vs Empty Models
+
+:::{style="font-size:.8 em;"}
+- Testing non-empty model parameters one at a time
+  $$\begin{align} H_0:& \beta_1=0\text{ vs. }H_a: \beta_1\ne 0\\
+  \vdots&\\
+  H_0:& \beta_k=0\text{ vs. }H_a: \beta_k\ne 0
+  \end{align}$$
+- Testing all model at once
+  $$\begin{align} H_0:& \beta_1=\cdots=\beta_k=0 \\ H_a:& \text{At least one }\beta_i\ne 0, i=1, \cdots, k\end{align} $$
+:::
+
+## Testing Two Complex Models
+- Testing Model, so far:
+  - Model vs Empty Model
+- Other types of comparisons
+  - Complex vs Simple Models
+  
+- Example:
+  - $\text{Thumb}\sim \text{Gender}$ vs. $\text{Thumb}\sim \text{Job}$
+  - $\text{Thumb}\sim \text{Heigh}$ vs. $\text{Thumb}\sim \text{Heigh} + \text{Gender}$
+
+# Type I Error Inflation
+## $k$ Simultaneous Tests
+When testing $k$ separate tests at $\alpha$ sig. level:
+
+- For each test: $P(\text{Type I Error})=\alpha$
+- The over all Type I Error:
+  - To reject at least one in error, which is
+  - The complement of rejecting all correctly; that is,
+
+:::{.fragment}
+  $$\begin{align} P(\text{Overall Type I Error})=& 1-P(\text{All correctly rejected})\\
+  =&1-(1-\alpha)^k\end{align}$$
+:::
+
+## Mulriple Tests Correction
+- Simultaneous multiple tests **inflates** Type I Error.
+- Bonferroni's Correction for $g$ comparisons:
+  - For each test:
+    - Use $\alpha/g$ as *Significance Level*
+    - Report $g\times p\text{-value}$
+  - Good for small $g$
+- Tukey's Correction
+  - More complex and more powerful
+  
+# Single Model Test
+## PRE and $F$ Tests
+- PRE and $F$:
+  - The whole model performance
+  - Testing all parameters at once
+  - Comparing complex vs simple models
+- Test Procedure
+  - Assumption $\to$ Null Distribution $\to$ Observed Value
+
+## $F$ Null Distributions
+- Simulation Null Distribution
+  - Assumption: No Association
+  - Distribution: Histogram of many replications
+- Theoretical Null Distribution
+  - Assumption: No Association & $\varepsilon\sim N(0, \sigma)$
+  - Distribution: $\text{F}\sim \text{F}\left(DF_M, DF_E\right)$
+- Used in ANOVA
+
+## $F$ Theoretical Distribution Example
+:::{.columns}
+:::{.column width="35%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+dfM <- 2 #length(levels(Fingers$Job))-1
+dfE <- 154 #dim(Fingers)[1] - 1 - dfM
+null_f <- do(500) * f(shuffle(Thumb)~Job, data=Fingers)
+gf_dhistogram(~f, data=null_f, bins=30) |>
+  gf_function(fun = df, args=list(df1=dfM, df2=dfE), color='red') |>
+  gf_point(0~x, data=data.frame(x=f(Thumb~Job, data=Fingers)))
+```
+:::
+:::{.column width="65%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 7
+cat('P(F>obs.F)=', 1-pf(f(Thumb~Job, data=Fingers), dfM, dfE), '\n')
+supernova(m1)
+
+```
+:::
+:::
+
+
+## PRE Null Distributions
+- Simulation Null Distribution
+  - Assumption: No Association
+  - Distribution: Histogram of many replications
+- Theoretical Null Distribution
+  - Assumption: No Association & $\varepsilon\sim N(0, \sigma)$
+  - Distribution: $\text{PRE}\sim \text{Beta}\left(\alpha=\frac{DF_M}{2}, \beta=\frac{DF_E}{2}\right)$
+
+
+## PRE Theoretical Distribution Example
+:::{.columns}
+:::{.column width="35%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 3
+dfM <- 2; dfE <- 154
+obs_pre <- pre(Thumb~Job, data=Fingers)
+null_pre <- do(500) * pre(shuffle(Thumb)~Job, data=Fingers)
+gf_dhistogram(~pre, data=null_pre, bins=30) |>
+  gf_function(fun = dbeta, args=list(shape1=dfM/2, shape2=dfE/2), color='red') |>
+  gf_point(0~x, data=data.frame(x=obs_pre))
+```
+:::
+:::{.column width="65%"}
+```{webr}
+#| fig-height: 3
+#| fig-width: 7
+cat('obs.PRE=', obs_pre, '\n')
+cat('P(PRE>obs.PRE)=', 1-pbeta(obs_pre, dfM/2, dfE/2), '\n')
+
+```
+:::
+:::
+
+## Testing Complex vs Simple
+- $F$ and PRE:
+  - Use Variations reduction from Empty Model
+- Comparing Complex vs. Simple
+  - Error reduction $= SSE_{Simple} - SSE_{Complex}$
+  - DF of the reduction $= DFE_{Simple} - DFE_{Complex}$
+- Compare Complex Model:
+  - Use PRE & $F$ of Reduction
+
+## Example: Comparing Complex vs Simple
+```{webr}
+m1 <- lm(Thumb~Job, data=Fingers)
+m2 <- lm(Thumb~Job + Height, data=Fingers)
+supernova(m1)
+supernova(m2)
+anova(m1, m2)
+cat('\nP(F>', 26.846, ') =', 1-pf(26.846, 1, 153), '\n')
+```
+
+# Pairwise Comparisons
+## Controlling Type I Error
+- Test the whole model at once ($F$ or $PRE$)
+  - If Significant, run **post-hoc** analysis
+- Pairwise Post-hoc Tests:
+  - Multiple Levels (for categorical)
+  - Multiple Variables (for numerical and categorical)
+
+## Example: Post-hoc on Categorical
+```{webr}
+# Thumb~Job is not significant
+# Thumb~RaceEthnic is significant at 7%
+m.race<- lm(Thumb~RaceEthnic, data = Fingers)
+supernova(m.race)
+cat('\nBonferroni Correction:\n')
+pairwise(m.race, correction = "Bonferroni")
+cat('\nTukey Correction:\n')
+pairwise(m.race, correction = "Tukey")
+```
+
+# Test of Independence
+## Recall: Test Procedure Workflow 
+
+:::{.nonincremental}
+1. State the null & Alt. hypothesis
+2. Find the null distribution of the test statistic
+3. Compute the observed (test) statistic
+4. Compute p-value or check against R.R.
+5. Make a decision & write a conclusion
+6. Check assumptions
+:::
+
+> Works for any **test statistics**
+
+## Independence of Categorical Variables
+Example: Are `Gender` and `Job` independent?
+
+:::{.columns}
+:::{.column}
+```{r}
+#| fig-width: 5
+gf_bar(~ Gender, fill = ~ Job, data = Fingers, position='fill') %>%
+  gf_labs(
+    title = "Association Between Gender and Job",
+    x = "Gender",
+    y = "Count",
+    fill = "Job"
+  )
+```
+:::
+:::{.column}
+```{r}
+#| fig-width: 5
+prop.table(table(Fingers$Job, Fingers$Gender), margin = 2)
+```
+:::
+:::
+
+## What does Independent Means?
+:::{.columns}
+:::{.column}
+Observed Proportions:
+```{r}
+prop.table(table(Fingers$Job, Fingers$Gender), margin = 2)
+```
+
+:::
+:::{.column}
+Observed Counts $n_{ij}$:
+```{r}
+#| fig-width: 5
+table(Fingers$Job, Fingers$Gender)
+```
+:::
+:::
+
+Expected Counts under the Null (Independence):
+
+| Job |female|male| Total|
+|-----------|-----|-----|-----|
+|Not Working|  |  |  |
+|Part-time Job|  |  |  |
+|Full-time Job|  |  |  |
+| Total|  |  |  |
+
+## Deviasion-based Test Statistic 
+- Expected Counts: $e_{ij}=\frac{n_{i+}\times n_{+j}}{n}$
+- Deviation: $n_{ij}-e_{ij}$
+- Test Statistic: $\chi^2 = \sum_{all\ cells} \frac{(n_{ij}-e_{ij})^2}{e_{ij}}$
+- Assumption: Independence & Large $n_{ij}$:
+  -$\chi^2\sim \text{ch-square}\left(df=(n_{row}-1)(n_{col}-1)\right)$
+
+::: {.fragment}
+```{webr}
+chisq.test(Fingers$Gender, Fingers$Job)
+```
+:::
+
+## Simulation-Based Test of Independence
+- Test Statistic: $\chi^2 = \sum_{all\ cells} \frac{(n_{ij}-e_{ij})^2}{e_{ij}}$
+- Assumption: Independence
+  - Shuffle one variable
+  - Calculate test statistics
+  - Repeat many times
+  - Create a histogram as Null Distributoin
+
+::: {.fragment}
+```{webr}
+obs_chi2<- chisq(Job~Gender, data=Fingers)
+null_chi2 <- do(500) * chisq(shuffle(Job)~Gender, data=Fingers)
+gf_dhistogram(~X.squared, data = null_chi2, bins=30) |>
+  gf_function(fun = dchisq, args=list((2-1)*(3-1)), color='red') |> gf_point(0~x, data=data.frame(x=obs_chi2), color = 'red')
+```
+:::
 

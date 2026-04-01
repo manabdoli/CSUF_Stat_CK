@@ -177,8 +177,11 @@ b0 <- function(mod, data=NULL){
 
 pre <- function(mod, data=NULL){
   if(!is.null(data) && !is.data.frame(data)){
-    data <- as.data.frame(data)
-    stop('data should be a data.frame!')
+    tryCatch(data <- as.data.frame(data),
+             error = function(e){
+               stop('data should be a data.frame!\n', e)
+             }
+    )
   }
   if(is.character(mod)){
     mod <- as.formula(mod)
@@ -251,7 +254,17 @@ sst <- function(y){
   sum((y-mean(y))^2)
 }
 
-f <- function(mod) {
+f <- function(mod, data=NULL){
+  if(!is.null(data) && !is.data.frame(data)){
+    data <- as.data.frame(data)
+    stop('data should be a data.frame!')
+  }
+  if(is.character(mod)){
+    mod <- as.formula(mod)
+  }
+  if("formula" == class(mod)){
+    mod <- lm(mod, data=data)
+  }
   anova(mod)[1, "F value"]
 }
 

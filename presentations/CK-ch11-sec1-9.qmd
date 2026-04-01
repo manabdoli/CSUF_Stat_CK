@@ -88,13 +88,6 @@ set.seed(123)
 - **Theoretical Null Distribution**
 - **Test of Significance: $\beta_1$**
 - **Type I and Type II Errors**
-- **Complex v. Simple Models**
-- **Type I Error Inflation**
-
-- **PRE Theoretical Distributions**
-- **F Theoretical Distributions**
-- **Pairwise Comparisons**
-- **Test of Independence**
 
 :::
 
@@ -155,7 +148,7 @@ Key idea:
 :::{.fragment}
 ```{webr}
 #| fig-width: 5
-#| fig-heigh: 3
+#| fig-heigh: 2.5
 sdob1 <- do(500) *
   b1(shuffle(Thumb)~Gender, data=Fingers) |> 
   setNames('b1')
@@ -192,7 +185,11 @@ Quantitative Explanatory
 :::
 :::
 
+:::{style="font-size: .8em;"}
 - Null Distribution: $\frac{b_1}{s_{b1}}\sim t(df=n-2)$
+
+- Sampling Distribution: $\frac{b_1-\beta_1}{s_{b1}}\sim t(df=n-2)$
+:::
 
 ## Example 1: Categorical Explanatory
 $$Y_A\sim N(20, 3), \quad Y_B\sim N(20, 3), \quad n_1=n_2=10$$
@@ -207,12 +204,12 @@ mu<- c(20, 20); sd<- c(1, 1)*3; n<-c(1, 1)*10
 skw <- c(1, 1)
 w<- 0.5 # binwidth
 dset<- data.frame(
-    x=c(rep('A', n[1]), rep('B', n[2])),
+    group=c(rep('A', n[1]), rep('B', n[2])),
     y=c(rskw(n[1], mu[1], sd[1], skw),
         rskw(n[2], mu[2], sd[2], 1)
         ))
 gf_histogram(~y, data=dset, binwidth=w) |>
-  gf_facet_grid(x~.)
+  gf_facet_grid(group~.)
 ```
 :::
 :::{.column width="33%"}
@@ -220,14 +217,14 @@ gf_histogram(~y, data=dset, binwidth=w) |>
 #| fig-width: 3
 #| fig-height: 5
 gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
-  gf_facet_grid(~x)
+  gf_facet_grid(~group) |> gf_labs(x='group')
 ```
 :::
 :::{.column width="33%"}
 ```{r}
 #| fig-width: 3
 #| fig-height: 5
-gf_boxplot(y~x, data=dset)    
+gf_boxplot(y~group, data=dset)    
 ```
 :::
 :::
@@ -236,7 +233,7 @@ gf_boxplot(y~x, data=dset)
 
 ```{r}
   sdob1 <- do(1000) *
-    b1(shuffle(y)~x, data=dset) |>
+    b1(shuffle(y)~group, data=dset) |>
     setNames('b1')
   b1.bar <- mean(sdob1$b1)
   b1.sd <- sd(sdob1$b1)
@@ -265,17 +262,17 @@ mu<- c(20, 20); sd<- c(2, 1)*3; n<-c(1, 1)*10
 skw <- c(1, 1)
 w<- 0.5 # binwidth
 dset<- data.frame(
-    x=c(rep('A', n[1]), rep('B', n[2])),
+    group=c(rep('A', n[1]), rep('B', n[2])),
     y=c(rskw(n[1], mu[1], sd[1], skw),
         rskw(n[2], mu[2], sd[2], 1)
         ))
 gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
-  gf_facet_grid(~x)
+  gf_facet_grid(~group)
 ```
 ```{r}
 #| fig-width: 5
 #| fig-height: 2.5
-gf_boxplot(x~y, data=dset)    
+gf_boxplot(group~y, data=dset)    
 ```
 :::
 :::{.column}
@@ -283,7 +280,7 @@ gf_boxplot(x~y, data=dset)
 #| fig-width: 5
 #| fig-height: 5
 sdob1 <- do(1000) *
-  b1(shuffle(y)~x, data=dset) |>
+  b1(shuffle(y)~group, data=dset) |>
   setNames('b1')
 b1.bar <- mean(sdob1$b1)
 b1.sd <- sd(sdob1$b1)
@@ -314,17 +311,17 @@ mu<- c(20, 20); sd<- c(2, 1)*3; n<-c(1, 1.5)*10
 skw <- c(1, 1)
 w<- 0.5 # binwidth
 dset<- data.frame(
-    x=c(rep('A', n[1]), rep('B', n[2])),
+    group=c(rep('A', n[1]), rep('B', n[2])),
     y=c(rskw(n[1], mu[1], sd[1], skw),
         rskw(n[2], mu[2], sd[2], 1)
         ))
 gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
-  gf_facet_grid(~x)
+  gf_facet_grid(~group)
 ```
 ```{r}
 #| fig-width: 5
 #| fig-height: 2.5
-gf_boxplot(x~y, data=dset)    
+gf_boxplot(group~y, data=dset)    
 ```
 :::
 :::{.column}
@@ -332,7 +329,7 @@ gf_boxplot(x~y, data=dset)
 #| fig-width: 5
 #| fig-height: 5
 sdob1 <- do(1000) *
-  b1(shuffle(y)~x, data=dset) |>
+  b1(shuffle(y)~group, data=dset) |>
   setNames('b1')
 b1.bar <- mean(sdob1$b1)
 b1.sd <- sd(sdob1$b1)
@@ -363,17 +360,17 @@ mu<- c(20, 20); sd<- c(1, 1)*3; n<-c(1, 1.5)*10
 skw <- c(1, 5)
 w<- 0.5 # binwidth
 dset<- data.frame(
-    x=c(rep('A', n[1]), rep('B', n[2])),
+    group=c(rep('A', n[1]), rep('B', n[2])),
     y=c(rskw(n[1], mu[1], sd[1], skw),
         rskw(n[2], mu[2], sd[2], 1)
         ))
 gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
-  gf_facet_grid(~x)
+  gf_facet_grid(~group)
 ```
 ```{r}
 #| fig-width: 5
 #| fig-height: 2.5
-gf_boxplot(x~y, data=dset)    
+gf_boxplot(group~y, data=dset)    
 ```
 :::
 :::{.column}
@@ -381,7 +378,7 @@ gf_boxplot(x~y, data=dset)
 #| fig-width: 5
 #| fig-height: 5
 sdob1 <- do(1000) *
-  b1(shuffle(y)~x, data=dset) |>
+  b1(shuffle(y)~group, data=dset) |>
   setNames('b1')
 b1.bar <- mean(sdob1$b1)
 b1.sd <- sd(sdob1$b1)
@@ -413,17 +410,17 @@ mu<- c(20, 20); sd<- c(1, 1)*3; n<-c(1, 1.5)*100
 skw <- c(1, 5)
 w<- 0.5 # binwidth
 dset<- data.frame(
-    x=c(rep('A', n[1]), rep('B', n[2])),
+    group=c(rep('A', n[1]), rep('B', n[2])),
     y=c(rskw(n[1], mu[1], sd[1], skw),
         rskw(n[2], mu[2], sd[2], 1)
         ))
 gf_qq(~y, data=dset) |> gf_qqline(color='blue') |>
-  gf_facet_grid(~x)
+  gf_facet_grid(~group)
 ```
 ```{r}
 #| fig-width: 5
 #| fig-height: 2.5
-gf_boxplot(x~y, data=dset)    
+gf_boxplot(group~y, data=dset)    
 ```
 :::
 :::{.column}
@@ -431,7 +428,7 @@ gf_boxplot(x~y, data=dset)
 #| fig-width: 5
 #| fig-height: 5
 sdob1 <- do(1000) *
-  b1(shuffle(y)~x, data=dset) |>
+  b1(shuffle(y)~group, data=dset) |>
   setNames('b1')
 b1.bar <- mean(sdob1$b1)
 b1.sd <- sd(sdob1$b1)
@@ -450,23 +447,31 @@ gf_histogram(~b1, data = sdob1, binwidth=w, fill=~tail, show.legend = FALSE) |>
 :::
 
 ## Null Distribution Summary
-For **binary** of **numeriacl** $X$:
-$$Y=\beta_0+\beta_1 X + \varepsilon$$
+For a **binary numeriacl** $X$: $$Y=\beta_0+\beta_1 X + \varepsilon$$
+$$\frac{b_1-\beta_1}{s_{b_1}} \sim t(df=n-2)$$
 
-- If assumptions met: Error Distribution $\sim N(0, \sigma)$
-  - $\frac{b_1-\beta_1}{s_{b_1}} \sim t(df=n-2)$
-
-:::{style="font-size:.7em;"}
+::: {.columns}
+::: {.column}
+- If assumptions met:
+  - Error Distribution $\sim N(0, \sigma)$
+  - $n$ is large
+:::
+::: {.column}
+:::{style="font-size:.9em;"}
   - $t(df)$:
     - a density centered at $0$
     - more spread than $Z$
     - as $df (n)\to \infty, \quad t\xrightarrow{D} z$
 :::
+:::
+:::
+<!-- end columns -->
+
 
 # Test of Significance $\beta_1$
 
 ## $H_a$ & Unusual (Unexpected) Event
-- Assumption & $H_0 \to $ Null Distribution
+- Assumption & $H_0 \to$ Null Distribution
 - Alternative:
   - $\beta_1>0$: Reject $H_0$ if too far to the right.
   - $\beta_1<0$: Reject $H_0$ if too far to the left.
@@ -579,227 +584,9 @@ $$\begin{align*}\beta &= P(\text{Not Rejecting } H_0|H_a) \\
 
 ## Full Workflow
 
-1. State null
-2. Compute statistic
-3. Find null distribution
-4. Compute p-value
-5. Decide
-
----
-
-## 🧪 Slide 17 — One Full Example (IMPORTANT)
-
-Use:
-
-* Mean test OR slope test
-
-Walk through:
-
-* Null: slope = 0
-* Observed slope
-* Null distribution
-* p-value
-* Decision
-
-👉 This is the anchor of the session
-
----
-
-## 🔍 Slide 18 — Assumptions (Light Touch)
-
-* Independence
-* Approximate normality (or large n)
-
-👉 Why:
-
-> Needed for mathematical null distributions
-
----
-
-## 🔄 Slide 19 — Simulation vs Mathematical
-
-* Simulation = flexible, intuitive
-* Mathematical = faster, standard
-
-👉 Same logic underneath
-
----
-
-## 🎯 Slide 20 — Takeaway
-
-> All inference = comparing data to a world where nothing is happening
-
----
-
----
-
-# 📗 **Session 2 Slides: Extending the Framework**
-
-## 🎯 Slide 1 — Title
-
-**One Logic, Many Tests**
-
----
-
-## 🔁 Slide 2 — Review
-
-* Null hypothesis
-* Null distribution
-* P-value
-
-👉 Same process every time
-
----
-
-## 🧠 Slide 3 — Big Idea
-
-> Different tests = different statistics
-> Same logic = always compare to null
-
----
-
-## 📊 Slide 4 — Multiple Groups (ANOVA Idea)
-
-* Compare more than 2 means
-
-Null:
-
-> All group means are equal
-
----
-
-## ⚖️ Slide 5 — ANOVA Statistic
-
-* Measures:
-
-  * Between-group variability
-  * Relative to within-group variability
-
-👉 Big value → evidence against null
-
----
-
-## 📈 Slide 6 — Regression Test
-
-Null:
-
-> Slope ($b_1$) = 0
-
-👉 No relationship
-
----
-
-## 📊 Slide 7 — Regression Logic
-
-* Compare observed slope
-* To slopes expected by chance
-
-👉 Same workflow as Session 1
-
----
-
-## 🧮 Slide 8 — Chi-Square (New Context)
-
-* Two categorical variables
-
-Null:
-
-> Variables are independent
-
----
-
-## 📉 Slide 9 — Chi-Square Idea
-
-* Compare:
-
-  * Observed counts
-  * Expected counts under independence
-
----
-
-## 📊 Slide 10 — Shape of χ² Distribution
-
-* Not symmetric
-* Right-skewed
-
-👉 Important conceptual shift
-
----
-
-## 🎯 Slide 11 — Unifying Slide (VERY IMPORTANT)
-
-| Test       | Statistic  | Null          |
-| ---------- | ---------- | ------------- |
-| Mean       | difference | no difference |
-| Regression | slope      | slope = 0     |
-| ANOVA      | F          | equal means   |
-| Chi-square | χ²         | independence  |
-
-👉 Same logic across all
-
----
-
-## 🚨 Slide 12 — Type I Error Reminder
-
-* False positive
-
----
-
-## ⚠️ Slide 13 — Type I Error Inflation
-
-* More tests → more false positives
-
----
-
-## 📊 Slide 14 — Example
-
-If α = 0.05:
-
-* 1 test → 5% chance false positive
-* 20 tests → much higher chance
-
----
-
-## 🧠 Slide 15 — Why This Matters
-
-* Real-world research
-* Multiple comparisons
-
----
-
-## 🛠️ Slide 16 — Practical Thinking
-
-* Be cautious with many tests
-* Look for patterns, not isolated results
-
----
-
-## 🔁 Slide 17 — Full Circle
-
-> Same 5-step process:
-
-1. Null
-2. Statistic
-3. Null distribution
-4. P-value
-5. Decision
-
----
-
-## 🎯 Slide 18 — Final Takeaway
-
-> Inference is not about formulas
-> It’s about comparing reality to randomness
-
----
-
----
-
-# 💡 Optional Add-Ons (Highly Recommended)
-
-### In-class activities
-
-* **Session 1:** simulate null distribution (shuffle slope)
-* **Session 2:** match test → null → statistic activity
-
--->
+1. State the null & Alt. hypothesis
+2. Find the null distribution of the test statistic
+3. Compute the observed (test) statistic
+4. Compute p-value or check against R.R.
+5. Make a decision & write a conclusion
+6. Check assumptions

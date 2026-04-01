@@ -19,4 +19,4 @@ Welcome! Choose a deck:
 - [Chapter 9 (Sections 9-11)](presentations/CK-ch9-sec9-11.html)
 - [Chapter 10](presentations/CK-ch10-complete.html)
 - [Chapter 11 (Section 1-9)](presentations/CK-ch11-sec1-9.html)
-- [Chapter 11 (Section 10-13)](presentations/CK-ch11-sec10-13.html)
+- [Chapter 11 (Section 10-13)](presentations/CK-ch11-sec11-13.html)
