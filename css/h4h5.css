@@ -1,0 +1,25 @@
+/* Adding numeric counter to H4 and character counter (A) to H5*/
+
+/* Reset counters at the body level */
+body {
+    counter-reset: h4-counter h5-counter;
+}
+
+/* Style for h4: numbered list starting from 1 */
+h4 {
+    counter-increment: h4-counter; /* Increase h4 counter */
+    counter-reset: h5-counter;     /* Reset h5 counter when a new h4 starts */
+}
+h4::before {
+    content: counter(h4-counter) ". "; /* Display number */
+    font-weight: bold;
+}
+
+/* Style for h5: lettered list starting from A */
+h5 {
+    counter-increment: h5-counter; /* Increase h5 counter */
+}
+h5::before {
+    content: "(" counter(h5-counter, upper-alpha) ") "; /* Display letter */
+    font-weight: normal;
+}
