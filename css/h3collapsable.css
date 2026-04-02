@@ -1,0 +1,14 @@
+/* Hide content after H3 by default */
+.h3-collapsible + * {
+  display: none;
+}
+
+/* Expanded state */
+.h3-collapsible.active + * {
+  display: block;
+}
+
+/* Cursor hint */
+.h3-collapsible {
+  cursor: pointer;
+}

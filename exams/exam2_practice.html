@@ -1,0 +1,315 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans); }
+  .exam-wrap { padding: 1.5rem 0; max-width: 760px; margin: 0 auto; }
+  .exam-header { margin-bottom: 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); padding-bottom: 1rem; }
+  .exam-title { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+  .exam-sub { font-size: 13px; color: var(--color-text-secondary); margin-top: 4px; }
+  .section-header { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin: 2rem 0 1rem; padding-bottom: 4px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .question-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-bottom: 1rem; }
+  .q-num { font-size: 11px; font-weight: 500; color: var(--color-text-tertiary); margin-bottom: 6px; }
+  .q-text { font-size: 15px; color: var(--color-text-primary); line-height: 1.6; margin-bottom: 1rem; }
+  .q-text code { font-family: var(--font-mono); font-size: 13px; background: var(--color-background-secondary); padding: 1px 5px; border-radius: 4px; }
+  .options { display: flex; flex-direction: column; gap: 6px; }
+  .option-btn { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); cursor: pointer; background: var(--color-background-primary); color: var(--color-text-primary); font-size: 14px; text-align: left; transition: background 0.1s; }
+  .option-btn:hover:not(:disabled) { background: var(--color-background-secondary); }
+  .option-btn .opt-label { font-weight: 500; min-width: 18px; color: var(--color-text-secondary); font-size: 13px; }
+  .option-btn.selected { border-color: #378ADD; background: #E6F1FB; color: #042C53; }
+  .option-btn.correct { border-color: #3B6D11; background: #EAF3DE; color: #173404; }
+  .option-btn.wrong { border-color: #A32D2D; background: #FCEBEB; color: #501313; }
+  .option-btn.reveal-correct { border-color: #3B6D11; background: #EAF3DE; color: #173404; }
+  .feedback { font-size: 13px; margin-top: 10px; padding: 8px 12px; border-radius: var(--border-radius-md); line-height: 1.5; }
+  .feedback.correct { background: #EAF3DE; color: #3B6D11; }
+  .feedback.wrong { background: #FCEBEB; color: #A32D2D; }
+  .fill-in { width: 100%; padding: 8px 12px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); font-size: 14px; font-family: var(--font-sans); color: var(--color-text-primary); background: var(--color-background-primary); margin-bottom: 8px; }
+  .fill-in:focus { outline: none; border-color: #378ADD; }
+  .check-btn { padding: 7px 16px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-primary); color: var(--color-text-primary); font-size: 13px; cursor: pointer; }
+  .check-btn:hover { background: var(--color-background-secondary); }
+  .score-bar { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1.25rem; margin-top: 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .score-num { font-size: 32px; font-weight: 500; color: var(--color-text-primary); }
+  .score-label { font-size: 13px; color: var(--color-text-secondary); margin-top: 2px; }
+  .progress-track { flex: 1; height: 6px; background: var(--color-border-tertiary); border-radius: 3px; min-width: 120px; }
+  .progress-fill { height: 6px; border-radius: 3px; background: #3B6D11; transition: width 0.4s; }
+  .reset-btn { padding: 7px 16px; border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); background: var(--color-background-primary); color: var(--color-text-primary); font-size: 13px; cursor: pointer; }
+  .tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: var(--color-background-secondary); color: var(--color-text-secondary); margin-left: 8px; }
+</style>
+
+<div class="exam-wrap">
+  <div class="exam-header">
+    <div class="exam-title">Exam 2 — Practice Exam</div>
+    <div class="exam-sub">Covers CourseKata Chapters 5–11 · Select answers to auto-grade · 20 questions</div>
+  </div>
+  <div id="exam-body"></div>
+  <div class="score-bar" id="score-bar">
+    <div>
+      <div class="score-num" id="score-display">0 / 20</div>
+      <div class="score-label">questions correct</div>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <button class="reset-btn" onclick="resetExam()">Reset exam</button>
+  </div>
+</div>
+
+<script>
+const questions = [
+  {
+    section: "Part 1: Models & Variability (Ch. 5–6)",
+    id: "q1", type: "mc",
+    text: "A researcher fits an empty model to predict exam scores. What does the empty model use as its predicted value for every observation?",
+    options: ["The median of the outcome variable", "The mean of the outcome variable", "Zero", "The most frequent value"],
+    answer: 1,
+    feedback: "The empty model has no predictors and predicts the sample mean ȳ for every observation. It has exactly 1 parameter (β₀ = ȳ)."
+  },
+  {
+    id: "q2", type: "mc",
+    text: "Which of the following best describes a residual?",
+    options: ["The predicted value minus the mean", "The observed value minus the predicted value", "The mean minus the observed value", "The sum of squared predictions"],
+    answer: 1,
+    feedback: "Residual eᵢ = Observed (yᵢ) − Predicted (ŷᵢ). It represents the error not explained by the model."
+  },
+  {
+    id: "q3", type: "mc",
+    text: "SST = 400 and SSE = 100. What is R²?",
+    options: ["0.25", "0.75", "4.0", "0.40"],
+    answer: 1,
+    feedback: "R² = SSM/SST = (SST − SSE)/SST = (400 − 100)/400 = 300/400 = 0.75. This means 75% of variability is explained by the model."
+  },
+  {
+    id: "q4", type: "mc",
+    text: "A complex model has k = 3 predictors and n = 50 observations. How many parameters does it have?",
+    options: ["3", "4", "49", "50"],
+    answer: 1,
+    feedback: "A model with k predictors has k + 1 parameters: one intercept β₀ plus one coefficient for each predictor β₁, β₂, β₃. So 3 + 1 = 4."
+  },
+  {
+    section: "Part 2: Sampling Distributions & Hypothesis Testing (Ch. 7–8)",
+    id: "q5", type: "mc",
+    text: "What is the null distribution used for in hypothesis testing?",
+    options: [
+      "To estimate the population mean",
+      "To determine the probability of observing results as extreme as ours if H₀ were true",
+      "To calculate the sample standard deviation",
+      "To construct a confidence interval"
+    ],
+    answer: 1,
+    feedback: "The null distribution shows what the test statistic looks like assuming H₀ is true. We use it to compute the p-value — the probability of observing our result or more extreme under H₀."
+  },
+  {
+    id: "q6", type: "mc",
+    text: "A p-value of 0.03 is obtained with α = 0.05. What is the correct conclusion?",
+    options: [
+      "Fail to reject H₀; there is not enough evidence",
+      "Reject H₀; there is evidence in favor of Hₐ",
+      "Accept H₀; the null is true",
+      "The result is not statistically significant"
+    ],
+    answer: 1,
+    feedback: "Since p = 0.03 < α = 0.05, we reject H₀. There is statistically significant evidence in favor of the alternative hypothesis. Note: we never 'accept' H₀."
+  },
+  {
+    id: "q7", type: "mc",
+    text: "Which simulation method is used to generate the null distribution when testing H₀: β₁ = μB − μA = 0 (two-group mean difference)?",
+    options: [
+      "Bootstrap resampling from the original data with replacement",
+      "Shuffling all yᵢ values and reallocating them randomly to group A or B",
+      "Generating random normal data with mean = ȳ",
+      "Shifting all observations to have mean = 0"
+    ],
+    answer: 1,
+    feedback: "Under H₀ (no association), the group labels don't matter. We shuffle all y values and randomly reassign nA observations to group A and nB to group B, then recompute the statistic many times."
+  },
+  {
+    id: "q8", type: "mc",
+    text: "A Type I error occurs when:",
+    options: [
+      "We fail to reject a false null hypothesis",
+      "We reject a true null hypothesis",
+      "Our sample size is too small",
+      "The p-value equals exactly α"
+    ],
+    answer: 1,
+    feedback: "Type I error = rejecting H₀ when it is actually true (false positive). The probability of this is exactly α, the significance level we set."
+  },
+  {
+    id: "q9", type: "mc",
+    text: "You run 5 separate hypothesis tests, each at α = 0.05. What problem does this create?",
+    options: [
+      "Each test becomes more powerful",
+      "The Type II error rate increases dramatically",
+      "Type I error rate inflates above 0.05 overall",
+      "The p-values become invalid"
+    ],
+    answer: 2,
+    feedback: "Running multiple tests inflates the family-wise Type I error rate. With 5 tests at α = 0.05, the chance of at least one false positive is ≈ 1 − 0.95⁵ ≈ 0.23. Solutions: use ANOVA first, then correct α."
+  },
+  {
+    section: "Part 3: Testing One Mean (Ch. 8–9)",
+    id: "q10", type: "mc",
+    text: "A sample has n = 25, ȳ = 52, s = 10, and you test H₀: μ = 50. What is the t-statistic?",
+    options: ["0.2", "1.0", "2.0", "10.0"],
+    answer: 1,
+    feedback: "t = (ȳ − β₀) / (s/√n) = (52 − 50) / (10/√25) = 2 / (10/5) = 2/2 = 1.0. With df = n − 1 = 24."
+  },
+  {
+    id: "q11", type: "mc",
+    text: "For a one-sample t-test with n = 20, what are the degrees of freedom?",
+    options: ["18", "19", "20", "21"],
+    answer: 1,
+    feedback: "For testing one mean, df = n − 1 = 20 − 1 = 19."
+  },
+  {
+    id: "q12", type: "mc",
+    text: "Which assumption is required to use the t-distribution mathematically (rather than simulation) for a one-sample test?",
+    options: [
+      "The sample must have no outliers",
+      "The errors follow a normal distribution OR n is large",
+      "The population variance must be known",
+      "The sample must be stratified"
+    ],
+    answer: 1,
+    feedback: "To use t(df = n−1) mathematically, we assume either ε ~ N(0, σ) (normal errors) or n is large enough for CLT to apply."
+  },
+  {
+    section: "Part 4: Two-Group Comparison (Ch. 9)",
+    id: "q13", type: "mc",
+    text: "In a two-group comparison with equal variances assumed (σA = σB), what is the pooled variance formula?",
+    options: [
+      "sp² = (sA² + sB²) / 2",
+      "sp² = [SS(A) + SS(B)] / (nA + nB − 2)",
+      "sp² = SST / (n − 1)",
+      "sp² = SSE / n"
+    ],
+    answer: 1,
+    feedback: "The pooled variance sp² = SSE / (nA + nB − 2) = [SS(A) + SS(B)] / (nA + nB − 2). This pools the within-group variation."
+  },
+  {
+    id: "q14", type: "mc",
+    text: "Group A: nA = 15, Group B: nB = 20. Assuming equal variances, what are the degrees of freedom for the two-sample t-test?",
+    options: ["14", "19", "33", "34"],
+    answer: 2,
+    feedback: "df = nA + nB − 2 = 15 + 20 − 2 = 33. This is the equal-variance (pooled) case."
+  },
+  {
+    section: "Part 5: Linear Regression (Ch. 10)",
+    id: "q15", type: "mc",
+    text: "The correlation between x and y is r = 0.6, sy = 8, sx = 4. What is the estimated slope b₁?",
+    options: ["0.3", "1.2", "2.4", "0.075"],
+    answer: 1,
+    feedback: "b₁ = r × (sy/sx) = 0.6 × (8/4) = 0.6 × 2 = 1.2. The slope scales the correlation by the ratio of standard deviations."
+  },
+  {
+    id: "q16", type: "mc",
+    text: "If the slope b₁ = 1.2, intercept b₀ = 5, and x = 10, what is ŷ?",
+    options: ["12", "17", "15", "6.2"],
+    answer: 1,
+    feedback: "ŷ = b₀ + b₁x = 5 + 1.2(10) = 5 + 12 = 17."
+  },
+  {
+    id: "q17", type: "mc",
+    text: "For a simple linear regression model, what is the degrees of freedom for the error variance s²?",
+    options: ["n − 1", "n − 2", "n − 3", "n"],
+    answer: 1,
+    feedback: "s² = SSE / (n − 2). We lose 2 degrees of freedom because we estimate 2 parameters: β₀ and β₁."
+  },
+  {
+    section: "Part 6: ANOVA & Complex Models (Ch. 11)",
+    id: "q18", type: "mc",
+    text: "An ANOVA model has k = 4 predictors and n = 45. What is the F-statistic formula?",
+    options: [
+      "F = (SSM/4) / (SSE/40)",
+      "F = (SSM/3) / (SSE/41)",
+      "F = SSM / SSE",
+      "F = MSE / MSM"
+    ],
+    answer: 0,
+    feedback: "F = MSM/MSE = (SSM/k) / (SSE/(n−1−k)) = (SSM/4) / (SSE/(45−1−4)) = (SSM/4) / (SSE/40)."
+  },
+  {
+    id: "q19", type: "mc",
+    text: "In a complex model with a non-binary categorical predictor with 4 levels, how many dummy (indicator) variables are needed?",
+    options: ["4", "3", "2", "1"],
+    answer: 1,
+    feedback: "For a categorical variable with m levels, we need m − 1 dummy variables. One level becomes the reference category. So 4 levels → 3 dummy variables."
+  },
+  {
+    id: "q20", type: "mc",
+    text: "After a significant ANOVA F-test, what should you do next if the predictor is categorical with more than 2 levels?",
+    options: [
+      "Stop; the F-test tells you everything",
+      "Run pairwise comparisons with a corrected α",
+      "Re-run the ANOVA with fewer predictors",
+      "Compute R² only"
+    ],
+    answer: 1,
+    feedback: "A significant F-test tells you at least one group mean differs, but not which ones. You then run pairwise comparisons (e.g., Tukey's or Bonferroni-corrected t-tests) to identify where the differences lie."
+  }
+];
+
+let score = 0;
+let answered = 0;
+let answeredSet = new Set();
+
+function renderExam() {
+  const body = document.getElementById('exam-body');
+  let html = '';
+  let lastSection = '';
+  questions.forEach((q, i) => {
+    if (q.section && q.section !== lastSection) {
+      html += `<div class="section-header">${q.section}</div>`;
+      lastSection = q.section;
+    }
+    html += `<div class="question-card" id="card-${q.id}">
+      <div class="q-num">Question ${i+1} of ${questions.length}</div>
+      <div class="q-text">${q.text}</div>`;
+    if (q.type === 'mc') {
+      html += `<div class="options" id="opts-${q.id}">`;
+      q.options.forEach((opt, j) => {
+        const label = ['A','B','C','D'][j];
+        html += `<button class="option-btn" onclick="selectAnswer('${q.id}', ${j})" id="opt-${q.id}-${j}">
+          <span class="opt-label">${label}</span><span>${opt}</span>
+        </button>`;
+      });
+      html += `</div>`;
+    }
+    html += `<div id="fb-${q.id}" style="display:none"></div>`;
+    html += `</div>`;
+  });
+  body.innerHTML = html;
+}
+
+function selectAnswer(qid, chosen) {
+  if (answeredSet.has(qid)) return;
+  answeredSet.add(qid);
+  const q = questions.find(x => x.id === qid);
+  const correct = q.answer;
+  const opts = document.querySelectorAll(`#opts-${qid} .option-btn`);
+  opts.forEach((btn, j) => {
+    btn.disabled = true;
+    if (j === correct) btn.classList.add(chosen === correct ? 'correct' : 'reveal-correct');
+    if (j === chosen && chosen !== correct) btn.classList.add('wrong');
+  });
+  const isCorrect = chosen === correct;
+  if (isCorrect) score++;
+  answered++;
+  const fb = document.getElementById(`fb-${qid}`);
+  fb.style.display = 'block';
+  fb.className = `feedback ${isCorrect ? 'correct' : 'wrong'}`;
+  fb.textContent = (isCorrect ? '✓ Correct. ' : '✗ Incorrect. ') + q.feedback;
+  updateScore();
+}
+
+function updateScore() {
+  document.getElementById('score-display').textContent = `${score} / ${questions.length}`;
+  const pct = (score / questions.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+function resetExam() {
+  score = 0; answered = 0; answeredSet = new Set();
+  updateScore();
+  renderExam();
+}
+
+renderExam();
+</script>

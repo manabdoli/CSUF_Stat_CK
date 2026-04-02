@@ -1,14 +1,22 @@
 ---
 title: "Exam 1 Prep"
+sidebar: false
+page-navigation: false
+bread-crumbs: false
 format: 
-  docx:
-    reference-doc: refs/custom-reference-doc.docx
-  pdf:
-    geometry: margin=1in
-    keep-tex: false
-    toc: false
-    number-sections: false
-fontsize: 11pt
+  html:
+    toc: true
+    toc-float: true
+    css: ../css/h4h5.css
+#  docx:
+#    reference-doc: refs/custom-reference-doc.docx
+#   pdf:
+#     geometry: margin=1in
+#     keep-tex: false
+#     toc: false
+#     number-sections: false
+# fontsize: 11pt
+
 ---
 
 ```{r, echo=FALSE}

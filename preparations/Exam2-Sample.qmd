@@ -1,0 +1,263 @@
+---
+title: "Sample Exam 2"
+sidebar: false
+page-navigation: false
+bread-crumbs: false
+format: 
+  html:
+    toc: true
+    toc-float: true
+    css:
+      - ../css/h4h5.css
+      - ../css/h3collapsable.css
+---
+
+```{r, echo=FALSE}
+options(knitr.kable.NA = '')
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+### Part A: Conceptual (Multiple Choice)
+
+#### What does a small p-value indicate?
+
+##### The null hypothesis is true
+##### Strong evidence against the null hypothesis
+##### The sample size is small
+##### The model has no error
+
+---
+
+#### What does R² measure?
+
+##### The slope of the regression line
+##### The variability in the predictor
+##### The proportion of variability explained by the model
+##### The p-value of the test
+
+---
+
+#### A Type I error occurs when:
+
+##### You fail to reject a false null hypothesis
+##### You reject a true null hypothesis
+##### You accept a false alternative hypothesis
+##### The sample size is too large
+
+---
+
+#### Which test is used to compare more than two group means?
+
+##### t-test
+##### ANOVA
+##### Chi-square
+##### Regression
+
+---
+
+#### In regression, what does b₁ represent?
+
+##### The average of Y
+##### The predicted value when X = 0
+##### The average change in Y for a one-unit increase in X
+##### The variance of Y
+
+---
+
+### Part B: Short Answer
+
+#### Explain the difference between a simple and a complex model.
+
+\
+
+---
+
+#### What is a null distribution and why is it important?
+
+\
+
+---
+
+#### What does it mean if a result is statistically significant at α = 0.05?
+
+\
+
+---
+
+### Part C: Interpretation
+
+#### A regression analysis gives:
+
+```{r, echo=FALSE, include=FALSE, eval=FALSE}
+summary(lm((drat)~I(scale(wt)+scale(qsec)), data=mtcars))
+```
+
+| Terms | Estimate | St##### Error | t value | Pr(>|t|) |  
+|-------------|---------|---------|--------|---------|
+| (Intercept) | 3.59656 | 0.08410 | 42.765 | < 2e-16 |
+| x  | -0.20124 | 0.06651 | [t] | 0.00505| 
+
+
+Answer:
+
+##### Interpret the slope
+
+\
+
+##### Find the missing `[t]`
+
+\
+
+##### State whether the result is significant
+
+\
+
+##### Write the equation for the regression (use $y$ as the outcome variable):
+
+\
+
+##### Find and interpret the value of $y$ when $x$ is 0.75.
+
+\
+
+---
+
+#### An ANOVA test gives:
+
+```{r, echo=FALSE, include=FALSE, eval=FALSE, results='asis', }
+#supernova::supernova(lm(drat~factor(am+vs), data=mtcars))
+anv.tbl<- 
+  within(
+    data.frame(
+      SS=c(5.1, 3.7),
+      df=c(4, 23),
+      row.names = c('Model (error reduced)', 'Error (from model)')
+    ),{
+      MS<- SS/df
+      F<- c(MS[1]/MS[2], NA)
+      PRE<- c(SS[1]/sum(SS), NA)
+      p<- 1-pf(F, df1 = df[1], df2 = df[2])
+    })[, c('SS', 'df', 'MS', 'F', 'PRE', 'p')]
+anv.tbl |> format(digits=2, width=6, nsmall=2, scientific=F) |> knitr::kable(format = 'pipe')
+```
+
+|                      |SS   |df    |MS   |F    |PRE  |p       |
+|:---------------------|:----|:-----|:----|:----|:----|:-------|
+|Model (error reduce##### |5.10 |4.00  | [a] | [F] | [R2] |0.0004 |
+|Error (from model)    |3.70 |23.00 | [b] |    |    |       |
+
+ 
+
+Answer:
+
+##### Find the missing `[F]` value.
+
+\
+
+##### How many groups are being abalyzed?
+
+\
+
+##### What are the hypotheses this table is testing?
+
+
+##### What is the conclusion of the test?
+
+\
+
+##### Find the missing `[R2]` and interpret it.
+
+\
+
+---
+
+### Part D: Applied Thinking
+
+#### A researcher runs 10 different tests at α = 0.05.
+
+##### What problem might occur?
+
+\
+
+##### How could it be addressed?
+
+\
+
+---
+
+#### You observe a strong relationship in a sample, but the p-value is large. Why might this happen?
+
+\
+
+---
+
+### Part E: Data Reasoning
+
+#### Given a contingency table (Gender × Job):
+
+##### What test should be used?
+
+\
+
+
+##### What would the null hypothesis be?
+
+\
+
+---
+
+#### The following summary of $y$ is given:
+
+```{r, echo=FALSE}
+aggregate(drat~factor(vs, 0:1, c('A', 'B')),
+          data=mtcars, length) |> setNames(c('Group', 'n')) |>
+  merge(aggregate(drat~factor(vs, 0:1, c('A', 'B')),
+          data=mtcars, mean) |> setNames(c('Group', 'Mean'))) |>
+  merge(aggregate(drat~factor(vs, 0:1, c('A', 'B')),
+          data=mtcars, sd) |> setNames(c('Group', 'SD'))) |> 
+  knitr::kable(digits = 2)
+#with(mtcars, t.test(x = drat[vs==0], y=drat[vs==1], var.equal=TRUE)) 
+```
+
+##### What is the differnce of the sample means?
+
+\
+
+##### What is the standard error of the differnce of the sample means?
+
+\
+
+##### Compute $t=\frac{\bar x_B-\bar x_A}{SE}$.
+
+\
+
+##### what is the distribution of $t$, if we assume the group variances are equal?
+
+\
+
+##### Write a conclusion if the $p\text{-value}=0.012$ and $H_a: \mu_A\ne\mu_B$.
+
+\
+
+##### What is the Cohen's $d$ and what does it mean?
+
+\
+
+##### Write the `lm` equation for `Y~X` and the estimate values for $\beta_0$ and $\beta_1$?
+
+\
+
+---
+
+### Challenge Questions
+
+#### Explain how the t-distribution differs from the normal distribution.
+
+\
+
+#### Why do we use an F-test instead of multiple t-tests in ANOVA?
+
+\
+
+---

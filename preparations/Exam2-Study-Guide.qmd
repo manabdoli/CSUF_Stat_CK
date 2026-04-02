@@ -1,11 +1,15 @@
 ---
 title: "Exam 2 Study Guide"
+sidebar: false
+page-navigation: false
+bread-crumbs: false
 format: 
-  docx:
-    reference-doc: refs/custom-reference-doc.docx
   html:
     toc: true
     toc-float: true
+    css:
+      - ../css/h4h5.css
+      - ../css/h3collapsable.css
 ---
 
 ## 1. Models and Model Comparison
@@ -20,9 +24,9 @@ format:
 * **Simple model**: One numerical or a binary categorical predictor (2 parameters)
 * **Complex model**: Two or more numerical, non-binary categorical, or combination of numerical and categorical predictors (3 or more parameters)
 
-> Models could also be compared as **Simpler** or **More Complex** based on their relative number of parameters
-
-> **Key idea:** Does a more complex model **improve prediction enough**?
+> Models could also be compared as **Simpler** vs. **More Complex** based on their relative number of parameters
+>
+> > **Key idea:** Does a more complex model **improve prediction enough**?
 
 ### Key Quantities
 * **Residual**: $e_i=$ Observed $(y)$ − Predicted $(\hat y)$
@@ -41,8 +45,8 @@ format:
 * The **sampling distribution** shows this variability
 * Sampling distribution under the null hypothesis is called **Null Distribution**:
  - Null Distribution is used to determine evidence against the null $(H_0)$:
-    - **Rejection Region** determines the far values based on a significance level $\alpha$ and the alternative $H_a$.
-    - The $p$-value measures how unexpected the observed sample statistic is, in favor of the alternative $H_a$. 
+    - **Rejection Region** determines all values consider to favor of the alternative $H_a$ based on a significance level $\alpha$.
+    - The $p$-value measures the evidence in favor of the alternative $H_a$ as unlikeliness of the observed and more extreme values of the test statistic.
 * Null Distributions can be found by:
   - Simulation
   - Mathematically, given some assumptions.
@@ -57,24 +61,24 @@ format:
 ---
 
 ## 3. Hypothesis Testing Framework
-A significance level $(\alpha)$ is assumed given, or chosen.
+A significance level $(\alpha)$ is assumed given or chosen.
 
 ### Steps
 
 1. State **null hypothesis $(H_0)$**, **Alternative hypothesis $(H_a)$**.
 2. Find the **null distribution** of a **test statistic**:
-  - Generate (by simulation) or determine (mathematically).
-  - Determine the Rejection Region based on $\alpha$ (if needed).
+    - Generate (by simulation) or determine (mathematically).
+    - Determine the Rejection Region based on $\alpha$ (if needed).
 3. Compute the **observed statistic**
-  - Compute the **p-value** (if needed)
-4. Compare **$p$-value** to $\alpha$ or observed test statistic to **rejection region**.
-5. Make a decision and write a conclusion
+    - Compute the **p-value** (if needed)
+4. Make a decision by compare **$p$-value** to $\alpha$ or observed test statistic to the **rejection region**.
+5. Write a conclusion in the context of the problem.
 6. check assumptions.
 
 ### Interpretation
 
-* Small $p$-value or observed test statistic in the rejection region $\to$ evidence against $H_0$.
-* Large p-value or observed test statistic outside the rejection region $\to$ not enough evidence against $H_0$.
+* Small $p$-value, or the observed test statistic in the rejection region $\to$ evidence against $H_0$.
+* Large $p$-value, or the observed test statistic outside the rejection region $\to$ not enough evidence against $H_0$.
 
 ---
 
@@ -84,75 +88,124 @@ A significance level $(\alpha)$ is assumed given, or chosen.
 
 $$y=\beta_0 + \varepsilon$$
 
-* Observation: $n$ observations: $y_1, y_2, ..., y_n$
+* Observation: $n$ *independent* observations: $y_1, y_2, ..., y_n$
 * Predicted value: $\hat y = \bar y$
 * Statistics:
   - Observed Mean: $\bar y=\frac{\sum_{i=1}^n y_i}{n}$
+  
   - Sum Squares: $SS(y) = \sum_i{(y_i-\bar y)^2}$
+  
   - Observed Variance: $s^2=\frac{SS(y)}{n-1}$
+  
   - Observed Standard Deviation: $s=\sqrt{s^2}=\sqrt{\frac{\sum_i{(y_i-\bar y)^2}}{n-1}}$
+  
   - Standard Error: $SE=s_{\bar y} = \frac{s}{\sqrt{n}}$
+  
   - Observed Test Statistic ($t$-value): $t=\frac{\bar y - \beta_0}{SE}=\frac{\bar y - \beta_0}{s/\sqrt{n}}$
+  
+:::{style="color: grey;"}
+
 * Null Distribution of $\bar Y$ or $t$
   - By Simulation of the DGP: 
     - Set the mean to $\beta_0$: $y_i^0=y_i-\bar y+\beta_0$ for $i=1, ..., n$
+    
     - Randomly generate many $\bar y$:
       - select $n$ from $y_1^0, ..., v^0_n$, with replacement 
       - Compute the sample mean (or test statistic)
+  
   - Mathematically
     - $\bar y \sim N(\beta_0, \sigma/\sqrt{n})$
+    
     - $t = \frac{\bar Y - \beta_0}{s/\sqrt{n}}\sim t(df=n-1)$
+    
     * Assumption:
       - $\varepsilon \sim N(0, \sigma)$ or
+      
       - $n$ is large.
+
 * Conclusion:
   - Reject $H_0$ if observed $\bar y$ is too far from $\beta_0$
+  
   - How far is far?
     * Compute **$p$-value** or find **Rejection Region**
+:::
 
 ### B. Testing Association to a Binary Categorical Predictor ($H_0: \beta_1=\mu_B-\mu_A=0$)
 
-$$y=\beta_0 + \beta_1X+\varepsilon, \text{ where } X=\left\{\begin{align}0 & \text{ for group A}\\1 & \text{ for group B}\end{align} \right.$$
+$$
+  y=\beta_0 + \beta_1X+\varepsilon, \text{ where } X=
+  \begin{cases}
+    0 & \text{ for group A}\\
+    1 & \text{ for group B}
+  \end{cases}
+$$
 
 * Predicted values: 
-  $$\hat y_i = \left\{
-    \begin{align} \bar y_A & \text{ for group } A\\
+  $$\hat y_i = 
+    \begin{cases} \bar y_A & \text{ for group } A\\
       \bar y_B & \text{ for group } B
-    \end{align}\right.$$
-* Observation: $n$ observations:
+    \end{cases}$$
+* Observation: $n$ *independent* sets of observations:
   - $(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$ or
+  
   - $(y_{1A}, y_{2A}, ..., y_{n_AA})$ and $(y_{1B}, y_{2B}, ..., y_{n_BB})$, where $n_B=\sum_i{X}$, $n_A=n - n_B$
+
 * Statistics:
   - Observed Means:
     - $\bar {y_A} = \frac{\sum_{i=1}^{n_A} y_{iA}}{n_A}$
     - $\bar {y_B} = \frac{\sum_{i=1}^{n_B} y_{iA}}{n_B}$
+  
   - Sum Squares:
     - Total: $SST = SS(y) = \sum_i{(y_i-\bar y)^2}$
+    
     - Within Group A: $SS(A) = \sum_i{(y_{iA}-\bar y_A)^2}$
+    
     - Within Group B: $SS(B) = \sum_i{(y_{iA}-\bar y_B)^2}$
+    
     - Within Groups (Error): $SSE = SSG = SS(y_A) + SS(y_B)$
+    
     - Model: $SSM = SST - SSE$
+  
   - PRE: $R^2 = \frac{SSM}{SST}=1-\frac{SSE}{SST}$
+  
   - Observed Variances:
     - $s_A^2 = \frac{SS(A)}{n_A-1}$
+    
     - $s_B^2 = \frac{SS(B)}{n_B-1}$
+    
     - $s_p^2 = \frac{SS(A)+SS(B)}{n_A+n_B-2}=\frac{SSE}{n_A+n_B-2}$
-  - Observed Standard Error: 
-  $$SE = s_{\bar y_A - \bar y_B} = \left\{\begin{align}\sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}} & \text{ general case }\\ \sqrt{\frac{s_p^2}{n_A} + \frac{s_p^2}{n_B}} & \text{ assuming } \sigma_A=\sigma_B \end{align}\right.$$
   
+  - Observed Standard Error: 
+  $$SE = s_{\bar y_A - \bar y_B} = 
+  \begin{cases}\sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}} & \text{ general case }\\
+  \sqrt{\frac{s_p^2}{n_A} + \frac{s_p^2}{n_B}} & \text{ assuming } \sigma_A=\sigma_B \end{cases}$$
+  
+  - Cohen's $d$: $d=\frac{\bar {y_A} - \bar {y_B}}{s_p}$
+  
+:::{style="color: grey;"}
+
 * Null Distribution of $(\bar y_A - \bar y_B)$ or $\frac{(\bar y_A - \bar y_B) - \beta_1}{SE}$
   - By Simulation of DGP: 
     - Randomly generate many $(\bar y_A - \bar y_B)$:
       - Shuffle all $y_i$'s and reallocate $n_A$ to group $A$ and $n_B$ to group $B$.
       - Compute the sample mean (or test statistic)
+  
   - Mathematically (1)
     - Assumption: $\varepsilon_A \sim N(0, \sigma_A)$ and $\varepsilon_B \sim N(0, \sigma_B)$
+    
     - $(\bar y_A - \bar y_B) \sim N\left(\beta_1, \sigma_{\bar y_A-\bar y_B}\right)$, where $\sigma_{\bar y_A-\bar y_B}^2 =  \frac{\sigma_A^2}{n_A}+\frac{\sigma_B^2}{n_B}$
+    
     - $t = \frac{(\bar y_A - \bar y_B) - \beta_1}{SE}\sim t(df\approx \hat{df})$, conservative estimate: $\hat{df}=min(n_A-1, n_B-1)$
+  
   - Mathematically (2)
     - Assumption: $\varepsilon_A \sim N(0, \sigma)$ and $\varepsilon_B \sim N(0, \sigma)$; i.e., $\sigma_A=\sigma_B=\sigma$.
+    
     - $(\bar y_A - \bar y_B) \sim N\left(\beta_1, \sigma_{\bar y_A-\bar y_B}\right)$, where $\sigma_{\bar y_A-\bar y_B}^2 =  \frac{\sigma^2}{n_A}+\frac{\sigma^2}{n_B}=\sigma^2_p(1/n_A+1/n_B)$
+    
     - $t = \frac{(\bar y_A - \bar y_B) - \beta_1}{SE}\sim t(df= n_A+n_B-2)$
+
+:::
+
 * Compute $p$-value or find Rejection Region
 * Conclusion:
   - Reject $H_0$ (no association) if observed $(\bar y_A - \bar y_B)$ is too far from $\beta_1$
@@ -162,29 +215,43 @@ $$y=\beta_0 + \beta_1X+\varepsilon, \text{ where } X=\left\{\begin{align}0 & \te
 
 $$y=\beta_0 + \beta_1X+\varepsilon$$
 
-* Observation: $n$ observations:
+* Observation: $n$ *independent* sets of observations:
   - $(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$
+
 * Predicted value: $\hat y_i = b_0 + b_1 x_i$, where $b_0$ and $b_1$ are estimated **intercept** and **slope**, respectively. 
+
 * Statistics:
   - Observed Means:
     - $\bar y=\frac{\sum_{i=1}^n y_{i}}{n}$
     - $\bar x=\frac{\sum_{i=1}^n x_{i}}{n}$
   - Sum Squares:
     - Total: $SST = SS(y) = \sum_i (y_i-\bar y)^2$
+    
     - Error: $SSE = SSR = \sum_i (y_i - \hat y_i)^2$
+    
     - Model: $SSM = SST - SSE$
+  
   - PRE: $R^2 = \frac{SSM}{SST}=1-\frac{SSE}{SST}$
+  
   - Observed Variances:
     - $s_y^2 = \frac{SS(y)}{n-1}$
+    
     - $s_x^2 = \frac{SS(x)}{n-1}$
+    
     - Covariance: $s_{xy}=\frac{\sum_i (y_i-\bar y)(x_i - \bar x)}{n-1}$
+  
   - Observed Correlation: $r = \frac{s_{xy}}{s_x s_y}$ 
 * Least Square Line:
   - Slope Estimate: $b_1= r \frac{s_y}{s_x}$
+  
   - Intercept Estimate: $b_0=\bar y - b_1 \bar x$
+  
   - Sum Square Error: $SSE = \sum_i (y_i - \hat y_i)^2 = \sum_i (y_i - b_0 - b_1 x_i)^2$
+  
   - Error Variance: $s^2 = \frac{SSE}{n-2}$
+  
   - Standard Error of $b_1$: $SE_{b_1}=\frac{s}{\sqrt{SS(x)}}$
+  
   - Standard Error of $b_0$: $SE_{b_0}=s\cdot\sqrt{\frac{1}{n}+\frac{{\bar x}^2}{SS(x)}}$
 
 * Null Distribution of $b_1$ or $\frac{b_1- \beta_1}{SE_{b_1}}$
@@ -192,11 +259,14 @@ $$y=\beta_0 + \beta_1X+\varepsilon$$
     - Randomly generate many $b_1$:
       - Shuffle all $y_i$'s and pair each with a $x_i$.
       - Compute the sample slope (or test statistic, PRE, $R^2$)
+  
   - Mathematically
     - Assumption: 
       - Linear relationship between $y$ and $x$.
       - $\varepsilon \sim N(0, \sigma)$; Normality and Constant Variance
+    
     - $b_1 \sim N\left(\beta_1, \sigma_{b_1}\right)$, where $\sigma_{b_1}^2 =  \frac{\sigma^2}{SS(x)}$
+    
     - $t = \frac{b_1 - \beta_1}{SE_{b_1}}\sim t(df= n-2)$
 * Compute $p$-value or find Rejection Region
 * Conclusion:
@@ -206,37 +276,54 @@ $$y=\beta_0 + \beta_1X+\varepsilon$$
 
 $$y=\beta_0 + \beta_1X_1+...+\beta_kX_k+\varepsilon=\beta_0+\sum_{j=1}^k \beta_jX_{j}+\varepsilon$$
 
-* Observation: $n$ observations:
+* Observation: $n$ *independent* sets of observations:
   - $(x_{11}, x_{12}, ..., x_{1k}, y_1), ..., (x_{n1}, ..., x_{nk}, y_n)$
+  
   - One or more than $x_{ik}$ could be 0/1 variables representing levels of a categorical variable.
+
 * Predicted value: $\hat y_i = b_0 + \sum_{j=1}^k b_j x_{ji}$, where $b_0$ and $b_j$'s are estimated based on minimizing some cost function (here, least squares). 
+
 * Statistics:
   - Observed Means:
     - $\bar y=\frac{\sum_{i=1}^n y_{i}}{n}$
     - $\bar x_j=\frac{\sum_{i=1}^n x_{ij}}{n}$
+  
   - Sum Squares:
     - Total: $SST = SS(y) = \sum_i (y_i-\bar y)^2$
+    
     - Error: $SSE = SSR = \sum_i (y_i - \hat y_i)^2$
+    
     - Model: $SSM = SST - SSE$
+  
   - PRE: $R^2 = \frac{SSM}{SST}=1-\frac{SSE}{SST}$
+  
   - Observed Variances:
     - $s_y^2 = \frac{SS(y)}{n-1}$
+    
     - $s_p^2 = MSE=\frac{SSE}{n-1-k}$
+  
   - Observed F-value: $F=\frac{SSM/k}{SSE/(n-1-k)}=\frac{MSM}{MSE}$
+  
   - Observed SE's: We use software provided values.
+
 * Null Distribution of $b_j$ or $\frac{b_j- \beta_j}{SE_{b_j}}$
   - By Simulation of DGP: 
     - Randomly generate many $b_j$'s:
       - Shuffle all $y_i$'s and pair each to a vector $(x_{i1}, ..., x_{ik})$.
       - Compute the sample slope (or $t$, $F$, PRE, $R^2$)
+  
   - Mathematically
     - Assumption: 
       - Linear relationship between $y$ and $x_j$'s.
       - No linear association between two $x_j$'s. 
       - $\varepsilon \sim N(0, \sigma)$; Normality and Constant Variance
+    
     - $F \sim F(df_1=k,\  df_2=n-1-k)$
+    
     - $b_j \sim N\left(\beta_j, \sigma_{b_j}\right)$
+    
     - $t = \frac{b_j - \beta_j}{SE_{b_j}}\sim t(df= n-1-k)$
+
 * Compute $p$-value or find Rejection Region for single test $F$
 * Conclusion:
   - Reject $H_0$  (no association) if observed $F$ is too greater than $1$
@@ -249,21 +336,28 @@ $$y=\beta_0 + \beta_1X_1+...+\beta_kX_k+\varepsilon=\beta_0+\sum_{j=1}^k \beta_j
 
 $$P(Y|X)=P(Y)$$
 
-* Observation: $n$ observations:
+* Observation: $n$ *independent* sets of observations:
   - $(x_1, y_1), ..., (x_n, y_n)$
+  
   - Summarized into a contingency table: $C=[c_{ij}]$
+
 * Statistics:
   - Observed Counts: $c_{ij}$
+  
   - Observed Chi-square: $\chi^2=\sum_{ij} (c_{ij} - e_{ij})^2$
+
 * Null Distribution of $\chi^2$
   - By Simulation of DGP: 
     - Randomly generate many $\chi^2$'s:
       - Shuffle all $y_i$'s and pair each to a $x_i$.
       - Compute the sample Chi-square $\chi^2$.
+  
   - Mathematically
     - Assumption: 
       - Each contingency count $c_{ij}\ge 5$
+    
     - $\chi^2 \sim \text{chi-square}(df=(k-1)(m-1))$
+
 * Compute $p$-value or find Rejection Region for single test $F$
 * Conclusion:
   - Reject $H_0$  (no association) if observed $\chi^2$ is too greater than $0$
@@ -274,13 +368,16 @@ $$P(Y|X)=P(Y)$$
 
 * **Type I Error**: Rejecting a true $H_0$
   - Using $\alpha$ to make a decision leads to $P(\text{Type I Error})=\alpha$
+
 * **Type II Error**: Failing to reject a false $H_a$
   - $P(\text{Type II Error}|H_a)$ can be calculated for a specific $H_a$
 
 ### Type I Error Inflation
 
 * Happens when running **multiple tests**
+
 * Increases chance of false positives
+
 * To avoid:
   - Use $ANOVA$ to do a single test
   - If single test is significant, run multiple test with corrected $\alpha$ or $p$-value.
@@ -291,9 +388,13 @@ $$P(Y|X)=P(Y)$$
 
 * Independence
   - We assume observations are made independently in each sample
+
 * Linearity (for regression)
+
 * Equal variance (for ANOVA)
+
 * Normality of error or large sample size for a numerical response
+
 * Reasonable sample size for categorical response.
 
 ---
@@ -303,8 +404,11 @@ $$P(Y|X)=P(Y)$$
 Be able to:
 
 * Interpret **coefficients ($b_0$, $b_1$)**
+
 * Explain **$R^2$ in context**
+
 * Translate **$p$-values into conclusions**
+
 * Identify whether results are **statistically significant**
   - Reject or fail to reject the null hypothesis ($H_0$)
 

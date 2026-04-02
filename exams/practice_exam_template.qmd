@@ -1,0 +1,524 @@
+---
+title: "Practice Exam — Two-Mean Inference"
+subtitle: "Introductory Statistics · Chapters 5–11"
+navbar: false
+format:
+  html:
+    theme: cosmo
+    self-contained: true   # single shareable .html file — no server needed
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    # ── Heading styles ──────────────────────────────────────────────────────
+    # h4  = Question number  (e.g. "Question 1")
+    # h5  = Sub-part label   (e.g. "Part A")
+    css: |
+      h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-top: 1.8em;
+        margin-bottom: 0.2em;
+        color: #1a1a1a;
+        border-left: 3px solid #1a1a1a;
+        padding-left: 0.6em;
+      }
+      h5 {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #555;
+        margin-top: 1.1em;
+        margin-bottom: 0.2em;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      /* ── Answer feedback colours ── */
+      .ans-correct   { color: #2d6a2d; background: #eaf3de;
+                       border-left: 3px solid #3b6d11;
+                       padding: 6px 10px; border-radius: 3px;
+                       margin-top: 4px; font-size: 0.88rem; }
+      .ans-wrong     { color: #8b2020; background: #fcebeb;
+                       border-left: 3px solid #a32d2d;
+                       padding: 6px 10px; border-radius: 3px;
+                       margin-top: 4px; font-size: 0.88rem; }
+      .ans-pending   { color: #666; font-size: 0.85rem;
+                       margin-top: 4px; font-style: italic; }
+      /* ── Score box ── */
+      #score-box     { background: #f4f4f0; border: 1px solid #ccc;
+                       border-radius: 6px; padding: 1em 1.25em;
+                       margin-top: 2em; font-size: 0.95rem; }
+      /* ── Scenario / output blocks ── */
+      .scenario      { border: 1.5px solid #1a1a1a; border-radius: 3px;
+                       padding: 1.1em 1.3em; background: #fffef9;
+                       margin: 1em 0; font-size: 0.93rem; }
+      .output        { background: #f4f4f0; border-left: 3px solid #888;
+                       padding: 0.75em 1em; font-family: monospace;
+                       font-size: 0.84rem; white-space: pre; margin: 0.75em 0; }
+      /* ── Part divider ── */
+      .part-divider  { border: none; border-top: 1.5px solid #ddd;
+                       margin: 2.5em 0 1em; }
+---
+
+```{r setup, include=FALSE}
+# Nothing needed here for OJS-only interactivity.
+# Add library(tidyverse) etc. if you want R chunks alongside the quiz.
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     HOW THIS TEMPLATE WORKS
+     ───────────────────────────────────────────────────────────────────────
+     1. Each question is a plain markdown section using #### (H4) for the
+        question number and ##### (H5) for sub-parts A, B, …
+
+     2. Each answer widget is an {ojs} code chunk.  The pattern is:
+
+           // Define answer key (hidden from students in rendered output)
+           correct_q1 = "B"
+
+           // Radio-button widget
+           viewof ans_q1 = Inputs.radio(
+             ["A. option text", "B. option text", "C. option text"],
+             { label: "" }
+           )
+
+           // Reactive feedback cell
+           html`<div class="${fb_q1.cls}">${fb_q1.msg}</div>`
+
+           // Feedback logic (put in same chunk or a follow-up chunk)
+           fb_q1 = {
+             if (ans_q1 == null)
+               return { cls: "ans-pending", msg: "Select an answer above." }
+             const chosen = ans_q1.split(".")[0].trim()   // extracts "A", "B", …
+             return chosen === correct_q1
+               ? { cls: "ans-correct", msg: "✓ Correct! " + explanation_q1 }
+               : { cls: "ans-wrong",   msg: "✗ Not quite. " + explanation_q1 }
+           }
+
+     3. A live score counter at the bottom tallies all questions automatically.
+
+     4. To ADD a new question:
+        a. Copy a question block (#### … to the next ####).
+        b. Rename every variable: ans_q1 → ans_q5, fb_q1 → fb_q5, etc.
+        c. Add the new answer variable to the score counter ojs chunk.
+
+     5. To HIDE the answer key from source-view, move correct_qN values into
+        a separate `answers.js` file and import it:
+           {ojs}  import { correct_q1, correct_q2 } from "./answers.js"
+        (Only matters if students will inspect source.)
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+
+---
+
+## Instructions
+
+This is a self-grading practice exam. Select an answer for each question — feedback appears immediately. Your running score is shown at the bottom of the page.
+
+---
+
+## Part 1 — Models & Variability
+
+<hr class="part-divider">
+
+#### Question 1
+
+A researcher uses an empty model to predict student exam scores. The sample has $n = 40$, $\bar{y} = 72$, and $\text{SST} = 3600$.
+
+##### Part A
+
+What is the predicted value $\hat{y}_i$ for every student under the empty model?
+
+```{ojs}
+//| echo: false
+
+// ── Answer key ──────────────────────────────────────────────
+correct_q1a = "B"
+explanation_q1a = "The empty model has no predictors and predicts the sample mean ȳ = 72 for every observation. It has exactly 1 parameter: β₀ = ȳ."
+
+// ── Widget ──────────────────────────────────────────────────
+viewof ans_q1a = Inputs.radio(
+  [
+    "A. 0",
+    "B. 72 (the sample mean)",
+    "C. The student's individual score",
+    "D. The median score"
+  ],
+  { label: "" }
+)
+
+// ── Feedback ────────────────────────────────────────────────
+fb_q1a = {
+  if (ans_q1a == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q1a.split(".")[0].trim()
+  return chosen === correct_q1a
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q1a }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q1a }
+}
+
+html`<div class="${fb_q1a.cls}">${fb_q1a.msg}</div>`
+```
+
+##### Part B
+
+What is $R^2$ if the model SSE = 1800?
+
+```{ojs}
+//| echo: false
+
+correct_q1b = "B"
+explanation_q1b = "R² = SSM/SST = (SST − SSE)/SST = (3600 − 1800)/3600 = 1800/3600 = 0.50. The model explains 50% of the variability."
+
+viewof ans_q1b = Inputs.radio(
+  [
+    "A. 0.25",
+    "B. 0.50",
+    "C. 0.75",
+    "D. 2.00"
+  ],
+  { label: "" }
+)
+
+fb_q1b = {
+  if (ans_q1b == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q1b.split(".")[0].trim()
+  return chosen === correct_q1b
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q1b }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q1b }
+}
+
+html`<div class="${fb_q1b.cls}">${fb_q1b.msg}</div>`
+```
+
+---
+
+#### Question 2
+
+Which of the following correctly classifies a model that includes one numerical predictor and one binary categorical predictor?
+
+```{ojs}
+//| echo: false
+
+correct_q2 = "C"
+explanation_q2 = "This model has β₀ (intercept) + β₁ (numerical) + β₂ (binary categorical) = 3 parameters, making it a complex model."
+
+viewof ans_q2 = Inputs.radio(
+  [
+    "A. Empty model — 1 parameter",
+    "B. Simple model — 2 parameters",
+    "C. Complex model — 3 or more parameters",
+    "D. Cannot be classified without knowing n"
+  ],
+  { label: "" }
+)
+
+fb_q2 = {
+  if (ans_q2 == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q2.split(".")[0].trim()
+  return chosen === correct_q2
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q2 }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q2 }
+}
+
+html`<div class="${fb_q2.cls}">${fb_q2.msg}</div>`
+```
+
+---
+
+## Part 2 — Hypothesis Testing
+
+<hr class="part-divider">
+
+#### Question 3
+
+A p-value of 0.03 is obtained with $\alpha = 0.05$.
+
+##### Part A
+
+What is the correct decision?
+
+```{ojs}
+//| echo: false
+
+correct_q3a = "B"
+explanation_q3a = "Since p = 0.03 < α = 0.05, we reject H₀. There is statistically significant evidence in favor of the alternative hypothesis."
+
+viewof ans_q3a = Inputs.radio(
+  [
+    "A. Fail to reject H₀ — not enough evidence",
+    "B. Reject H₀ — evidence supports Hₐ",
+    "C. Accept H₀ — the null is true",
+    "D. The result is inconclusive"
+  ],
+  { label: "" }
+)
+
+fb_q3a = {
+  if (ans_q3a == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q3a.split(".")[0].trim()
+  return chosen === correct_q3a
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q3a }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q3a }
+}
+
+html`<div class="${fb_q3a.cls}">${fb_q3a.msg}</div>`
+```
+
+##### Part B
+
+Which type of error could you be making with this decision?
+
+```{ojs}
+//| echo: false
+
+correct_q3b = "A"
+explanation_q3b = "When we reject H₀, the error we might be making is a Type I error — rejecting H₀ when it is actually true. P(Type I error) = α = 0.05."
+
+viewof ans_q3b = Inputs.radio(
+  [
+    "A. Type I error — rejecting a true H₀",
+    "B. Type II error — failing to reject a false H₀",
+    "C. Both Type I and Type II simultaneously",
+    "D. Neither — the decision is guaranteed correct"
+  ],
+  { label: "" }
+)
+
+fb_q3b = {
+  if (ans_q3b == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q3b.split(".")[0].trim()
+  return chosen === correct_q3b
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q3b }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q3b }
+}
+
+html`<div class="${fb_q3b.cls}">${fb_q3b.msg}</div>`
+```
+
+---
+
+#### Question 4
+
+You run 5 separate t-tests each at $\alpha = 0.05$ to compare group means. What is the primary concern?
+
+```{ojs}
+//| echo: false
+
+correct_q4 = "C"
+explanation_q4 = "Running multiple tests inflates the family-wise Type I error rate. With 5 tests at α = 0.05, P(at least one false positive) ≈ 1 − 0.95⁵ ≈ 0.23. Use ANOVA first, then correct α for follow-up tests."
+
+viewof ans_q4 = Inputs.radio(
+  [
+    "A. Each individual test becomes more powerful",
+    "B. The Type II error rate increases dramatically",
+    "C. The overall Type I error rate inflates above 0.05",
+    "D. The t-distribution is no longer valid"
+  ],
+  { label: "" }
+)
+
+fb_q4 = {
+  if (ans_q4 == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q4.split(".")[0].trim()
+  return chosen === correct_q4
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q4 }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q4 }
+}
+
+html`<div class="${fb_q4.cls}">${fb_q4.msg}</div>`
+```
+
+---
+
+## Part 3 — Two-Mean Inference
+
+<hr class="part-divider">
+
+The following scenario is used for Questions 5–7.
+
+::: scenario
+Researchers compared resting heart rate (bpm) between two groups. Summary statistics:
+
+| Group | n | ȳ | s |
+|---|:---:|:---:|:---:|
+| Exercise | 30 | 62.4 | 8.1 |
+| Sedentary | 35 | 71.8 | 9.4 |
+
+R output:
+
+```
+Welch Two Sample t-test
+t = -4.47,  df = 61.3,  p-value < 0.001
+95% CI:  (-13.5,  -5.3)
+```
+:::
+
+#### Question 5
+
+##### Part A
+
+What are the null and alternative hypotheses?
+
+```{ojs}
+//| echo: false
+
+correct_q5a = "B"
+explanation_q5a = "H₀: μ_Exercise = μ_Sedentary (no difference), Hₐ: μ_Exercise ≠ μ_Sedentary (a difference exists). This is a two-sided test."
+
+viewof ans_q5a = Inputs.radio(
+  [
+    "A. H₀: μ_E > μ_S  vs.  Hₐ: μ_E < μ_S",
+    "B. H₀: μ_E = μ_S  vs.  Hₐ: μ_E ≠ μ_S",
+    "C. H₀: μ_E ≠ μ_S  vs.  Hₐ: μ_E = μ_S",
+    "D. H₀: ȳ_E = ȳ_S  vs.  Hₐ: ȳ_E ≠ ȳ_S"
+  ],
+  { label: "" }
+)
+
+fb_q5a = {
+  if (ans_q5a == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q5a.split(".")[0].trim()
+  return chosen === correct_q5a
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q5a }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q5a }
+}
+
+html`<div class="${fb_q5a.cls}">${fb_q5a.msg}</div>`
+```
+
+##### Part B
+
+What is the observed difference in sample means (Exercise − Sedentary)?
+
+```{ojs}
+//| echo: false
+
+correct_q5b = "A"
+explanation_q5b = "ȳ_Exercise − ȳ_Sedentary = 62.4 − 71.8 = −9.4 bpm. The negative sign indicates exercise group has lower heart rate."
+
+viewof ans_q5b = Inputs.radio(
+  [
+    "A. −9.4 bpm",
+    "B. +9.4 bpm",
+    "C. −4.47 bpm",
+    "D. 134.2 bpm"
+  ],
+  { label: "" }
+)
+
+fb_q5b = {
+  if (ans_q5b == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q5b.split(".")[0].trim()
+  return chosen === correct_q5b
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q5b }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q5b }
+}
+
+html`<div class="${fb_q5b.cls}">${fb_q5b.msg}</div>`
+```
+
+---
+
+#### Question 6
+
+Interpret the 95% confidence interval (−13.5, −5.3) in context.
+
+```{ojs}
+//| echo: false
+
+correct_q6 = "B"
+explanation_q6 = "The CI gives a plausible range for the TRUE difference μ_E − μ_S. Because both bounds are negative, we have evidence the exercise group's mean heart rate is lower. We are 95% confident the true difference is between −13.5 and −5.3 bpm."
+
+viewof ans_q6 = Inputs.radio(
+  [
+    "A. 95% of individual heart rates fall between −13.5 and −5.3 bpm",
+    "B. We are 95% confident the true difference in mean heart rates (Exercise − Sedentary) is between −13.5 and −5.3 bpm",
+    "C. There is a 95% probability that H₀ is false",
+    "D. The exercise group will always have a heart rate 5.3 to 13.5 bpm lower than sedentary"
+  ],
+  { label: "" }
+)
+
+fb_q6 = {
+  if (ans_q6 == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q6.split(".")[0].trim()
+  return chosen === correct_q6
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q6 }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q6 }
+}
+
+html`<div class="${fb_q6.cls}">${fb_q6.msg}</div>`
+```
+
+---
+
+#### Question 7
+
+What assumption is required for the Welch t-test to be valid here?
+
+```{ojs}
+//| echo: false
+
+correct_q7 = "C"
+explanation_q7 = "The key assumptions are (1) independence of observations within and between groups, (2) normality of errors OR large n. Note: Welch's t-test does NOT require equal variances — that's the pooled t-test."
+
+viewof ans_q7 = Inputs.radio(
+  [
+    "A. The two groups must have equal sample sizes",
+    "B. The two groups must have equal variances (σ_E = σ_S)",
+    "C. Observations are independent AND errors are approximately normal (or n is large)",
+    "D. The data must come from a randomized experiment"
+  ],
+  { label: "" }
+)
+
+fb_q7 = {
+  if (ans_q7 == null) return { cls: "ans-pending", msg: "Select an answer above." }
+  const chosen = ans_q7.split(".")[0].trim()
+  return chosen === correct_q7
+    ? { cls: "ans-correct", msg: "✓ Correct!  " + explanation_q7 }
+    : { cls: "ans-wrong",   msg: "✗ Not quite.  " + explanation_q7 }
+}
+
+html`<div class="${fb_q7.cls}">${fb_q7.msg}</div>`
+```
+
+---
+
+## Score
+
+```{ojs}
+//| echo: false
+
+// ── Tally all parts ─────────────────────────────────────────────────────
+// Add every answer variable here when you add new questions.
+// Each entry: 1 if correct, 0 if wrong, null if not yet answered.
+
+answered_list = [ans_q1a, ans_q1b, ans_q2, ans_q3a, ans_q3b,
+                 ans_q4,  ans_q5a, ans_q5b, ans_q6,  ans_q7]
+
+correct_list  = ["B", "B", "C", "B", "A",
+                 "C", "B", "A", "B", "C"]
+
+total    = answered_list.length
+answered = answered_list.filter(a => a != null).length
+
+correct_count = answered_list.reduce((sum, a, i) => {
+  if (a == null) return sum
+  return a.split(".")[0].trim() === correct_list[i] ? sum + 1 : sum
+}, 0)
+
+pct = total > 0 ? Math.round((correct_count / total) * 100) : 0
+
+html`
+<div id="score-box">
+  <strong>Score: ${correct_count} / ${total} &nbsp;(${pct}%)</strong><br>
+  <span style="font-size:0.85rem;color:#555">
+    ${answered} of ${total} questions answered
+    ${answered < total ? " — keep going!" : " — all done!"}
+  </span>
+  <div style="margin-top:10px;height:8px;background:#ddd;border-radius:4px;overflow:hidden">
+    <div style="width:${pct}%;height:100%;background:${pct>=80?'#3B6D11':pct>=60?'#BA7517':'#A32D2D'};border-radius:4px;transition:width 0.4s"></div>
+  </div>
+</div>
+`
+```

@@ -1,0 +1,618 @@
+---
+title: "Critical Thinking Assessment: Comparing Two Group Means"
+subtitle: "Introductory Statistics — Two-Sample Inference"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-title: "Contents"
+    toc-depth: 2
+    number-sections: false
+    self-contained: true
+    css: |
+      @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+      body {
+        font-family: 'IBM Plex Serif', Georgia, serif;
+        font-size: 15px;
+        color: #1a1a1a;
+        max-width: 860px;
+        margin: auto;
+        line-height: 1.75;
+      }
+
+      h1, h2, h3 { font-family: 'IBM Plex Serif', serif; font-weight: 600; }
+      h2 { border-bottom: 2px solid #1a1a1a; padding-bottom: 4px; margin-top: 2.5em; }
+      h3 { font-size: 1em; margin-top: 1.5em; color: #333; }
+
+      code, pre { font-family: 'IBM Plex Mono', monospace; font-size: 0.88em; }
+
+      .scenario-box {
+        border: 2px solid #1a1a1a;
+        border-radius: 2px;
+        padding: 1.5em 1.75em;
+        margin: 1.5em 0;
+        background: #fffef9;
+      }
+      .scenario-box .scenario-label {
+        font-size: 0.7em;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 0.5em;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.87em;
+        margin: 1em 0;
+      }
+      .data-table th {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 7px 14px;
+        text-align: center;
+        font-weight: 500;
+      }
+      .data-table td {
+        padding: 6px 14px;
+        border-bottom: 1px solid #e0e0e0;
+        text-align: center;
+      }
+      .data-table tr:nth-child(even) { background: #f7f7f5; }
+
+      .output-box {
+        background: #f4f4f0;
+        border-left: 3px solid #555;
+        padding: 1em 1.25em;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.84em;
+        margin: 1em 0;
+        white-space: pre;
+        overflow-x: auto;
+      }
+
+      .task {
+        margin: 1.5em 0;
+        padding: 1em 1.25em 1em 1em;
+        border-left: 4px solid #1a1a1a;
+        background: #fafaf8;
+      }
+      .task-label {
+        font-size: 0.7em;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #555;
+        margin-bottom: 0.35em;
+      }
+      .task p { margin: 0; }
+
+      .response-area {
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 10px 12px;
+        font-family: 'IBM Plex Serif', serif;
+        font-size: 14px;
+        margin-top: 0.5em;
+        resize: vertical;
+        background: #fff;
+      }
+      .response-area-sm { min-height: 60px; }
+      .response-area-lg { min-height: 150px; }
+
+      .calc-area {
+        width: 100%;
+        min-height: 80px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 10px 12px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 13px;
+        margin-top: 0.5em;
+        resize: vertical;
+        background: #fffef9;
+      }
+
+      .rubric-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.82em;
+        margin-top: 2em;
+      }
+      .rubric-table th {
+        background: #1a1a1a;
+        color: #fff;
+        padding: 8px 10px;
+        text-align: left;
+        font-weight: 500;
+      }
+      .rubric-table td {
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        vertical-align: top;
+      }
+      .rubric-table tr:nth-child(even) { background: #f9f9f7; }
+      .rubric-table .dim-label {
+        font-weight: 600;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.9em;
+        white-space: nowrap;
+      }
+
+      .pts { float: right; font-size: 0.78em; color: #888; font-family: 'IBM Plex Mono', monospace; font-style: normal; }
+      .score-line { border: none; border-bottom: 1px solid #aaa; display: inline-block; width: 60px; margin-left: 6px; }
+
+      .callout-note {
+        background: #f0f4ff;
+        border-left: 4px solid #4a6cf7;
+        padding: 0.75em 1em;
+        border-radius: 2px;
+        margin: 1.25em 0;
+        font-size: 0.92em;
+      }
+      .callout-note strong { color: #2a4ad7; }
+
+      .page-break { page-break-after: always; }
+
+      @media print {
+        .response-area, .calc-area { background: #fff; }
+        .no-print { display: none; }
+      }
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+---
+
+::: callout-note
+**Assessment Overview** · This is an open-ended critical thinking task. There are no purely "right or wrong" answers — you are assessed on the quality of your reasoning, the accuracy of your statistical work, and the clarity of your communication. Read the entire scenario before beginning.
+:::
+
+**Name:** \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_ &emsp; **Date:** \_\_\_\_\_\_\_\_\_\_\_ &emsp; **Section:** \_\_\_\_\_\_\_\_\_
+
+---
+
+## The Scenario
+
+::: scenario-box
+::: scenario-label
+Context
+:::
+
+A university's Department of Kinesiology conducted a study examining whether a mindfulness-based stress reduction (MBSR) program affects academic performance in college students. Students who voluntarily enrolled in a semester-long MBSR program were compared to a control group of students who did not participate.
+
+At the end of the semester, final GPA was recorded for both groups. The study was not a randomized experiment — students self-selected into the program.
+
+Summary statistics are provided below.
+:::
+
+```{r summary-table, results='asis'}
+cat('
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Group</th>
+      <th>n</th>
+      <th>Mean GPA (ȳ)</th>
+      <th>Std. Dev. (s)</th>
+      <th>Std. Error (SE)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>MBSR Program</td><td>38</td><td>3.21</td><td>0.52</td><td>0.084</td></tr>
+    <tr><td>Control</td><td>45</td><td>2.94</td><td>0.61</td><td>0.091</td></tr>
+  </tbody>
+</table>
+')
+```
+
+The research team ran a two-sample t-test and obtained the following R output:
+
+::: output-box
+	Welch Two Sample t-test
+
+data:  gpa by group
+t = 2.204, df = 79.6, p-value = 0.030
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 0.027  0.513
+sample estimates:
+mean in group Control mean in group MBSR 
+               2.940               3.210 
+:::
+
+---
+
+## Part 1 — Extraction <span class="pts">/ 15 pts</span>
+
+*Accurately identify and report key information from the output and study description.*
+
+### 1a. Key values <span class="pts">/ 6 pts</span>
+
+From the R output and summary table, identify the following values. Write the number and its meaning.
+
+::: task
+::: task-label
+Task
+:::
+Fill in the table below.
+:::
+
+```{r extraction-table, results='asis'}
+cat('
+<table class="data-table">
+  <thead>
+    <tr><th>Value</th><th>Symbol</th><th>Your Answer</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Observed difference in sample means (MBSR − Control)</td><td>ȳ₁ − ȳ₂</td><td style="min-width:120px">&nbsp;</td></tr>
+    <tr><td>Observed t-statistic</td><td>t</td><td>&nbsp;</td></tr>
+    <tr><td>Degrees of freedom</td><td>df</td><td>&nbsp;</td></tr>
+    <tr><td>p-value</td><td>p</td><td>&nbsp;</td></tr>
+    <tr><td>Lower bound of 95% CI</td><td>CI<sub>low</sub></td><td>&nbsp;</td></tr>
+    <tr><td>Upper bound of 95% CI</td><td>CI<sub>high</sub></td><td>&nbsp;</td></tr>
+  </tbody>
+</table>
+')
+```
+
+### 1b. Hypotheses <span class="pts">/ 5 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+State the null and alternative hypotheses for this test in both symbols and plain English.
+:::
+
+<textarea class="response-area" placeholder="H₀ (symbols):
+
+H₀ (plain English):
+
+Hₐ (symbols):
+
+Hₐ (plain English):"></textarea>
+
+### 1c. Study design identification <span class="pts">/ 4 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Is this study an experiment or an observational study? Identify two specific features of the scenario that support your answer.
+:::
+
+<textarea class="response-area" placeholder="This study is a(n)...
+
+Feature 1:
+
+Feature 2:"></textarea>
+
+---
+
+## Part 2 — Interpretation <span class="pts">/ 20 pts</span>
+
+*Make sense of the statistical output in plain, contextually meaningful terms.*
+
+### 2a. Interpret the p-value <span class="pts">/ 6 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Write a precise, contextually accurate interpretation of the p-value **p = 0.030**. Your interpretation must not simply say "the probability the null is true." Explain what the p-value actually measures in this specific study.
+:::
+
+<textarea class="response-area response-area-lg" placeholder="The p-value of 0.030 means..."></textarea>
+
+### 2b. Interpret the confidence interval <span class="pts">/ 7 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Interpret the 95% confidence interval **(0.027, 0.513)** in the context of this study. What does the interval tell you about the difference in GPA between the two groups? What does it *not* tell you?
+:::
+
+<textarea class="response-area response-area-lg" placeholder="The 95% confidence interval (0.027, 0.513) means...
+
+This interval does not tell us..."></textarea>
+
+### 2c. Interpret the slope in practical terms <span class="pts">/ 7 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+The observed mean difference is 0.27 GPA points. A classmate says: *"A 0.27-point GPA difference is tiny — this result doesn't matter in real life."* Do you agree or disagree? Use both the statistical output **and** practical reasoning to make your case.
+:::
+
+<textarea class="response-area response-area-lg" placeholder="I agree/disagree because..."></textarea>
+
+---
+
+## Part 3 — Analysis <span class="pts">/ 25 pts</span>
+
+*Apply statistical reasoning, perform calculations, and connect the results to the broader inferential framework.*
+
+### 3a. Verify the t-statistic <span class="pts">/ 8 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Using the summary statistics provided, compute the standard error of the difference $SE_{\bar{y}_1 - \bar{y}_2}$ and the t-statistic by hand (or using R). Show all steps.
+:::
+
+**Standard error of the difference:**
+
+$$SE_{\bar{y}_1 - \bar{y}_2} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+
+<textarea class="calc-area" placeholder="SE = sqrt( (0.52²/38) + (0.61²/45) )
+  = sqrt( ... )
+  = ..."></textarea>
+
+**t-statistic:**
+
+$$t = \frac{(\bar{y}_1 - \bar{y}_2) - 0}{SE}$$
+
+<textarea class="calc-area" placeholder="t = (3.21 - 2.94) / SE
+  = 0.27 / ...
+  = ..."></textarea>
+
+Does your computed t match the output? If not, explain why there might be a small discrepancy.
+
+<textarea class="response-area response-area-sm" placeholder="My computed t = ...  The output shows t = 2.204. The values (match / differ slightly) because..."></textarea>
+
+### 3b. Decision and error <span class="pts">/ 7 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+At $\alpha = 0.05$, state your decision (reject or fail to reject $H_0$). Then:
+
+- (i) Identify which type of error (Type I or Type II) you *could* be making with this decision.
+- (ii) Explain in context what that error would mean for the university if they acted on this result.
+:::
+
+<textarea class="response-area response-area-lg" placeholder="Decision: We (reject / fail to reject) H₀ because p = 0.030 (< / >) α = 0.05.
+
+(i) The type of error we could be making is a Type ___ error because...
+
+(ii) In context, this would mean the university..."></textarea>
+
+### 3c. Effect size and R² <span class="pts">/ 10 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Cohen's d is a common measure of effect size for two-group comparisons:
+
+$$d = \frac{\bar{y}_1 - \bar{y}_2}{s_p}, \quad \text{where } s_p = \sqrt{\frac{(n_1-1)s_1^2 + (n_2-1)s_2^2}{n_1+n_2-2}}$$
+
+**(a)** Compute $s_p$ and Cohen's d. Show your work.
+
+<textarea class="calc-area" placeholder="sp = sqrt( (37×0.52² + 44×0.61²) / (38+45-2) )
+   = sqrt( ... / 81 )
+   = ...
+
+d = 0.27 / sp = ..."></textarea>
+
+**(b)** Cohen's benchmarks: small ≈ 0.2, medium ≈ 0.5, large ≈ 0.8. How would you characterize this effect? Does this change your view of the practical significance from Part 2c?
+
+<textarea class="response-area" placeholder="This effect size is... which suggests... This (does / does not) change my view because..."></textarea>
+
+---
+
+## Part 4 — Assumptions <span class="pts">/ 20 pts</span>
+
+*Critically evaluate whether the conditions required for valid inference are met.*
+
+### 4a. List and evaluate assumptions <span class="pts">/ 12 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+For each assumption of the two-sample t-test, state whether it is **met, questionable, or violated** based on the information available. Justify each judgment using specific details from the scenario.
+:::
+
+```{r assumption-table, results='asis'}
+cat('
+<table class="data-table" style="font-family: IBM Plex Serif, serif; font-size: 0.9em;">
+  <thead>
+    <tr>
+      <th style="width:22%">Assumption</th>
+      <th style="width:20%">Met / Questionable / Violated</th>
+      <th>Justification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Independence</strong><br>(within and between groups)</td>
+      <td style="text-align:center">_______________</td>
+      <td>&nbsp;<br>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><strong>Normality</strong><br>(or large n)</td>
+      <td style="text-align:center">_______________</td>
+      <td>&nbsp;<br>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><strong>Independence of groups</strong><br>(two separate samples)</td>
+      <td style="text-align:center">_______________</td>
+      <td>&nbsp;<br>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><strong>Random sampling</strong><br>(or representative sample)</td>
+      <td style="text-align:center">_______________</td>
+      <td>&nbsp;<br>&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+')
+```
+
+### 4b. Confounding <span class="pts">/ 8 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Because this is an observational study, confounding is a serious concern. 
+
+**(a)** Name **two specific confounding variables** that could explain the observed GPA difference between the MBSR and Control groups *without* the program being the cause. For each, explain the direction of the bias (i.e., how it would make the groups differ even if MBSR had no effect).
+
+<textarea class="response-area response-area-lg" placeholder="Confounder 1: 
+How it biases results:
+
+Confounder 2:
+How it biases results:"></textarea>
+
+**(b)** Given the presence of potential confounders, can you conclude that MBSR *causes* higher GPA? Why or why not?
+
+<textarea class="response-area" placeholder="We (can / cannot) conclude causation because..."></textarea>
+
+---
+
+## Part 5 — Communication <span class="pts">/ 20 pts</span>
+
+*Express findings accurately, clearly, and appropriately for a non-statistical audience.*
+
+### 5a. Write a summary for the university provost <span class="pts">/ 12 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+Write a brief (4–6 sentence) summary of the study findings addressed to the university provost, who has no statistics background. Your summary must:
+
+- Report the direction and magnitude of the observed difference
+- Convey what the statistical test concluded
+- Accurately reflect the limitations of the study design
+- Avoid technical jargon (or define any terms you use)
+- **Not** overclaim or underclaim what the data show
+:::
+
+<textarea class="response-area response-area-lg" placeholder="Dear Provost,..."></textarea>
+
+### 5b. Critique a flawed conclusion <span class="pts">/ 8 pts</span>
+
+::: task
+::: task-label
+Task
+:::
+A university administrator reads the results and writes the following statement in a campus newsletter:
+
+> *"Our study proves that mindfulness meditation causes students to earn higher GPAs. Students who meditated averaged 0.27 points higher — a statistically significant finding. We recommend all students enroll in the MBSR program immediately."*
+
+Identify **at least three specific statistical or logical errors** in this statement. For each, explain what is wrong and how the statement should be corrected.
+:::
+
+<textarea class="response-area response-area-lg" placeholder="Error 1: The statement says '...' — this is wrong because...
+
+Error 2: The statement says '...' — this is wrong because...
+
+Error 3: The statement says '...' — this is wrong because..."></textarea>
+
+---
+
+::: {.page-break}
+:::
+
+## Scoring Rubric
+
+*For instructor use. Total: **100 points.***
+
+```{r rubric, results='asis'}
+cat('
+<table class="rubric-table">
+  <thead>
+    <tr>
+      <th style="width:14%">Dimension</th>
+      <th style="width:8%">Points</th>
+      <th style="width:26%">Strong (full credit)</th>
+      <th style="width:26%">Developing (partial)</th>
+      <th style="width:26%">Beginning (minimal)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="dim-label">EXTRACTION<br><small style="font-weight:400;font-family:IBM Plex Serif,serif">Parts 1a–1c</small></td>
+      <td style="text-align:center"><strong>15</strong></td>
+      <td>All key values correctly identified; hypotheses stated precisely in symbols and words; study design correctly identified with two well-chosen justifications.</td>
+      <td>Minor errors in values or hypotheses; study design correct but justifications vague or only one given.</td>
+      <td>Key values missing or incorrect; hypotheses incomplete or stated only in symbols; study design misidentified.</td>
+    </tr>
+    <tr>
+      <td class="dim-label">INTERPRETATION<br><small style="font-weight:400;font-family:IBM Plex Serif,serif">Parts 2a–2c</small></td>
+      <td style="text-align:center"><strong>20</strong></td>
+      <td>p-value interpreted as probability of data under H₀ (not "prob H₀ is true"); CI interpreted as plausible range for the true difference; practical vs. statistical significance thoughtfully distinguished.</td>
+      <td>p-value partially correct but imprecise; CI interpretation correct in direction but vague; practical significance addressed but superficially.</td>
+      <td>p-value defined incorrectly (e.g., "probability H₀ is true"); CI misinterpreted; no distinction between statistical and practical significance.</td>
+    </tr>
+    <tr>
+      <td class="dim-label">ANALYSIS<br><small style="font-weight:400;font-family:IBM Plex Serif,serif">Parts 3a–3c</small></td>
+      <td style="text-align:center"><strong>25</strong></td>
+      <td>SE and t computed correctly with all steps shown; correct decision with accurate error type identification and contextual explanation; Cohen\'s d computed and correctly benchmarked with thoughtful reflection.</td>
+      <td>SE or t has minor arithmetic error; decision correct but error type explanation is incomplete; d computed but benchmark interpretation is superficial.</td>
+      <td>SE/t setup incorrect or skipped; decision made without justification; Cohen\'s d not computed or not interpreted.</td>
+    </tr>
+    <tr>
+      <td class="dim-label">ASSUMPTIONS<br><small style="font-weight:400;font-family:IBM Plex Serif,serif">Parts 4a–4b</small></td>
+      <td style="text-align:center"><strong>20</strong></td>
+      <td>All four assumptions addressed with specific, evidence-based justifications; two plausible confounders named with directional bias explained; causation clearly and correctly rejected with reasoning.</td>
+      <td>Most assumptions addressed but one is missing or justified weakly; one confounder identified or bias direction not explained; causation issue noted but not fully articulated.</td>
+      <td>Assumptions listed without justification; no confounders identified; causation claim not questioned or incorrectly accepted.</td>
+    </tr>
+    <tr>
+      <td class="dim-label">COMMUNICATION<br><small style="font-weight:400;font-family:IBM Plex Serif,serif">Parts 5a–5b</small></td>
+      <td style="text-align:center"><strong>20</strong></td>
+      <td>Provost summary is accessible, accurate, appropriately hedged, and covers magnitude + uncertainty + design limitations. Three distinct errors in the flawed conclusion identified and corrected with precision.</td>
+      <td>Summary is mostly accessible but includes jargon or overclaims; two errors identified in flawed conclusion, or corrections are incomplete.</td>
+      <td>Summary uses unexplained jargon or misrepresents findings; fewer than two errors identified; corrections absent or incorrect.</td>
+    </tr>
+  </tbody>
+</table>
+')
+```
+
+### Score Summary
+
+| Dimension | Points Possible | Points Earned |
+|---|:---:|:---:|
+| Extraction | 15 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |
+| Interpretation | 20 | |
+| Analysis | 25 | |
+| Assumptions | 20 | |
+| Communication | 20 | |
+| **Total** | **100** | |
+
+---
+
+### Grading Notes
+
+**On p-value interpretation (Part 2a):** Award full credit only if the student correctly frames the p-value as the probability of observing a difference *as large as or larger than 0.27 GPA points* **assuming** the null hypothesis is true — not the probability that the null is true, and not simply "the result is significant."
+
+**On confounders (Part 4b):** Strong confounders are those that are plausibly related to *both* group membership (self-selection into MBSR) and GPA. Examples: prior academic motivation, baseline stress levels, socioeconomic status, course load. Credit responses that name the variable, explain how it relates to both the treatment and outcome, and indicate the direction of bias.
+
+**On the flawed conclusion (Part 5b):** The three core errors are: (1) "proves" and causal language — observational data cannot establish causation; (2) "statistically significant" does not mean the effect is large or guaranteed to matter; (3) recommending universal enrollment without considering self-selection bias, cost, and generalizability. Credit other valid errors (e.g., ignoring the confidence interval's width).
+
+```{r, include=FALSE}
+# Learning objectives assessed:
+# - Extract numerical values and design features from statistical output (Extraction)
+# - Correctly interpret p-values, CIs, and effect sizes in context (Interpretation)
+# - Perform and verify two-sample t calculations; connect to error framework (Analysis)
+# - Evaluate assumptions and identify confounding in observational studies (Assumptions)
+# - Communicate findings accurately to non-statistical audiences and critique misuse (Communication)
+```

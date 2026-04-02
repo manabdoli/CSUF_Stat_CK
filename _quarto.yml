@@ -6,6 +6,7 @@ project:
       - "!dev/"
       - "!tst.qmd"
       - "!exams/"
+      - "!_extensions/"
 website:
   title: "CSUF Statstics using CourseKata"
 
@@ -16,7 +17,9 @@ website:
       - about.qmd
       - section: "Presentations"
         contents: "presentations/*.qmd"
-#  navbar:
+      - section: "Preparations"
+        contents: "preparations/*.qmd"
+#  navbar: false
     # left:
     #   - text: Home
     #     href: index.html
