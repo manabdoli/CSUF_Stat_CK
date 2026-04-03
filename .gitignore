@@ -57,3 +57,7 @@ dev/*_files/
 exams/_extensions
 _extensions
 *_files/
+*.html
+*.pdf
+*.tex
+*.docx
