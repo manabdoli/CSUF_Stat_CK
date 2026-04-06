@@ -93,7 +93,7 @@ knitr::opts_chunk$set(echo = FALSE)
 summary(lm((drat)~I(scale(wt)+scale(qsec)), data=mtcars))
 ```
 
-| Terms | Estimate | St##### Error | t value | Pr(>|t|) |  
+| Terms | Estimate | Std Error | t value | Pr(>|t|) |  
 |-------------|---------|---------|--------|---------|
 | (Intercept) | 3.59656 | 0.08410 | 42.765 | < 2e-16 |
 | x  | -0.20124 | 0.06651 | [t] | 0.00505| 
@@ -144,7 +144,7 @@ anv.tbl |> format(digits=2, width=6, nsmall=2, scientific=F) |> knitr::kable(for
 
 |                      |SS   |df    |MS   |F    |PRE  |p       |
 |:---------------------|:----|:-----|:----|:----|:----|:-------|
-|Model (error reduce##### |5.10 |4.00  | [a] | [F] | [R2] |0.0004 |
+|Model (error reduced) |5.10 |4.00  | [a] | [F] | [R2] |0.0004 |
 |Error (from model)    |3.70 |23.00 | [b] |    |    |       |
 
  

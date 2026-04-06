@@ -61,3 +61,4 @@ _extensions
 *.pdf
 *.tex
 *.docx
+!exam2_practice.html
