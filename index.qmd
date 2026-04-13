@@ -24,6 +24,7 @@ Welcome! Choose a deck:
 - [Chapter 10](presentations/CK-ch10-complete.html)
 - [Chapter 11 (Section 1-9)](presentations/CK-ch11-sec1-9.html)
 - [Chapter 11 (Section 10-13)](presentations/CK-ch11-sec11-13.html)
+- [Chapter 12 (Section 1-8)](presentations/CK-ch12-sec1-8.html)
 
 ## Preparations
 

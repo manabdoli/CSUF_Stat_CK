@@ -1,0 +1,412 @@
+---
+title: "CourseKata Chapter 12"
+subtitle: "Confidence Interval (1)"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 12 (1)"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch12-sec1-8.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/TipExperiment.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(TipExperiment))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- **Sampling Dist. & Test of Hypothesis**
+- **Plausible Parameters Values**
+- **Confidence Interval**
+- **CI & t-Distribution**
+- **Assumptions and Interpretation**
+:::
+
+
+# Sampling Dist. & Test of Hypothesis
+
+## Sampling & Null Distributions
+- Fixed **Population** $\to$ Fixed **Parameter**
+- Random **Sample** $\to$ Random **Statistic**
+  - **Sampling Distribution**: </br> The distribution of the random statistic
+  - **Null Distribution**: </br> The sampling distribution for a given parameter
+
+## Sampling & Null Distributions
+:::{.nonincremental}
+:::{.columns}
+:::{.column}
+- DGP with $\beta_0=\mu=0$
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 2
+#| warning: false
+S<- c(-1, 1)
+n<- 10 # try different values
+gf_histogram(~mean, data=do(1000) * 
+  mean(sample(S, n, TRUE)), bins=15) + xlim(-1,1) # coord_cartesian(xlim = c(-1, 1))
+```
+
+:::
+:::{.column}
+- DGP with $\beta_0=\mu=.5$
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 2
+#| warning: false
+S<- c(-1, 1, 1, 1)
+# reuse `n`
+gf_histogram(~mean, data=do(1000) * 
+  mean(sample(S, n, TRUE)), bins=15) + xlim(-1,1) # coord_cartesian(xlim = c(-1, 1))
+```
+
+:::
+:::
+:::
+
+## Estimating Null Dist.
+Given Sample $\{0, 1, 5, 1, 3\}$
+
+:::{.nonincremental}
+:::{.columns}
+:::{.column}
+- DGP with Sample Mean
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 2
+#| warning: false
+s<- c(0, 1, 5, 1, 3); ybar<- mean(s)
+n<- length(s)
+cat('Observed Mean: ', mean(s), '\n')
+gf_histogram(~mean, data=do(1000) * 
+  mean(resample(s)), bins=15) + xlim(-1,5)
+```
+
+:::
+:::{.column}
+- DGP with Claimed Mean
+
+```{webr} 
+#| fig-width: 5
+#| fig-height: 2
+#| warning: false
+beta0<- 0 # Claimed Mean
+s0<- s-ybar+beta0
+cat('Claimed Mean: ', mean(s0), '\n')
+gf_histogram(~mean, data=do(1000) * 
+  mean(resample(s0)), bins=15) + xlim(-3,3)
+```
+
+:::
+:::
+:::
+
+
+## Plausible Parameters Values
+:::{.nonincremental}
+:::{.columns}
+:::{.column width="55%"}
+- Is $\mu=0$ **plausible**?
+  - Run a test on $H_0: \mu=0$: </br> $\mu=0$ is *plausible* if we fail to reject.
+- process:
+  - Define a Sataitic
+  - Find **Null Distribution**
+  - Reject $H_0$ for extreme observed statistics.
+
+:::
+:::{.column width="45%"}
+:::{.fragment}
+```{webr}
+#| fig-width: 4
+#| fig-height: 2
+#| warning: false
+beta0<- 0 # Claimed Mean
+cat('Claimed Mean: ', mean(s0), '\n')
+dset<- do(1000) * mean(resample(s0))
+gf_histogram(~mean, data=dset, bins=15, fill=~(mean>=ybar), show.legend=FALSE) |>
+  gf_vline(xintercept = c(0, ybar), color=c('blue', 'red')) + xlim(-3,3)
+cat('p-value: ',  mean(dset$mean>=ybar))
+```
+
+:::
+:::
+:::
+:::
+
+# Confidence Interval
+## Interval Estimate vs. Point Estimate
+- $\bar y$ is a **point estimate** (Best Guess) for $\mu$
+- An **interval estimate** is all plausible values at $\alpha$.
+
+:::{.fragment}
+```{webr}
+#| fig-height: 2
+#| warning: false
+dsetObs<- do(1000) * mean(resample(s))
+mus<- c(0.6, 3.6)
+dset<- rbind(
+  cbind(mu=mus[1], dsetObs-mean(dsetObs$mean)+mus[1]), 
+  cbind(mu=mus[2], dsetObs-mean(dsetObs$mean)+mus[2]))
+gf_histogram(~mean, data=dset, 
+  fill= ~ abs(mu-mean)>=abs(ybar-mu), show.legend=FALSE) |>
+  gf_facet_grid(mu~.)|>
+  gf_vline(xintercept=ybar, color='red', linetype=2)
+
+dset |> group_by(mu) |> 
+  summarize(p.value=mean(abs(mu-mean)>=abs(ybar-mu)))
+```
+:::
+
+## Distanced Based C.I.
+- For symmetric sampling distributions:
+$$ C.I. = \text{Point Estimate} \pm \text{Margin of Error}$$
+
+:::{.fragment}
+```{webr}
+#| fig-height: 2.3
+#| warning: false
+dsetObs<- do(1000) * mean(resample(s))
+quants<- quantile(dsetObs$mean, c(0.025, 0.975))
+ME<- diff(quants)/2 # half of middle 95%
+cat('ME = ', ME, '\n')
+gf_histogram(~mean, data=dsetObs, bins=10,
+  fill= ~ (mean<quants[1] | mean>quants[2]), show.legend=FALSE) |>
+  gf_vline(xintercept=c(quants, ybar), color=c('blue', 'blue', 'red'), linetype=2) |>
+  gf_segment(x = ybar - ME, xend = ybar + ME, y = -2, yend = -2,
+  arrow = grid::arrow(end="both", length = unit(.5, "cm")),
+  color = "black", linewidth = 1.2) 
+
+```
+:::
+
+
+# CI & t-Distribution
+## Theoretical Sampling Distribution
+:::{.columns style="font-size:.8em;"}
+:::{.column}
+- When
+  - $Y\sim N(\mu,\sigma)$, or
+  - $n$ is large
+- $t=\frac{\bar Y-\mu}{SE}\sim t(\text{df}=n-1)$
+  - $SE=\frac{s}{\sqrt{n}}$
+
+- For $100(1-\alpha)$% Confidence Level:
+  $$ME=t^* \cdot SE$$
+  $t^*=t_{\alpha/2}$: top $\alpha/2$ cut-off point
+:::
+:::{.column}
+:::{.fragment}
+```{webr}
+#| fig-width: 5
+#| fig-height: 2
+#| warning: false
+favstats(s)
+SE<- 2/sqrt(5)
+t.025<- qt(1-.025, df=5-1)
+cat('t*=', t.025, '\n')
+ME<- t.025*SE
+cint<-c(ybar-ME, ybar+ME)
+# cint
+
+```
+:::
+:::
+:::
+
+
+# Assumptions and Interpretation
+
+## Assumptions
+
+:::{.columns}
+:::{.column}
+
+- Independent Observations
+- For Theoretical C.I.
+
+:::
+:::{.column}
+:::
+:::
+
+:::{.columns style="font-size:.8em;"}
+:::{.column}
+
+  - Is $Y$ normal?  
+
+:::{.fragment}
+```{webr, Histogram}
+#| fig-width: 5
+#| fig-height: 2.5
+#| warning: false
+gf_dhistogram(~y, data=data.frame(y=s), binwidth=1) |>
+  gf_function(fun=dnorm, args=list(mean=mean(s), sd=sd(s)), 
+  color='red')
+
+```
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 2.5
+#| warning: false
+gf_qq(~s) |> gf_qqline()
+```
+:::
+:::
+:::{.column}
+
+  - Is $n$ large?
+    - $n>=30$ without outliers
+    - Check with/use bootstrap
+
+:::{.fragment}
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 2.5
+#| warning: false
+dsetObs<- do(1000) * mean(resample(s))
+gf_dhistogram(~mean, data=dsetObs, binwidth=1) |>
+  gf_function(fun=dnorm, args=list(mean=mean(s), sd=sd(s)/sqrt(5)), 
+  color='red')
+```
+
+:::
+:::
+:::
+
+## Interpretation
+
+- We are $100(1-\alpha)$% confident that the mean is in $(\bar y - ME, \bar y + ME)$.
+
+:::{.fragment}
+
+```{webr}
+#| fig-width: 5
+#| fig-height: 2.5
+#| warning: false
+s<- c(0, 1, 5, 1, 3)
+ssd<- sd(s); ybar<- mean(s); n<- length(s)
+
+gf_dhistogram(~s, binwidth=1) + xlim(-1, 5)
+
+t.025<- qt(1-.025, df=n-1)
+SE<- ssd/sqrt(n); ME<- t.025*SE
+gf_histogram(~mean, data=dsetObs, binwidth=1) |>
+  gf_function(fun=\(x, ...) 1000*dnorm(x,...), args=list(mean=mean(s), sd=sd(s)/sqrt(5)), 
+  color='red') |>
+  gf_segment(x = ybar - ME, xend = ybar + ME, y = -2, yend = -2,
+  arrow = grid::arrow(end="both", length = unit(.5, "cm")),
+  color = "black", linewidth = 1.2)  + xlim(-1, 5)
+
+quantile(s, c(.025, 0.975))
+quantile(dsetObs$mean, c(.025, 0.975))
+
+```
+
+:::
+
+## Caution
+- C.I is for the population mean, not observations.
+- C.I is a random variable, the populaiton mean is fixed.
+
+:::{.fragment}
+
+```{r}
+#| fig-width: 5
+#| fig-height: 2.5
+#| warning: false
+s<- TipExperiment$Tip
+ssd<- sd(s); ybar<- mean(s); n<- length(s)
+xlim<- range(s)
+
+gf_dhistogram(~s, binwidth=1) + xlim(xlim)
+
+t.025<- qt(1-.025, df=n-1)
+SE<- ssd/sqrt(n); ME<- t.025*SE
+
+dsetObs<- do(1000) * mean(resample(s))
+gf_histogram(~mean, data=dsetObs, binwidth=1) |>
+  gf_function(fun=\(x, ...) 1000*dnorm(x,...), args=list(mean=mean(s), sd=sd(s)/sqrt(5)), 
+  color='red') |>
+  gf_segment(x = ybar - ME, xend = ybar + ME, y = -2, yend = -2,
+  arrow = grid::arrow(end="both", length = unit(.5, "cm")),
+  color = "black", linewidth = 1.2)  + xlim(xlim)
+
+quantile(s, c(.025, 0.975))
+quantile(dsetObs$mean, c(.025, 0.975))
+
+```
+
+:::
