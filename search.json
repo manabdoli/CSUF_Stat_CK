@@ -1335,7 +1335,7 @@
     "href": "presentations/CK-ch12-sec1-8.html#caution",
     "title": "CourseKata Chapter 12",
     "section": "Caution",
-    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.95455 33.54659",
+    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n27.20284 33.52386",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
@@ -2114,7 +2114,7 @@
     "href": "presentations/CK-ch12-sec9-13.html#computing-me---by-simulation",
     "title": "CourseKata Chapter 12",
     "section": "Computing ME - By Simulation",
-    "text": "Computing ME - By Simulation\nThree ways to simulate a Distribution\n\nShuffle \\(Y\\)\n\nModels no-association \\(\\text{Null Distribution}\\) \n\nResample dataset\n\nDifferent groups sizes \n\nReaample within groups\n\nHolds the same structure \n\nKey is finding SE for the same structure",
+    "text": "Computing ME - By Simulation\nThree ways to simulate a Distribution\n\nShuffle \\(Y\\)\n\nModels no-association \\(\\text{Null Distribution}\\) \n\nResample dataset\n\nDifferent groups sizes \n\nResample within groups\n\nHolds the same structure \n\nKey is finding ME for the same structure",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
