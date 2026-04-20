@@ -1,0 +1,375 @@
+---
+title: "CourseKata Chapter 12"
+subtitle: "Confidence Interval (2)"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 12 (2)"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch12-sec9-13.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/TipExperiment.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(TipExperiment))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- **C.I. for One Mean - Review**
+- **C.I. for Two Means**
+- **C.I. for Intercept & Slope**
+- **Paiwise C.I.**
+- **Factors Affecting C.I.**
+:::
+
+
+# C.I. for One Mean - Review
+
+Point Estimate $\pm$ ME
+
+## Computing ME
+:::{.columns}
+:::{.column .nonincremental}
+Simulation
+
+- Resample
+- Compute $\bar y$
+- Repeate many times
+- Find middle C%: $$(LL, UL)$$
+- ME = $\frac{UL-LL}{2}$
+:::
+:::{.column .nonincremental}
+Theoretical
+
+- Check Assumption
+  - Normality or
+  - Large Sample Size
+- Compute SE = $\frac{s}{\sqrt{n}}$
+- Find $t_{\alpha/2}$ multiplier</br>
+  from $t\sim T(df=n-1)$
+- ME = $t_{\alpha/2} \cdot SE$
+:::
+:::
+
+# C.I. for Two Means
+
+Point Estimate $\pm$ ME
+$$\bar y_2 - \bar y_1 \pm ME$$
+
+## Computing ME - By Simulation
+Three ways to simulate a Distribution
+
+- Shuffle $Y$
+  - Models no-association $\text{Null Distribution}$ </br>
+- Resample dataset
+  - Different groups sizes </br>
+- Resample within groups
+  - Holds the same structure  </br>
+
+- Key is finding ME for the same structure
+
+## ME and Sampling Distributions
+:::{.columns}
+:::{.column .nonincremental}
+Simulation
+
+- Resample (Find Sampling Dist.)
+- Compute $b_1=\bar y_2-\bar y_1$ 
+- Repeate many times
+- Find middle C%: $$(LL, UL)$$
+- ME = $\frac{UL-LL}{2}$
+:::
+:::{.column .nonincremental}
+```{webr}
+#| fig-width: 5
+b1null<- do(1000) * 
+  b1(shuffle(Tip)~Condition, data=TipExperiment)
+b1boot<- do(1000) * 
+  b1(Tip~Condition, data=resample(TipExperiment))
+b1Gboot<- do(1000) * 
+  b1(Tip~Condition, data=
+  rbind(
+    resample(TipExperiment |> filter(Condition=='Control')),
+    resample(TipExperiment |> filter(Condition=='Smiley Face'))
+  ))
+sort(b1null[[1]])[c(25, 975)] # quantile(b1null[[1]], c(0.025, 0.975))
+sort(b1boot$[[1]])[c(25, 975)] # quantile(b1boot$[[1]], c(0.025, 0.975))
+sort(b1Gboot[[1]])[c(25, 975)] # quantile(b1Gboot$[[1]], c(0.025, 0.975))
+
+```
+
+:::
+:::
+
+## Computing ME - Theoretical
+:::{style="font-size: .9em;"}
+
+- Check Assumptions
+:::
+:::{.columns  .nonincremental}
+:::{.column style="font-size: .7em;"}
+
+  - Normality or
+:::
+:::{.column style="font-size: .7em;"}
+
+  - Large Sample Sizes
+:::
+:::
+
+:::{style="font-size: .9em;"}
+
+- Compute SE & DF
+:::
+
+:::{.columns style="font-size: .7em;"}
+:::{.column}
+
+- Equal Variance
+  - $s_p^2 = \frac{(n_1)s_1^2+(n_2)s_2^2}{n_1+n_2-2}$
+  - $DF = n_1+n_2-2$
+  - SE = $s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$
+:::
+:::{.column}
+
+- Unequal Variance
+  - $DF \approx min(n_1-1, n_2-1)$
+  - SE = $\sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$
+:::
+:::
+
+:::{ style="font-size: .9em;"}
+
+- $t_{\alpha/2}$ from $t\sim T(df=DF)$
+- ME = $t_{\alpha/2} \cdot SE$
+:::
+
+## Computing ME - Theoretical
+'confint()' Computes confidence interval
+
+```{webr}
+TipExperiment |> group_by(Condition) |> 
+  summarise(n=n(), Mean=mean(Tip), SD=sd(Tip))
+
+lmdl<-lm(Tip~Condition, data=TipExperiment)
+# Summary table provides SE
+#summary(lmdl)
+
+#confint(lmdl)
+
+```
+
+# C.I. for Intercept & Slope
+
+## C.I. for Intercept & Slope
+Simulation
+
+:::{.columns}
+:::{.column width="24%"}
+- Resample Data
+:::
+:::{.column width="38%"}
+- Compute $b_0$ and $b_1$
+:::
+:::{.column width="38%"}
+- Repeate many times
+:::
+:::
+
+:::{.columns}
+:::{.column}
+- For $\beta_0$:
+  - Find middle C%: $$(LL_{b_0}, UL_{b_0})$$
+  - $ME_{b_0} = \frac{UL_{b_0}-LL_{b_0}}{2}$
+  - $b_0\pm ME_{b_0}$
+:::
+:::{.column}
+:::{.fragment .nonincremental}
+- For $\beta_1$:
+  - Find middle C%: $$(LL_{b_1}, UL_{b_1})$$
+  - $ME_{b_1} = \frac{UL_{b_1}-LL_{b_1}}{2}$
+  - $b_1\pm ME_{b_1}$
+:::
+:::
+:::
+
+## C.I. for Intercept & Slope
+Theoretical
+
+:::{.columns}
+:::{.column .nonincremental}
+
+- Assumptions:
+  - Linear Association
+  - Normal Distribution
+  - Equal Variance
+
+- $t_{\alpha/2}$ from $t\sim T(df=n-2)$
+- $ME_{b_i} = t_{\alpha/2} \cdot SE_{b_i}$
+
+:::
+:::{.column}
+- $b_i$ and $SE_i$ are from the Summary table
+
+:::{.fragment style="font-size: .5em;"}
+
+
+:Coefficients 
+
+|            | Estimate | Std. Error | t value | Pr(>\|t\|) |
+|------------|----------|------------|---------|----------|
+| (Intercept)|  $b_0$   | $SE_{b_0}$  |$t_{b_0}=\frac{b_0}{SE_{b_0}}$| $p\text{-value}_{b_0}$|
+| Explanatory|  $b_1$   | $SE_{b_1}$  |$t_{b_0}=\frac{b_1}{SE_{b_1}}$| $p\text{-value}_{b_1}$|
+
+:::
+:::
+:::
+
+## C.I. for Intercept & Slope
+Recalculate C.I.s:
+
+```{webr}
+lmdl<- lm(Tip~Check, data=TipExperiment)
+summary(lmdl)
+confint(lmdl)
+```
+
+
+# Paiwise C.I.
+Adhoc for Single Test of Multiple Predictors
+
+## Account for $\alpha$ Inflation
+
+- Benferroni:
+  - Use $\alpha/K$
+    - $K$ is the number of pairwise tests
+
+- Tukey's HSD
+  - Use range distribution
+
+:::{.fragment}
+```{webr}
+# A quick 3-group example for pairwise CIs
+pair_dat <- data.frame(
+  wait_time = c(15, 14, 16, 13, 15, 14,
+                12, 11, 13, 12, 10, 11,
+                 9,  8, 10,  9,  8,  9),
+  method = factor(rep(c("Standard", "Express", "Kiosk"), each = 6))
+)
+
+pair_fit <- aov(wait_time ~ method, data = pair_dat)
+summary(pair_fit)
+TukeyHSD(pair_fit)
+```
+:::
+
+
+# Factors Affecting C.I.
+
+## Main Ideas
+
+:::{.nonincremental}
+- Higher confidence level $\Rightarrow$ wider interval
+- Larger sample size $\Rightarrow$ narrower interval
+- More variability $\Rightarrow$ wider interval
+- For two means: more balanced group sizes $\Rightarrow$ smaller SE
+- For regression slope: more spread in $X$ $\Rightarrow$ narrower interval for $b_1$
+:::
+
+## A Quick Demo
+
+```{webr}
+ci_width_mean <- function(n = 25, sd = 10, level = .95) {
+  se <- sd / sqrt(n)
+  t_star <- qt((1 + level)/2, df = n - 1)
+  2 * t_star * se
+}
+
+data.frame(
+  setting = c("baseline", "bigger n", "higher sd", "higher level"),
+  width = c(
+    ci_width_mean(n = 25, sd = 10, level = .95),
+    ci_width_mean(n = 100, sd = 10, level = .95),
+    ci_width_mean(n = 25, sd = 20, level = .95),
+    ci_width_mean(n = 25, sd = 10, level = .99)
+  )
+)
+```
+
+## Wrap-Up Questions
+
+:::{.nonincremental}
+- If we want a narrower interval, which things can we control?
+- Why does asking for 99% confidence force a wider interval?
+- Why does larger sample size help even when the center stays the same?
+- Why is a slope estimate more precise when the $X$ values are more spread out?
+:::

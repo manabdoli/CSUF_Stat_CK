@@ -1,0 +1,102 @@
+---
+title: "OneProp"
+format: html
+---
+
+## Distribution
+
+```{r}
+y<- mtcars$am |> factor(0:1, c('Automatic', 'Manual'))
+n<- length(y)
+```
+
+### Statistics: Center and Spread
+```{r}
+p.hat<- mean(y=='Manual')
+sd(y=='Manual')*sqrt((n-1)/n)
+sqrt(p.hat*(1-p.hat))
+
+```
+
+### Statistics: Diversity
+```{r}
+cnt..prp<- function(y){
+  y.tab<- table(y) |> data.frame()
+  y.tab$prop<- y.tab$Freq/sum(y.tab$Freq)
+  structure(y.tab,
+            class=c('CntProp', class(y.tab))
+  )
+}
+
+# Index of Qualitative Variation
+iqv<- function(y){
+  if(!'CntProp' %in% class(y)) y<- cnt..prp(y)
+  k<- nrow(y)
+  k/(k-1)*(1-sum(y$prop^2))
+}
+
+# Entropy
+ent<- function(y){
+  if(!'CntProp' %in% class(y)) y<- cnt..prp(y)
+  -sum(y$prop*log(y$prop))
+}
+
+# Gini Index
+gini<- function(y){
+  if(!'CntProp' %in% class(y)) y<- cnt..prp(y)
+  1-sum(y$prop^2)
+}
+
+iqv(y)
+ent(y)
+gini(y)
+```
+
+
+### Sampling Distribution
+
+```{r}
+B<- 1000
+```
+
+#### $\hat p$ 
+```{r}
+p.hatB<- sapply(1:B, \(j) {mean(sample(y, n, TRUE)=='Manual')})
+hist(p.hatB)
+```
+#### $SE$ 
+```{r}
+p.seB<- sapply(1:B, \(j) {
+  p.hat<-mean(sample(y, n, TRUE)=='Manual')
+  sqrt(p.hat*(1-p.hat)/n)})
+hist(p.seB)
+```
+### IQV
+
+```{r}
+iqvB<- sapply(1:B, \(j) {
+  j.iqv<-iqv(sample(y, n, TRUE)=='Manual')
+})
+hist(iqvB)
+```
+
+### Entropy
+
+```{r}
+entB<- sapply(1:B, \(j) {
+  j.ent<-ent(sample(y, n, TRUE)=='Manual')
+})
+hist(entB)
+```
+
+
+## Null Distribution
+Test $H_0: p=0.5$
+
+#### $\hat p$ 
+```{r}
+
+p.hatB<- sapply(1:B, \(j) {mean(sample(c('Automatic','Manual'), n, TRUE)=='Manual')})
+hist(p.hatB)
+points(x=p.hat, y=0, color='red')
+```

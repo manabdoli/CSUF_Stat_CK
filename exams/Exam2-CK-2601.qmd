@@ -1,5 +1,0 @@
----
-title: "Exam2-Claude"
-format: html
----
-

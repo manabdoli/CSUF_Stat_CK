@@ -1,0 +1,299 @@
+---
+title: "Simulation-Based Inference Summary"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    self-contained: true
+---
+
+## How to use this page
+
+This page summarizes the **simulation steps** for confidence intervals and hypothesis tests in common settings. It is designed to replace a slide deck during class discussion.
+
+Two big ideas appear throughout:
+
+- A **confidence interval** uses a **bootstrap distribution** centered near the observed statistic.
+- A **hypothesis test** uses a **null distribution** centered at the null value.
+
+::: {.callout-tip}
+## General pattern
+
+For a **confidence interval**:
+
+1. Compute the observed sample statistic.
+2. Resample **with replacement** from the sample.
+3. Recompute the statistic for each bootstrap sample.
+4. Repeat many times to build a **bootstrap distribution**.
+5. Use the middle 95% or a margin of error to form the interval.
+
+For a **hypothesis test**:
+
+1. State the null and alternative hypotheses.
+2. Compute the observed sample statistic.
+3. Simulate data **under the null model**.
+4. Recompute the statistic for each simulated sample.
+5. Repeat many times to build a **null distribution**.
+6. Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify rejection region(s).
+7. Make a decision and state a conclusion in context.
+:::
+
+::: {.panel-tabset}
+
+## One Proportion
+
+### Parameter and statistic
+
+- Parameter: $p$
+- Statistic: $\hat{p}$
+- Sample size: $n$
+
+### Confidence interval
+
+1. Record the sample proportion $\hat{p}$.
+2. Represent the sample of size $n$ as a set of 0s and 1s.
+3. Generate one bootstrap sample proportion:
+   - Resample **with replacement** from the sample, using the same sample size $n$.
+   - Compute the proportion of 1s in the resample.
+4. Repeat many times to build a **bootstrap distribution** of $\hat{p}$.
+5. Use the middle 95% of the simulated proportions, or compute a margin of error $ME$ from the bootstrap distribution.
+6. Build and interpret the interval as plausible values for the population proportion.
+
+### Hypothesis test
+
+1. State $H_0: p = p_0$ and the alternative.
+2. Compute the observed sample proportion $\hat{p}_{obs}$.
+3. Build the null distribution:
+   - Simulate a population where the probability of success is $p_0$.
+   - Sample with replacement $n$ times.
+   - Compute one simulated sample proportion $\hat{p}$.
+4. Repeat many times to build the **null distribution** of $\hat{p}$.
+5. Find the proportion of simulated values at least as extreme as $\hat{p}_{obs}$ relative to $p_0$, or identify rejection region(s).
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- The confidence interval is centered near the observed $\hat{p}$.
+- The test distribution is centered at the null value $p_0$.
+- Larger sample sizes produce less variability in $\hat{p}$.
+:::
+
+## Two Proportions
+
+### Parameter and statistic
+
+- Parameters: $p_1$ and $p_2$
+- Statistic: $\hat{p}_1 - \hat{p}_2$
+- Sample sizes: $n_1$ and $n_2$
+
+### Confidence interval
+
+1. Compute the observed difference in sample proportions, $\hat{p}_1 - \hat{p}_2$.
+2. Represent each sample as 0s and 1s.
+3. Generate one bootstrap difference:
+   - Resample **with replacement** within group 1, using size $n_1$, and compute $\hat{p}_1$.
+   - Resample **with replacement** within group 2, using size $n_2$, and compute $\hat{p}_2$.
+   - Compute $\hat{p}_1 - \hat{p}_2$.
+4. Repeat many times to build a **bootstrap distribution** of $\hat{p}_1 - \hat{p}_2$.
+5. Use the middle 95% or compute a margin of error.
+6. Interpret the interval as plausible values for the difference in population proportions.
+
+### Hypothesis test
+
+1. State $H_0: p_1 - p_2 = 0$ and the alternative.
+2. Compute the observed difference, $(\hat{p}_1 - \hat{p}_2)_{obs}$.
+3. Build the null distribution:
+   - Assume both groups come from the same population under the null.
+   - Pool the outcomes, then randomly assign or resample outcomes into two groups of sizes $n_1$ and $n_2$.
+   - Compute the simulated difference in proportions.
+4. Repeat many times to build the **null distribution** of $\hat{p}_1 - \hat{p}_2$.
+5. Find the proportion of simulated differences at least as extreme as the observed difference, or identify rejection region(s).
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- For confidence intervals, resample **within each group**.
+- For tests, simulate under the null by treating the two groups as coming from the same population.
+:::
+
+## One Mean
+
+### Parameter and statistic
+
+- Parameter: $\mu$
+- Statistic: $\bar{x}$
+- Sample size: $n$
+
+### Confidence interval
+
+1. Record the sample mean $\bar{x}$.
+2. Generate one bootstrap sample mean:
+   - Resample **with replacement** from the sample, using the same size $n$.
+   - Compute the sample mean.
+3. Repeat many times to build a **bootstrap distribution** of $\bar{x}$.
+4. Use the middle 95% or compute a margin of error.
+5. Interpret the interval as plausible values for the population mean.
+
+### Hypothesis test
+
+1. State $H_0: \mu = \mu_0$ and the alternative.
+2. Compute the observed mean $\bar{x}_{obs}$.
+3. Build the null distribution:
+   - Shift the sample so its mean equals $\mu_0$, or simulate from a model centered at $\mu_0$.
+   - Draw a sample of size $n$.
+   - Compute the simulated mean.
+4. Repeat many times to build the **null distribution** of $\bar{x}$.
+5. Find the proportion of simulated means at least as extreme as $\bar{x}_{obs}$ relative to $\mu_0$, or identify rejection region(s).
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- For a one-mean test, the null model must be centered at $\mu_0$.
+- The standard error gets smaller as $n$ increases.
+:::
+
+## Two Means
+
+### Parameter and statistic
+
+- Parameters: $\mu_1$ and $\mu_2$
+- Statistic: $\bar{x}_1 - \bar{x}_2$
+- Sample sizes: $n_1$ and $n_2$
+
+### Confidence interval
+
+1. Compute the observed difference in sample means, $\bar{x}_1 - \bar{x}_2$.
+2. Generate one bootstrap difference:
+   - Resample **with replacement** within group 1 and compute $\bar{x}_1$.
+   - Resample **with replacement** within group 2 and compute $\bar{x}_2$.
+   - Compute $\bar{x}_1 - \bar{x}_2$.
+3. Repeat many times to build a **bootstrap distribution** of $\bar{x}_1 - \bar{x}_2$.
+4. Use the middle 95% or compute a margin of error.
+5. Interpret the interval as plausible values for the difference in population means.
+
+### Hypothesis test
+
+1. State $H_0: \mu_1 - \mu_2 = 0$ and the alternative.
+2. Compute the observed difference, $(\bar{x}_1 - \bar{x}_2)_{obs}$.
+3. Build the null distribution:
+   - Assume there is no group effect under the null.
+   - Pool the observed values and randomly assign them into two groups of sizes $n_1$ and $n_2$, or shuffle the group labels.
+   - Compute the simulated difference in means.
+4. Repeat many times to build the **null distribution** of $\bar{x}_1 - \bar{x}_2$.
+5. Find the proportion of simulated differences at least as extreme as the observed difference, or identify rejection region(s).
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- For confidence intervals, resample **within groups**.
+- For tests, shuffle or reassign **group labels** under the null.
+:::
+
+## Slope
+
+### Parameter and statistic
+
+- Parameter: $\beta_1$
+- Statistic: $b_1$
+- Sample size: $n$
+
+### Confidence interval
+
+1. Fit the regression line and record the sample slope $b_1$.
+2. Generate one bootstrap slope:
+   - Resample **cases with replacement** from the original data.
+   - Refit the regression line.
+   - Record the slope.
+3. Repeat many times to build a **bootstrap distribution** of $b_1$.
+4. Use the middle 95% or compute a margin of error.
+5. Interpret the interval as plausible values for the population slope $\beta_1$.
+
+### Hypothesis test
+
+1. State $H_0: \beta_1 = 0$ and the alternative.
+2. Fit the regression and record the observed slope $b_{1,obs}$.
+3. Build the null distribution:
+   - Keep the explanatory variable values fixed.
+   - Shuffle the response values, or shuffle the pairing between $x$ and $y$, to break any linear relationship.
+   - Refit the regression and record the simulated slope.
+4. Repeat many times to build the **null distribution** of $b_1$.
+5. Find the proportion of simulated slopes at least as extreme as the observed slope, or identify rejection region(s).
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- For confidence intervals, resample **whole cases**.
+- For tests, shuffle the response to remove the linear association.
+:::
+
+## Multiple Means
+
+### Parameter and statistic
+
+- Parameters: $\mu_1, \mu_2, \dots, \mu_k$
+- Statistic: usually $F$, or another measure of between-group vs within-group variation
+- Sample sizes: $n_1, n_2, \dots, n_k$
+
+### Confidence interval
+
+A single overall confidence interval is **not usually the focus** for multiple means.
+
+Instead, common follow-up goals are:
+
+- confidence intervals for **specific pairwise differences**
+- confidence intervals for **group means**
+- adjusted intervals after finding an overall difference
+
+If needed, construct pairwise bootstrap intervals by resampling within each group and computing the difference in means for the chosen pair.
+
+### Hypothesis test
+
+1. State $H_0: \mu_1 = \mu_2 = \cdots = \mu_k$ and the alternative that at least one mean differs.
+2. Compute the observed test statistic, often $F$.
+3. Build the null distribution:
+   - Assume all groups come from the same population under the null.
+   - Pool the observed values.
+   - Randomly assign the values into groups of the original sizes.
+   - Compute the test statistic for the simulated grouping.
+4. Repeat many times to build the **null distribution** of the statistic.
+5. Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify a rejection region.
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- The overall test asks whether there is evidence that **any** group mean differs.
+- If the overall test is significant, follow-up comparisons are usually needed.
+:::
+
+## Test of Independence
+
+### Parameter and statistic
+
+- Parameters: population joint distribution or population cell proportions
+- Statistic: often $\chi^2$
+- Sample size: $n$
+
+### Confidence interval
+
+A single confidence interval is **not usually the focus** for a test of independence.
+
+Instead, we usually ask whether two categorical variables are associated.
+
+Useful follow-up summaries may include:
+
+- confidence intervals for selected **conditional proportions**
+- confidence intervals for **differences in proportions** within specific categories
+
+### Hypothesis test
+
+1. State $H_0$: the two categorical variables are independent, and the alternative that they are associated.
+2. Compute the observed test statistic, often $\chi^2$.
+3. Build the null distribution:
+   - Keep one variable fixed.
+   - Shuffle the labels of the other variable to break any association while preserving the marginal structure.
+   - Recompute the test statistic for the shuffled data.
+4. Repeat many times to build the **null distribution** of the statistic.
+5. Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify a rejection region.
+6. Make a decision and state your conclusion in context.
+
+::: {.callout-note}
+- A significant result suggests an association, not causation.
+- After the test, examine conditional proportions or residuals to see where the association appears.
+:::
+
+:::
