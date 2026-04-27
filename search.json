@@ -1221,628 +1221,146 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#overview-goals",
-    "href": "presentations/CK-ch12-sec1-8.html#overview-goals",
+    "objectID": "presentations/CK-ch12-sec9-13.html#overview-goals",
+    "href": "presentations/CK-ch12-sec9-13.html#overview-goals",
     "title": "CourseKata Chapter 12",
     "section": "Overview / Goals",
-    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSampling Dist. & Test of Hypothesis\nPlausible Parameters Values\nConfidence Interval\nCI & t-Distribution\nAssumptions and Interpretation",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC.I. for One Mean - Review\nC.I. for Two Means\nC.I. for Intercept & Slope\nPaiwise C.I.\nFactors Affecting C.I.",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions",
-    "href": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions",
+    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me",
+    "href": "presentations/CK-ch12-sec9-13.html#computing-me",
     "title": "CourseKata Chapter 12",
-    "section": "Sampling & Null Distributions",
-    "text": "Sampling & Null Distributions\n\nFixed Population \\(\\to\\) Fixed Parameter\nRandom Sample \\(\\to\\) Random Statistic\n\nSampling Distribution:  The distribution of the random statistic\nNull Distribution:  The sampling distribution for a given parameter",
+    "section": "Computing ME",
+    "text": "Computing ME\n\n\nSimulation\n\nResample\nCompute \\(\\bar y\\)\nRepeate many times\nFind middle C%: \\[(LL, UL)\\]\nME = \\(\\frac{UL-LL}{2}\\)\n\n\nTheoretical\n\nCheck Assumption\n\nNormality or\nLarge Sample Size\n\nCompute SE = \\(\\frac{s}{\\sqrt{n}}\\)\nFind \\(t_{\\alpha/2}\\) multiplier from \\(t\\sim T(df=n-1)\\)\nME = \\(t_{\\alpha/2} \\cdot SE\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions-1",
-    "href": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions-1",
+    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me---by-simulation",
+    "href": "presentations/CK-ch12-sec9-13.html#computing-me---by-simulation",
     "title": "CourseKata Chapter 12",
-    "section": "Sampling & Null Distributions",
-    "text": "Sampling & Null Distributions\n\n\n\nDGP with \\(\\beta_0=\\mu=0\\)\n\n\n\n\n\n\n\n\n\n\n\nDGP with \\(\\beta_0=\\mu=.5\\)",
+    "section": "Computing ME - By Simulation",
+    "text": "Computing ME - By Simulation\nThree ways to simulate a Distribution\n\nShuffle \\(Y\\)\n\nModels no-association \\(\\text{Null Distribution}\\) \n\nResample dataset\n\nDifferent groups sizes \n\nResample within groups\n\nHolds the same structure \n\nKey is finding ME for the same structure",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#estimating-null-dist.",
-    "href": "presentations/CK-ch12-sec1-8.html#estimating-null-dist.",
+    "objectID": "presentations/CK-ch12-sec9-13.html#me-and-sampling-distributions",
+    "href": "presentations/CK-ch12-sec9-13.html#me-and-sampling-distributions",
     "title": "CourseKata Chapter 12",
-    "section": "Estimating Null Dist.",
-    "text": "Estimating Null Dist.\nGiven Sample \\(\\{0, 1, 5, 1, 3\\}\\)\n\n\n\nDGP with Sample Mean\n\n\n\n\n\n\n\n\n\n\n\nDGP with Claimed Mean",
+    "section": "ME and Sampling Distributions",
+    "text": "ME and Sampling Distributions\n\n\nSimulation\n\nResample (Find Sampling Dist.)\nCompute \\(b_1=\\bar y_2-\\bar y_1\\)\nRepeate many times\nFind middle C%: \\[(LL, UL)\\]\nME = \\(\\frac{UL-LL}{2}\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#plausible-parameters-values",
-    "href": "presentations/CK-ch12-sec1-8.html#plausible-parameters-values",
+    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical",
+    "href": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical",
     "title": "CourseKata Chapter 12",
-    "section": "Plausible Parameters Values",
-    "text": "Plausible Parameters Values\n\n\n\nIs \\(\\mu=0\\) plausible?\n\nRun a test on \\(H_0: \\mu=0\\):  \\(\\mu=0\\) is plausible if we fail to reject.\n\nprocess:\n\nDefine a Sataitic\nFind Null Distribution\nReject \\(H_0\\) for extreme observed statistics.",
+    "section": "Computing ME - Theoretical",
+    "text": "Computing ME - Theoretical\n\n\nCheck Assumptions\n\n\n\n\n\nNormality or\n\n\n\nLarge Sample Sizes\n\n\n\n\nCompute SE & DF\n\n\n\n\n\nEqual Variance\n\n\\(s_p^2 = \\frac{(n_1)s_1^2+(n_2)s_2^2}{n_1+n_2-2}\\)\n\\(DF = n_1+n_2-2\\)\nSE = \\(s_p\\sqrt{\\frac{1}{n_1}+\\frac{1}{n_2}}\\)\n\n\n\n\nUnequal Variance\n\n\\(DF \\approx min(n_1-1, n_2-1)\\)\nSE = \\(\\sqrt{\\frac{s_1^2}{n_1}+\\frac{s_2^2}{n_2}}\\)\n\n\n\n\n\n\\(t_{\\alpha/2}\\) from \\(t\\sim T(df=DF)\\)\nME = \\(t_{\\alpha/2} \\cdot SE\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#interval-estimate-vs.-point-estimate",
-    "href": "presentations/CK-ch12-sec1-8.html#interval-estimate-vs.-point-estimate",
+    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical-1",
+    "href": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical-1",
     "title": "CourseKata Chapter 12",
-    "section": "Interval Estimate vs. Point Estimate",
-    "text": "Interval Estimate vs. Point Estimate\n\n\\(\\bar y\\) is a point estimate (Best Guess) for \\(\\mu\\)\nAn interval estimate is all plausible values at \\(\\alpha\\).",
+    "section": "Computing ME - Theoretical",
+    "text": "Computing ME - Theoretical\n‘confint()’ Computes confidence interval",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#distanced-based-c.i.",
-    "href": "presentations/CK-ch12-sec1-8.html#distanced-based-c.i.",
+    "objectID": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-1",
+    "href": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-1",
     "title": "CourseKata Chapter 12",
-    "section": "Distanced Based C.I.",
-    "text": "Distanced Based C.I.\n\nFor symmetric sampling distributions: \\[ C.I. = \\text{Point Estimate} \\pm \\text{Margin of Error}\\]",
+    "section": "C.I. for Intercept & Slope",
+    "text": "C.I. for Intercept & Slope\nSimulation\n\n\n\nResample Data\n\n\n\nCompute \\(b_0\\) and \\(b_1\\)\n\n\n\nRepeate many times\n\n\n\n\n\nFor \\(\\beta_0\\):\n\nFind middle C%: \\[(LL_{b_0}, UL_{b_0})\\]\n\\(ME_{b_0} = \\frac{UL_{b_0}-LL_{b_0}}{2}\\)\n\\(b_0\\pm ME_{b_0}\\)\n\n\n\n\n\nFor \\(\\beta_1\\):\n\nFind middle C%: \\[(LL_{b_1}, UL_{b_1})\\]\n\\(ME_{b_1} = \\frac{UL_{b_1}-LL_{b_1}}{2}\\)\n\\(b_1\\pm ME_{b_1}\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#theoretical-sampling-distribution",
-    "href": "presentations/CK-ch12-sec1-8.html#theoretical-sampling-distribution",
+    "objectID": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-2",
+    "href": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-2",
     "title": "CourseKata Chapter 12",
-    "section": "Theoretical Sampling Distribution",
-    "text": "Theoretical Sampling Distribution\n\n\n\nWhen\n\n\\(Y\\sim N(\\mu,\\sigma)\\), or\n\\(n\\) is large\n\n\\(t=\\frac{\\bar Y-\\mu}{SE}\\sim t(\\text{df}=n-1)\\)\n\n\\(SE=\\frac{s}{\\sqrt{n}}\\)\n\nFor \\(100(1-\\alpha)\\)% Confidence Level: \\[ME=t^* \\cdot SE\\] \\(t^*=t_{\\alpha/2}\\): top \\(\\alpha/2\\) cut-off point",
+    "section": "C.I. for Intercept & Slope",
+    "text": "C.I. for Intercept & Slope\nTheoretical\n\n\n\nAssumptions:\n\nLinear Association\nNormal Distribution\nEqual Variance\n\n\\(t_{\\alpha/2}\\) from \\(t\\sim T(df=n-2)\\)\n\\(ME_{b_i} = t_{\\alpha/2} \\cdot SE_{b_i}\\)\n\n\n\n\\(b_i\\) and \\(SE_i\\) are from the Summary table\n\n\n\nCoefficients\n\n\n\n\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n\\(b_0\\)\n\\(SE_{b_0}\\)\n\\(t_{b_0}=\\frac{b_0}{SE_{b_0}}\\)\n\\(p\\text{-value}_{b_0}\\)\n\n\nExplanatory\n\\(b_1\\)\n\\(SE_{b_1}\\)\n\\(t_{b_0}=\\frac{b_1}{SE_{b_1}}\\)\n\\(p\\text{-value}_{b_1}\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#assumptions",
-    "href": "presentations/CK-ch12-sec1-8.html#assumptions",
+    "objectID": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-3",
+    "href": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-3",
     "title": "CourseKata Chapter 12",
-    "section": "Assumptions",
-    "text": "Assumptions\n\n\n\nIndependent Observations\nFor Theoretical C.I.\n\n\n\n\n\n\n\nIs \\(Y\\) normal?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs \\(n\\) large?\n\n\\(n&gt;=30\\) without outliers\nCheck with/use bootstrap",
+    "section": "C.I. for Intercept & Slope",
+    "text": "C.I. for Intercept & Slope\nRecalculate C.I.s:",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#interpretation",
-    "href": "presentations/CK-ch12-sec1-8.html#interpretation",
+    "objectID": "presentations/CK-ch12-sec9-13.html#account-for-alpha-inflation",
+    "href": "presentations/CK-ch12-sec9-13.html#account-for-alpha-inflation",
     "title": "CourseKata Chapter 12",
-    "section": "Interpretation",
-    "text": "Interpretation\n\nWe are \\(100(1-\\alpha)\\)% confident that the mean is in \\((\\bar y - ME, \\bar y + ME)\\).",
+    "section": "Account for \\(\\alpha\\) Inflation",
+    "text": "Account for \\(\\alpha\\) Inflation\n\nBenferroni:\n\nUse \\(\\alpha/K\\)\n\n\\(K\\) is the number of pairwise tests\n\n\nTukey’s HSD\n\nUse range distribution",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec1-8.html#caution",
-    "href": "presentations/CK-ch12-sec1-8.html#caution",
+    "objectID": "presentations/CK-ch12-sec9-13.html#main-ideas",
+    "href": "presentations/CK-ch12-sec9-13.html#main-ideas",
     "title": "CourseKata Chapter 12",
-    "section": "Caution",
-    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n27.20284 33.52386",
+    "section": "Main Ideas",
+    "text": "Main Ideas\n\nHigher confidence level \\(\\Rightarrow\\) wider interval\nLarger sample size \\(\\Rightarrow\\) narrower interval\nMore variability \\(\\Rightarrow\\) wider interval\nFor two means: more balanced group sizes \\(\\Rightarrow\\) smaller SE\nFor regression slope: more spread in \\(X\\) \\(\\Rightarrow\\) narrower interval for \\(b_1\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec1-9.html#overview-goals",
-    "href": "presentations/CK-ch11-sec1-9.html#overview-goals",
-    "title": "CourseKata Chapter 11",
-    "section": "Overview / Goals",
-    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssumption \\(\\rightarrow\\) Null Dist. \\(\\rightarrow\\) Observation\nTheoretical Null Distribution\nTest of Significance: \\(\\beta_1\\)\nType I and Type II Errors",
+    "objectID": "presentations/CK-ch12-sec9-13.html#a-quick-demo",
+    "href": "presentations/CK-ch12-sec9-13.html#a-quick-demo",
+    "title": "CourseKata Chapter 12",
+    "section": "A Quick Demo",
+    "text": "A Quick Demo",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 11"
+      "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch11-sec1-9.html#sampling-variability",
-    "href": "presentations/CK-ch11-sec1-9.html#sampling-variability",
-    "title": "CourseKata Chapter 11",
-    "section": "Sampling Variability",
-    "text": "Sampling Variability\n\nDifferent samples → different statistics\nStatistics vary naturally\n\n\nKey idea:\n\nVariation is normal, not suspicious",
+    "objectID": "presentations/CK-ch12-sec9-13.html#wrap-up-questions",
+    "href": "presentations/CK-ch12-sec9-13.html#wrap-up-questions",
+    "title": "CourseKata Chapter 12",
+    "section": "Wrap-Up Questions",
+    "text": "Wrap-Up Questions\n\nIf we want a narrower interval, which things can we control?\nWhy does asking for 99% confidence force a wider interval?\nWhy does larger sample size help even when the center stays the same?\nWhy is a slope estimate more precise when the \\(X\\) values are more spread out?",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#sampling-distribution",
-    "href": "presentations/CK-ch11-sec1-9.html#sampling-distribution",
-    "title": "CourseKata Chapter 11",
-    "section": "Sampling Distribution",
-    "text": "Sampling Distribution\n\nDistribution of a statistic across many samples\nBuilt by:\n\nRe-sampling OR\nMathematical theory",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution",
-    "href": "presentations/CK-ch11-sec1-9.html#null-distribution",
-    "title": "CourseKata Chapter 11",
-    "section": "Null Distribution",
-    "text": "Null Distribution\nNull Hypothesis (\\(H_0\\)):\n\n\n\n\nAssumption:\n\nNo effect\nNo difference\nNo relationship\n\n\n\n\n\nNull Distribution of \\(b_1\\):\n\nCategorical Explanatory\n\nMean difference = 0\n\nQuantitative Explanatory\n\nSlope = 0",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution-simulation",
-    "href": "presentations/CK-ch11-sec1-9.html#null-distribution-simulation",
-    "title": "CourseKata Chapter 11",
-    "section": "Null Distribution: Simulation",
-    "text": "Null Distribution: Simulation\n\n\n\nSimulate no Association:\n\nShuffle Outcome\n\nCompute \\(b_1\\)\nRepeat many times\nVisualize (Histogram)\nAdd the observed value",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution-mathematical-model",
-    "href": "presentations/CK-ch11-sec1-9.html#null-distribution-mathematical-model",
-    "title": "CourseKata Chapter 11",
-    "section": "Null Distribution: Mathematical Model",
-    "text": "Null Distribution: Mathematical Model\n\n\nAssumption: Error Distribution \\(\\sim N(0, \\sigma)\\)\n\n\n\n\nCategorical Explanatory\n\nNormal\nMean of 0\nSame group variances\n\n\n\nQuantitative Explanatory\n\nNormal\nMean of 0\nVariance constant across \\(X\\)\n\n\n\n\nNull Distribution: \\(\\frac{b_1}{s_{b1}}\\sim t(df=n-2)\\)\nSampling Distribution: \\(\\frac{b_1-\\beta_1}{s_{b1}}\\sim t(df=n-2)\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#example-1-categorical-explanatory",
-    "href": "presentations/CK-ch11-sec1-9.html#example-1-categorical-explanatory",
-    "title": "CourseKata Chapter 11",
-    "section": "Example 1: Categorical Explanatory",
-    "text": "Example 1: Categorical Explanatory\n\\[Y_A\\sim N(20, 3), \\quad Y_B\\sim N(20, 3), \\quad n_1=n_2=10\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#example-1-null-distributions",
-    "href": "presentations/CK-ch11-sec1-9.html#example-1-null-distributions",
-    "title": "CourseKata Chapter 11",
-    "section": "Example 1: Null Distributions",
-    "text": "Example 1: Null Distributions",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#example-2-different-variance",
-    "href": "presentations/CK-ch11-sec1-9.html#example-2-different-variance",
-    "title": "CourseKata Chapter 11",
-    "section": "Example (2): Different Variance",
-    "text": "Example (2): Different Variance\n\\[Y_A\\sim N(20, 6), \\quad Y_B\\sim N(20, 3), \\quad n_1=n_2=10\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#example-3-unbalanced-data",
-    "href": "presentations/CK-ch11-sec1-9.html#example-3-unbalanced-data",
-    "title": "CourseKata Chapter 11",
-    "section": "Example (3): Unbalanced Data",
-    "text": "Example (3): Unbalanced Data\n\\[Y_A\\sim N(20, 6), \\quad Y_B\\sim N(20, 3), \\quad n_1=10, n_2=15\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#example-4-skewed-distribution",
-    "href": "presentations/CK-ch11-sec1-9.html#example-4-skewed-distribution",
-    "title": "CourseKata Chapter 11",
-    "section": "Example (4): Skewed Distribution",
-    "text": "Example (4): Skewed Distribution\n\\[Y_A\\sim N(20, 3), \\quad Y_B\\sim \\text{skewed right}, \\quad n_1=10, n_2=15\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#example-5-skewed-large-n",
-    "href": "presentations/CK-ch11-sec1-9.html#example-5-skewed-large-n",
-    "title": "CourseKata Chapter 11",
-    "section": "Example (5): Skewed & large \\(n\\)",
-    "text": "Example (5): Skewed & large \\(n\\)\n\\[Y_A\\sim N(20, 3), \\quad Y_B\\sim \\text{skewed right}, \\quad n_1=100, n_2=150\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution-summary",
-    "href": "presentations/CK-ch11-sec1-9.html#null-distribution-summary",
-    "title": "CourseKata Chapter 11",
-    "section": "Null Distribution Summary",
-    "text": "Null Distribution Summary\nFor a binary numeriacl \\(X\\): \\[Y=\\beta_0+\\beta_1 X + \\varepsilon\\] \\[\\frac{b_1-\\beta_1}{s_{b_1}} \\sim t(df=n-2)\\]\n\n\n\nIf assumptions met:\n\nError Distribution \\(\\sim N(0, \\sigma)\\)\n\\(n\\) is large\n\n\n\n\n\n\\(t(df)\\):\n\na density centered at \\(0\\)\nmore spread than \\(Z\\)\nas \\(df (n)\\to \\infty, \\quad t\\xrightarrow{D} z\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#h_a-unusual-unexpected-event",
-    "href": "presentations/CK-ch11-sec1-9.html#h_a-unusual-unexpected-event",
-    "title": "CourseKata Chapter 11",
-    "section": "\\(H_a\\) & Unusual (Unexpected) Event",
-    "text": "\\(H_a\\) & Unusual (Unexpected) Event\n\nAssumption & \\(H_0 \\to\\) Null Distribution\nAlternative:\n\n\\(\\beta_1&gt;0\\): Reject \\(H_0\\) if too far to the right.\n\\(\\beta_1&lt;0\\): Reject \\(H_0\\) if too far to the left.\n\\(\\beta_1\\ne0\\): Reject \\(H_0\\) if too far from the middle (expected).",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#thumbgender-example",
-    "href": "presentations/CK-ch11-sec1-9.html#thumbgender-example",
-    "title": "CourseKata Chapter 11",
-    "section": "Thumb~Gender Example",
-    "text": "Thumb~Gender Example\n\\[Thumb=\\beta_0+\\beta_1 Gender_{Male} + \\varepsilon\\] - \\(H_0: \\beta_1=0\\) vs. \\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProbability of getting a result this extreme (or more) if the null is true",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#decision",
-    "href": "presentations/CK-ch11-sec1-9.html#decision",
-    "title": "CourseKata Chapter 11",
-    "section": "Decision",
-    "text": "Decision\nReject \\(H_0\\), at \\(\\alpha\\) significance level, if:\n\n\n\nObserved \\(b_1\\) is in Rejection Region\n\n\n\n\\(p\\)-value is less than \\(\\alpha\\)\n\n\n\notherwise,\n\n\nFail to reject \\(H_0\\)\nBoth \\(H_a\\) and \\(H_0\\) are plausible.",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#type-i-error",
-    "href": "presentations/CK-ch11-sec1-9.html#type-i-error",
-    "title": "CourseKata Chapter 11",
-    "section": "Type I Error",
-    "text": "Type I Error\nRejecting a true null\n\n\n\nFalse Positive\nFalse Alarm\n\n\n\\[\\begin{align*}\\alpha &= P(\\text{Rejecting } H_0|H_0) \\\\\n\\\\\n&=\\frac{FP}{FP+TN}\\end{align*}\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#type-ii-error",
-    "href": "presentations/CK-ch11-sec1-9.html#type-ii-error",
-    "title": "CourseKata Chapter 11",
-    "section": "Type II Error",
-    "text": "Type II Error\nFailing to reject a false null\n\n\n\nFalse Negative\nMissed Opportunity\n\n\n\\[\\begin{align*}\\beta &= P(\\text{Not Rejecting } H_0|H_a) \\\\\n\\\\\n&=\\frac{FN}{FN+TP}\\end{align*}\\]",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch11-sec1-9.html#full-workflow",
-    "href": "presentations/CK-ch11-sec1-9.html#full-workflow",
-    "title": "CourseKata Chapter 11",
-    "section": "Full Workflow",
-    "text": "Full Workflow\n\nState the null & Alt. hypothesis\nFind the null distribution of the test statistic\nCompute the observed (test) statistic\nCompute p-value or check against R.R.\nMake a decision & write a conclusion\nCheck assumptions",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 11"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html",
-    "href": "preparations/Exam2-Study-Guide.html",
-    "title": "Exam 2 Study Guide",
-    "section": "",
-    "text": "Data: Observed outcome values \\(y_1, ..., y_n\\), and potentially predictor(s) \\(X_1, ..., X_n\\).\nModel:\n\nDescribing data as \\(Data = Model + Error\\)\nProducing Predicted value: \\((\\hat y)\\)\n\n\n\n\n\nEmpty model: No predictors; mean-only model (1 parameter)\nSimple model: One numerical or a binary categorical predictor (2 parameters)\nComplex model: Two or more numerical, non-binary categorical, or combination of numerical and categorical predictors (3 or more parameters)\n\n\nModels could also be compared as Simpler vs. More Complex based on their relative number of parameters\n\nKey idea: Does a more complex model improve prediction enough?\n\n\n\n\n\n\nResidual: \\(e_i=\\) Observed \\((y)\\) − Predicted \\((\\hat y)\\)\nUnexplained Variability (Error Sum Squares): \\(SSE=\\sum_{i=1}^n e_i^2\\)\nTotal Variability: \\(SST=\\sum_{i=1}^n (y_i-\\bar y)^2\\)\n\\(R^2\\) (PRE): Proportion reduction in error (a.k.a. coefficient of determination)\n\nCloser to 1 \\(\\to\\) better fit",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#models-and-model-comparison",
-    "href": "preparations/Exam2-Study-Guide.html#models-and-model-comparison",
-    "title": "Exam 2 Study Guide",
-    "section": "",
-    "text": "Data: Observed outcome values \\(y_1, ..., y_n\\), and potentially predictor(s) \\(X_1, ..., X_n\\).\nModel:\n\nDescribing data as \\(Data = Model + Error\\)\nProducing Predicted value: \\((\\hat y)\\)\n\n\n\n\n\nEmpty model: No predictors; mean-only model (1 parameter)\nSimple model: One numerical or a binary categorical predictor (2 parameters)\nComplex model: Two or more numerical, non-binary categorical, or combination of numerical and categorical predictors (3 or more parameters)\n\n\nModels could also be compared as Simpler vs. More Complex based on their relative number of parameters\n\nKey idea: Does a more complex model improve prediction enough?\n\n\n\n\n\n\nResidual: \\(e_i=\\) Observed \\((y)\\) − Predicted \\((\\hat y)\\)\nUnexplained Variability (Error Sum Squares): \\(SSE=\\sum_{i=1}^n e_i^2\\)\nTotal Variability: \\(SST=\\sum_{i=1}^n (y_i-\\bar y)^2\\)\n\\(R^2\\) (PRE): Proportion reduction in error (a.k.a. coefficient of determination)\n\nCloser to 1 \\(\\to\\) better fit",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#sampling-distributions",
-    "href": "preparations/Exam2-Study-Guide.html#sampling-distributions",
-    "title": "Exam 2 Study Guide",
-    "section": "2. Sampling Distributions",
-    "text": "2. Sampling Distributions\n\nImportant Ideas\n\nStatistics vary from sample to sample\nThe sampling distribution shows this variability\nSampling distribution under the null hypothesis is called Null Distribution:\nNull Distribution is used to determine evidence against the null \\((H_0)\\):\n\nRejection Region determines all values consider to favor of the alternative \\(H_a\\) based on a significance level \\(\\alpha\\).\nThe \\(p\\)-value measures the evidence in favor of the alternative \\(H_a\\) as unlikeliness of the observed and more extreme values of the test statistic.\n\nNull Distributions can be found by:\n\nSimulation\nMathematically, given some assumptions.\n\n\n\n\nKey Mathematical Distributions\n\nNormal distribution (for error distribution assumption)\nt distribution (for slopes/means with estimated variability)\nF distribution (for comparing models using the ratio of average variability)\nChi-square distribution (for testing the independence of two categorical variables)",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#hypothesis-testing-framework",
-    "href": "preparations/Exam2-Study-Guide.html#hypothesis-testing-framework",
-    "title": "Exam 2 Study Guide",
-    "section": "3. Hypothesis Testing Framework",
-    "text": "3. Hypothesis Testing Framework\nA significance level \\((\\alpha)\\) is assumed given or chosen.\n\nSteps\n\nState null hypothesis \\((H_0)\\), Alternative hypothesis \\((H_a)\\).\nFind the null distribution of a test statistic:\n\nGenerate (by simulation) or determine (mathematically).\nDetermine the Rejection Region based on \\(\\alpha\\) (if needed).\n\nCompute the observed statistic\n\nCompute the p-value (if needed)\n\nMake a decision by compare \\(p\\)-value to \\(\\alpha\\) or observed test statistic to the rejection region.\nWrite a conclusion in the context of the problem.\ncheck assumptions.\n\n\n\nInterpretation\n\nSmall \\(p\\)-value, or the observed test statistic in the rejection region \\(\\to\\) evidence against \\(H_0\\).\nLarge \\(p\\)-value, or the observed test statistic outside the rejection region \\(\\to\\) not enough evidence against \\(H_0\\).",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#models-and-tests-for-numerical-response",
-    "href": "preparations/Exam2-Study-Guide.html#models-and-tests-for-numerical-response",
-    "title": "Exam 2 Study Guide",
-    "section": "4. Models and Tests for Numerical Response",
-    "text": "4. Models and Tests for Numerical Response\n\nA. Testing One Mean (\\(H_0: \\mu=\\beta_0\\))\n\\[y=\\beta_0 + \\varepsilon\\]\n\nObservation: \\(n\\) independent observations: \\(y_1, y_2, ..., y_n\\)\nPredicted value: \\(\\hat y = \\bar y\\)\nStatistics:\n\nObserved Mean: \\(\\bar y=\\frac{\\sum_{i=1}^n y_i}{n}\\)\nSum Squares: \\(SS(y) = \\sum_i{(y_i-\\bar y)^2}\\)\nObserved Variance: \\(s^2=\\frac{SS(y)}{n-1}\\)\nObserved Standard Deviation: \\(s=\\sqrt{s^2}=\\sqrt{\\frac{\\sum_i{(y_i-\\bar y)^2}}{n-1}}\\)\nStandard Error: \\(SE=s_{\\bar y} = \\frac{s}{\\sqrt{n}}\\)\nObserved Test Statistic (\\(t\\)-value): \\(t=\\frac{\\bar y - \\beta_0}{SE}=\\frac{\\bar y - \\beta_0}{s/\\sqrt{n}}\\)\n\n\n\n\nNull Distribution of \\(\\bar Y\\) or \\(t\\)\n\nBy Simulation of the DGP:\n\nSet the mean to \\(\\beta_0\\): \\(y_i^0=y_i-\\bar y+\\beta_0\\) for \\(i=1, ..., n\\)\nRandomly generate many \\(\\bar y\\):\n\nselect \\(n\\) from \\(y_1^0, ..., v^0_n\\), with replacement\nCompute the sample mean (or test statistic)\n\n\nMathematically\n\n\\(\\bar y \\sim N(\\beta_0, \\sigma/\\sqrt{n})\\)\n\\(t = \\frac{\\bar Y - \\beta_0}{s/\\sqrt{n}}\\sim t(df=n-1)\\)\nAssumption:\n\n\\(\\varepsilon \\sim N(0, \\sigma)\\) or\n\\(n\\) is large.\n\n\n\nConclusion:\n\nReject \\(H_0\\) if observed \\(\\bar y\\) is too far from \\(\\beta_0\\)\nHow far is far?\n\nCompute \\(p\\)-value or find Rejection Region\n\n\n\n\n\n\nB. Testing Association to a Binary Categorical Predictor (\\(H_0: \\beta_1=\\mu_B-\\mu_A=0\\))\n\\[\n  y=\\beta_0 + \\beta_1X+\\varepsilon, \\text{ where } X=\n  \\begin{cases}\n    0 & \\text{ for group A}\\\\\n    1 & \\text{ for group B}\n  \\end{cases}\n\\]\n\nPredicted values: \\[\\hat y_i =\n  \\begin{cases} \\bar y_A & \\text{ for group } A\\\\\n    \\bar y_B & \\text{ for group } B\n  \\end{cases}\\]\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\) or\n\\((y_{1A}, y_{2A}, ..., y_{n_AA})\\) and \\((y_{1B}, y_{2B}, ..., y_{n_BB})\\), where \\(n_B=\\sum_i{X}\\), \\(n_A=n - n_B\\)\n\nStatistics:\n\nObserved Means:\n\n\\(\\bar {y_A} = \\frac{\\sum_{i=1}^{n_A} y_{iA}}{n_A}\\)\n\\(\\bar {y_B} = \\frac{\\sum_{i=1}^{n_B} y_{iA}}{n_B}\\)\n\nSum Squares:\n\nTotal: \\(SST = SS(y) = \\sum_i{(y_i-\\bar y)^2}\\)\nWithin Group A: \\(SS(A) = \\sum_i{(y_{iA}-\\bar y_A)^2}\\)\nWithin Group B: \\(SS(B) = \\sum_i{(y_{iA}-\\bar y_B)^2}\\)\nWithin Groups (Error): \\(SSE = SSG = SS(y_A) + SS(y_B)\\)\nModel: \\(SSM = SST - SSE\\)\n\nPRE: \\(R^2 = \\frac{SSM}{SST}=1-\\frac{SSE}{SST}\\)\nObserved Variances:\n\n\\(s_A^2 = \\frac{SS(A)}{n_A-1}\\)\n\\(s_B^2 = \\frac{SS(B)}{n_B-1}\\)\n\\(s_p^2 = \\frac{SS(A)+SS(B)}{n_A+n_B-2}=\\frac{SSE}{n_A+n_B-2}\\)\n\nObserved Standard Error: \\[SE = s_{\\bar y_A - \\bar y_B} =\n\\begin{cases}\\sqrt{\\frac{s_A^2}{n_A} + \\frac{s_B^2}{n_B}} & \\text{ general case }\\\\\n\\sqrt{\\frac{s_p^2}{n_A} + \\frac{s_p^2}{n_B}} & \\text{ assuming } \\sigma_A=\\sigma_B \\end{cases}\\]\nCohen’s \\(d\\): \\(d=\\frac{\\bar {y_A} - \\bar {y_B}}{s_p}\\)\n\n\n\n\nNull Distribution of \\((\\bar y_A - \\bar y_B)\\) or \\(\\frac{(\\bar y_A - \\bar y_B) - \\beta_1}{SE}\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\((\\bar y_A - \\bar y_B)\\):\n\nShuffle all \\(y_i\\)’s and reallocate \\(n_A\\) to group \\(A\\) and \\(n_B\\) to group \\(B\\).\nCompute the sample mean (or test statistic)\n\n\nMathematically (1)\n\nAssumption: \\(\\varepsilon_A \\sim N(0, \\sigma_A)\\) and \\(\\varepsilon_B \\sim N(0, \\sigma_B)\\)\n\\((\\bar y_A - \\bar y_B) \\sim N\\left(\\beta_1, \\sigma_{\\bar y_A-\\bar y_B}\\right)\\), where \\(\\sigma_{\\bar y_A-\\bar y_B}^2 =  \\frac{\\sigma_A^2}{n_A}+\\frac{\\sigma_B^2}{n_B}\\)\n\\(t = \\frac{(\\bar y_A - \\bar y_B) - \\beta_1}{SE}\\sim t(df\\approx \\hat{df})\\), conservative estimate: \\(\\hat{df}=min(n_A-1, n_B-1)\\)\n\nMathematically (2)\n\nAssumption: \\(\\varepsilon_A \\sim N(0, \\sigma)\\) and \\(\\varepsilon_B \\sim N(0, \\sigma)\\); i.e., \\(\\sigma_A=\\sigma_B=\\sigma\\).\n\\((\\bar y_A - \\bar y_B) \\sim N\\left(\\beta_1, \\sigma_{\\bar y_A-\\bar y_B}\\right)\\), where \\(\\sigma_{\\bar y_A-\\bar y_B}^2 =  \\frac{\\sigma^2}{n_A}+\\frac{\\sigma^2}{n_B}=\\sigma^2_p(1/n_A+1/n_B)\\)\n\\(t = \\frac{(\\bar y_A - \\bar y_B) - \\beta_1}{SE}\\sim t(df= n_A+n_B-2)\\)\n\n\n\n\n\nCompute \\(p\\)-value or find Rejection Region\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\((\\bar y_A - \\bar y_B)\\) is too far from \\(\\beta_1\\)\n\n\n\n\nC. Testing Association to a Numerical Predictor (\\(H_0: \\beta_1=0\\))\n\\[y=\\beta_0 + \\beta_1X+\\varepsilon\\]\n\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\)\n\nPredicted value: \\(\\hat y_i = b_0 + b_1 x_i\\), where \\(b_0\\) and \\(b_1\\) are estimated intercept and slope, respectively.\nStatistics:\n\nObserved Means:\n\n\\(\\bar y=\\frac{\\sum_{i=1}^n y_{i}}{n}\\)\n\\(\\bar x=\\frac{\\sum_{i=1}^n x_{i}}{n}\\)\n\nSum Squares:\n\nTotal: \\(SST = SS(y) = \\sum_i (y_i-\\bar y)^2\\)\nError: \\(SSE = SSR = \\sum_i (y_i - \\hat y_i)^2\\)\nModel: \\(SSM = SST - SSE\\)\n\nPRE: \\(R^2 = \\frac{SSM}{SST}=1-\\frac{SSE}{SST}\\)\nObserved Variances:\n\n\\(s_y^2 = \\frac{SS(y)}{n-1}\\)\n\\(s_x^2 = \\frac{SS(x)}{n-1}\\)\nCovariance: \\(s_{xy}=\\frac{\\sum_i (y_i-\\bar y)(x_i - \\bar x)}{n-1}\\)\n\nObserved Correlation: \\(r = \\frac{s_{xy}}{s_x s_y}\\)\n\nLeast Square Line:\n\nSlope Estimate: \\(b_1= r \\frac{s_y}{s_x}\\)\nIntercept Estimate: \\(b_0=\\bar y - b_1 \\bar x\\)\nSum Square Error: \\(SSE = \\sum_i (y_i - \\hat y_i)^2 = \\sum_i (y_i - b_0 - b_1 x_i)^2\\)\nError Variance: \\(s^2 = \\frac{SSE}{n-2}\\)\nStandard Error of \\(b_1\\): \\(SE_{b_1}=\\frac{s}{\\sqrt{SS(x)}}\\)\nStandard Error of \\(b_0\\): \\(SE_{b_0}=s\\cdot\\sqrt{\\frac{1}{n}+\\frac{{\\bar x}^2}{SS(x)}}\\)\n\nNull Distribution of \\(b_1\\) or \\(\\frac{b_1- \\beta_1}{SE_{b_1}}\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\(b_1\\):\n\nShuffle all \\(y_i\\)’s and pair each with a \\(x_i\\).\nCompute the sample slope (or test statistic, PRE, \\(R^2\\))\n\n\nMathematically\n\nAssumption:\n\nLinear relationship between \\(y\\) and \\(x\\).\n\\(\\varepsilon \\sim N(0, \\sigma)\\); Normality and Constant Variance\n\n\\(b_1 \\sim N\\left(\\beta_1, \\sigma_{b_1}\\right)\\), where \\(\\sigma_{b_1}^2 =  \\frac{\\sigma^2}{SS(x)}\\)\n\\(t = \\frac{b_1 - \\beta_1}{SE_{b_1}}\\sim t(df= n-2)\\)\n\n\nCompute \\(p\\)-value or find Rejection Region\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\(b_1\\) is too far from \\(\\beta_1\\)\n\n\n\n\nD. Single Test of Association in a Complex Model (ANOVA: \\(H_0:\\text{ No association}\\))\n\\[y=\\beta_0 + \\beta_1X_1+...+\\beta_kX_k+\\varepsilon=\\beta_0+\\sum_{j=1}^k \\beta_jX_{j}+\\varepsilon\\]\n\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_{11}, x_{12}, ..., x_{1k}, y_1), ..., (x_{n1}, ..., x_{nk}, y_n)\\)\nOne or more than \\(x_{ik}\\) could be 0/1 variables representing levels of a categorical variable.\n\nPredicted value: \\(\\hat y_i = b_0 + \\sum_{j=1}^k b_j x_{ji}\\), where \\(b_0\\) and \\(b_j\\)’s are estimated based on minimizing some cost function (here, least squares).\nStatistics:\n\nObserved Means:\n\n\\(\\bar y=\\frac{\\sum_{i=1}^n y_{i}}{n}\\)\n\\(\\bar x_j=\\frac{\\sum_{i=1}^n x_{ij}}{n}\\)\n\nSum Squares:\n\nTotal: \\(SST = SS(y) = \\sum_i (y_i-\\bar y)^2\\)\nError: \\(SSE = SSR = \\sum_i (y_i - \\hat y_i)^2\\)\nModel: \\(SSM = SST - SSE\\)\n\nPRE: \\(R^2 = \\frac{SSM}{SST}=1-\\frac{SSE}{SST}\\)\nObserved Variances:\n\n\\(s_y^2 = \\frac{SS(y)}{n-1}\\)\n\\(s_p^2 = MSE=\\frac{SSE}{n-1-k}\\)\n\nObserved F-value: \\(F=\\frac{SSM/k}{SSE/(n-1-k)}=\\frac{MSM}{MSE}\\)\nObserved SE’s: We use software provided values.\n\nNull Distribution of \\(b_j\\) or \\(\\frac{b_j- \\beta_j}{SE_{b_j}}\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\(b_j\\)’s:\n\nShuffle all \\(y_i\\)’s and pair each to a vector \\((x_{i1}, ..., x_{ik})\\).\nCompute the sample slope (or \\(t\\), \\(F\\), PRE, \\(R^2\\))\n\n\nMathematically\n\nAssumption:\n\nLinear relationship between \\(y\\) and \\(x_j\\)’s.\nNo linear association between two \\(x_j\\)’s.\n\\(\\varepsilon \\sim N(0, \\sigma)\\); Normality and Constant Variance\n\n\\(F \\sim F(df_1=k,\\  df_2=n-1-k)\\)\n\\(b_j \\sim N\\left(\\beta_j, \\sigma_{b_j}\\right)\\)\n\\(t = \\frac{b_j - \\beta_j}{SE_{b_j}}\\sim t(df= n-1-k)\\)\n\n\nCompute \\(p\\)-value or find Rejection Region for single test \\(F\\)\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\(F\\) is too greater than \\(1\\)\n\nIf rejected, perform pair comparison (for categorical variables) or single slope tests.",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#models-and-tests-for-categorical-response-h_0-text-independence",
-    "href": "preparations/Exam2-Study-Guide.html#models-and-tests-for-categorical-response-h_0-text-independence",
-    "title": "Exam 2 Study Guide",
-    "section": "5. Models and Tests for Categorical Response \\((H_0: \\text{ Independence })\\)",
-    "text": "5. Models and Tests for Categorical Response \\((H_0: \\text{ Independence })\\)\n\nA. Test of Independence of Two Categorical Variables: \\(X\\) and \\(Y\\)\n\\[P(Y|X)=P(Y)\\]\n\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_1, y_1), ..., (x_n, y_n)\\)\nSummarized into a contingency table: \\(C=[c_{ij}]\\)\n\nStatistics:\n\nObserved Counts: \\(c_{ij}\\)\nObserved Chi-square: \\(\\chi^2=\\sum_{ij} (c_{ij} - e_{ij})^2\\)\n\nNull Distribution of \\(\\chi^2\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\(\\chi^2\\)’s:\n\nShuffle all \\(y_i\\)’s and pair each to a \\(x_i\\).\nCompute the sample Chi-square \\(\\chi^2\\).\n\n\nMathematically\n\nAssumption:\n\nEach contingency count \\(c_{ij}\\ge 5\\)\n\n\\(\\chi^2 \\sim \\text{chi-square}(df=(k-1)(m-1))\\)\n\n\nCompute \\(p\\)-value or find Rejection Region for single test \\(F\\)\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\(\\chi^2\\) is too greater than \\(0\\)",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#errors-in-hypothesis-testing",
-    "href": "preparations/Exam2-Study-Guide.html#errors-in-hypothesis-testing",
-    "title": "Exam 2 Study Guide",
-    "section": "6. Errors in Hypothesis Testing",
-    "text": "6. Errors in Hypothesis Testing\n\nType I Error: Rejecting a true \\(H_0\\)\n\nUsing \\(\\alpha\\) to make a decision leads to \\(P(\\text{Type I Error})=\\alpha\\)\n\nType II Error: Failing to reject a false \\(H_a\\)\n\n\\(P(\\text{Type II Error}|H_a)\\) can be calculated for a specific \\(H_a\\)\n\n\n\nType I Error Inflation\n\nHappens when running multiple tests\nIncreases chance of false positives\nTo avoid:\n\nUse \\(ANOVA\\) to do a single test\nIf single test is significant, run multiple test with corrected \\(\\alpha\\) or \\(p\\)-value.",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#assumptions",
-    "href": "preparations/Exam2-Study-Guide.html#assumptions",
-    "title": "Exam 2 Study Guide",
-    "section": "7. Assumptions",
-    "text": "7. Assumptions\n\nIndependence\n\nWe assume observations are made independently in each sample\n\nLinearity (for regression)\nEqual variance (for ANOVA)\nNormality of error or large sample size for a numerical response\nReasonable sample size for categorical response.",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Study-Guide.html#interpreting-results",
-    "href": "preparations/Exam2-Study-Guide.html#interpreting-results",
-    "title": "Exam 2 Study Guide",
-    "section": "8. Interpreting Results",
-    "text": "8. Interpreting Results\nBe able to:\n\nInterpret coefficients (\\(b_0\\), \\(b_1\\))\nExplain \\(R^2\\) in context\nTranslate \\(p\\)-values into conclusions\nIdentify whether results are statistically significant\n\nReject or fail to reject the null hypothesis (\\(H_0\\))",
-    "crumbs": [
-      "Preparations",
-      "Exam 2 Study Guide"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam1-Prep.html",
-    "href": "preparations/Exam1-Prep.html",
-    "title": "Exam 1 Prep",
-    "section": "",
-    "text": "Define variation in your own words and explain why it is central to statistics.\n\n\nIn the context of a data frame, what do rows represent? What do columns represent?\n\n\nWhich of the following is a quantitative variable?\n\nHeight\nFavorite color\nGender\nEye color\n\n\n\nWhy is sampling necessary in statistics? Provide one reason.\n\n\nWhat does it mean for variables to be categorical versus numerical? Give an example of each from a dataset.\n\n\nIn modeling notation, what do the symbols ~ and data= indicate? Offer a brief explanation.\n\n\nThe vector x &lt;- c(2,1,3,3,2,3,1,2,1) is given.\n\nAfter sorting x, what pattern becomes visible?\nWhat does the frequency table of x show?\n\n\n\nUsing the Fingers dataset (from class):\n\nWhat do boxplots of Index ~ Gender visually display about variability?\nDescribe center, spread, overlap, and any unusual features.\n\n\n\nConsider the following R code:\ngf_histogram(~Score, data = Data, binwidth = 2)\n\nInterpret what the following R code does and what you would expect the plot to show:\nWhat distribution characteristics would the histogram reveal?\n\n\n\nExplain what the five-number summary tells you about a numerical variable and relate it to variation.\n\n\nWrite one sentence comparing the distributions displayed by:\ngf_histogram(~Index, data = Fingers, binwidth = 0.25)\ngf_histogram(~Index, data = Fingers, binwidth = 0.5)\nFocus on how the choice of binwidth affects the appearance.\n\n\nExplain in plain language what an outlier is and how the 1.5×IQR rule identifies outliers.\n\n\nWhat does it tell you if two boxplots (for Index by two groups) show a large difference in medians but overlapping boxes? What does that say about variation within and between groups?\n\n\nconsider the following R output:\n\nfavstats(Fingers$Pinkie)\n\n min Q1 median Q3 max     mean       sd   n missing\n  33 55     58 63  98 59.41252 9.080594 157       0\n\n\n\nWhat can you say about the center and spread of the Score distribution?\nUse 1.5IQR rule to find if there are any outliers.\n\n\n\nExplain why it is important to identify the response variable before choosing a plot to visualize a relationship.\n\n\nGiven these R commands:\nmean(Pinkie ~ Gender, data = Fingers) # Returns means for Pinkie in different genders\ngf_boxplot(Pinkie ~ Gender, data = Fingers)\nExplain what each line does and how the two results complement each other.\n\n\nDescribe in words what the residual represents in the context of a simple model predicting Pinkie using Gender, and why smaller residuals imply a better model.\n\n\nThe following R code calculates proportions:\n\ntally(Gender~Job, data=Fingers)\n\n        Job\nGender   Not Working Part-time Job Full-time Job\n  female          65            47             0\n  male            25            19             1\n\n\nGive an example of a conditional probability and compute it.\n\n\nBelow is R code that generates a conditional proportion bar chart. Explain how this visualization helps you explain variability in the response.\ngf_bar(~Job, data = Fingers, fill = ~Gender, position = \"fill\")\n\ngf_bar(~Job, data = Fingers, fill = ~Gender, position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nConsider the two plots below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompare and contrast how these two visuals explain variability in the response variable. In your answer, mention:\n\nWhat the plot shows\nHow variation is partitioned or summarized\nWhat conclusions might be drawn about the role of the explanatory variable",
-    "crumbs": [
-      "Preparations",
-      "Exam 1 Prep"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About CSUF Statistics and CourseKata",
-    "section": "",
-    "text": "Here are some details!",
-    "crumbs": [
-      "About CSUF Statistics and CourseKata"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "CSUF Statistics using CourseKata",
-    "section": "",
-    "text": "Welcome! Choose a deck:\n\nPresentationsPreparations\n\n\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)\nChapter 10\nChapter 11 (Section 1-9)\nChapter 11 (Section 10-13)\nChapter 12 (Section 1-8)\nChapter 12 (Section 9-13)\n\n\n\n\nSample Exam 1\nExam 2 Study Guide\nSample Exam 2",
-    "crumbs": [
-      "CSUF Statistics using CourseKata"
-    ]
-  },
-  {
-    "objectID": "preparations/Exam2-Sample.html",
-    "href": "preparations/Exam2-Sample.html",
-    "title": "Sample Exam 2",
-    "section": "",
-    "text": "Part A: Conceptual (Multiple Choice)\n\nWhat does a small p-value indicate?\n\nThe null hypothesis is true\n\n\nStrong evidence against the null hypothesis\n\n\nThe sample size is small\n\n\nThe model has no error\n\n\n\n\nWhat does R² measure?\n\nThe slope of the regression line\n\n\nThe variability in the predictor\n\n\nThe proportion of variability explained by the model\n\n\nThe p-value of the test\n\n\n\n\nA Type I error occurs when:\n\nYou fail to reject a false null hypothesis\n\n\nYou reject a true null hypothesis\n\n\nYou accept a false alternative hypothesis\n\n\nThe sample size is too large\n\n\n\n\nWhich test is used to compare more than two group means?\n\nt-test\n\n\nANOVA\n\n\nChi-square\n\n\nRegression\n\n\n\n\nIn regression, what does b₁ represent?\n\nThe average of Y\n\n\nThe predicted value when X = 0\n\n\nThe average change in Y for a one-unit increase in X\n\n\nThe variance of Y\n\n\n\n\n\nPart B: Short Answer\n\nExplain the difference between a simple and a complex model.\n\n\n\n\n\nWhat is a null distribution and why is it important?\n\n\n\n\n\nWhat does it mean if a result is statistically significant at α = 0.05?\n\n\n\n\n\n\nPart C: Interpretation\n\nA regression analysis gives:\n\n\n\nTerms\nEstimate\nStd Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n3.59656\n0.08410\n42.765\n&lt; 2e-16\n\n\nx\n-0.20124\n0.06651\n[t]\n0.00505\n\n\n\nAnswer:\n\nInterpret the slope\n\n\n\n\nFind the missing [t]\n\n\n\n\nState whether the result is significant\n\n\n\n\nWrite the equation for the regression (use \\(y\\) as the outcome variable):\n\n\n\n\nFind and interpret the value of \\(y\\) when \\(x\\) is 0.75.\n\n\n\n\n\n\nAn ANOVA test gives:\n\n\n\n\nSS\ndf\nMS\nF\nPRE\np\n\n\n\n\nModel (error reduced)\n5.10\n4.00\n[a]\n[F]\n[R2]\n0.0004\n\n\nError (from model)\n3.70\n23.00\n[b]\n\n\n\n\n\n\nAnswer:\n\nFind the missing [F] value.\n\n\n\n\nHow many groups are being abalyzed?\n\n\n\n\nWhat are the hypotheses this table is testing?\n\n\nWhat is the conclusion of the test?\n\n\n\n\nFind the missing [R2] and interpret it.\n\n\n\n\n\n\n\nPart D: Applied Thinking\n\nA researcher runs 10 different tests at α = 0.05.\n\nWhat problem might occur?\n\n\n\n\nHow could it be addressed?\n\n\n\n\n\n\nYou observe a strong relationship in a sample, but the p-value is large. Why might this happen?\n\n\n\n\n\n\nPart E: Data Reasoning\n\nGiven a contingency table (Gender × Job):\n\nWhat test should be used?\n\n\n\n\nWhat would the null hypothesis be?\n\n\n\n\n\n\nThe following summary of \\(y\\) is given:\n\n\n\n\n\nGroup\nn\nMean\nSD\n\n\n\n\nA\n18\n3.39\n0.47\n\n\nB\n14\n3.86\n0.51\n\n\n\n\n\n\nWhat is the differnce of the sample means?\n\n\n\n\nWhat is the standard error of the differnce of the sample means?\n\n\n\n\nCompute \\(t=\\frac{\\bar x_B-\\bar x_A}{SE}\\).\n\n\n\n\nwhat is the distribution of \\(t\\), if we assume the group variances are equal?\n\n\n\n\nWrite a conclusion if the \\(p\\text{-value}=0.012\\) and \\(H_a: \\mu_A\\ne\\mu_B\\).\n\n\n\n\nWhat is the Cohen’s \\(d\\) and what does it mean?\n\n\n\n\nWrite the lm equation for Y~X and the estimate values for \\(\\beta_0\\) and \\(\\beta_1\\)?\n\n\n\n\n\n\n\nChallenge Questions\n\nExplain how the t-distribution differs from the normal distribution.\n\n\n\n\nWhy do we use an F-test instead of multiple t-tests in ANOVA?",
-    "crumbs": [
-      "Preparations",
-      "Sample Exam 2"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#overview-goals",
-    "href": "presentations/CK-ch10-complete.html#overview-goals",
-    "title": "CourseKata Chapter 10",
-    "section": "Overview / Goals",
-    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModeling Data vs DGP\nSampling Distribution\nNull Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\nUnlikely (unexpected) Events\n\\(\\alpha\\) vs. p-value\nTesting \\(b_1: \\beta_1\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#modeling-data-vs-dgp",
-    "href": "presentations/CK-ch10-complete.html#modeling-data-vs-dgp",
-    "title": "CourseKata Chapter 10",
-    "section": "Modeling Data vs DGP",
-    "text": "Modeling Data vs DGP\n\n\nModeling Data (Fit)\n\nObserved:\n\nDATA = Model + Error\nMore complex, Better Fit\n\nFit: PRE\n\n\n\n\nModeling DGP (Inference)\n\nUnknown:\n\nHypothesis (Claim)\nNull Hypothesis\n\nChance Model\n\n\n\n\n\n\nHow good a model estimates DGP?\n\nnot sure, but it is not by chance =&gt; Test of Hypothesis\nuseful for prediction =&gt; Cross-validation",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#models",
-    "href": "presentations/CK-ch10-complete.html#models",
-    "title": "CourseKata Chapter 10",
-    "section": "Models",
-    "text": "Models\n\nQuantitative Response: \\(Y = Model + Error\\)\n\nCategorical Explanatory \\(\\Rightarrow b_0=\\bar x_1\\), \\(b_1=\\bar x_2-\\bar x_1\\)\nQuantitative Explanatory \\(\\Rightarrow b_0=\\hat y_{x=0}\\), \\(b_1=\\text{slope}\\)\n\nModels have assumptions:\n\nWe focus on the parameter(s): \\(\\beta_0\\) or \\(\\beta_1\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#distributions",
-    "href": "presentations/CK-ch10-complete.html#distributions",
-    "title": "CourseKata Chapter 10",
-    "section": "Distributions",
-    "text": "Distributions\n\nPopulation Distribution (DGP)\n\nEmpty Model: \\(\\beta_0 + \\varepsilon\\)\nFixed shape, center and spread\n\nSample Distribution\n\nData: \\(\\bar x + e\\)\nEverything may change per sample\n\nDistribution of a Sample Statistics\n\nSample Mean: \\(\\beta_0 + \\epsilon\\)\nMay change per sample size.",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#null-distribution-of-b_1-mu_1-mu_2",
-    "href": "presentations/CK-ch10-complete.html#null-distribution-of-b_1-mu_1-mu_2",
-    "title": "CourseKata Chapter 10",
-    "section": "Null Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)",
-    "text": "Null Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\n\nNull: Empty Model\n\\(Y\\) is independent of \\(X\\)\nSimulate Null Distribution of \\(\\bar y\\)\n\nShuffle \\(Y\\)\nCompute \\(b_1=\\mu_2-\\mu_1\\)\nRepeat many times\n\nVisualize with a histogram",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#null-distribution-example",
-    "href": "presentations/CK-ch10-complete.html#null-distribution-example",
-    "title": "CourseKata Chapter 10",
-    "section": "Null Distribution Example",
-    "text": "Null Distribution Example",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#unlikely-unexpected-events",
-    "href": "presentations/CK-ch10-complete.html#unlikely-unexpected-events",
-    "title": "CourseKata Chapter 10",
-    "section": "Unlikely (unexpected) Events",
-    "text": "Unlikely (unexpected) Events\n\nObserved Statistics far from Expected value\n\nDistance in not universal\n\nUse standardized value\nUse Probability\n\n\nIf tail probability is low,\n\nobserved statistic is unlikely",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#example",
-    "href": "presentations/CK-ch10-complete.html#example",
-    "title": "CourseKata Chapter 10",
-    "section": "Example",
-    "text": "Example",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#alpha-vs.-p-value",
-    "href": "presentations/CK-ch10-complete.html#alpha-vs.-p-value",
-    "title": "CourseKata Chapter 10",
-    "section": "\\(\\alpha\\) vs. \\(p\\)-value",
-    "text": "\\(\\alpha\\) vs. \\(p\\)-value\nHow far is far?\n\nHow low is an unusual probability?\n\nDepends! But typically 5%.\nWe call this Significance Level (\\(\\alpha\\))\n\nFar:\n\n\\(p\\)-value\\(&lt;  \\alpha\\)\nObserved statistic in \\(\\alpha\\) portion of tail(s)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#testing-b_1-mu_1-mu_2",
-    "href": "presentations/CK-ch10-complete.html#testing-b_1-mu_1-mu_2",
-    "title": "CourseKata Chapter 10",
-    "section": "Testing \\(b_1: (\\mu_1-\\mu_2)\\)",
-    "text": "Testing \\(b_1: (\\mu_1-\\mu_2)\\)\n\nNull Hypothesis: Empty Model DGP\n\nReject this if observed statistics in unusually far.\n\nIn what direction?\n\nThe Alternative:\n\n\\(\\beta_1&gt;0\\): right tail\n\\(\\beta_1&lt;0\\): Left tail\n\\(\\beta_1\\ne0\\): both tails",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#example-one-tail-tests",
-    "href": "presentations/CK-ch10-complete.html#example-one-tail-tests",
-    "title": "CourseKata Chapter 10",
-    "section": "Example: One-Tail Tests",
-    "text": "Example: One-Tail Tests\n\n\n\\(H_a: \\beta_1&gt;0\\)\n\n\n\n\n\n\n\n\n\n\\(H_a: \\beta_1&lt;0\\)\n\n\n\n\n\n\n\n\n\nExample: Two-Tail Tests\n\n\n\\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\n\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#example-two-tail-tests",
-    "href": "presentations/CK-ch10-complete.html#example-two-tail-tests",
-    "title": "CourseKata Chapter 10",
-    "section": "Example: Two-Tail Tests",
-    "text": "Example: Two-Tail Tests\n\n\n\\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\n\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#f-and-t-distributions",
-    "href": "presentations/CK-ch10-complete.html#f-and-t-distributions",
-    "title": "CourseKata Chapter 10",
-    "section": "\\(F\\) and \\(t\\) Distributions",
-    "text": "\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
-    ]
-  },
-  {
-    "objectID": "presentations/CK-ch10-complete.html#testing-b_1-beta_1",
-    "href": "presentations/CK-ch10-complete.html#testing-b_1-beta_1",
-    "title": "CourseKata Chapter 10",
-    "section": "Testing \\(b_1: \\beta_1\\)",
-    "text": "Testing \\(b_1: \\beta_1\\)",
-    "crumbs": [
-      "Presentations",
-      "CourseKata Chapter 10"
+      "CourseKata Chapter 12"
     ]
   },
   {
@@ -2088,146 +1606,837 @@
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#overview-goals",
-    "href": "presentations/CK-ch12-sec9-13.html#overview-goals",
+    "objectID": "presentations/CK-ch10-complete.html#overview-goals",
+    "href": "presentations/CK-ch10-complete.html#overview-goals",
+    "title": "CourseKata Chapter 10",
+    "section": "Overview / Goals",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModeling Data vs DGP\nSampling Distribution\nNull Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\nUnlikely (unexpected) Events\n\\(\\alpha\\) vs. p-value\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#modeling-data-vs-dgp",
+    "href": "presentations/CK-ch10-complete.html#modeling-data-vs-dgp",
+    "title": "CourseKata Chapter 10",
+    "section": "Modeling Data vs DGP",
+    "text": "Modeling Data vs DGP\n\n\nModeling Data (Fit)\n\nObserved:\n\nDATA = Model + Error\nMore complex, Better Fit\n\nFit: PRE\n\n\n\n\nModeling DGP (Inference)\n\nUnknown:\n\nHypothesis (Claim)\nNull Hypothesis\n\nChance Model\n\n\n\n\n\n\nHow good a model estimates DGP?\n\nnot sure, but it is not by chance =&gt; Test of Hypothesis\nuseful for prediction =&gt; Cross-validation",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#models",
+    "href": "presentations/CK-ch10-complete.html#models",
+    "title": "CourseKata Chapter 10",
+    "section": "Models",
+    "text": "Models\n\nQuantitative Response: \\(Y = Model + Error\\)\n\nCategorical Explanatory \\(\\Rightarrow b_0=\\bar x_1\\), \\(b_1=\\bar x_2-\\bar x_1\\)\nQuantitative Explanatory \\(\\Rightarrow b_0=\\hat y_{x=0}\\), \\(b_1=\\text{slope}\\)\n\nModels have assumptions:\n\nWe focus on the parameter(s): \\(\\beta_0\\) or \\(\\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#distributions",
+    "href": "presentations/CK-ch10-complete.html#distributions",
+    "title": "CourseKata Chapter 10",
+    "section": "Distributions",
+    "text": "Distributions\n\nPopulation Distribution (DGP)\n\nEmpty Model: \\(\\beta_0 + \\varepsilon\\)\nFixed shape, center and spread\n\nSample Distribution\n\nData: \\(\\bar x + e\\)\nEverything may change per sample\n\nDistribution of a Sample Statistics\n\nSample Mean: \\(\\beta_0 + \\epsilon\\)\nMay change per sample size.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#null-distribution-of-b_1-mu_1-mu_2",
+    "href": "presentations/CK-ch10-complete.html#null-distribution-of-b_1-mu_1-mu_2",
+    "title": "CourseKata Chapter 10",
+    "section": "Null Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)",
+    "text": "Null Distribution of \\(b_1: (\\mu_1-\\mu_2)\\)\n\nNull: Empty Model\n\\(Y\\) is independent of \\(X\\)\nSimulate Null Distribution of \\(\\bar y\\)\n\nShuffle \\(Y\\)\nCompute \\(b_1=\\mu_2-\\mu_1\\)\nRepeat many times\n\nVisualize with a histogram",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#null-distribution-example",
+    "href": "presentations/CK-ch10-complete.html#null-distribution-example",
+    "title": "CourseKata Chapter 10",
+    "section": "Null Distribution Example",
+    "text": "Null Distribution Example",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#unlikely-unexpected-events",
+    "href": "presentations/CK-ch10-complete.html#unlikely-unexpected-events",
+    "title": "CourseKata Chapter 10",
+    "section": "Unlikely (unexpected) Events",
+    "text": "Unlikely (unexpected) Events\n\nObserved Statistics far from Expected value\n\nDistance in not universal\n\nUse standardized value\nUse Probability\n\n\nIf tail probability is low,\n\nobserved statistic is unlikely",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#example",
+    "href": "presentations/CK-ch10-complete.html#example",
+    "title": "CourseKata Chapter 10",
+    "section": "Example",
+    "text": "Example",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#alpha-vs.-p-value",
+    "href": "presentations/CK-ch10-complete.html#alpha-vs.-p-value",
+    "title": "CourseKata Chapter 10",
+    "section": "\\(\\alpha\\) vs. \\(p\\)-value",
+    "text": "\\(\\alpha\\) vs. \\(p\\)-value\nHow far is far?\n\nHow low is an unusual probability?\n\nDepends! But typically 5%.\nWe call this Significance Level (\\(\\alpha\\))\n\nFar:\n\n\\(p\\)-value\\(&lt;  \\alpha\\)\nObserved statistic in \\(\\alpha\\) portion of tail(s)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#testing-b_1-mu_1-mu_2",
+    "href": "presentations/CK-ch10-complete.html#testing-b_1-mu_1-mu_2",
+    "title": "CourseKata Chapter 10",
+    "section": "Testing \\(b_1: (\\mu_1-\\mu_2)\\)",
+    "text": "Testing \\(b_1: (\\mu_1-\\mu_2)\\)\n\nNull Hypothesis: Empty Model DGP\n\nReject this if observed statistics in unusually far.\n\nIn what direction?\n\nThe Alternative:\n\n\\(\\beta_1&gt;0\\): right tail\n\\(\\beta_1&lt;0\\): Left tail\n\\(\\beta_1\\ne0\\): both tails",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#example-one-tail-tests",
+    "href": "presentations/CK-ch10-complete.html#example-one-tail-tests",
+    "title": "CourseKata Chapter 10",
+    "section": "Example: One-Tail Tests",
+    "text": "Example: One-Tail Tests\n\n\n\\(H_a: \\beta_1&gt;0\\)\n\n\n\n\n\n\n\n\n\n\\(H_a: \\beta_1&lt;0\\)\n\n\n\n\n\n\n\n\n\nExample: Two-Tail Tests\n\n\n\\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\n\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#example-two-tail-tests",
+    "href": "presentations/CK-ch10-complete.html#example-two-tail-tests",
+    "title": "CourseKata Chapter 10",
+    "section": "Example: Two-Tail Tests",
+    "text": "Example: Two-Tail Tests\n\n\n\\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\n\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#f-and-t-distributions",
+    "href": "presentations/CK-ch10-complete.html#f-and-t-distributions",
+    "title": "CourseKata Chapter 10",
+    "section": "\\(F\\) and \\(t\\) Distributions",
+    "text": "\\(F\\) and \\(t\\) Distributions\n\\(F\\) statistics in ANOVA: - Follows \\(F(df_{num}, df_{denum})\\)\n\n\n\n\n\n\n\n\n\n\n\n\\(F\\) p-value\n\n\n\n\n\n\n\n\n\nQuantitative ~ Quantitative\n\n\n\nTesting \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch10-complete.html#testing-b_1-beta_1",
+    "href": "presentations/CK-ch10-complete.html#testing-b_1-beta_1",
+    "title": "CourseKata Chapter 10",
+    "section": "Testing \\(b_1: \\beta_1\\)",
+    "text": "Testing \\(b_1: \\beta_1\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 10"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Sample.html",
+    "href": "preparations/Exam2-Sample.html",
+    "title": "Sample Exam 2",
+    "section": "",
+    "text": "Part A: Conceptual (Multiple Choice)\n\nWhat does a small p-value indicate?\n\nThe null hypothesis is true\n\n\nStrong evidence against the null hypothesis\n\n\nThe sample size is small\n\n\nThe model has no error\n\n\n\n\nWhat does R² measure?\n\nThe slope of the regression line\n\n\nThe variability in the predictor\n\n\nThe proportion of variability explained by the model\n\n\nThe p-value of the test\n\n\n\n\nA Type I error occurs when:\n\nYou fail to reject a false null hypothesis\n\n\nYou reject a true null hypothesis\n\n\nYou accept a false alternative hypothesis\n\n\nThe sample size is too large\n\n\n\n\nWhich test is used to compare more than two group means?\n\nt-test\n\n\nANOVA\n\n\nChi-square\n\n\nRegression\n\n\n\n\nIn regression, what does b₁ represent?\n\nThe average of Y\n\n\nThe predicted value when X = 0\n\n\nThe average change in Y for a one-unit increase in X\n\n\nThe variance of Y\n\n\n\n\n\nPart B: Short Answer\n\nExplain the difference between a simple and a complex model.\n\n\n\n\n\nWhat is a null distribution and why is it important?\n\n\n\n\n\nWhat does it mean if a result is statistically significant at α = 0.05?\n\n\n\n\n\n\nPart C: Interpretation\n\nA regression analysis gives:\n\n\n\nTerms\nEstimate\nStd Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n3.59656\n0.08410\n42.765\n&lt; 2e-16\n\n\nx\n-0.20124\n0.06651\n[t]\n0.00505\n\n\n\nAnswer:\n\nInterpret the slope\n\n\n\n\nFind the missing [t]\n\n\n\n\nState whether the result is significant\n\n\n\n\nWrite the equation for the regression (use \\(y\\) as the outcome variable):\n\n\n\n\nFind and interpret the value of \\(y\\) when \\(x\\) is 0.75.\n\n\n\n\n\n\nAn ANOVA test gives:\n\n\n\n\nSS\ndf\nMS\nF\nPRE\np\n\n\n\n\nModel (error reduced)\n5.10\n4.00\n[a]\n[F]\n[R2]\n0.0004\n\n\nError (from model)\n3.70\n23.00\n[b]\n\n\n\n\n\n\nAnswer:\n\nFind the missing [F] value.\n\n\n\n\nHow many groups are being abalyzed?\n\n\n\n\nWhat are the hypotheses this table is testing?\n\n\nWhat is the conclusion of the test?\n\n\n\n\nFind the missing [R2] and interpret it.\n\n\n\n\n\n\n\nPart D: Applied Thinking\n\nA researcher runs 10 different tests at α = 0.05.\n\nWhat problem might occur?\n\n\n\n\nHow could it be addressed?\n\n\n\n\n\n\nYou observe a strong relationship in a sample, but the p-value is large. Why might this happen?\n\n\n\n\n\n\nPart E: Data Reasoning\n\nGiven a contingency table (Gender × Job):\n\nWhat test should be used?\n\n\n\n\nWhat would the null hypothesis be?\n\n\n\n\n\n\nThe following summary of \\(y\\) is given:\n\n\n\n\n\nGroup\nn\nMean\nSD\n\n\n\n\nA\n18\n3.39\n0.47\n\n\nB\n14\n3.86\n0.51\n\n\n\n\n\n\nWhat is the differnce of the sample means?\n\n\n\n\nWhat is the standard error of the differnce of the sample means?\n\n\n\n\nCompute \\(t=\\frac{\\bar x_B-\\bar x_A}{SE}\\).\n\n\n\n\nwhat is the distribution of \\(t\\), if we assume the group variances are equal?\n\n\n\n\nWrite a conclusion if the \\(p\\text{-value}=0.012\\) and \\(H_a: \\mu_A\\ne\\mu_B\\).\n\n\n\n\nWhat is the Cohen’s \\(d\\) and what does it mean?\n\n\n\n\nWrite the lm equation for Y~X and the estimate values for \\(\\beta_0\\) and \\(\\beta_1\\)?\n\n\n\n\n\n\n\nChallenge Questions\n\nExplain how the t-distribution differs from the normal distribution.\n\n\n\n\nWhy do we use an F-test instead of multiple t-tests in ANOVA?",
+    "crumbs": [
+      "Preparations",
+      "Sample Exam 2"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "CSUF Statistics using CourseKata",
+    "section": "",
+    "text": "Welcome! Choose a deck:\n\nPresentationsPreparations\n\n\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)\nChapter 10\nChapter 11 (Section 1-9)\nChapter 11 (Section 10-13)\nChapter 12 (Section 1-8)\nChapter 12 (Section 9-13)\n\n\n\n\nSample Exam 1\nExam 2 Study Guide\nSample Exam 2",
+    "crumbs": [
+      "CSUF Statistics using CourseKata"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About CSUF Statistics and CourseKata",
+    "section": "",
+    "text": "Here are some details!",
+    "crumbs": [
+      "About CSUF Statistics and CourseKata"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam1-Prep.html",
+    "href": "preparations/Exam1-Prep.html",
+    "title": "Exam 1 Prep",
+    "section": "",
+    "text": "Define variation in your own words and explain why it is central to statistics.\n\n\nIn the context of a data frame, what do rows represent? What do columns represent?\n\n\nWhich of the following is a quantitative variable?\n\nHeight\nFavorite color\nGender\nEye color\n\n\n\nWhy is sampling necessary in statistics? Provide one reason.\n\n\nWhat does it mean for variables to be categorical versus numerical? Give an example of each from a dataset.\n\n\nIn modeling notation, what do the symbols ~ and data= indicate? Offer a brief explanation.\n\n\nThe vector x &lt;- c(2,1,3,3,2,3,1,2,1) is given.\n\nAfter sorting x, what pattern becomes visible?\nWhat does the frequency table of x show?\n\n\n\nUsing the Fingers dataset (from class):\n\nWhat do boxplots of Index ~ Gender visually display about variability?\nDescribe center, spread, overlap, and any unusual features.\n\n\n\nConsider the following R code:\ngf_histogram(~Score, data = Data, binwidth = 2)\n\nInterpret what the following R code does and what you would expect the plot to show:\nWhat distribution characteristics would the histogram reveal?\n\n\n\nExplain what the five-number summary tells you about a numerical variable and relate it to variation.\n\n\nWrite one sentence comparing the distributions displayed by:\ngf_histogram(~Index, data = Fingers, binwidth = 0.25)\ngf_histogram(~Index, data = Fingers, binwidth = 0.5)\nFocus on how the choice of binwidth affects the appearance.\n\n\nExplain in plain language what an outlier is and how the 1.5×IQR rule identifies outliers.\n\n\nWhat does it tell you if two boxplots (for Index by two groups) show a large difference in medians but overlapping boxes? What does that say about variation within and between groups?\n\n\nconsider the following R output:\n\nfavstats(Fingers$Pinkie)\n\n min Q1 median Q3 max     mean       sd   n missing\n  33 55     58 63  98 59.41252 9.080594 157       0\n\n\n\nWhat can you say about the center and spread of the Score distribution?\nUse 1.5IQR rule to find if there are any outliers.\n\n\n\nExplain why it is important to identify the response variable before choosing a plot to visualize a relationship.\n\n\nGiven these R commands:\nmean(Pinkie ~ Gender, data = Fingers) # Returns means for Pinkie in different genders\ngf_boxplot(Pinkie ~ Gender, data = Fingers)\nExplain what each line does and how the two results complement each other.\n\n\nDescribe in words what the residual represents in the context of a simple model predicting Pinkie using Gender, and why smaller residuals imply a better model.\n\n\nThe following R code calculates proportions:\n\ntally(Gender~Job, data=Fingers)\n\n        Job\nGender   Not Working Part-time Job Full-time Job\n  female          65            47             0\n  male            25            19             1\n\n\nGive an example of a conditional probability and compute it.\n\n\nBelow is R code that generates a conditional proportion bar chart. Explain how this visualization helps you explain variability in the response.\ngf_bar(~Job, data = Fingers, fill = ~Gender, position = \"fill\")\n\ngf_bar(~Job, data = Fingers, fill = ~Gender, position = \"fill\")\n\n\n\n\n\n\n\n\n\n\nConsider the two plots below:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompare and contrast how these two visuals explain variability in the response variable. In your answer, mention:\n\nWhat the plot shows\nHow variation is partitioned or summarized\nWhat conclusions might be drawn about the role of the explanatory variable",
+    "crumbs": [
+      "Preparations",
+      "Exam 1 Prep"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html",
+    "href": "preparations/Exam2-Study-Guide.html",
+    "title": "Exam 2 Study Guide",
+    "section": "",
+    "text": "Data: Observed outcome values \\(y_1, ..., y_n\\), and potentially predictor(s) \\(X_1, ..., X_n\\).\nModel:\n\nDescribing data as \\(Data = Model + Error\\)\nProducing Predicted value: \\((\\hat y)\\)\n\n\n\n\n\nEmpty model: No predictors; mean-only model (1 parameter)\nSimple model: One numerical or a binary categorical predictor (2 parameters)\nComplex model: Two or more numerical, non-binary categorical, or combination of numerical and categorical predictors (3 or more parameters)\n\n\nModels could also be compared as Simpler vs. More Complex based on their relative number of parameters\n\nKey idea: Does a more complex model improve prediction enough?\n\n\n\n\n\n\nResidual: \\(e_i=\\) Observed \\((y)\\) − Predicted \\((\\hat y)\\)\nUnexplained Variability (Error Sum Squares): \\(SSE=\\sum_{i=1}^n e_i^2\\)\nTotal Variability: \\(SST=\\sum_{i=1}^n (y_i-\\bar y)^2\\)\n\\(R^2\\) (PRE): Proportion reduction in error (a.k.a. coefficient of determination)\n\nCloser to 1 \\(\\to\\) better fit",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#models-and-model-comparison",
+    "href": "preparations/Exam2-Study-Guide.html#models-and-model-comparison",
+    "title": "Exam 2 Study Guide",
+    "section": "",
+    "text": "Data: Observed outcome values \\(y_1, ..., y_n\\), and potentially predictor(s) \\(X_1, ..., X_n\\).\nModel:\n\nDescribing data as \\(Data = Model + Error\\)\nProducing Predicted value: \\((\\hat y)\\)\n\n\n\n\n\nEmpty model: No predictors; mean-only model (1 parameter)\nSimple model: One numerical or a binary categorical predictor (2 parameters)\nComplex model: Two or more numerical, non-binary categorical, or combination of numerical and categorical predictors (3 or more parameters)\n\n\nModels could also be compared as Simpler vs. More Complex based on their relative number of parameters\n\nKey idea: Does a more complex model improve prediction enough?\n\n\n\n\n\n\nResidual: \\(e_i=\\) Observed \\((y)\\) − Predicted \\((\\hat y)\\)\nUnexplained Variability (Error Sum Squares): \\(SSE=\\sum_{i=1}^n e_i^2\\)\nTotal Variability: \\(SST=\\sum_{i=1}^n (y_i-\\bar y)^2\\)\n\\(R^2\\) (PRE): Proportion reduction in error (a.k.a. coefficient of determination)\n\nCloser to 1 \\(\\to\\) better fit",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#sampling-distributions",
+    "href": "preparations/Exam2-Study-Guide.html#sampling-distributions",
+    "title": "Exam 2 Study Guide",
+    "section": "2. Sampling Distributions",
+    "text": "2. Sampling Distributions\n\nImportant Ideas\n\nStatistics vary from sample to sample\nThe sampling distribution shows this variability\nSampling distribution under the null hypothesis is called Null Distribution:\nNull Distribution is used to determine evidence against the null \\((H_0)\\):\n\nRejection Region determines all values consider to favor of the alternative \\(H_a\\) based on a significance level \\(\\alpha\\).\nThe \\(p\\)-value measures the evidence in favor of the alternative \\(H_a\\) as unlikeliness of the observed and more extreme values of the test statistic.\n\nNull Distributions can be found by:\n\nSimulation\nMathematically, given some assumptions.\n\n\n\n\nKey Mathematical Distributions\n\nNormal distribution (for error distribution assumption)\nt distribution (for slopes/means with estimated variability)\nF distribution (for comparing models using the ratio of average variability)\nChi-square distribution (for testing the independence of two categorical variables)",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#hypothesis-testing-framework",
+    "href": "preparations/Exam2-Study-Guide.html#hypothesis-testing-framework",
+    "title": "Exam 2 Study Guide",
+    "section": "3. Hypothesis Testing Framework",
+    "text": "3. Hypothesis Testing Framework\nA significance level \\((\\alpha)\\) is assumed given or chosen.\n\nSteps\n\nState null hypothesis \\((H_0)\\), Alternative hypothesis \\((H_a)\\).\nFind the null distribution of a test statistic:\n\nGenerate (by simulation) or determine (mathematically).\nDetermine the Rejection Region based on \\(\\alpha\\) (if needed).\n\nCompute the observed statistic\n\nCompute the p-value (if needed)\n\nMake a decision by compare \\(p\\)-value to \\(\\alpha\\) or observed test statistic to the rejection region.\nWrite a conclusion in the context of the problem.\ncheck assumptions.\n\n\n\nInterpretation\n\nSmall \\(p\\)-value, or the observed test statistic in the rejection region \\(\\to\\) evidence against \\(H_0\\).\nLarge \\(p\\)-value, or the observed test statistic outside the rejection region \\(\\to\\) not enough evidence against \\(H_0\\).",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#models-and-tests-for-numerical-response",
+    "href": "preparations/Exam2-Study-Guide.html#models-and-tests-for-numerical-response",
+    "title": "Exam 2 Study Guide",
+    "section": "4. Models and Tests for Numerical Response",
+    "text": "4. Models and Tests for Numerical Response\n\nA. Testing One Mean (\\(H_0: \\mu=\\beta_0\\))\n\\[y=\\beta_0 + \\varepsilon\\]\n\nObservation: \\(n\\) independent observations: \\(y_1, y_2, ..., y_n\\)\nPredicted value: \\(\\hat y = \\bar y\\)\nStatistics:\n\nObserved Mean: \\(\\bar y=\\frac{\\sum_{i=1}^n y_i}{n}\\)\nSum Squares: \\(SS(y) = \\sum_i{(y_i-\\bar y)^2}\\)\nObserved Variance: \\(s^2=\\frac{SS(y)}{n-1}\\)\nObserved Standard Deviation: \\(s=\\sqrt{s^2}=\\sqrt{\\frac{\\sum_i{(y_i-\\bar y)^2}}{n-1}}\\)\nStandard Error: \\(SE=s_{\\bar y} = \\frac{s}{\\sqrt{n}}\\)\nObserved Test Statistic (\\(t\\)-value): \\(t=\\frac{\\bar y - \\beta_0}{SE}=\\frac{\\bar y - \\beta_0}{s/\\sqrt{n}}\\)\n\n\n\n\nNull Distribution of \\(\\bar Y\\) or \\(t\\)\n\nBy Simulation of the DGP:\n\nSet the mean to \\(\\beta_0\\): \\(y_i^0=y_i-\\bar y+\\beta_0\\) for \\(i=1, ..., n\\)\nRandomly generate many \\(\\bar y\\):\n\nselect \\(n\\) from \\(y_1^0, ..., v^0_n\\), with replacement\nCompute the sample mean (or test statistic)\n\n\nMathematically\n\n\\(\\bar y \\sim N(\\beta_0, \\sigma/\\sqrt{n})\\)\n\\(t = \\frac{\\bar Y - \\beta_0}{s/\\sqrt{n}}\\sim t(df=n-1)\\)\nAssumption:\n\n\\(\\varepsilon \\sim N(0, \\sigma)\\) or\n\\(n\\) is large.\n\n\n\nConclusion:\n\nReject \\(H_0\\) if observed \\(\\bar y\\) is too far from \\(\\beta_0\\)\nHow far is far?\n\nCompute \\(p\\)-value or find Rejection Region\n\n\n\n\n\n\nB. Testing Association to a Binary Categorical Predictor (\\(H_0: \\beta_1=\\mu_B-\\mu_A=0\\))\n\\[\n  y=\\beta_0 + \\beta_1X+\\varepsilon, \\text{ where } X=\n  \\begin{cases}\n    0 & \\text{ for group A}\\\\\n    1 & \\text{ for group B}\n  \\end{cases}\n\\]\n\nPredicted values: \\[\\hat y_i =\n  \\begin{cases} \\bar y_A & \\text{ for group } A\\\\\n    \\bar y_B & \\text{ for group } B\n  \\end{cases}\\]\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\) or\n\\((y_{1A}, y_{2A}, ..., y_{n_AA})\\) and \\((y_{1B}, y_{2B}, ..., y_{n_BB})\\), where \\(n_B=\\sum_i{X}\\), \\(n_A=n - n_B\\)\n\nStatistics:\n\nObserved Means:\n\n\\(\\bar {y_A} = \\frac{\\sum_{i=1}^{n_A} y_{iA}}{n_A}\\)\n\\(\\bar {y_B} = \\frac{\\sum_{i=1}^{n_B} y_{iA}}{n_B}\\)\n\nSum Squares:\n\nTotal: \\(SST = SS(y) = \\sum_i{(y_i-\\bar y)^2}\\)\nWithin Group A: \\(SS(A) = \\sum_i{(y_{iA}-\\bar y_A)^2}\\)\nWithin Group B: \\(SS(B) = \\sum_i{(y_{iA}-\\bar y_B)^2}\\)\nWithin Groups (Error): \\(SSE = SSG = SS(y_A) + SS(y_B)\\)\nModel: \\(SSM = SST - SSE\\)\n\nPRE: \\(R^2 = \\frac{SSM}{SST}=1-\\frac{SSE}{SST}\\)\nObserved Variances:\n\n\\(s_A^2 = \\frac{SS(A)}{n_A-1}\\)\n\\(s_B^2 = \\frac{SS(B)}{n_B-1}\\)\n\\(s_p^2 = \\frac{SS(A)+SS(B)}{n_A+n_B-2}=\\frac{SSE}{n_A+n_B-2}\\)\n\nObserved Standard Error: \\[SE = s_{\\bar y_A - \\bar y_B} =\n\\begin{cases}\\sqrt{\\frac{s_A^2}{n_A} + \\frac{s_B^2}{n_B}} & \\text{ general case }\\\\\n\\sqrt{\\frac{s_p^2}{n_A} + \\frac{s_p^2}{n_B}} & \\text{ assuming } \\sigma_A=\\sigma_B \\end{cases}\\]\nCohen’s \\(d\\): \\(d=\\frac{\\bar {y_A} - \\bar {y_B}}{s_p}\\)\n\n\n\n\nNull Distribution of \\((\\bar y_A - \\bar y_B)\\) or \\(\\frac{(\\bar y_A - \\bar y_B) - \\beta_1}{SE}\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\((\\bar y_A - \\bar y_B)\\):\n\nShuffle all \\(y_i\\)’s and reallocate \\(n_A\\) to group \\(A\\) and \\(n_B\\) to group \\(B\\).\nCompute the sample mean (or test statistic)\n\n\nMathematically (1)\n\nAssumption: \\(\\varepsilon_A \\sim N(0, \\sigma_A)\\) and \\(\\varepsilon_B \\sim N(0, \\sigma_B)\\)\n\\((\\bar y_A - \\bar y_B) \\sim N\\left(\\beta_1, \\sigma_{\\bar y_A-\\bar y_B}\\right)\\), where \\(\\sigma_{\\bar y_A-\\bar y_B}^2 =  \\frac{\\sigma_A^2}{n_A}+\\frac{\\sigma_B^2}{n_B}\\)\n\\(t = \\frac{(\\bar y_A - \\bar y_B) - \\beta_1}{SE}\\sim t(df\\approx \\hat{df})\\), conservative estimate: \\(\\hat{df}=min(n_A-1, n_B-1)\\)\n\nMathematically (2)\n\nAssumption: \\(\\varepsilon_A \\sim N(0, \\sigma)\\) and \\(\\varepsilon_B \\sim N(0, \\sigma)\\); i.e., \\(\\sigma_A=\\sigma_B=\\sigma\\).\n\\((\\bar y_A - \\bar y_B) \\sim N\\left(\\beta_1, \\sigma_{\\bar y_A-\\bar y_B}\\right)\\), where \\(\\sigma_{\\bar y_A-\\bar y_B}^2 =  \\frac{\\sigma^2}{n_A}+\\frac{\\sigma^2}{n_B}=\\sigma^2_p(1/n_A+1/n_B)\\)\n\\(t = \\frac{(\\bar y_A - \\bar y_B) - \\beta_1}{SE}\\sim t(df= n_A+n_B-2)\\)\n\n\n\n\n\nCompute \\(p\\)-value or find Rejection Region\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\((\\bar y_A - \\bar y_B)\\) is too far from \\(\\beta_1\\)\n\n\n\n\nC. Testing Association to a Numerical Predictor (\\(H_0: \\beta_1=0\\))\n\\[y=\\beta_0 + \\beta_1X+\\varepsilon\\]\n\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\)\n\nPredicted value: \\(\\hat y_i = b_0 + b_1 x_i\\), where \\(b_0\\) and \\(b_1\\) are estimated intercept and slope, respectively.\nStatistics:\n\nObserved Means:\n\n\\(\\bar y=\\frac{\\sum_{i=1}^n y_{i}}{n}\\)\n\\(\\bar x=\\frac{\\sum_{i=1}^n x_{i}}{n}\\)\n\nSum Squares:\n\nTotal: \\(SST = SS(y) = \\sum_i (y_i-\\bar y)^2\\)\nError: \\(SSE = SSR = \\sum_i (y_i - \\hat y_i)^2\\)\nModel: \\(SSM = SST - SSE\\)\n\nPRE: \\(R^2 = \\frac{SSM}{SST}=1-\\frac{SSE}{SST}\\)\nObserved Variances:\n\n\\(s_y^2 = \\frac{SS(y)}{n-1}\\)\n\\(s_x^2 = \\frac{SS(x)}{n-1}\\)\nCovariance: \\(s_{xy}=\\frac{\\sum_i (y_i-\\bar y)(x_i - \\bar x)}{n-1}\\)\n\nObserved Correlation: \\(r = \\frac{s_{xy}}{s_x s_y}\\)\n\nLeast Square Line:\n\nSlope Estimate: \\(b_1= r \\frac{s_y}{s_x}\\)\nIntercept Estimate: \\(b_0=\\bar y - b_1 \\bar x\\)\nSum Square Error: \\(SSE = \\sum_i (y_i - \\hat y_i)^2 = \\sum_i (y_i - b_0 - b_1 x_i)^2\\)\nError Variance: \\(s^2 = \\frac{SSE}{n-2}\\)\nStandard Error of \\(b_1\\): \\(SE_{b_1}=\\frac{s}{\\sqrt{SS(x)}}\\)\nStandard Error of \\(b_0\\): \\(SE_{b_0}=s\\cdot\\sqrt{\\frac{1}{n}+\\frac{{\\bar x}^2}{SS(x)}}\\)\n\nNull Distribution of \\(b_1\\) or \\(\\frac{b_1- \\beta_1}{SE_{b_1}}\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\(b_1\\):\n\nShuffle all \\(y_i\\)’s and pair each with a \\(x_i\\).\nCompute the sample slope (or test statistic, PRE, \\(R^2\\))\n\n\nMathematically\n\nAssumption:\n\nLinear relationship between \\(y\\) and \\(x\\).\n\\(\\varepsilon \\sim N(0, \\sigma)\\); Normality and Constant Variance\n\n\\(b_1 \\sim N\\left(\\beta_1, \\sigma_{b_1}\\right)\\), where \\(\\sigma_{b_1}^2 =  \\frac{\\sigma^2}{SS(x)}\\)\n\\(t = \\frac{b_1 - \\beta_1}{SE_{b_1}}\\sim t(df= n-2)\\)\n\n\nCompute \\(p\\)-value or find Rejection Region\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\(b_1\\) is too far from \\(\\beta_1\\)\n\n\n\n\nD. Single Test of Association in a Complex Model (ANOVA: \\(H_0:\\text{ No association}\\))\n\\[y=\\beta_0 + \\beta_1X_1+...+\\beta_kX_k+\\varepsilon=\\beta_0+\\sum_{j=1}^k \\beta_jX_{j}+\\varepsilon\\]\n\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_{11}, x_{12}, ..., x_{1k}, y_1), ..., (x_{n1}, ..., x_{nk}, y_n)\\)\nOne or more than \\(x_{ik}\\) could be 0/1 variables representing levels of a categorical variable.\n\nPredicted value: \\(\\hat y_i = b_0 + \\sum_{j=1}^k b_j x_{ji}\\), where \\(b_0\\) and \\(b_j\\)’s are estimated based on minimizing some cost function (here, least squares).\nStatistics:\n\nObserved Means:\n\n\\(\\bar y=\\frac{\\sum_{i=1}^n y_{i}}{n}\\)\n\\(\\bar x_j=\\frac{\\sum_{i=1}^n x_{ij}}{n}\\)\n\nSum Squares:\n\nTotal: \\(SST = SS(y) = \\sum_i (y_i-\\bar y)^2\\)\nError: \\(SSE = SSR = \\sum_i (y_i - \\hat y_i)^2\\)\nModel: \\(SSM = SST - SSE\\)\n\nPRE: \\(R^2 = \\frac{SSM}{SST}=1-\\frac{SSE}{SST}\\)\nObserved Variances:\n\n\\(s_y^2 = \\frac{SS(y)}{n-1}\\)\n\\(s_p^2 = MSE=\\frac{SSE}{n-1-k}\\)\n\nObserved F-value: \\(F=\\frac{SSM/k}{SSE/(n-1-k)}=\\frac{MSM}{MSE}\\)\nObserved SE’s: We use software provided values.\n\nNull Distribution of \\(b_j\\) or \\(\\frac{b_j- \\beta_j}{SE_{b_j}}\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\(b_j\\)’s:\n\nShuffle all \\(y_i\\)’s and pair each to a vector \\((x_{i1}, ..., x_{ik})\\).\nCompute the sample slope (or \\(t\\), \\(F\\), PRE, \\(R^2\\))\n\n\nMathematically\n\nAssumption:\n\nLinear relationship between \\(y\\) and \\(x_j\\)’s.\nNo linear association between two \\(x_j\\)’s.\n\\(\\varepsilon \\sim N(0, \\sigma)\\); Normality and Constant Variance\n\n\\(F \\sim F(df_1=k,\\  df_2=n-1-k)\\)\n\\(b_j \\sim N\\left(\\beta_j, \\sigma_{b_j}\\right)\\)\n\\(t = \\frac{b_j - \\beta_j}{SE_{b_j}}\\sim t(df= n-1-k)\\)\n\n\nCompute \\(p\\)-value or find Rejection Region for single test \\(F\\)\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\(F\\) is too greater than \\(1\\)\n\nIf rejected, perform pair comparison (for categorical variables) or single slope tests.",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#models-and-tests-for-categorical-response-h_0-text-independence",
+    "href": "preparations/Exam2-Study-Guide.html#models-and-tests-for-categorical-response-h_0-text-independence",
+    "title": "Exam 2 Study Guide",
+    "section": "5. Models and Tests for Categorical Response \\((H_0: \\text{ Independence })\\)",
+    "text": "5. Models and Tests for Categorical Response \\((H_0: \\text{ Independence })\\)\n\nA. Test of Independence of Two Categorical Variables: \\(X\\) and \\(Y\\)\n\\[P(Y|X)=P(Y)\\]\n\nObservation: \\(n\\) independent sets of observations:\n\n\\((x_1, y_1), ..., (x_n, y_n)\\)\nSummarized into a contingency table: \\(C=[c_{ij}]\\)\n\nStatistics:\n\nObserved Counts: \\(c_{ij}\\)\nObserved Chi-square: \\(\\chi^2=\\sum_{ij} (c_{ij} - e_{ij})^2\\)\n\nNull Distribution of \\(\\chi^2\\)\n\nBy Simulation of DGP:\n\nRandomly generate many \\(\\chi^2\\)’s:\n\nShuffle all \\(y_i\\)’s and pair each to a \\(x_i\\).\nCompute the sample Chi-square \\(\\chi^2\\).\n\n\nMathematically\n\nAssumption:\n\nEach contingency count \\(c_{ij}\\ge 5\\)\n\n\\(\\chi^2 \\sim \\text{chi-square}(df=(k-1)(m-1))\\)\n\n\nCompute \\(p\\)-value or find Rejection Region for single test \\(F\\)\nConclusion:\n\nReject \\(H_0\\) (no association) if observed \\(\\chi^2\\) is too greater than \\(0\\)",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#errors-in-hypothesis-testing",
+    "href": "preparations/Exam2-Study-Guide.html#errors-in-hypothesis-testing",
+    "title": "Exam 2 Study Guide",
+    "section": "6. Errors in Hypothesis Testing",
+    "text": "6. Errors in Hypothesis Testing\n\nType I Error: Rejecting a true \\(H_0\\)\n\nUsing \\(\\alpha\\) to make a decision leads to \\(P(\\text{Type I Error})=\\alpha\\)\n\nType II Error: Failing to reject a false \\(H_a\\)\n\n\\(P(\\text{Type II Error}|H_a)\\) can be calculated for a specific \\(H_a\\)\n\n\n\nType I Error Inflation\n\nHappens when running multiple tests\nIncreases chance of false positives\nTo avoid:\n\nUse \\(ANOVA\\) to do a single test\nIf single test is significant, run multiple test with corrected \\(\\alpha\\) or \\(p\\)-value.",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#assumptions",
+    "href": "preparations/Exam2-Study-Guide.html#assumptions",
+    "title": "Exam 2 Study Guide",
+    "section": "7. Assumptions",
+    "text": "7. Assumptions\n\nIndependence\n\nWe assume observations are made independently in each sample\n\nLinearity (for regression)\nEqual variance (for ANOVA)\nNormality of error or large sample size for a numerical response\nReasonable sample size for categorical response.",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "preparations/Exam2-Study-Guide.html#interpreting-results",
+    "href": "preparations/Exam2-Study-Guide.html#interpreting-results",
+    "title": "Exam 2 Study Guide",
+    "section": "8. Interpreting Results",
+    "text": "8. Interpreting Results\nBe able to:\n\nInterpret coefficients (\\(b_0\\), \\(b_1\\))\nExplain \\(R^2\\) in context\nTranslate \\(p\\)-values into conclusions\nIdentify whether results are statistically significant\n\nReject or fail to reject the null hypothesis (\\(H_0\\))",
+    "crumbs": [
+      "Preparations",
+      "Exam 2 Study Guide"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#overview-goals",
+    "href": "presentations/CK-ch11-sec1-9.html#overview-goals",
+    "title": "CourseKata Chapter 11",
+    "section": "Overview / Goals",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAssumption \\(\\rightarrow\\) Null Dist. \\(\\rightarrow\\) Observation\nTheoretical Null Distribution\nTest of Significance: \\(\\beta_1\\)\nType I and Type II Errors",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#sampling-variability",
+    "href": "presentations/CK-ch11-sec1-9.html#sampling-variability",
+    "title": "CourseKata Chapter 11",
+    "section": "Sampling Variability",
+    "text": "Sampling Variability\n\nDifferent samples → different statistics\nStatistics vary naturally\n\n\nKey idea:\n\nVariation is normal, not suspicious",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#sampling-distribution",
+    "href": "presentations/CK-ch11-sec1-9.html#sampling-distribution",
+    "title": "CourseKata Chapter 11",
+    "section": "Sampling Distribution",
+    "text": "Sampling Distribution\n\nDistribution of a statistic across many samples\nBuilt by:\n\nRe-sampling OR\nMathematical theory",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution",
+    "href": "presentations/CK-ch11-sec1-9.html#null-distribution",
+    "title": "CourseKata Chapter 11",
+    "section": "Null Distribution",
+    "text": "Null Distribution\nNull Hypothesis (\\(H_0\\)):\n\n\n\n\nAssumption:\n\nNo effect\nNo difference\nNo relationship\n\n\n\n\n\nNull Distribution of \\(b_1\\):\n\nCategorical Explanatory\n\nMean difference = 0\n\nQuantitative Explanatory\n\nSlope = 0",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution-simulation",
+    "href": "presentations/CK-ch11-sec1-9.html#null-distribution-simulation",
+    "title": "CourseKata Chapter 11",
+    "section": "Null Distribution: Simulation",
+    "text": "Null Distribution: Simulation\n\n\n\nSimulate no Association:\n\nShuffle Outcome\n\nCompute \\(b_1\\)\nRepeat many times\nVisualize (Histogram)\nAdd the observed value",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution-mathematical-model",
+    "href": "presentations/CK-ch11-sec1-9.html#null-distribution-mathematical-model",
+    "title": "CourseKata Chapter 11",
+    "section": "Null Distribution: Mathematical Model",
+    "text": "Null Distribution: Mathematical Model\n\n\nAssumption: Error Distribution \\(\\sim N(0, \\sigma)\\)\n\n\n\n\nCategorical Explanatory\n\nNormal\nMean of 0\nSame group variances\n\n\n\nQuantitative Explanatory\n\nNormal\nMean of 0\nVariance constant across \\(X\\)\n\n\n\n\nNull Distribution: \\(\\frac{b_1}{s_{b1}}\\sim t(df=n-2)\\)\nSampling Distribution: \\(\\frac{b_1-\\beta_1}{s_{b1}}\\sim t(df=n-2)\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#example-1-categorical-explanatory",
+    "href": "presentations/CK-ch11-sec1-9.html#example-1-categorical-explanatory",
+    "title": "CourseKata Chapter 11",
+    "section": "Example 1: Categorical Explanatory",
+    "text": "Example 1: Categorical Explanatory\n\\[Y_A\\sim N(20, 3), \\quad Y_B\\sim N(20, 3), \\quad n_1=n_2=10\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#example-1-null-distributions",
+    "href": "presentations/CK-ch11-sec1-9.html#example-1-null-distributions",
+    "title": "CourseKata Chapter 11",
+    "section": "Example 1: Null Distributions",
+    "text": "Example 1: Null Distributions",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#example-2-different-variance",
+    "href": "presentations/CK-ch11-sec1-9.html#example-2-different-variance",
+    "title": "CourseKata Chapter 11",
+    "section": "Example (2): Different Variance",
+    "text": "Example (2): Different Variance\n\\[Y_A\\sim N(20, 6), \\quad Y_B\\sim N(20, 3), \\quad n_1=n_2=10\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#example-3-unbalanced-data",
+    "href": "presentations/CK-ch11-sec1-9.html#example-3-unbalanced-data",
+    "title": "CourseKata Chapter 11",
+    "section": "Example (3): Unbalanced Data",
+    "text": "Example (3): Unbalanced Data\n\\[Y_A\\sim N(20, 6), \\quad Y_B\\sim N(20, 3), \\quad n_1=10, n_2=15\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#example-4-skewed-distribution",
+    "href": "presentations/CK-ch11-sec1-9.html#example-4-skewed-distribution",
+    "title": "CourseKata Chapter 11",
+    "section": "Example (4): Skewed Distribution",
+    "text": "Example (4): Skewed Distribution\n\\[Y_A\\sim N(20, 3), \\quad Y_B\\sim \\text{skewed right}, \\quad n_1=10, n_2=15\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#example-5-skewed-large-n",
+    "href": "presentations/CK-ch11-sec1-9.html#example-5-skewed-large-n",
+    "title": "CourseKata Chapter 11",
+    "section": "Example (5): Skewed & large \\(n\\)",
+    "text": "Example (5): Skewed & large \\(n\\)\n\\[Y_A\\sim N(20, 3), \\quad Y_B\\sim \\text{skewed right}, \\quad n_1=100, n_2=150\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#null-distribution-summary",
+    "href": "presentations/CK-ch11-sec1-9.html#null-distribution-summary",
+    "title": "CourseKata Chapter 11",
+    "section": "Null Distribution Summary",
+    "text": "Null Distribution Summary\nFor a binary numeriacl \\(X\\): \\[Y=\\beta_0+\\beta_1 X + \\varepsilon\\] \\[\\frac{b_1-\\beta_1}{s_{b_1}} \\sim t(df=n-2)\\]\n\n\n\nIf assumptions met:\n\nError Distribution \\(\\sim N(0, \\sigma)\\)\n\\(n\\) is large\n\n\n\n\n\n\\(t(df)\\):\n\na density centered at \\(0\\)\nmore spread than \\(Z\\)\nas \\(df (n)\\to \\infty, \\quad t\\xrightarrow{D} z\\)",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#h_a-unusual-unexpected-event",
+    "href": "presentations/CK-ch11-sec1-9.html#h_a-unusual-unexpected-event",
+    "title": "CourseKata Chapter 11",
+    "section": "\\(H_a\\) & Unusual (Unexpected) Event",
+    "text": "\\(H_a\\) & Unusual (Unexpected) Event\n\nAssumption & \\(H_0 \\to\\) Null Distribution\nAlternative:\n\n\\(\\beta_1&gt;0\\): Reject \\(H_0\\) if too far to the right.\n\\(\\beta_1&lt;0\\): Reject \\(H_0\\) if too far to the left.\n\\(\\beta_1\\ne0\\): Reject \\(H_0\\) if too far from the middle (expected).",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#thumbgender-example",
+    "href": "presentations/CK-ch11-sec1-9.html#thumbgender-example",
+    "title": "CourseKata Chapter 11",
+    "section": "Thumb~Gender Example",
+    "text": "Thumb~Gender Example\n\\[Thumb=\\beta_0+\\beta_1 Gender_{Male} + \\varepsilon\\] - \\(H_0: \\beta_1=0\\) vs. \\(H_a: \\beta_1\\ne 0\\)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nProbability of getting a result this extreme (or more) if the null is true",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#decision",
+    "href": "presentations/CK-ch11-sec1-9.html#decision",
+    "title": "CourseKata Chapter 11",
+    "section": "Decision",
+    "text": "Decision\nReject \\(H_0\\), at \\(\\alpha\\) significance level, if:\n\n\n\nObserved \\(b_1\\) is in Rejection Region\n\n\n\n\\(p\\)-value is less than \\(\\alpha\\)\n\n\n\notherwise,\n\n\nFail to reject \\(H_0\\)\nBoth \\(H_a\\) and \\(H_0\\) are plausible.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#type-i-error",
+    "href": "presentations/CK-ch11-sec1-9.html#type-i-error",
+    "title": "CourseKata Chapter 11",
+    "section": "Type I Error",
+    "text": "Type I Error\nRejecting a true null\n\n\n\nFalse Positive\nFalse Alarm\n\n\n\\[\\begin{align*}\\alpha &= P(\\text{Rejecting } H_0|H_0) \\\\\n\\\\\n&=\\frac{FP}{FP+TN}\\end{align*}\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#type-ii-error",
+    "href": "presentations/CK-ch11-sec1-9.html#type-ii-error",
+    "title": "CourseKata Chapter 11",
+    "section": "Type II Error",
+    "text": "Type II Error\nFailing to reject a false null\n\n\n\nFalse Negative\nMissed Opportunity\n\n\n\\[\\begin{align*}\\beta &= P(\\text{Not Rejecting } H_0|H_a) \\\\\n\\\\\n&=\\frac{FN}{FN+TP}\\end{align*}\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch11-sec1-9.html#full-workflow",
+    "href": "presentations/CK-ch11-sec1-9.html#full-workflow",
+    "title": "CourseKata Chapter 11",
+    "section": "Full Workflow",
+    "text": "Full Workflow\n\nState the null & Alt. hypothesis\nFind the null distribution of the test statistic\nCompute the observed (test) statistic\nCompute p-value or check against R.R.\nMake a decision & write a conclusion\nCheck assumptions",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 11"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch12-sec1-8.html#overview-goals",
+    "href": "presentations/CK-ch12-sec1-8.html#overview-goals",
     "title": "CourseKata Chapter 12",
     "section": "Overview / Goals",
-    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nC.I. for One Mean - Review\nC.I. for Two Means\nC.I. for Intercept & Slope\nPaiwise C.I.\nFactors Affecting C.I.",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSampling Dist. & Test of Hypothesis\nPlausible Parameters Values\nConfidence Interval\nCI & t-Distribution\nAssumptions and Interpretation",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me",
-    "href": "presentations/CK-ch12-sec9-13.html#computing-me",
+    "objectID": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions",
+    "href": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions",
     "title": "CourseKata Chapter 12",
-    "section": "Computing ME",
-    "text": "Computing ME\n\n\nSimulation\n\nResample\nCompute \\(\\bar y\\)\nRepeate many times\nFind middle C%: \\[(LL, UL)\\]\nME = \\(\\frac{UL-LL}{2}\\)\n\n\nTheoretical\n\nCheck Assumption\n\nNormality or\nLarge Sample Size\n\nCompute SE = \\(\\frac{s}{\\sqrt{n}}\\)\nFind \\(t_{\\alpha/2}\\) multiplier from \\(t\\sim T(df=n-1)\\)\nME = \\(t_{\\alpha/2} \\cdot SE\\)",
+    "section": "Sampling & Null Distributions",
+    "text": "Sampling & Null Distributions\n\nFixed Population \\(\\to\\) Fixed Parameter\nRandom Sample \\(\\to\\) Random Statistic\n\nSampling Distribution:  The distribution of the random statistic\nNull Distribution:  The sampling distribution for a given parameter",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me---by-simulation",
-    "href": "presentations/CK-ch12-sec9-13.html#computing-me---by-simulation",
+    "objectID": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions-1",
+    "href": "presentations/CK-ch12-sec1-8.html#sampling-null-distributions-1",
     "title": "CourseKata Chapter 12",
-    "section": "Computing ME - By Simulation",
-    "text": "Computing ME - By Simulation\nThree ways to simulate a Distribution\n\nShuffle \\(Y\\)\n\nModels no-association \\(\\text{Null Distribution}\\) \n\nResample dataset\n\nDifferent groups sizes \n\nResample within groups\n\nHolds the same structure \n\nKey is finding ME for the same structure",
+    "section": "Sampling & Null Distributions",
+    "text": "Sampling & Null Distributions\n\n\n\nDGP with \\(\\beta_0=\\mu=0\\)\n\n\n\n\n\n\n\n\n\n\n\nDGP with \\(\\beta_0=\\mu=.5\\)",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#me-and-sampling-distributions",
-    "href": "presentations/CK-ch12-sec9-13.html#me-and-sampling-distributions",
+    "objectID": "presentations/CK-ch12-sec1-8.html#estimating-null-dist.",
+    "href": "presentations/CK-ch12-sec1-8.html#estimating-null-dist.",
     "title": "CourseKata Chapter 12",
-    "section": "ME and Sampling Distributions",
-    "text": "ME and Sampling Distributions\n\n\nSimulation\n\nResample (Find Sampling Dist.)\nCompute \\(b_1=\\bar y_2-\\bar y_1\\)\nRepeate many times\nFind middle C%: \\[(LL, UL)\\]\nME = \\(\\frac{UL-LL}{2}\\)",
+    "section": "Estimating Null Dist.",
+    "text": "Estimating Null Dist.\nGiven Sample \\(\\{0, 1, 5, 1, 3\\}\\)\n\n\n\nDGP with Sample Mean\n\n\n\n\n\n\n\n\n\n\n\nDGP with Claimed Mean",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical",
-    "href": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical",
+    "objectID": "presentations/CK-ch12-sec1-8.html#plausible-parameters-values",
+    "href": "presentations/CK-ch12-sec1-8.html#plausible-parameters-values",
     "title": "CourseKata Chapter 12",
-    "section": "Computing ME - Theoretical",
-    "text": "Computing ME - Theoretical\n\n\nCheck Assumptions\n\n\n\n\n\nNormality or\n\n\n\nLarge Sample Sizes\n\n\n\n\nCompute SE & DF\n\n\n\n\n\nEqual Variance\n\n\\(s_p^2 = \\frac{(n_1)s_1^2+(n_2)s_2^2}{n_1+n_2-2}\\)\n\\(DF = n_1+n_2-2\\)\nSE = \\(s_p\\sqrt{\\frac{1}{n_1}+\\frac{1}{n_2}}\\)\n\n\n\n\nUnequal Variance\n\n\\(DF \\approx min(n_1-1, n_2-1)\\)\nSE = \\(\\sqrt{\\frac{s_1^2}{n_1}+\\frac{s_2^2}{n_2}}\\)\n\n\n\n\n\n\\(t_{\\alpha/2}\\) from \\(t\\sim T(df=DF)\\)\nME = \\(t_{\\alpha/2} \\cdot SE\\)",
+    "section": "Plausible Parameters Values",
+    "text": "Plausible Parameters Values\n\n\n\nIs \\(\\mu=0\\) plausible?\n\nRun a test on \\(H_0: \\mu=0\\):  \\(\\mu=0\\) is plausible if we fail to reject.\n\nprocess:\n\nDefine a Sataitic\nFind Null Distribution\nReject \\(H_0\\) for extreme observed statistics.",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical-1",
-    "href": "presentations/CK-ch12-sec9-13.html#computing-me---theoretical-1",
+    "objectID": "presentations/CK-ch12-sec1-8.html#interval-estimate-vs.-point-estimate",
+    "href": "presentations/CK-ch12-sec1-8.html#interval-estimate-vs.-point-estimate",
     "title": "CourseKata Chapter 12",
-    "section": "Computing ME - Theoretical",
-    "text": "Computing ME - Theoretical\n‘confint()’ Computes confidence interval",
+    "section": "Interval Estimate vs. Point Estimate",
+    "text": "Interval Estimate vs. Point Estimate\n\n\\(\\bar y\\) is a point estimate (Best Guess) for \\(\\mu\\)\nAn interval estimate is all plausible values at \\(\\alpha\\).",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-1",
-    "href": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-1",
+    "objectID": "presentations/CK-ch12-sec1-8.html#distanced-based-c.i.",
+    "href": "presentations/CK-ch12-sec1-8.html#distanced-based-c.i.",
     "title": "CourseKata Chapter 12",
-    "section": "C.I. for Intercept & Slope",
-    "text": "C.I. for Intercept & Slope\nSimulation\n\n\n\nResample Data\n\n\n\nCompute \\(b_0\\) and \\(b_1\\)\n\n\n\nRepeate many times\n\n\n\n\n\nFor \\(\\beta_0\\):\n\nFind middle C%: \\[(LL_{b_0}, UL_{b_0})\\]\n\\(ME_{b_0} = \\frac{UL_{b_0}-LL_{b_0}}{2}\\)\n\\(b_0\\pm ME_{b_0}\\)\n\n\n\n\n\nFor \\(\\beta_1\\):\n\nFind middle C%: \\[(LL_{b_1}, UL_{b_1})\\]\n\\(ME_{b_1} = \\frac{UL_{b_1}-LL_{b_1}}{2}\\)\n\\(b_1\\pm ME_{b_1}\\)",
+    "section": "Distanced Based C.I.",
+    "text": "Distanced Based C.I.\n\nFor symmetric sampling distributions: \\[ C.I. = \\text{Point Estimate} \\pm \\text{Margin of Error}\\]",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-2",
-    "href": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-2",
+    "objectID": "presentations/CK-ch12-sec1-8.html#theoretical-sampling-distribution",
+    "href": "presentations/CK-ch12-sec1-8.html#theoretical-sampling-distribution",
     "title": "CourseKata Chapter 12",
-    "section": "C.I. for Intercept & Slope",
-    "text": "C.I. for Intercept & Slope\nTheoretical\n\n\n\nAssumptions:\n\nLinear Association\nNormal Distribution\nEqual Variance\n\n\\(t_{\\alpha/2}\\) from \\(t\\sim T(df=n-2)\\)\n\\(ME_{b_i} = t_{\\alpha/2} \\cdot SE_{b_i}\\)\n\n\n\n\\(b_i\\) and \\(SE_i\\) are from the Summary table\n\n\n\nCoefficients\n\n\n\n\n\n\n\n\n\n\nEstimate\nStd. Error\nt value\nPr(&gt;|t|)\n\n\n\n\n(Intercept)\n\\(b_0\\)\n\\(SE_{b_0}\\)\n\\(t_{b_0}=\\frac{b_0}{SE_{b_0}}\\)\n\\(p\\text{-value}_{b_0}\\)\n\n\nExplanatory\n\\(b_1\\)\n\\(SE_{b_1}\\)\n\\(t_{b_0}=\\frac{b_1}{SE_{b_1}}\\)\n\\(p\\text{-value}_{b_1}\\)",
+    "section": "Theoretical Sampling Distribution",
+    "text": "Theoretical Sampling Distribution\n\n\n\nWhen\n\n\\(Y\\sim N(\\mu,\\sigma)\\), or\n\\(n\\) is large\n\n\\(t=\\frac{\\bar Y-\\mu}{SE}\\sim t(\\text{df}=n-1)\\)\n\n\\(SE=\\frac{s}{\\sqrt{n}}\\)\n\nFor \\(100(1-\\alpha)\\)% Confidence Level: \\[ME=t^* \\cdot SE\\] \\(t^*=t_{\\alpha/2}\\): top \\(\\alpha/2\\) cut-off point",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-3",
-    "href": "presentations/CK-ch12-sec9-13.html#c.i.-for-intercept-slope-3",
+    "objectID": "presentations/CK-ch12-sec1-8.html#assumptions",
+    "href": "presentations/CK-ch12-sec1-8.html#assumptions",
     "title": "CourseKata Chapter 12",
-    "section": "C.I. for Intercept & Slope",
-    "text": "C.I. for Intercept & Slope\nRecalculate C.I.s:",
+    "section": "Assumptions",
+    "text": "Assumptions\n\n\n\nIndependent Observations\nFor Theoretical C.I.\n\n\n\n\n\n\n\nIs \\(Y\\) normal?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIs \\(n\\) large?\n\n\\(n&gt;=30\\) without outliers\nCheck with/use bootstrap",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#account-for-alpha-inflation",
-    "href": "presentations/CK-ch12-sec9-13.html#account-for-alpha-inflation",
+    "objectID": "presentations/CK-ch12-sec1-8.html#interpretation",
+    "href": "presentations/CK-ch12-sec1-8.html#interpretation",
     "title": "CourseKata Chapter 12",
-    "section": "Account for \\(\\alpha\\) Inflation",
-    "text": "Account for \\(\\alpha\\) Inflation\n\nBenferroni:\n\nUse \\(\\alpha/K\\)\n\n\\(K\\) is the number of pairwise tests\n\n\nTukey’s HSD\n\nUse range distribution",
+    "section": "Interpretation",
+    "text": "Interpretation\n\nWe are \\(100(1-\\alpha)\\)% confident that the mean is in \\((\\bar y - ME, \\bar y + ME)\\).",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#main-ideas",
-    "href": "presentations/CK-ch12-sec9-13.html#main-ideas",
+    "objectID": "presentations/CK-ch12-sec1-8.html#caution",
+    "href": "presentations/CK-ch12-sec1-8.html#caution",
     "title": "CourseKata Chapter 12",
-    "section": "Main Ideas",
-    "text": "Main Ideas\n\nHigher confidence level \\(\\Rightarrow\\) wider interval\nLarger sample size \\(\\Rightarrow\\) narrower interval\nMore variability \\(\\Rightarrow\\) wider interval\nFor two means: more balanced group sizes \\(\\Rightarrow\\) smaller SE\nFor regression slope: more spread in \\(X\\) \\(\\Rightarrow\\) narrower interval for \\(b_1\\)",
+    "section": "Caution",
+    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.93182 33.50057",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#a-quick-demo",
-    "href": "presentations/CK-ch12-sec9-13.html#a-quick-demo",
-    "title": "CourseKata Chapter 12",
-    "section": "A Quick Demo",
-    "text": "A Quick Demo",
+    "objectID": "presentations/CK-ch13-sec1-6.html#overview-goals",
+    "href": "presentations/CK-ch13-sec1-6.html#overview-goals",
+    "title": "CourseKata Chapter 13",
+    "section": "Overview / Goals",
+    "text": "Overview / Goals\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDoes more Predictor mean better Model?\nExplaning Variability by Different Predictors\nVisualizing Variability by Multiple Predictors\nConstructing a Multivariate Model\nInterpreting Coefficients\nComparing Models",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 12"
+      "CourseKata Chapter 13"
     ]
   },
   {
-    "objectID": "presentations/CK-ch12-sec9-13.html#wrap-up-questions",
-    "href": "presentations/CK-ch12-sec9-13.html#wrap-up-questions",
-    "title": "CourseKata Chapter 12",
-    "section": "Wrap-Up Questions",
-    "text": "Wrap-Up Questions\n\nIf we want a narrower interval, which things can we control?\nWhy does asking for 99% confidence force a wider interval?\nWhy does larger sample size help even when the center stays the same?\nWhy is a slope estimate more precise when the \\(X\\) values are more spread out?",
+    "objectID": "presentations/CK-ch13-sec1-6.html#model-complexity-review",
+    "href": "presentations/CK-ch13-sec1-6.html#model-complexity-review",
+    "title": "CourseKata Chapter 13",
+    "section": "Model Complexity Review",
+    "text": "Model Complexity Review\n\\[\n\\text{DATA} = \\text{MODEL} + \\text{ERROR}\n\\]\n\nEmpty Model: Mean Response\nSimple Model: 2-Group Means or a Simple Regression\nComplex: Multiple-Group Means and/or more Numerical variables",
     "crumbs": [
       "Presentations",
-      "CourseKata Chapter 12"
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#the-smallville-data",
+    "href": "presentations/CK-ch13-sec1-6.html#the-smallville-data",
+    "title": "CourseKata Chapter 13",
+    "section": "The Smallville data",
+    "text": "The Smallville data\nOutcome:\n\n\nPriceK: sale price in thousands of dollars\n\n\nPredictors:\n\n\nNeighborhood: Downtown or Eastside\nHomeSizeK: square footage in thousands\nHasFireplace: fireplace indicator",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#variability-in-pricek",
+    "href": "presentations/CK-ch13-sec1-6.html#variability-in-pricek",
+    "title": "CourseKata Chapter 13",
+    "section": "Variability in PriceK",
+    "text": "Variability in PriceK",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#two-single-predictor-models",
+    "href": "presentations/CK-ch13-sec1-6.html#two-single-predictor-models",
+    "title": "CourseKata Chapter 13",
+    "section": "Two single-predictor models",
+    "text": "Two single-predictor models\n\nWhich model reduces more error; explains more variability?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#using-both-predictors",
+    "href": "presentations/CK-ch13-sec1-6.html#using-both-predictors",
+    "title": "CourseKata Chapter 13",
+    "section": "Using Both Predictors",
+    "text": "Using Both Predictors\n\n\n\nDoes neighborhood add any value?\n\n\n\nDoes home-size effect changes?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#specifying-a-multivariate-model",
+    "href": "presentations/CK-ch13-sec1-6.html#specifying-a-multivariate-model",
+    "title": "CourseKata Chapter 13",
+    "section": "Specifying a multivariate model",
+    "text": "Specifying a multivariate model\n\\[\nY_i = b_0 + b_1X_{1i} + b_2X_{2i} + e_i\n\\]\nFor Smallville:\n\\[\n\\text{PriceK}_i = b_0 + b_1\\text{Neighborhood}_i + b_2\\text{HomeSizeK}_i + e_i\n\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#fitting-the-model-in-r",
+    "href": "presentations/CK-ch13-sec1-6.html#fitting-the-model-in-r",
+    "title": "CourseKata Chapter 13",
+    "section": "Fitting the model in R",
+    "text": "Fitting the model in R\n\n\n\n\n\n\n\n\n\nModel Fit: Minimize SS Error",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#write-the-fitted-model",
+    "href": "presentations/CK-ch13-sec1-6.html#write-the-fitted-model",
+    "title": "CourseKata Chapter 13",
+    "section": "Write the fitted model",
+    "text": "Write the fitted model\n\n\n\n\n\n\n\n\n\\[\n\\widehat{\\text{PriceK}} = b_0 + b_1(\\text{NeighborhoodEastside}) + b_2(\\text{HomeSizeK})\n\\]\n\n\n\n\n\n\nImportant\n\n\nNeighborhoodEastside = 1 for Eastside and 0 for Downtown.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#interpreting-the-intercept",
+    "href": "presentations/CK-ch13-sec1-6.html#interpreting-the-intercept",
+    "title": "CourseKata Chapter 13",
+    "section": "Interpreting the intercept",
+    "text": "Interpreting the intercept\n\nThe intercept is the predicted price when:\n\nNeighborhoodEastside = 0 → Downtown\nHomeSizeK = 0\n\nIntercept is the model’s Downtown baseline at 0K square feet.\nIs this substantively meaningful, or mainly mathematical?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#interpreting-neighborhoodeastside",
+    "href": "presentations/CK-ch13-sec1-6.html#interpreting-neighborhoodeastside",
+    "title": "CourseKata Chapter 13",
+    "section": "Interpreting NeighborhoodEastside",
+    "text": "Interpreting NeighborhoodEastside\n\nThe predicted difference in price …\n\nbetween Eastside and Downtown homes …\nholding home size constant …\nin \\(1000\\$\\) is …",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#holding-the-other-variable-constant",
+    "href": "presentations/CK-ch13-sec1-6.html#holding-the-other-variable-constant",
+    "title": "CourseKata Chapter 13",
+    "section": "Holding the other variable constant",
+    "text": "Holding the other variable constant\nThis means we compare observations that are the same on the other predictor.\n\nSame home size, different neighborhood\nSame neighborhood, different home size",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#compare-single-vs-multivariate-slope",
+    "href": "presentations/CK-ch13-sec1-6.html#compare-single-vs-multivariate-slope",
+    "title": "CourseKata Chapter 13",
+    "section": "Compare single vs multivariate slope",
+    "text": "Compare single vs multivariate slope\n\nSingle Predictor Model:\n\n\n\n\n\n\n\n\nTwo Predictor Model:\n\n\n\n\n\n\n\n\n\n\nWhy does the HomeSizeK coefficient get smaller after adding Neighborhood?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#predictions-residuals",
+    "href": "presentations/CK-ch13-sec1-6.html#predictions-residuals",
+    "title": "CourseKata Chapter 13",
+    "section": "Predictions & Residuals",
+    "text": "Predictions & Residuals",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#visualizing-predictions",
+    "href": "presentations/CK-ch13-sec1-6.html#visualizing-predictions",
+    "title": "CourseKata Chapter 13",
+    "section": "Visualizing predictions",
+    "text": "Visualizing predictions",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#parallel-lines",
+    "href": "presentations/CK-ch13-sec1-6.html#parallel-lines",
+    "title": "CourseKata Chapter 13",
+    "section": "Parallel lines",
+    "text": "Parallel lines\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFor additive models, group lines have:\n\nthe same slope and\ndifferent intercepts.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#residuals-still-mean-the-same-thing",
+    "href": "presentations/CK-ch13-sec1-6.html#residuals-still-mean-the-same-thing",
+    "title": "CourseKata Chapter 13",
+    "section": "Residuals still mean the same thing",
+    "text": "Residuals still mean the same thing\n\\[\n\\text{Residual} = \\text{Observed} - \\text{Predicted}\n\\]",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#sum-of-squared-residuals",
+    "href": "presentations/CK-ch13-sec1-6.html#sum-of-squared-residuals",
+    "title": "CourseKata Chapter 13",
+    "section": "Sum of squared residuals",
+    "text": "Sum of squared residuals\nSS Error: Error left after using both predictors.",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
+    ]
+  },
+  {
+    "objectID": "presentations/CK-ch13-sec1-6.html#comparing-models-by-error-reduction",
+    "href": "presentations/CK-ch13-sec1-6.html#comparing-models-by-error-reduction",
+    "title": "CourseKata Chapter 13",
+    "section": "Comparing models by error reduction",
+    "text": "Comparing models by error reduction\n\nWhich model is better?\nCould the difference be by chance?",
+    "crumbs": [
+      "Presentations",
+      "CourseKata Chapter 13"
     ]
   },
   {
