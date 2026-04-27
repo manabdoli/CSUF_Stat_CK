@@ -1775,7 +1775,7 @@
     "href": "index.html",
     "title": "CSUF Statistics using CourseKata",
     "section": "",
-    "text": "Welcome! Choose a deck:\n\nPresentationsPreparations\n\n\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)\nChapter 10\nChapter 11 (Section 1-9)\nChapter 11 (Section 10-13)\nChapter 12 (Section 1-8)\nChapter 12 (Section 9-13)\n\n\n\n\nSample Exam 1\nExam 2 Study Guide\nSample Exam 2",
+    "text": "Welcome! Choose a deck:\n\nPresentationsPreparations\n\n\n\nChapter 2 (Sections 1–7)\nChapter 2 (Sections 8–11)\nChapter 3 (Sections 1-9)\nChapter 3 (Sections 10-13)\nChapter 4\nChapter 5\nChapter 6 (Sections 1-4)\nChapter 6 (Added Part II)\nChapter 6 (Added Part III)\nChapter 7\nChapter 8\nChapter 9 (Sections 1-8)\nChapter 9 (Sections 9-11)\nChapter 10\nChapter 11 (Section 1-9)\nChapter 11 (Section 10-13)\nChapter 12 (Section 1-8)\nChapter 12 (Section 9-13)\nChapter 12 (Section 1-4)\n\n\n\n\nSample Exam 1\nExam 2 Study Guide\nSample Exam 2",
     "crumbs": [
       "CSUF Statistics using CourseKata"
     ]
@@ -2224,7 +2224,7 @@
     "href": "presentations/CK-ch12-sec1-8.html#caution",
     "title": "CourseKata Chapter 12",
     "section": "Caution",
-    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.93182 33.50057",
+    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.74886 33.43295",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
