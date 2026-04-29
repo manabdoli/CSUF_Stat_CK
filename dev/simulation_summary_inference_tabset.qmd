@@ -3,32 +3,32 @@ title: "Simulation-Based Inference Summary"
 format:
   html:
     toc: true
-    toc-depth: 2
+    toc-depth: 3
     theme: cosmo
     self-contained: true
 ---
 
 ## How to use this page
 
-This page summarizes the **simulation steps** for confidence intervals and hypothesis tests in common settings. It is designed to replace a slide deck during class discussion.
+This page summarizes the **simulation steps** for confidence intervals and hypothesis tests in common settings. 
 
 Two big ideas appear throughout:
 
 - A **confidence interval** uses a **bootstrap distribution** centered near the observed statistic.
 - A **hypothesis test** uses a **null distribution** centered at the null value.
 
-::: {.callout-tip}
-## General pattern
+::: {.callout-tip collapse="true"}
+## General pattern {.tabset}
 
-For a **confidence interval**:
+### For a **confidence interval**:
 
 1. Compute the observed sample statistic.
 2. Resample **with replacement** from the sample.
 3. Recompute the statistic for each bootstrap sample.
 4. Repeat many times to build a **bootstrap distribution**.
-5. Use the middle 95% or a margin of error to form the interval.
+5. Use the middle 95% to cmpute the confidence interval directly or via estimating the margin of error.
 
-For a **hypothesis test**:
+### For a **hypothesis test**:
 
 1. State the null and alternative hypotheses.
 2. Compute the observed sample statistic.
@@ -51,10 +51,10 @@ For a **hypothesis test**:
 
 ### Confidence interval
 
-1. Record the sample proportion $\hat{p}$.
+1. Record the *observed* sample proportion $\hat{p}$.
 2. Represent the sample of size $n$ as a set of 0s and 1s.
 3. Generate one bootstrap sample proportion:
-   - Resample **with replacement** from the sample, using the same sample size $n$.
+   - Resample (sample **with replacement**) from the observed sample, using the same sample size $n$.
    - Compute the proportion of 1s in the resample.
 4. Repeat many times to build a **bootstrap distribution** of $\hat{p}$.
 5. Use the middle 95% of the simulated proportions, or compute a margin of error $ME$ from the bootstrap distribution.
@@ -64,8 +64,7 @@ For a **hypothesis test**:
 
 1. State $H_0: p = p_0$ and the alternative.
 2. Compute the observed sample proportion $\hat{p}_{obs}$.
-3. Build the null distribution:
-   - Simulate a population where the probability of success is $p_0$.
+3. Simulate a sample proportion $\hat{p}$ using a population where the probability of success is $p_0$:
    - Sample with replacement $n$ times.
    - Compute one simulated sample proportion $\hat{p}$.
 4. Repeat many times to build the **null distribution** of $\hat{p}$.
@@ -82,17 +81,17 @@ For a **hypothesis test**:
 
 ### Parameter and statistic
 
-- Parameters: $p_1$ and $p_2$
-- Statistic: $\hat{p}_1 - \hat{p}_2$
+- Parameters: $p_1$ and $p_2$ ($p_1 - p_2$)
+- Statistics: $\hat{p}_1$ and $\hat{p}_2$ ($\hat{p}_1 - \hat{p}_2$)
 - Sample sizes: $n_1$ and $n_2$
 
 ### Confidence interval
 
 1. Compute the observed difference in sample proportions, $\hat{p}_1 - \hat{p}_2$.
 2. Represent each sample as 0s and 1s.
-3. Generate one bootstrap difference:
-   - Resample **with replacement** within group 1, using size $n_1$, and compute $\hat{p}_1$.
-   - Resample **with replacement** within group 2, using size $n_2$, and compute $\hat{p}_2$.
+3. Generate one bootstrap difference, $\hat{p}_1 - \hat{p}_2$:
+   - Resample (sample **with replacement**) within group 1, using size $n_1$, and compute $\hat{p}_1$.
+   - Resample (sample **with replacement**) within group 2, using size $n_2$, and compute $\hat{p}_2$.
    - Compute $\hat{p}_1 - \hat{p}_2$.
 4. Repeat many times to build a **bootstrap distribution** of $\hat{p}_1 - \hat{p}_2$.
 5. Use the middle 95% or compute a margin of error.

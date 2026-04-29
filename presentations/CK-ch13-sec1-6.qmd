@@ -1,0 +1,426 @@
+---
+title: "CourseKata Chapter 13"
+subtitle: "Multivariate Models"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 13 (1)"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch13-sec1-6.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Smallville.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Smallville))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- Does more Predictor mean better Model?
+- Explaning Variability by Different Predictors
+- Visualizing Variability by Multiple Predictors
+- Constructing a Multivariate Model
+- Interpreting Coefficients
+- Comparing Models
+:::
+
+# Does more Predictor mean better Model?
+
+## Model Complexity Review
+$$
+\text{DATA} = \text{MODEL} + \text{ERROR}
+$$
+
+- Empty Model: Mean Response
+- Simple Model: 2-Group Means or a Simple Regression
+- Complex: Multiple-Group Means and/or more Numerical variables
+
+## The Smallville data
+
+Outcome:
+
+:::{style="font-size:0.85em;"}
+
+- `PriceK`: sale price in thousands of dollars
+:::
+
+Predictors:
+
+:::{style="font-size:0.85em;"}
+
+- `Neighborhood`: Downtown or Eastside
+- `HomeSizeK`: square footage in thousands
+- `HasFireplace`: fireplace indicator
+
+:::
+
+
+```{webr}
+#| label: inspect-smallville
+head(Smallville)
+```
+
+
+# Explaning Variability by Different Predictors
+
+## Variability in `PriceK`
+
+::: {.columns}
+::: {.column width="33%"}
+```{webr}
+#| fig-width: 3.5
+#| fig-height: 3.5
+null_model <- lm(PriceK~NULL, data=Smallville)
+gf_jitter(PriceK~'Overall', data=Smallville, width=.2) |> gf_labs(x='') |> 
+gf_model(null_model)
+```
+:::
+::: {.column width="33%"}
+```{webr}
+#| fig-width: 3.5
+#| fig-height: 3.5
+Neighborhood_model <- lm(PriceK ~ Neighborhood, data = Smallville)
+gf_jitter(PriceK~Neighborhood, data=Smallville, width=.15, color=~Neighborhood, show.legend=FALSE) |> 
+  gf_model(Neighborhood_model)
+```
+:::
+::: {.column width="33%"}
+```{webr}
+#| fig-width: 3.5
+#| fig-height: 3.5
+HomeSizeK_model <- lm(PriceK ~ HomeSizeK, data = Smallville)
+gf_point(PriceK~HomeSizeK, data=Smallville) |> 
+  gf_model(HomeSizeK_model)
+```
+:::
+:::
+
+## Two single-predictor models
+
+:::{style="font-size:0.9em;"}
+Which model reduces more error; explains more variability?
+:::
+
+:::{.fragment style="font-size=0.85em;"}
+```{webr}
+#| label: single-predictor-models
+
+supernova(Neighborhood_model)
+cat('\n==========\n')
+supernova(HomeSizeK_model)
+```
+:::
+
+
+# Visualizing Variability by Multiple Predictors
+
+## Using Both Predictors
+::: {.columns style="font-size:0.85em;"}
+::: {.column}
+- Does neighborhood add any value?
+:::
+::: {.column}
+- Does home-size effect changes?
+:::
+:::
+
+::: {.columns}
+::: {.column}
+:::{.fragment}
+```{webr}
+#| label: color-neighborhood
+#| fig-width: 5
+#| fig-height: 3.5
+gf_point(PriceK ~ HomeSizeK, data = Smallville,
+         color = ~ Neighborhood, show.legend=FALSE) %>%
+  gf_model(HomeSizeK_model, color = "black")
+```
+:::
+
+
+:::
+::: {.column}
+:::{.fragment}
+```{webr}
+#| label: facet-neighborhood
+#| fig-width: 5
+#| fig-height: 3.5
+gf_point(PriceK ~ HomeSizeK, data = Smallville) %>%
+  gf_facet_grid(. ~ Neighborhood)
+```
+
+:::
+:::
+:::
+
+# Constructing a Multivariate Model
+
+## Specifying a multivariate model
+
+$$
+Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + e_i
+$$
+
+For Smallville:
+
+$$
+\text{PriceK}_i = b_0 + b_1\text{Neighborhood}_i + b_2\text{HomeSizeK}_i + e_i
+$$
+
+## Fitting the model in R
+
+```{webr}
+#| label: fit-multivariate
+multi_model <- lm(PriceK ~ Neighborhood + HomeSizeK, data = Smallville)
+multi_model
+```
+
+
+- Model Fit:  Minimize **SS Error**
+
+## Write the fitted model
+
+```{webr}
+#| label: coefficients
+coef(multi_model)
+```
+
+$$
+\widehat{\text{PriceK}} = b_0 + b_1(\text{NeighborhoodEastside}) + b_2(\text{HomeSizeK})
+$$
+
+:::{.callout-important}
+`NeighborhoodEastside = 1` for Eastside and `0` for Downtown.
+:::
+
+
+
+# Interpreting Coefficients
+
+## Interpreting the intercept
+
+- The intercept is the predicted price when:
+
+  - `NeighborhoodEastside = 0` → Downtown
+  - `HomeSizeK = 0`
+
+- Intercept is the model's Downtown baseline at 0K square feet.
+
+- *Is this substantively meaningful, or mainly mathematical?*
+
+## Interpreting `NeighborhoodEastside`
+
+- The *predicted* difference in price ...
+  - between Eastside and Downtown homes ...
+  - **holding home size constant** ...
+  - in $1000\$$ is ...
+
+:::{.fragment}
+```{webr}
+#| label: neighborhood-coef
+coef(multi_model)["NeighborhoodEastside"]
+```
+:::
+
+## Holding the other variable constant
+
+This means we compare observations that are the same on the other predictor.
+
+- Same home size, different neighborhood
+- Same neighborhood, different home size
+
+# Comparing Models
+
+## Compare single vs multivariate slope
+
+:::{.fragment}
+
+Single Predictor Model:
+
+```{webr}
+#| label: compare-slopes0
+coef(HomeSizeK_model)
+```
+
+Two Predictor Model:
+
+```{webr}
+#| label: compare-slopes1
+coef(multi_model)
+```
+
+:::
+
+- Why does the `HomeSizeK` coefficient get smaller after adding `Neighborhood`?
+
+
+## Predictions & Residuals
+
+```{webr}
+#| label: predictions
+Smallville$multi_predict <- predict(multi_model)
+Smallville$multi_resid <- resid(multi_model)
+
+Smallville %>%
+  select(PriceK, Neighborhood, HomeSizeK, multi_predict, multi_resid) %>%
+  head()
+```
+
+## Visualizing predictions
+
+```{webr}
+#| label: prediction-triangles
+#| fig-width: 7
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, color = ~ Neighborhood, data = Smallville) %>%
+  gf_point(multi_predict ~ HomeSizeK, data = Smallville,
+           color = "black", shape = 2) |>
+  gf_lm(multi_predict ~ HomeSizeK, color = ~ Neighborhood) |> #gf_model(multi_model) |>
+  gf_labs(subtitle='The triangles are the model predictions.')
+```
+
+
+## Parallel lines
+
+:::{.columns}
+:::{.column}
+:::{.fragment}
+
+```{webr}
+#| label: parallel-lines
+#| fig-width: 5
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, color = ~ Neighborhood, data = Smallville, show.legend=FALSE) %>%
+  gf_lm(multi_predict ~ HomeSizeK, color = ~ Neighborhood, show.legend=FALSE) #gf_model(multi_model)
+```
+
+:::
+:::
+:::{.column}
+
+- For **additive models**, group lines have:
+  - the **same slope** and
+  - different **intercepts**.
+:::
+:::
+
+## Residuals still mean the same thing
+
+$$
+\text{Residual} = \text{Observed} - \text{Predicted}
+$$
+
+```{webr}
+#| label: residual-example
+Smallville %>%
+  mutate(check = multi_predict + multi_resid) %>%
+  select(PriceK, multi_predict, multi_resid, check) %>%
+  head()
+```
+
+
+## Sum of squared residuals
+
+SS Error: Error left after using both predictors.
+```{webr}
+#| label: ss-error from residual
+sum(resid(multi_model)^2)
+```
+
+```{webr}
+#| label: ss-error from ANOVA
+supernova(multi_model)
+```
+
+
+
+## Comparing models by error reduction
+
+:::{style="font-size:.8em;"}
+Which model is **better**?
+
+Could the difference be by **chance**?
+
+
+```{webr}
+#| label: Neighborhood only
+supernova(Neighborhood_model)
+```
+```{webr}
+#| label: Home Size only
+supernova(HomeSizeK_model)
+```
+```{webr}
+#| label: Both Predictors
+supernova(multi_model)
+```
+
+:::

@@ -1,0 +1,316 @@
+---
+title: "CourseKata Chapter 13"
+subtitle: "Multivariate Models Inference"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 13 (2)"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch13-sec7-9.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/Smallville.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(Smallville))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- Review: Multivariate Model
+  - Interpreting Coefficients
+  - Comparing Models
+- New Topic: Is the model real (significant)?
+  - Simulated Null Distribution:
+    - Is PRE/F/$\beta_j$ real?
+  - Theoretical Null Distribution
+    - Assumptions
+    - F/$b_j$ Distribution
+:::
+
+## Multivariate Model
+
+$$
+\text{PriceK} = b_0 + b_1(\text{HomeSizeK}) + b_2(\text{Neighborhood})
+$$
+
+```{webr}
+multi_model <- lm(PriceK~HomeSizeK + Neighborhood, data=Smallville)
+coef(multi_model)
+```
+
+
+## Interpreting Coefficeints
+
+```{r}
+multi_model <- lm(PriceK~HomeSizeK + Neighborhood, data=Smallville)
+coef(multi_model)
+```
+
+- $b_0=`r round(coef(multi_model)[1], 2)`$: Price in \$1000 at baseline (Downtown & 0 sq.ft)
+- $b_1=`r round(coef(multi_model)[2], 2)`$: Difference in Price in \$1000 for any increase of 1000 sq.ft. in home size in the same neighborhood.
+- $b_2=`r round(coef(multi_model)[3], 2)`$: Difference in Price in \$1000 of the same home size between Downtown and Eastside.
+
+## Comparing Models
+
+::: {.columns}
+::: {.column width="25%"}
+```{r}
+#| fig-width: 2.5
+#| fig-height: 3.5
+null_model <- lm(PriceK~NULL, data=Smallville)
+gf_jitter(PriceK~'Overall', data=Smallville, width=.2) |> gf_labs(x='') |> 
+  gf_model(null_model)
+cat('PRE=', pre(null_model), '\n')
+```
+:::
+::: {.column width="25%"}
+
+```{r}
+#| fig-width: 2.5
+#| fig-height: 3.5
+Neighborhood_model <- lm(PriceK ~ Neighborhood, data = Smallville)
+gf_jitter(PriceK~Neighborhood, data=Smallville, width=.15, color=~Neighborhood, show.legend=FALSE) |> 
+  gf_model(Neighborhood_model)
+cat('PRE=', pre(Neighborhood_model))
+```
+
+:::
+::: {.column width="25%"}
+
+```{r}
+#| fig-width: 2.5
+#| fig-height: 3.5
+HomeSizeK_model <- lm(PriceK ~ HomeSizeK, data = Smallville)
+gf_point(PriceK~HomeSizeK, data=Smallville) |> 
+  gf_model(HomeSizeK_model)
+cat('PRE=', pre(HomeSizeK_model))
+```
+
+:::
+::: {.column width="25%"}
+
+```{r}
+#| fig-width: 2.5
+#| fig-height: 3.5
+Smallville$multi_predict <- predict(multi_model)
+gf_point(PriceK ~ HomeSizeK, data = Smallville,
+         color = ~ Neighborhood, show.legend=FALSE) %>%
+  gf_lm(multi_predict ~ HomeSizeK, color = ~ Neighborhood, show.legend=FALSE)  #gf_model(multi_model)
+cat('PRE=', pre(multi_model))
+```
+
+:::
+:::
+
+# Is the model real (significant)?
+
+## Hypotheses & Null Distribution
+- Null Hypothesis:
+  - No; there is no different
+- Alternative Hypothesis:
+  - Yes; the difference is not by chance
+
+\ 
+
+- Build Null Distribution
+- Compare with Observed statistic
+
+# Inference by Simulation
+
+## Is PRE difference real?
+```{webr}
+#| fig-height: 3.5
+obs_pre <- pre(multi_model)
+
+ndo_pre <- replicate(1000, pre(
+  lm(shuffle(PriceK) ~ HomeSizeK + Neighborhood, data = Smallville)
+))
+
+gf_histogram(~ndo_pre, bins = 25) |>
+  gf_vline(xintercept = obs_pre, col='red')
+```
+
+- is it?
+
+## Is F difference real?
+```{webr}
+#| fig-height: 3.5
+obs_f <- f(multi_model)
+
+ndo_f <- replicate(1000, f(
+  lm(shuffle(PriceK) ~ HomeSizeK + Neighborhood, data = Smallville)
+))
+
+gf_histogram(~ndo_f, bins = 25) |>
+  gf_vline(xintercept = obs_f, col='red')
+```
+
+- is it?
+
+## Are slopes meaningfully different from 0?
+```{webr}
+#| fig-height: 3.5
+obs_betas <- coef(multi_model)[]
+
+ndo_betas <- replicate(1000, coef(
+  lm(shuffle(PriceK) ~ HomeSizeK + Neighborhood, data = Smallville)
+)) |> t() |> as.data.frame()
+
+ndo_betas |> 
+  tidyr::pivot_longer(everything(), 
+    names_to='b', values_to='estimate') |>
+  gf_histogram(~estimate, bins=30) |>
+    gf_facet_grid(b~.) |>
+    gf_vline(xintercept=~estimate,
+      data=data.frame(b=colnames(ndo_betas), 
+      estimate=obs_betas), color='red') + theme(text=element_text(size=28))
+```
+
+## Theoretical Distribution of $F$ & $b_j$
+
+- Population Parameters: $\beta_0$, $\beta_1$, $\beta_2$  
+- Sample Statistics: $b_0$, $b_1$, $b_2$
+
+- Null Distribution Assumptions: 
+  - Observations: Independent (Within & Between)
+  - Error Distribution:
+    - (Roughly) Normal 
+    - Constant $\sigma$
+
+## Checking Normality/Constant Variance:
+
+::: {.columns}
+::: {.column}
+```{webr}
+es <- resid(multi_model)
+gf_histogram(~es, bins=30)
+
+```
+:::
+::: {.column}
+```{webr}
+gf_qq(~es) |> gf_qqline()
+```
+
+:::
+:::
+
+## F Inference
+
+- NULL Hypothesis: All slopes are zero
+  - No association beteen response and predictors.
+
+- Null Distribution: $F\sim F(df_1=2, df_2=n-3)$
+  - $p$-value $= P(F>F_{obs})$  
+
+```{webr}
+supernova(multi_model)
+```
+
+## $\beta_j$ Inference
+$$
+t = \frac{b_j}{SE(b_j)}
+$$
+
+- NULL Hypothesis: usually $\beta_j=0$
+  - $j^{th}$ predictor has no effect.
+
+- Null Distribution: $t\sim T(df=n-3)$
+  - $p$-value $= P(t \text{ at least as extrem as } t_{obs} \text{ in favor of } H_a)$  
+
+```{webr}
+summary(multi_model)
+```
+
+## Practice
+```{r}
+summary(multi_model) -> mdlSummary
+tTable <- mdlSummary$coefficients
+tTable
+```
+
+Does `NeighborhoodEastside` have a negative impact on `PriceK`?
+
+- Hypotheses: $H_0: \beta_{Neighborhood} = 0$ vs. $H_a: \beta_{Neighborhood} < 0$
+- $p$-value = P(T<`r tTable["NeighborhoodEastside", "t value"]`) = ?
+
+## Practice
+```{r}
+tTable
+```
+
+Find a 95% C.I. for $\beta_\text{HomeSizeL}$: 
+
+- SE $= `r tTable["HomeSizeK", "Std. Error"]`
+- $t^* = t_{0.025, df=`r multi_model$df.residual`} = `r -round(qt(.025, multi_model$df.residual),4)`$
+- 95% C.I. of $\beta_{\text{HomeSizeK}} = (...., ....)$
+
+

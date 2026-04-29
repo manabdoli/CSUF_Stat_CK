@@ -1,0 +1,320 @@
+---
+title: "Chapter 13 Session 2: Evaluating and Trusting a Multivariate Model"
+subtitle: "Sections 13.7-13.9 plus assumptions for inference"
+author: "Elementary Statistics"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    incremental: true
+    code-fold: false
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(coursekata)
+library(dplyr)
+library(ggplot2)
+
+Neighborhood_model <- lm(PriceK ~ Neighborhood, data = Smallville)
+HomeSizeK_model <- lm(PriceK ~ HomeSizeK, data = Smallville)
+multi_model <- lm(PriceK ~ Neighborhood + HomeSizeK, data = Smallville)
+```
+
+## Last time
+
+We fit:
+
+$$
+\text{PriceK}_i = b_0 + b_1\text{NeighborhoodEastside}_i + b_2\text{HomeSizeK}_i + e_i
+$$
+
+Today we ask:
+
+> Is the multivariate model better than the empty model in the DGP?
+
+---
+
+## Model fit recap
+
+```{r}
+#| label: model-fit-recap
+supernova(multi_model)
+```
+
+Look at:
+
+- SS Model: error reduced
+- SS Error: error leftover
+- PRE / $R^2$: proportion reduction in error
+- F: signal relative to leftover noise
+
+---
+
+## Venn diagram logic
+
+Think of total variation in `PriceK` as a circle.
+
+A multivariate model can reduce error through:
+
+- unique variation explained by `HomeSizeK`
+- unique variation explained by `Neighborhood`
+- shared variation explained by both
+- leftover unexplained error
+
+---
+
+## Unique vs shared explanation
+
+```{r}
+#| label: anova-components
+supernova(multi_model)
+```
+
+The predictor rows ask:
+
+> What does this variable add, given the other variable is already in the model?
+
+---
+
+## The model comparison question
+
+Complex model:
+
+$$
+Y_i = \beta_0 + \beta_1X_{1i} + \beta_2X_{2i} + \epsilon_i
+$$
+
+Simple model:
+
+$$
+Y_i = \beta_0 + \epsilon_i
+$$
+
+We compare the multivariate model to the empty model.
+
+---
+
+## The null model for both predictors
+
+Under the empty model:
+
+$$
+\beta_1 = 0 \quad \text{and} \quad \beta_2 = 0
+$$
+
+The predictors do not explain the outcome in the DGP.
+
+---
+
+## Simulating the empty model
+
+To mimic no relationship, shuffle the outcome:
+
+```{r}
+#| label: one-shuffled-f
+f(shuffle(PriceK) ~ Neighborhood + HomeSizeK, data = Smallville)
+```
+
+This keeps the predictors but breaks their relationship with price.
+
+---
+
+## Observed sample F
+
+```{r}
+#| label: observed-f
+sample_f <- f(PriceK ~ Neighborhood + HomeSizeK, data = Smallville)
+sample_f
+```
+
+F compares error reduced by the model against error left over.
+
+---
+
+## Build a null distribution of F
+
+```{r}
+#| label: null-f-distribution
+set.seed(2026)
+sdof <- do(1000) * f(shuffle(PriceK) ~ Neighborhood + HomeSizeK, data = Smallville)
+head(sdof)
+```
+
+---
+
+## Visualize the null distribution
+
+```{r}
+#| label: plot-null-f
+#| fig-width: 7
+#| fig-height: 4
+gf_histogram(~ f, data = sdof, bins = 30) %>%
+  gf_vline(xintercept = sample_f)
+```
+
+**Prompt:** Is the observed F typical under the empty model?
+
+---
+
+## Estimate the p-value
+
+```{r}
+#| label: p-value-from-simulation
+tally(~ f > sample_f, data = sdof, format = "proportion")
+```
+
+This asks: how often did random shuffling produce an F as large as the observed F?
+
+---
+
+## Compare with the ANOVA table
+
+```{r}
+#| label: p-value-anova
+supernova(multi_model)
+```
+
+The **Model** row tests the whole multivariate model against the empty model.
+
+---
+
+## Predictor rows are different questions
+
+```{r}
+#| label: predictor-rows
+supernova(multi_model)
+```
+
+- Model row: Do the predictors jointly explain variation?
+- `Neighborhood`: What does neighborhood add after home size?
+- `HomeSizeK`: What does home size add after neighborhood?
+
+---
+
+## Confidence intervals for parameters
+
+```{r}
+#| label: confidence-intervals
+confint(multi_model)
+```
+
+A confidence interval gives plausible values for each population parameter.
+
+---
+
+## Interpreting the CI for neighborhood
+
+```{r}
+#| label: ci-neighborhood
+confint(multi_model)["NeighborhoodEastside", ]
+```
+
+Interpret as a plausible range for the Eastside-Downtown difference **holding home size constant**.
+
+---
+
+## Interpreting the CI for home size
+
+```{r}
+#| label: ci-homesize
+confint(multi_model)["HomeSizeK", ]
+```
+
+Interpret as a plausible range for the price increase per additional 1000 square feet **holding neighborhood constant**.
+
+---
+
+## Theoretical inference
+
+The model table gives theoretical tests based on the F distribution.
+
+For each coefficient, theoretical inference relies on standard errors and t/F statistics.
+
+```{r}
+#| label: summary-model
+summary(multi_model)
+```
+
+---
+
+## Assumptions for inference
+
+For theoretical inference in linear regression, we need to check whether the model is reasonable:
+
+- linearity/additivity
+- independence
+- constant variance
+- approximately normal residuals
+- no extreme influential observations
+
+---
+
+## Residual plot: linearity and equal spread
+
+```{r}
+#| label: residual-plot
+#| fig-width: 7
+#| fig-height: 4
+Smallville$fitted <- fitted(multi_model)
+Smallville$resid <- resid(multi_model)
+
+gf_point(resid ~ fitted, data = Smallville) %>%
+  gf_hline(yintercept = 0)
+```
+
+Look for no obvious curve and roughly similar vertical spread.
+
+---
+
+## Residual normality check
+
+```{r}
+#| label: qqplot-residuals
+#| fig-width: 6
+#| fig-height: 4
+qqnorm(resid(multi_model))
+qqline(resid(multi_model))
+```
+
+This is most important for small samples and interval/test accuracy.
+
+---
+
+## Related predictors make interpretation tricky
+
+When predictors are related, coefficients are still interpreted **holding other predictors constant**.
+
+But this can become harder when there are few comparable observations.
+
+Example: if Downtown homes tend to be larger, the model must separate size and neighborhood statistically.
+
+---
+
+## What can we conclude?
+
+For this model, ask:
+
+1. Does the whole model reduce error beyond the empty model?
+2. What does each predictor add beyond the other?
+3. Are assumptions reasonable enough for theoretical inference?
+4. Are interpretations contextual and not causal unless design supports causality?
+
+---
+
+## Session 2 synthesis
+
+Students should be able to:
+
+- explain SS Model, SS Error, PRE, and F conceptually
+- simulate a null distribution of F
+- interpret the model-row p-value
+- distinguish whole-model tests from predictor-specific tests
+- interpret confidence intervals for multivariate coefficients
+- check basic assumptions for regression inference

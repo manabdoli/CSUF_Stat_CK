@@ -13,7 +13,7 @@ gf_model <- function(object, model, width = 0.5, ...) {
   if (!inherits(object, c("gg", "ggplot"))) {
     rlang::abort("Layer on top of a ggformula/ggplot object.")
   }
-  bar_args <- list(...)
+  plot_args <- list(...)
   # infer x/y from the plot mapping
   mapping <- object$mapping
   if (is.null(mapping$x) || is.null(mapping$y)) {
@@ -21,7 +21,16 @@ gf_model <- function(object, model, width = 0.5, ...) {
   }
   x <- rlang::as_name(mapping$x)
   y <- rlang::as_name(mapping$y)
+  other_aes <- setdiff(names(mapping), c('x', 'y'))
+  other_mappings <- lapply(other_aes, function(v) mapping[[v]])
+  names(other_mappings) <- other_aes
+  # other_mappings <-
+  #  sapply(other_aes, function(v) paste0(v, '=~', rlang::as_name(mapping[[v]]))) |>
+  #  paste(collapse = ', ') |> (function(v) if(nchar(v)>0) {
+  #   paste0('list(', v,')') |> str2lang() |> eval() })()
+   
 
+  #browser()
   dat <- model$model
   cur_names <- names(dat)
   if (!x %in% cur_names){
@@ -32,8 +41,71 @@ gf_model <- function(object, model, width = 0.5, ...) {
   if (!x %in% names(dat) || !y %in% names(dat)) {
     rlang::abort("Model variables don't match the plot variables.")
   }
+  # Recoded to account for the fact the model line should be rebuilt
+  # gf_lm() models groups separately.
   if (is.numeric(dat[[x]])) {
-    rlang::abort("This helper is for categorical/group x only.")
+
+    # grouping variable: assume first non-x/y mapped aesthetic is the grouping var
+    group_var <- NULL
+    if (length(other_aes) > 0) {
+      group_var <- rlang::as_name(mapping[[other_aes[1]]])
+    }
+
+    # build x grid
+    xseq <- seq(min(dat[[x]], na.rm = TRUE),
+                max(dat[[x]], na.rm = TRUE),
+                length.out = 100)
+
+    if (!is.null(group_var) && group_var %in% names(dat)) {
+      gvals <- unique(dat[[group_var]])
+
+      newdata <- expand.grid(
+        x_tmp = xseq,
+        g_tmp = gvals,
+        KEEP.OUT.ATTRS = FALSE,
+        stringsAsFactors = FALSE
+      )
+      names(newdata) <- c(x, group_var)
+
+    } else {
+      newdata <- data.frame(xseq)
+      names(newdata) <- x
+    }
+
+    # fill in any other model predictors not already in newdata
+    needed_vars <- names(model$model)
+    needed_vars <- setdiff(needed_vars, c(y, names(newdata)))
+
+    for (v in needed_vars) {
+      if (is.factor(model$model[[v]])) {
+        newdata[[v]] <- factor(levels(model$model[[v]])[1],
+                              levels = levels(model$model[[v]]))
+      } else if (is.numeric(model$model[[v]])) {
+        newdata[[v]] <- mean(model$model[[v]], na.rm = TRUE)
+      } else {
+        newdata[[v]] <- model$model[[v]][1]
+      }
+    }
+
+    newdata$.pred <- as.numeric(stats::predict(model, newdata = newdata))
+
+    f_line <- stats::as.formula(paste0(".pred ~ ", x))
+
+    base_line_call <- list(
+      object = object,
+      gformula = f_line,
+      data = newdata,
+      inherit = FALSE
+    )
+
+    line_call <- utils::modifyList(base_line_call, plot_args)
+
+    if (length(other_mappings) > 0) {
+      line_call <- utils::modifyList(line_call, other_mappings)
+    }
+
+    p <- do.call(ggformula::gf_line, line_call)
+    return(p)
   }
 
   # one row per group in model order
@@ -55,7 +127,7 @@ gf_model <- function(object, model, width = 0.5, ...) {
     width = width
     , inherit = FALSE
   )
-  bar_call <- utils::modifyList(base_bar_call, bar_args)
+  bar_call <- utils::modifyList(base_bar_call, plot_args)
   p <- do.call(ggformula::gf_crossbar, bar_call)
   
   p

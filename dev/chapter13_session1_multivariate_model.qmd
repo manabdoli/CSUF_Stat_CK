@@ -1,0 +1,325 @@
+---
+title: "Chapter 13 Session 1: Building a Multivariate Model"
+subtitle: "Sections 13.1-13.6: two predictors, coefficients, predictions, residuals, and SS"
+author: "Elementary Statistics"
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    incremental: true
+    code-fold: false
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+library(coursekata)
+library(dplyr)
+library(ggplot2)
+```
+
+## Today's question
+
+Can we make better predictions by using **more than one explanatory variable**?
+
+$$
+\text{DATA} = \text{MODEL} + \text{ERROR}
+$$
+
+More predictors can reduce error, but interpretation gets more careful.
+
+::: notes
+Frame this as an extension, not a brand-new topic. The equation is still DATA = MODEL + ERROR.
+:::
+
+---
+
+## The Smallville data
+
+Outcome:
+
+- `PriceK`: sale price in thousands of dollars
+
+Predictors:
+
+- `Neighborhood`: Downtown or Eastside
+- `HomeSizeK`: square footage in thousands
+- `HasFireplace`: fireplace indicator
+
+```{r}
+#| label: inspect-smallville
+head(Smallville)
+```
+
+---
+
+## Two single-predictor models
+
+```{r}
+#| label: single-predictor-models
+Neighborhood_model <- lm(PriceK ~ Neighborhood, data = Smallville)
+HomeSizeK_model <- lm(PriceK ~ HomeSizeK, data = Smallville)
+
+supernova(Neighborhood_model)
+supernova(HomeSizeK_model)
+```
+
+**Prompt:** Which model reduces more error?
+
+---
+
+## Visualizing each predictor
+
+```{r}
+#| label: visualize-one-predictor
+#| fig-width: 7
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, data = Smallville) %>%
+  gf_model(HomeSizeK_model)
+```
+
+---
+
+## Add neighborhood visually
+
+```{r}
+#| label: color-neighborhood
+#| fig-width: 7
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, data = Smallville,
+         color = ~ Neighborhood) %>%
+  gf_model(HomeSizeK_model, color = "black")
+```
+
+**Look for:** Are residuals patterned by neighborhood?
+
+---
+
+## Faceting by neighborhood
+
+```{r}
+#| label: facet-neighborhood
+#| fig-width: 8
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, data = Smallville) %>%
+  gf_facet_grid(. ~ Neighborhood)
+```
+
+**Prompt:** For homes of similar size, do prices still differ by neighborhood?
+
+---
+
+## Specifying a multivariate model
+
+$$
+Y_i = b_0 + b_1X_{1i} + b_2X_{2i} + e_i
+$$
+
+For Smallville:
+
+$$
+\text{PriceK}_i = b_0 + b_1\text{Neighborhood}_i + b_2\text{HomeSizeK}_i + e_i
+$$
+
+---
+
+## Fitting the model in R
+
+```{r}
+#| label: fit-multivariate
+multi_model <- lm(PriceK ~ Neighborhood + HomeSizeK, data = Smallville)
+multi_model
+```
+
+Best-fitting estimates:
+
+- choose values that minimize **SS Error**
+- extend least squares to multiple predictors
+
+---
+
+## Write the fitted model
+
+```{r}
+#| label: coefficients
+coef(multi_model)
+```
+
+$$
+\widehat{\text{PriceK}} = b_0 + b_1(\text{NeighborhoodEastside}) + b_2(\text{HomeSizeK})
+$$
+
+**Important:** `NeighborhoodEastside = 1` for Eastside and `0` for Downtown.
+
+---
+
+## Interpreting the intercept
+
+The intercept is the predicted price when:
+
+- `NeighborhoodEastside = 0` → Downtown
+- `HomeSizeK = 0`
+
+So it is the model's Downtown baseline at 0K square feet.
+
+**Question:** Is this substantively meaningful, or mainly mathematical?
+
+---
+
+## Interpreting `NeighborhoodEastside`
+
+`NeighborhoodEastside` is the predicted difference between Eastside and Downtown homes...
+
+**holding home size constant.**
+
+```{r}
+#| label: neighborhood-coef
+coef(multi_model)["NeighborhoodEastside"]
+```
+
+Interpret in thousands of dollars.
+
+---
+
+## Interpreting `HomeSizeK`
+
+`HomeSizeK` is the predicted change in price for each additional 1000 square feet...
+
+**holding neighborhood constant.**
+
+```{r}
+#| label: homesize-coef
+coef(multi_model)["HomeSizeK"]
+```
+
+---
+
+## The hard phrase
+
+> Holding the other variable constant
+
+This means we compare observations that are the same on the other predictor.
+
+- Same home size, different neighborhood
+- Same neighborhood, different home size
+
+---
+
+## Compare single vs multivariate slope
+
+```{r}
+#| label: compare-slopes
+coef(HomeSizeK_model)
+coef(multi_model)
+```
+
+**Prompt:** Why does the `HomeSizeK` coefficient get smaller after adding `Neighborhood`?
+
+---
+
+## Predictions from the multivariate model
+
+```{r}
+#| label: predictions
+Smallville$multi_predict <- predict(multi_model)
+Smallville$multi_resid <- resid(multi_model)
+
+Smallville %>%
+  select(PriceK, Neighborhood, HomeSizeK, multi_predict, multi_resid) %>%
+  head()
+```
+
+---
+
+## Visualizing predictions
+
+```{r}
+#| label: prediction-triangles
+#| fig-width: 7
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, color = ~ Neighborhood, data = Smallville) %>%
+  gf_point(multi_predict ~ HomeSizeK, data = Smallville,
+           color = "black", shape = 2)
+```
+
+The triangles are the model predictions.
+
+---
+
+## Parallel lines
+
+```{r}
+#| label: parallel-lines
+#| fig-width: 7
+#| fig-height: 4
+gf_point(PriceK ~ HomeSizeK, color = ~ Neighborhood, data = Smallville) %>%
+  gf_model(multi_model)
+```
+
+This additive model gives two lines with the **same slope** and different intercepts.
+
+---
+
+## Residuals still mean the same thing
+
+$$
+\text{Residual} = \text{Observed} - \text{Predicted}
+$$
+
+```{r}
+#| label: residual-example
+Smallville %>%
+  mutate(check = multi_predict + multi_resid) %>%
+  select(PriceK, multi_predict, multi_resid, check) %>%
+  head()
+```
+
+---
+
+## Sum of squared residuals
+
+```{r}
+#| label: ss-error
+sum(resid(multi_model)^2)
+supernova(multi_model)
+```
+
+SS Error tells us how much error is left after using both predictors.
+
+---
+
+## Comparing models by error reduction
+
+```{r}
+#| label: compare-model-fit
+supernova(Neighborhood_model)
+supernova(HomeSizeK_model)
+supernova(multi_model)
+```
+
+**Prompt:** How much error does the multivariate model reduce compared with the empty model?
+
+---
+
+## Session 1 synthesis
+
+By the end of today, students should be able to:
+
+- explain why multiple predictors can improve prediction
+- fit `lm(Y ~ X1 + X2)`
+- interpret coefficients **holding the other predictor constant**
+- calculate and interpret predictions and residuals
+- connect residuals to SS Error and PRE
+
+---
+
+## Bridge to Session 2
+
+Today: **What does the model say?**
+
+Next time: **Could this model have arisen by random chance?**

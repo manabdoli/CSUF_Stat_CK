@@ -10,18 +10,15 @@ format:
 editor: source
 ---
 
-## How to use this page
-
-This page summarizes the **simulation steps** for confidence intervals and hypothesis tests across common settings in introductory statistics. It is written to be used as a **reference sheet** or a **replacement for a slide deck**.
-
 ::: {.callout-note}
 ## Big idea
 - A **confidence interval** uses the sample to estimate a range of plausible parameter values.
-- A **hypothesis test** uses a null model to ask whether the observed statistic would be unusual if the null were true.
-- In simulation-based inference, the main differences across settings are:
-  - the **statistic** you track,
-  - how you create the **resamples or shuffled samples**, and
-  - what null model you impose for a test.
+  - Formula: $\text{Point Estimate} \pm \text{Margin of Error}(ME)$
+  - Simulation produces a Margin or Error (ME) directly:
+- A **hypothesis test** uses a null model to ask whether the observed statistic would be unusual if the null were true. Main difference across scenarios include:
+  - The **statistic** we tracke,
+  - The null model we impose, and
+  - how we create samples (**resampling or shuffling**).
 :::
 
 ## General template
@@ -30,10 +27,10 @@ This page summarizes the **simulation steps** for confidence intervals and hypot
 
 1. Start with the **observed sample**.
 2. Resample in a way that mimics drawing from the population.
-3. For each resample, compute the statistic of interest.
-4. Build the **bootstrap distribution** of that statistic.
-5. Take the middle 95% (or desired level) of the simulated statistics.
-6. Interpret that interval in context.
+3. Compute the *statistic* of interest from resampled data.
+4. Repeat (2) and (3) and results to build the **bootstrap distribution** of that *statistic*.
+5. Find the middle 95% (or desired level) of the simulated statistics and use it to calculate $ME$.
+6. Build the interval and interpret it in context.
 
 ### Hypothesis test by simulation
 
@@ -42,8 +39,10 @@ This page summarizes the **simulation steps** for confidence intervals and hypot
 3. Simulate data that would be expected if the **null hypothesis were true**.
 4. For each simulated sample, compute the same statistic.
 5. Build the **null distribution**.
-6. Find the proportion of simulated statistics at least as extreme as the observed one.
-7. Interpret that proportion as the **p-value**.
+6. Make a decision:
+  - **$p$-value:** Find the proportion of simulated statistics at least as extreme as the observed one.
+  - **Rejection Region**: Fins the $\alpha$ proportion of extreme values of the null distribution that are in favor of the alternative hypothesis ($H_a$).
+7. Interpret the decision in the context.
 
 ## One Proportion {.accordion}
 
@@ -51,32 +50,38 @@ This page summarizes the **simulation steps** for confidence intervals and hypot
 
 - Parameter: $p$
 - Statistic: $\hat{p}$
+- Sample Size: $n$
 
 ### Confidence interval
 
 1. Record the sample proportion $\hat{p}$.
-2. Represent the sample as a set of 0s and 1s.
-3. Repeatedly **resample with replacement** from the sample, keeping the same sample size.
-4. For each bootstrap sample, compute the proportion of 1s.
-5. Use the resulting bootstrap distribution of $\hat{p}$.
-6. Take the middle 95% of the simulated proportions.
-7. Interpret the interval as plausible values for the population proportion.
+2. Represent the sample of $n$ as a set of 0s and 1s.
+3. Generate one bootstrap sample proportion:
+  - Repeatedly **resample with replacement** from the sample, as many as the same sample size ($n$).
+  - Compute the proportion of 1s.
+4. Repeat many times to create a null distribution of $\hat{p}$.
+5. Use the middle 95% of the simulated proportions to calculate $ME$.
+6. Build and interpret the interval $(\hat p -ME, \hat p +ME)$ as plausible values for the population proportion.
 
 ### Hypothesis test
 
 1. State $H_0: p = p_0$ and the alternative.
-2. Compute the observed sample proportion $\hat{p}$.
-3. Under the null, simulate many samples of size $n$ where the probability of success is $p_0$.
-4. For each simulated sample, compute the sample proportion.
-5. Build the null distribution of $\hat{p}$.
-6. Count the proportion of simulated values at least as extreme as the observed $\hat{p}$, relative to $p_0$.
-7. That proportion is the p-value.
+2. Compute the observed sample proportion $\hat{p}_{obs}$.
+3. Build the null distribution:
+  - Simulate a population where the probability of success is $p_0$; e.g., a population of $Np_0$ 1's and $N(1-p_0)$ 0's.
+  - Sample with replacement $n$ times
+  - Compute a simulated sample proportion $\hat{p}$.
+  - Repeat many times to build the null distribution of $\hat{p}$.
+6. Find the proportion of simulated values at least as extreme as the observed $\hat{p}$, relative to $p_0$, or find rejection region(s), which includes intervals of extreme simulated values.
+7. Make a decision about the test and state your conclusion.
 
-### What students should notice
+::: {.callout-note}
+### Important Notes:
 
 - The confidence interval is centered near the observed $\hat{p}$.
 - The test distribution is centered at the null value $p_0$.
 - Larger sample sizes produce less variability in $\hat{p}$.
+:::
 
 ## Two Proportions {.accordion}
 
