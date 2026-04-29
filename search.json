@@ -1544,7 +1544,7 @@
     "href": "presentations/CK-ch12-sec1-8.html#caution",
     "title": "CourseKata Chapter 12",
     "section": "Caution",
-    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.97727 33.25057",
+    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.86250 33.50114",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
@@ -2488,7 +2488,7 @@
     "href": "presentations/CK-ch13-sec7-9.html#hypotheses-null-distribution",
     "title": "CourseKata Chapter 13",
     "section": "Hypotheses & Null Distribution",
-    "text": "Hypotheses & Null Distribution\n\nNull Hypothesis:\n\nNo; there is no different\n\nAlternative Hypothesis:\n\nYes; the difference is not by chance\n\n\n \n\nBuild Null Distribution\nCompare with Observed statistc",
+    "text": "Hypotheses & Null Distribution\n\nNull Hypothesis:\n\nNo; there is no different\n\nAlternative Hypothesis:\n\nYes; the difference is not by chance\n\n\n \n\nBuild Null Distribution\nCompare with Observed statistic",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 13"
