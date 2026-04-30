@@ -3978,7 +3978,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../preparations/Exam1-Prep.html">Preparations</a></li><li class="breadcrumb-item"><a href="../preparations/simulation_summary_inference_tabset.html">Coursekata</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../preparations/Exam1-Prep.html">Preparations</a></li><li class="breadcrumb-item"><a href="../preparations/theoretical_summary_inference_tabset.html">Coursekata</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -4175,13 +4175,13 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../preparations/simulation_summary_inference_tabset.html" class="sidebar-item-text sidebar-link active">
+  <a href="../preparations/simulation_summary_inference_tabset.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coursekata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../preparations/theoretical_summary_inference_tabset.html" class="sidebar-item-text sidebar-link">
+  <a href="../preparations/theoretical_summary_inference_tabset.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Coursekata</span></a>
   </div>
 </li>
@@ -4198,16 +4198,20 @@ window.Quarto = {
    
   <ul>
   <li><a href="#how-to-use-this-page" id="toc-how-to-use-this-page" class="nav-link active" data-scroll-target="#how-to-use-this-page">How to use this page</a></li>
+  <li><a href="#theoretical-inference" id="toc-theoretical-inference" class="nav-link" data-scroll-target="#theoretical-inference">Theoretical Inference</a>
+  <ul class="collapse">
+  <li><a href="#big-picture-comparison" id="toc-big-picture-comparison" class="nav-link" data-scroll-target="#big-picture-comparison">Big Picture Comparison</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../preparations/Exam1-Prep.html">Preparations</a></li><li class="breadcrumb-item"><a href="../preparations/simulation_summary_inference_tabset.html">Coursekata</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../preparations/Exam1-Prep.html">Preparations</a></li><li class="breadcrumb-item"><a href="../preparations/theoretical_summary_inference_tabset.html">Coursekata</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Coursekata</h1>
-<p class="subtitle lead">Simulation-Based Inference Summary</p>
+<p class="subtitle lead">Theoretical Inference Summary</p>
 </div>
 
 
@@ -4226,478 +4230,454 @@ window.Quarto = {
 
 <section id="how-to-use-this-page" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-this-page">How to use this page</h2>
-<p>This page summarizes the <strong>simulation steps</strong> for confidence intervals and hypothesis tests in common settings.</p>
+<p>This page summarizes the <strong>assumptions/conditions</strong> for theoretical approach to confidence intervals and hypothesis tests in common settings.</p>
 <p>Two big ideas appear throughout:</p>
 <ul>
-<li>A <strong>confidence interval</strong> uses a <strong>bootstrap distribution</strong> centered near the observed statistic.</li>
-<li>A <strong>hypothesis test</strong> uses a <strong>null distribution</strong> centered at the null value.</li>
+<li>A <strong>confidence interval</strong> are based on <span class="math inline">\(\text{point estimate} \pm ME\)</span> where <span class="math inline">\(ME=m \times SE\)</span>.
+<ul>
+<li><span class="math inline">\(ME\)</span> can be computed directly from the <strong>sampling distribution</strong> of the <span class="math inline">\(\text{point estimate}\)</span>.</li>
+</ul></li>
+<li>A <strong>hypothesis test</strong> uses a <strong>null distribution</strong></li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Tip
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <strong>sampling distribution</strong> of the <span class="math inline">\(\text{point estimate}\)</span> and the <strong>null distribution</strong> of the test statistic are determined based on some <strong>assumptions</strong> or <strong>conditions</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>General pattern
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href>General pattern</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <section id="for-a-confidence-interval" class="level3">
 <h3 class="anchored" data-anchor-id="for-a-confidence-interval">For a <strong>confidence interval</strong>:</h3>
 <ol type="1">
 <li>Compute the observed sample statistic.</li>
-<li>Resample <strong>with replacement</strong> from the sample.</li>
-<li>Recompute the statistic for each bootstrap sample.</li>
-<li>Repeat many times to build a <strong>bootstrap distribution</strong>.</li>
-<li>Use the middle 95% to cmpute the confidence interval directly or via estimating the margin of error.</li>
+<li>Compute the <span class="math inline">\(SE\)</span> from mathematic formulas.</li>
+<li>Find the multiplier <span class="math inline">\(m\)</span> from an appropriate distribution and desired confidence level.</li>
+<li>Calculate <span class="math inline">\(ME = m\times SE\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</li>
+<li>Compute C.I as <span class="math inline">\((\text{point estimate}-ME, \text{point estimate}+ME)\)</span>.</li>
 </ol>
 </section>
 <section id="for-a-hypothesis-test" class="level3">
 <h3 class="anchored" data-anchor-id="for-a-hypothesis-test">For a <strong>hypothesis test</strong>:</h3>
 <ol type="1">
 <li>State the null and alternative hypotheses.</li>
-<li>Compute the observed sample statistic.</li>
-<li>Simulate data <strong>under the null model</strong>.</li>
-<li>Recompute the statistic for each simulated sample.</li>
-<li>Repeat many times to build a <strong>null distribution</strong>.</li>
-<li>Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify rejection region(s).</li>
-<li>Make a decision and state a conclusion in context.</li>
+<li>Compute the observed test statistic<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</li>
+<li>Using the null distribution:
+<ul>
+<li>Determine <strong>Rejection Region</strong>; the extreme test statistic values under a significance level <span class="math inline">\(\alpha\)</span>.</li>
+<li>Compute <span class="math inline">\(p\)</span>-value; the probability of values at least as extreme as the observed test statistic.</li>
+</ul></li>
+<li>Make a decision: Reject the null if
+<ul>
+<li>observed test statistic is in Rejection Region.</li>
+<li><span class="math inline">\(p\)</span>-value is less than <span class="math inline">\(\alpha\)</span>.</li>
+</ul></li>
+<li>Write a conclusion in context.</li>
 </ol>
 </section>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+<section id="theoretical-inference" class="level2">
+<h2 class="anchored" data-anchor-id="theoretical-inference">Theoretical Inference</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href>One Proportion</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href>Two Proportions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false" href>One Mean</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false" href>Two Means</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false" href>Slope</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-6" role="tab" aria-controls="tabset-2-6" aria-selected="false" href>Multiple Means</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-7" role="tab" aria-controls="tabset-2-7" aria-selected="false" href>Test of Independence</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href>One Proportion</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href>Two Proportions</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href>Test of Independence</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href>One Mean</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href>Two Means</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-6" role="tab" aria-controls="tabset-1-6" aria-selected="false" href>ANOVA (Multiple Means)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-7-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-7" role="tab" aria-controls="tabset-1-7" aria-selected="false" href>Simple Linear Regression</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-8-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-8" role="tab" aria-controls="tabset-1-8" aria-selected="false" href>Multiple Regression</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
-<section id="parameter-and-statistic" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic">Parameter and statistic</h3>
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<section id="parameter-and-statistic" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic">Parameter and Statistic</h4>
 <ul>
 <li>Parameter: <span class="math inline">\(p\)</span></li>
-<li>Statistic: <span class="math inline">\(\hat{p}\)</span></li>
+<li>Statistic: <span class="math inline">\(\hat{p}=x/n\)</span>
+<ul>
 <li>Sample size: <span class="math inline">\(n\)</span></li>
-</ul>
-</section>
-<section id="confidence-interval" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval">Confidence interval</h3>
-<ol type="1">
-<li>Record the <em>observed</em> sample proportion <span class="math inline">\(\hat{p}\)</span>.</li>
-<li>Represent the sample of size <span class="math inline">\(n\)</span> as a set of 0s and 1s.</li>
-<li>Generate one bootstrap sample proportion:
-<ul>
-<li>Resample (sample <strong>with replacement</strong>) from the observed sample, using the same sample size <span class="math inline">\(n\)</span>.</li>
-<li>Compute the proportion of 1s in the resample.</li>
-</ul></li>
-<li>Repeat many times to build a <strong>bootstrap distribution</strong> of <span class="math inline">\(\hat{p}\)</span>.</li>
-<li>Use the middle 95% of the simulated proportions, or compute a margin of error <span class="math inline">\(ME\)</span> from the bootstrap distribution.</li>
-<li>Build and interpret the interval as plausible values for the population proportion.</li>
-</ol>
-</section>
-<section id="hypothesis-test" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0: p = p_0\)</span> and the alternative.</li>
-<li>Compute the observed sample proportion <span class="math inline">\(\hat{p}_{obs}\)</span>.</li>
-<li>Simulate a sample proportion <span class="math inline">\(\hat{p}\)</span> using a population where the probability of success is <span class="math inline">\(p_0\)</span>:
-<ul>
-<li>Sample with replacement <span class="math inline">\(n\)</span> times.</li>
-<li>Compute one simulated sample proportion <span class="math inline">\(\hat{p}\)</span>.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of <span class="math inline">\(\hat{p}\)</span>.</li>
-<li>Find the proportion of simulated values at least as extreme as <span class="math inline">\(\hat{p}_{obs}\)</span> relative to <span class="math inline">\(p_0\)</span>, or identify rejection region(s).</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>The confidence interval is centered near the observed <span class="math inline">\(\hat{p}\)</span>.</li>
-<li>The test distribution is centered at the null value <span class="math inline">\(p_0\)</span>.</li>
-<li>Larger sample sizes produce less variability in <span class="math inline">\(\hat{p}\)</span>.</li>
-</ul>
-</div>
-</div>
-</section>
-</div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<section id="parameter-and-statistic-1" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic-1">Parameter and statistic</h3>
-<ul>
-<li>Parameters: <span class="math inline">\(p_1\)</span> and <span class="math inline">\(p_2\)</span> (<span class="math inline">\(p_1 - p_2\)</span>)</li>
-<li>Statistics: <span class="math inline">\(\hat{p}_1\)</span> and <span class="math inline">\(\hat{p}_2\)</span> (<span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>)</li>
-<li>Sample sizes: <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span></li>
-</ul>
-</section>
-<section id="confidence-interval-1" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-1">Confidence interval</h3>
-<ol type="1">
-<li>Compute the observed difference in sample proportions, <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</li>
-<li>Represent each sample as 0s and 1s.</li>
-<li>Generate one bootstrap difference, <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>:
-<ul>
-<li>Resample (sample <strong>with replacement</strong>) within group 1, using size <span class="math inline">\(n_1\)</span>, and compute <span class="math inline">\(\hat{p}_1\)</span>.</li>
-<li>Resample (sample <strong>with replacement</strong>) within group 2, using size <span class="math inline">\(n_2\)</span>, and compute <span class="math inline">\(\hat{p}_2\)</span>.</li>
-<li>Compute <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</li>
-</ul></li>
-<li>Repeat many times to build a <strong>bootstrap distribution</strong> of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</li>
-<li>Use the middle 95% or compute a margin of error.</li>
-<li>Interpret the interval as plausible values for the difference in population proportions.</li>
-</ol>
-</section>
-<section id="hypothesis-test-1" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test-1">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0: p_1 - p_2 = 0\)</span> and the alternative.</li>
-<li>Compute the observed difference, <span class="math inline">\((\hat{p}_1 - \hat{p}_2)_{obs}\)</span>.</li>
-<li>Build the null distribution:
-<ul>
-<li>Assume both groups come from the same population under the null.</li>
-<li>Pool the outcomes, then randomly assign or resample outcomes into two groups of sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>.</li>
-<li>Compute the simulated difference in proportions.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>.</li>
-<li>Find the proportion of simulated differences at least as extreme as the observed difference, or identify rejection region(s).</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>For confidence intervals, resample <strong>within each group</strong>.</li>
-<li>For tests, simulate under the null: shuffle the response and reassign to explanatory; i.e.
-<ul>
-<li>Null: No association; treating the two groups as coming from the same population.</li>
+<li>Number of success: <span class="math inline">\(x\)</span></li>
 </ul></li>
 </ul>
-</div>
-</div>
+</section>
+<section id="hypotheses" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses">Hypotheses</h4>
+<ul>
+<li><span class="math inline">\(H_0: p = p_0\)</span></li>
+<li><span class="math inline">\(H_A: p \ne p_0\)</span> (or one-sided: <span class="math inline">\(H_A: p &lt; p_0\)</span> or <span class="math inline">\(H_A: p &gt; p_0\)</span>)</li>
+</ul>
+</section>
+<section id="test-statistic" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic">Test Statistic</h4>
+<p><span class="math display">\[
+z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+\]</span></p>
+</section>
+<section id="distribution" class="level4">
+<h4 class="anchored" data-anchor-id="distribution">Distribution</h4>
+<ul>
+<li>Standard Normal (<span class="math inline">\(z\)</span>)</li>
+</ul>
+</section>
+<section id="confidence-interval" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval">Confidence Interval</h4>
+<p><span class="math display">\[
+\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+\]</span></p>
+</section>
+<section id="conditions" class="level4">
+<h4 class="anchored" data-anchor-id="conditions">Conditions</h4>
+<ul>
+<li><span class="math inline">\(np_0 \ge 10\)</span>, <span class="math inline">\(n(1-p_0) \ge 10\)</span>
+<ul>
+<li>Expected number of successes and failures are 10 or more.</li>
+</ul></li>
+</ul>
 </section>
 </div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<section id="parameter-and-statistic-2" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic-2">Parameter and statistic</h3>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<section id="parameter-and-statistic-1" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-1">Parameter and Statistic</h4>
+<ul>
+<li>Parameters: <span class="math inline">\(p_1, p_2\)</span></li>
+<li>Statistic: <span class="math inline">\(\hat{p}_1 - \hat{p}_2\)</span>
+<ul>
+<li>Sample size: <span class="math inline">\(n_1, n_2\)</span></li>
+<li>Number of success: <span class="math inline">\(x_1, x_2\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="hypotheses-1" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-1">Hypotheses</h4>
+<ul>
+<li><span class="math inline">\(H_0: p_1 = p_2\)</span></li>
+<li><span class="math inline">\(H_A: p_1 \ne p_2\)</span></li>
+</ul>
+</section>
+<section id="test-statistic-1" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-1">Test Statistic</h4>
+<p><span class="math display">\[
+z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(\frac{1}{n_1} + \frac{1}{n_2})}}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\hat{p}\)</span> = pooled proportion <span class="math inline">\((x_1+x_2)/(n_1+n_2)\)</span></li>
+</ul>
+</section>
+<section id="distribution-1" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-1">Distribution</h4>
+<ul>
+<li><span class="math inline">\(z\)</span></li>
+</ul>
+</section>
+<section id="confidence-interval-1" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval-1">Confidence Interval</h4>
+<p><span class="math display">\[
+(\hat{p}_1 - \hat{p}_2) \pm z^* \cdot SE
+\]</span></p>
+</section>
+<section id="conditions-1" class="level4">
+<h4 class="anchored" data-anchor-id="conditions-1">Conditions</h4>
+<ul>
+<li>Expected counts ≥ 5</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<section id="parameter-and-statistic-2" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-2">Parameter and Statistic</h4>
+<ul>
+<li>Parameters: <span class="math inline">\(p_{1|g}, p_{2|j}, ..., p_{r|j}\)</span>, for groups <span class="math inline">\(j=1, 2, ..., c\)</span></li>
+<li>Statistics:
+<ul>
+<li>Observed counts (<span class="math inline">\(O\)</span>): <span class="math inline">\(n_{ij}, i=1,2,...,r; j=1,2,...,c\)</span></li>
+<li>Expected counts (<span class="math inline">\(E\)</span>): <span class="math inline">\(e_{ij}=\frac{n_{i+}n_{+j}}{n_{++}}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="test-statistic-2" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-2">Test Statistic</h4>
+<p><span class="math display">\[\chi^2=\sum \frac{(O - E)^2}{E}\]</span></p>
+</section>
+<section id="distribution-2" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-2">Distribution</h4>
+<ul>
+<li><span class="math inline">\(\chi^2\)</span> with <span class="math inline">\(df = (r-1)(c-1)\)</span></li>
+</ul>
+</section>
+<section id="conditions-2" class="level4">
+<h4 class="anchored" data-anchor-id="conditions-2">Conditions</h4>
+<ul>
+<li>Expected counts (<span class="math inline">\(e_{ij}\)</span>) ≥ 5</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<section id="parameter-and-statistic-3" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-3">Parameter and Statistic</h4>
 <ul>
 <li>Parameter: <span class="math inline">\(\mu\)</span></li>
-<li>Statistic: <span class="math inline">\(\bar{x}\)</span></li>
+<li>Statistic: <span class="math inline">\(\bar{x}\)</span>
+<ul>
 <li>Sample size: <span class="math inline">\(n\)</span></li>
-</ul>
-</section>
-<section id="confidence-interval-2" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-2">Confidence interval</h3>
-<ol type="1">
-<li>Record the sample mean <span class="math inline">\(\bar{x}\)</span>.</li>
-<li>Generate one bootstrap sample mean:
-<ul>
-<li>Resample <strong>with replacement</strong> from the sample, using the same size <span class="math inline">\(n\)</span>.</li>
-<li>Compute the sample mean.</li>
-</ul></li>
-<li>Repeat many times to build a <strong>bootstrap distribution</strong> of <span class="math inline">\(\bar{x}\)</span>.</li>
-<li>Use the middle 95% or compute a margin of error.</li>
-<li>Interpret the interval as plausible values for the population mean.</li>
-</ol>
-</section>
-<section id="hypothesis-test-2" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test-2">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0: \mu = \mu_0\)</span> and the alternative.</li>
-<li>Compute the observed mean <span class="math inline">\(\bar{x}_{obs}\)</span>.</li>
-<li>Build the null distribution:
-<ul>
-<li>Shift the sample so its mean equals <span class="math inline">\(\mu_0\)</span>, or simulate from a model centered at <span class="math inline">\(\mu_0\)</span>.</li>
-<li>Draw a sample of size <span class="math inline">\(n\)</span>.</li>
-<li>Compute the simulated mean.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of <span class="math inline">\(\bar{x}\)</span>.</li>
-<li>Find the proportion of simulated means at least as extreme as <span class="math inline">\(\bar{x}_{obs}\)</span> relative to <span class="math inline">\(\mu_0\)</span>, or identify rejection region(s).</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>For a one-mean test, the null model must be centered at <span class="math inline">\(\mu_0\)</span>.</li>
-<li>The standard error gets smaller as <span class="math inline">\(n\)</span> increases.</li>
-</ul>
-</div>
-</div>
-</section>
-</div>
-<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
-<section id="parameter-and-statistic-3" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic-3">Parameter and statistic</h3>
-<ul>
-<li>Parameters: <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span></li>
-<li>Statistic: <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span></li>
-<li>Sample sizes: <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span></li>
-</ul>
-</section>
-<section id="confidence-interval-3" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-3">Confidence interval</h3>
-<ol type="1">
-<li>Compute the observed difference in sample means, <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>.</li>
-<li>Generate one bootstrap difference:
-<ul>
-<li>Resample <strong>with replacement</strong> within group 1 and compute <span class="math inline">\(\bar{x}_1\)</span>.</li>
-<li>Resample <strong>with replacement</strong> within group 2 and compute <span class="math inline">\(\bar{x}_2\)</span>.</li>
-<li>Compute <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>.</li>
-</ul></li>
-<li>Repeat many times to build a <strong>bootstrap distribution</strong> of <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>.</li>
-<li>Use the middle 95% or compute a margin of error.</li>
-<li>Interpret the interval as plausible values for the difference in population means.</li>
-</ol>
-</section>
-<section id="hypothesis-test-3" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test-3">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> and the alternative.</li>
-<li>Compute the observed difference, <span class="math inline">\((\bar{x}_1 - \bar{x}_2)_{obs}\)</span>.</li>
-<li>Build the null distribution:
-<ul>
-<li>Assume there is no group effect under the null.</li>
-<li>Pool the observed values and randomly assign them into two groups of sizes <span class="math inline">\(n_1\)</span> and <span class="math inline">\(n_2\)</span>, or shuffle the group labels.</li>
-<li>Compute the simulated difference in means.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>.</li>
-<li>Find the proportion of simulated differences at least as extreme as the observed difference, or identify rejection region(s).</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>For confidence intervals, resample <strong>within groups</strong>.</li>
-<li>For tests, shuffle or reassign <strong>group labels</strong> under the null.
-<ul>
-<li>Null: No association; observations are from the same population.</li>
+<li>Sample mean: <span class="math inline">\(\bar x\)</span></li>
+<li>Sample std. dev.: <span class="math inline">\(s\)</span></li>
 </ul></li>
 </ul>
-</div>
-</div>
+</section>
+<section id="hypotheses-2" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-2">Hypotheses</h4>
+<ul>
+<li><span class="math inline">\(H_0: \mu = \mu_0\)</span></li>
+<li><span class="math inline">\(H_A: \mu \ne \mu_0\)</span></li>
+</ul>
+</section>
+<section id="test-statistic-3" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-3">Test Statistic</h4>
+<p><span class="math display">\[
+t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
+\]</span></p>
+</section>
+<section id="distribution-3" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-3">Distribution</h4>
+<ul>
+<li><span class="math inline">\(t\)</span> with <span class="math inline">\(df = n - 1\)</span></li>
+</ul>
+</section>
+<section id="confidence-interval-2" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval-2">Confidence Interval</h4>
+<p><span class="math display">\[
+\bar{x} \pm t^* \frac{s}{\sqrt{n}}
+\]</span></p>
+</section>
+<section id="conditions-3" class="level4">
+<h4 class="anchored" data-anchor-id="conditions-3">Conditions</h4>
+<ul>
+<li>Approximately normal data OR large sample</li>
+</ul>
 </section>
 </div>
-<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
-<section id="parameter-and-statistic-4" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic-4">Parameter and statistic</h3>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<section id="parameter-and-statistic-4" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-4">Parameter and Statistic</h4>
+<ul>
+<li>Parameters: <span class="math inline">\(\mu_1, \mu_2\)</span></li>
+<li>Statistic: <span class="math inline">\(\bar{x}_1 - \bar{x}_2\)</span>
+<ul>
+<li>Sample size: <span class="math inline">\(n_1, n_2\)</span></li>
+<li>Sample mean: <span class="math inline">\(\bar x_1, \bar x_2\)</span></li>
+<li>Sample std. dev.: <span class="math inline">\(s_1, s_2\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="hypotheses-3" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-3">Hypotheses</h4>
+<ul>
+<li><span class="math inline">\(H_0: \mu_1 = \mu_2\)</span></li>
+<li><span class="math inline">\(H_A: \mu_1 \ne \mu_2\)</span></li>
+</ul>
+</section>
+<section id="test-statistic-4" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-4">Test Statistic</h4>
+<p><span class="math display">\[
+t = \frac{\bar{x}_1 - \bar{x}_2}{SE}
+\]</span></p>
+<section id="assuming-unequal-variance" class="level5">
+<h5 class="anchored" data-anchor-id="assuming-unequal-variance">Assuming Unequal Variance</h5>
+<p><span class="math inline">\(SE = \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\)</span></p>
+</section>
+<section id="assuming-equal-variance" class="level5">
+<h5 class="anchored" data-anchor-id="assuming-equal-variance">Assuming Equal Variance</h5>
+<p><span class="math inline">\(s_p^2 = \frac{(n_1-1)s_1^2 + (n_2)s_2^2}{n_1+n_2-2}\)</span> <span class="math inline">\(SE = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}\)</span></p>
+</section>
+</section>
+<section id="distribution-4" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-4">Distribution</h4>
+<ul>
+<li><span class="math inline">\(t~T(df)\)</span></li>
+<li>Equal variance: <span class="math inline">\(df=n_1+n_2-2\)</span></li>
+<li>Unequal variance: approximate <span class="math inline">\(df\)</span> using Welch method (software) or <span class="math inline">\(min(n_1-1, n_2-1)\)</span></li>
+</ul>
+</section>
+<section id="confidence-interval-3" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval-3">Confidence Interval</h4>
+<p><span class="math display">\[
+(\bar{x}_1 - \bar{x}_2) \pm t^* \cdot SE
+\]</span></p>
+</section>
+</div>
+<div id="tabset-1-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-6-tab">
+<section id="parameter-and-statistic-5" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-5">Parameter and Statistic</h4>
+<ul>
+<li>Parameters: <span class="math inline">\(\mu_1, \mu_2, \dots\)</span></li>
+<li>Statistic: <span class="math inline">\(F\)</span></li>
+</ul>
+</section>
+<section id="hypotheses-4" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-4">Hypotheses</h4>
+<ul>
+<li><span class="math inline">\(H_0\)</span>: all means equal<br>
+</li>
+<li><span class="math inline">\(H_A\)</span>: at least one differs</li>
+</ul>
+</section>
+<section id="test-statistic-5" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-5">Test Statistic</h4>
+<p><span class="math display">\[
+F = \frac{\text{MSM}}{\text{MSE}}
+\]</span> - MSM = Between-group variability - MSE = Within-group variability</p>
+</section>
+<section id="distribution-5" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-5">Distribution</h4>
+<ul>
+<li><span class="math inline">\(F\)</span> with <span class="math inline">\((df_1, df_2)\)</span></li>
+</ul>
+</section>
+<section id="interpretation" class="level4">
+<h4 class="anchored" data-anchor-id="interpretation">Interpretation</h4>
+<ul>
+<li>Large <span class="math inline">\(F\)</span> → groups differ (at least one mean is different)</li>
+</ul>
+</section>
+</div>
+<div id="tabset-1-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-7-tab">
+<section id="parameter-and-statistic-6" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-6">Parameter and Statistic</h4>
 <ul>
 <li>Parameter: <span class="math inline">\(\beta_1\)</span></li>
 <li>Statistic: <span class="math inline">\(b_1\)</span></li>
-<li>Sample size: <span class="math inline">\(n\)</span></li>
 </ul>
 </section>
-<section id="confidence-interval-4" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-4">Confidence interval</h3>
-<ol type="1">
-<li>Fit the regression line and record the sample slope <span class="math inline">\(b_1\)</span>.</li>
-<li>Generate one bootstrap slope:
+<section id="hypotheses-5" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-5">Hypotheses</h4>
 <ul>
-<li>Resample <strong>cases with replacement</strong> from the original data.</li>
-<li>Refit the regression line.</li>
-<li>Record the slope.</li>
-</ul></li>
-<li>Repeat many times to build a <strong>bootstrap distribution</strong> of <span class="math inline">\(b_1\)</span>.</li>
-<li>Use the middle 95% or compute a margin of error.</li>
-<li>Interpret the interval as plausible values for the population slope <span class="math inline">\(\beta_1\)</span>.</li>
-</ol>
-</section>
-<section id="hypothesis-test-4" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test-4">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0: \beta_1 = 0\)</span> and the alternative.</li>
-<li>Fit the regression and record the observed slope <span class="math inline">\(b_{1,obs}\)</span>.</li>
-<li>Build the null distribution:
-<ul>
-<li>Keep the explanatory variable values fixed.</li>
-<li>Shuffle the response values, or shuffle the pairing between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, to break any linear relationship.</li>
-<li>Refit the regression and record the simulated slope.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of <span class="math inline">\(b_1\)</span>.</li>
-<li>Find the proportion of simulated slopes at least as extreme as the observed slope, or identify rejection region(s).</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>For confidence intervals, resample <strong>whole cases</strong>.</li>
-<li>For tests, shuffle the response and pair back to predictor values.
-<ul>
-<li>Null: No association between <span class="math inline">\(y\)</span> and <span class="math inline">\(x\)</span>.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-</div>
-<div id="tabset-2-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-6-tab">
-<section id="parameter-and-statistic-5" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic-5">Parameter and statistic</h3>
-<ul>
-<li>Parameters: <span class="math inline">\(\mu_1, \mu_2, \dots, \mu_k\)</span></li>
-<li>Statistic: usually <span class="math inline">\(F\)</span>, or another measure of between-group vs within-group variation</li>
-<li>Sample sizes: <span class="math inline">\(n_1, n_2, \dots, n_k\)</span></li>
+<li><span class="math inline">\(H_0: \beta_1 = 0\)</span></li>
+<li><span class="math inline">\(H_A: \beta_1 \ne 0\)</span></li>
 </ul>
 </section>
-<section id="confidence-interval-5" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-5">Confidence interval</h3>
-<p>A single overall confidence interval is <strong>not the focus</strong> for multiple means.</p>
-<p>Instead, common follow-up goals are:</p>
-<ul>
-<li>confidence intervals for <strong>specific pairwise differences</strong></li>
-<li>confidence intervals for <strong>group means</strong></li>
-</ul>
-<p>If needed, construct pairwise bootstrap intervals by resampling within each group and computing the difference in means for the chosen pair.</p>
+<section id="test-statistic-6" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-6">Test Statistic</h4>
+<p><span class="math display">\[
+t = \frac{b_1}{SE(b_1)}
+\]</span></p>
 </section>
-<section id="hypothesis-test-5" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test-5">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0: \mu_1 = \mu_2 = \cdots = \mu_k\)</span> and the alternative that at least one mean differs.</li>
-<li>Compute the observed test statistic, often <span class="math inline">\(F\)</span>.</li>
-<li>Build the null distribution:
+<section id="distribution-6" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-6">Distribution</h4>
 <ul>
-<li>Assume all groups come from the same population under the null.</li>
-<li>Pool the observed values.</li>
-<li>Randomly assign the values into groups of the original sizes.</li>
-<li>Compute the test statistic for the simulated grouping.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of the statistic.</li>
-<li>Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify a rejection region.</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>The overall test asks whether there is evidence that <strong>any</strong> group mean differs.
-<ul>
-<li>A single test that determines whether a model is significant prevents the inflation of Type I Error.</li>
-</ul></li>
-<li>If the overall test is significant, follow-up comparisons are usually needed.
-<ul>
-<li>Adjusted-<span class="math inline">\(\alpha\)</span> is used for the <em>post-hoc</em> pairwise comparisons.</li>
-</ul></li>
-</ul>
-</div>
-</div>
-</section>
-</div>
-<div id="tabset-2-7" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-7-tab">
-<section id="parameter-and-statistic-6" class="level3">
-<h3 class="anchored" data-anchor-id="parameter-and-statistic-6">Parameter and statistic</h3>
-<ul>
-<li>Parameters: population joint distribution or population cell proportions</li>
-<li>Statistic: often <span class="math inline">\(\chi^2\)</span></li>
-<li>Sample size: <span class="math inline">\(n\)</span></li>
+<li><span class="math inline">\(t\)</span> with <span class="math inline">\(df = n - 2\)</span></li>
 </ul>
 </section>
-<section id="confidence-interval-6" class="level3">
-<h3 class="anchored" data-anchor-id="confidence-interval-6">Confidence interval</h3>
-<p>A single confidence interval is <strong>not usually the focus</strong> for a test of independence.</p>
-<p>Instead, we usually ask whether two categorical variables are associated.</p>
-<p>Useful follow-up summaries may include:</p>
+<section id="confidence-interval-4" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval-4">Confidence Interval</h4>
+<p><span class="math display">\[
+b_1 \pm t^* SE(b_1)
+\]</span></p>
+</section>
+</div>
+<div id="tabset-1-8" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-8-tab">
+<section id="parameter-and-statistic-7" class="level4">
+<h4 class="anchored" data-anchor-id="parameter-and-statistic-7">Parameter and Statistic</h4>
 <ul>
-<li>confidence intervals for selected <strong>conditional proportions</strong></li>
-<li>confidence intervals for <strong>differences in proportions</strong> within specific categories</li>
+<li>Parameters: <span class="math inline">\(\beta_j\)</span>, <span class="math inline">\(j=0, 1, ..., p\)</span> (<span class="math inline">\(p\)</span> is the number of predictors)</li>
+<li>Statistics: <span class="math inline">\(b_j\)</span></li>
 </ul>
 </section>
-<section id="hypothesis-test-6" class="level3">
-<h3 class="anchored" data-anchor-id="hypothesis-test-6">Hypothesis test</h3>
-<ol type="1">
-<li>State <span class="math inline">\(H_0\)</span>: the two categorical variables are independent, and the alternative that they are associated.</li>
-<li>Compute the observed test statistic, often <span class="math inline">\(\chi^2\)</span>.</li>
-<li>Build the null distribution:
+<section id="hypotheses-each-predictor" class="level4">
+<h4 class="anchored" data-anchor-id="hypotheses-each-predictor">Hypotheses (each predictor)</h4>
 <ul>
-<li>Keep one variable fixed.</li>
-<li>Shuffle the labels of the other variable to break any association while preserving the marginal structure.</li>
-<li>Recompute the test statistic for the shuffled data.</li>
-</ul></li>
-<li>Repeat many times to build the <strong>null distribution</strong> of the statistic.</li>
-<li>Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify a rejection region.</li>
-<li>Make a decision and state your conclusion in context.</li>
-</ol>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ul>
-<li>A significant result suggests an association, not causation.
-<ul>
-<li>A single test that determines whether a model is significant prevents the inflation of Type I Error.</li>
-</ul></li>
-<li>If the overall test is significant, follow-up comparisons are usually needed.
-<ul>
-<li>Adjusted-<span class="math inline">\(\alpha\)</span> is used for the <em>post-hoc</em> pairwise comparisons.</li>
-</ul></li>
-<li>After the test, examine conditional proportions or residuals to see where the association appears.</li>
+<li><span class="math inline">\(H_0: \beta_j = 0\)</span></li>
+<li><span class="math inline">\(H_A: \beta_j \ne 0\)</span></li>
 </ul>
-</div>
-</div>
+</section>
+<section id="test-statistic-7" class="level4">
+<h4 class="anchored" data-anchor-id="test-statistic-7">Test Statistic</h4>
+<p><span class="math display">\[
+t = \frac{b_j}{SE(b_j)}
+\]</span></p>
+</section>
+<section id="distribution-7" class="level4">
+<h4 class="anchored" data-anchor-id="distribution-7">Distribution</h4>
+<ul>
+<li><span class="math inline">\(t\)</span> with <span class="math inline">\(df = n - p - 1\)</span></li>
+</ul>
+</section>
+<section id="confidence-interval-5" class="level4">
+<h4 class="anchored" data-anchor-id="confidence-interval-5">Confidence Interval</h4>
+<p><span class="math display">\[
+b_j \pm t^* SE(b_j)
+\]</span></p>
+</section>
+<section id="key-interpretation" class="level4">
+<h4 class="anchored" data-anchor-id="key-interpretation">Key Interpretation</h4>
+<p>👉 Effect of <span class="math inline">\(X_j\)</span> <strong>holding all other predictors constant</strong></p>
 </section>
 </div>
 </div>
 </div>
+<section id="big-picture-comparison" class="level3">
+<h3 class="anchored" data-anchor-id="big-picture-comparison">Big Picture Comparison</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Scenario</th>
+<th>Statistic</th>
+<th>Distribution</th>
+<th>Key Idea</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Proportion</td>
+<td><span class="math inline">\(\hat{p}\)</span></td>
+<td>Normal</td>
+<td>Count successes</td>
+</tr>
+<tr class="even">
+<td>Means</td>
+<td><span class="math inline">\(\bar{x}\)</span></td>
+<td>t</td>
+<td>Estimate average</td>
+</tr>
+<tr class="odd">
+<td>Groups</td>
+<td><span class="math inline">\(F\)</span></td>
+<td>F</td>
+<td>Compare variability</td>
+</tr>
+<tr class="even">
+<td>Regression</td>
+<td><span class="math inline">\(b\)</span></td>
+<td>t</td>
+<td>Slope = relationship</td>
+</tr>
+</tbody>
+</table>
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><span class="math inline">\(ME\)</span> could directly be calculated from the sampling distribution of a <span class="math inline">\(\text{point estimate}\)</span>, as well.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The sample statistic could be the test statstic if the a fully known null distribution is used<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
