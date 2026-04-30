@@ -62,3 +62,4 @@ _extensions
 *.tex
 *.docx
 !exam2_practice.html
+.positai
