@@ -1,0 +1,151 @@
+---
+title: "StudentSurvey Dataset"
+subtitle: "R Sandbox"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 14"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch14-brief.html
+---
+
+## Overview
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/StudentSurvey.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(StudentSurvey))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+R Sandbox: 
+:::{.nonincremental}
+- Loaded Data:
+  - `StudentSurvey` is loaded in this WebR
+- Loaded Libraries:
+  - mosaic
+  - ggformula
+  - supernova
+:::
+
+# Sandbox pages
+To accomodate coding
+
+## Page 1
+```{webr}
+str(StudentSurvey)
+```
+
+## Page 2
+```{webr}
+# str(StudentSurvey)
+```
+
+## Page 3
+```{webr}
+# str(StudentSurvey)
+```
+
+
+## Page 4
+```{webr}
+# str(StudentSurvey)
+```
+
+
+## Page 5
+```{webr}
+# str(StudentSurvey)
+```
+
+
+## Page 6
+```{webr}
+# str(StudentSurvey)
+```
+
+
+## Page 7
+```{webr}
+# str(StudentSurvey)
+```
+
+
+## Page 8
+```{webr}
+# str(StudentSurvey)
+```
+
+## Page 9
+```{webr}
+# str(StudentSurvey)
+```
+
+## Page 10
+```{webr}
+# str(StudentSurvey)
+```

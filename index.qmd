@@ -40,4 +40,8 @@ Welcome! Choose a deck:
 
 - [Summary of Simulation Inference](preparations/simulation_summary_inference_tabset.html)
 - [Summary of Theoretical Inference](preparations/theoretical_summary_inference_tabset.html)
+
+\
+
+- [Student Survey Sandbox](presentations/StudentSurvey-Sandbox.qmd)
 :::

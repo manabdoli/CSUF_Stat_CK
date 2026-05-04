@@ -1,0 +1,131 @@
+---
+title: "Math 338 – Mini Project"
+author: "Mansour Abdoli, PhD"
+format: docx
+fontsize: 12pt
+---
+
+# Mini Project: Investigating a Relationship
+
+## Overview
+
+In this project, you will investigate whether **one variable helps explain another** using a linear model.
+
+You will be assigned a dataset and a research question.
+
+Your goal is to determine:
+
+> Is there evidence of an association between X and Y?
+
+---
+
+## Your Research Question (Example)
+Does time spent preparing for class predict GPA?
+
+---
+
+## Deliverable
+
+### Written Report
+- 1–2 pages
+- Include graphs
+- Clear explanations in sentences
+
+### Short Video
+- 3–5 minutes
+- Show your graph + results
+- Explain your findings clearly
+
+---
+
+## What You Must Include
+
+### 1. Research Question & Variables
+
+- What is your research question?
+- Identify:
+  - Response variable (Y)
+  - Explanatory variable (X)
+
+---
+
+### 2. Explore the Data
+
+- Create a graph (scatterplot or boxplot)
+- Describe:
+  - Scatterplot:
+    - Direction (positive/negative)
+    - Form (linear/nonlinear)
+    - Strength (weak/moderate/strong)
+    - Any outliers
+  - Boxplot:
+    - Equality of mean
+    - Equality of variance
+    - Any special feature between groups
+    - Any special group
+---
+
+### 3. Fit a Linear Model
+
+Write your model:
+
+$$
+\hat{Y} = b_0 + b_1 X
+$$
+
+- Report the equation
+- Interpret the slope in context
+
+---
+
+### 4. Model Fit (R²)
+
+- Report $R^2$
+- Explain:
+  - What percent of variation is explained?
+
+---
+
+### 5. Hypothesis Test
+
+State:
+
+- $H_0: \beta_1 = 0$  
+- $H_A: \beta_1 \neq 0$
+
+Then:
+
+- Report p-value
+- Use $\alpha = 0.05$
+- Make a decision
+
+---
+
+### 6. Conclusion
+
+Answer in plain language:
+
+> Is there evidence of a relationship?
+
+Explain what it means in context.
+
+---
+
+### 7. Check Assumptions
+
+Briefly comment on:
+
+- Linearity (does a line make sense?)
+- Outliers
+- Residual pattern (random or not?)
+- Equality of variance
+
+---
+
+## Tips for Success
+
+- Use graphs and numbers to support your explanation.
+- Use **complete sentences**, not just numbers
+- Always explain results **in context**
+- Avoid just writing “reject $H_0$” — explain what it means
+

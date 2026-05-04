@@ -1,0 +1,353 @@
+Good instinct—Version B should feel **equivalent in difficulty**, not just “different numbers.” Right now your exams are strong but a bit short for a final, so I’ll **expand Version B** with:
+
+* Same structure (so grading is easy)
+* More depth in multivariate thinking
+* A few additional questions (especially model comparison + interpretation)
+
+---
+
+# 📄 QUARTO FILE — FINAL EXAM (Version B)
+
+```markdown
+---
+title: "Math 338 – Final Exam (Version B)"
+author: "Mansour Abdoli, PhD"
+format: docx
+fontsize: 12pt
+---
+
+## Instructions
+
+You have 70 minutes to complete the exam. The exam is closed book and notes.  
+You may use a calculator, but no computers or other electronic devices.  
+
+Show all your work for full credit. If your answer is based on a definition, write  
+“per definition of …”.
+
+---
+
+## Student Name: ____________________________
+
+---
+
+## Question 1 (2 pts)
+
+Which statement is TRUE about regression models?
+
+a. They prove causation  
+b. They describe relationships between variables  
+c. They eliminate confounding  
+d. They only work for experimental data  
+
+---
+
+## Question 2 (4 pts)
+
+Fill in the blanks:
+
+A) A predicted value is: __________________________  
+
+B) A residual is: __________________________  
+
+C) The null hypothesis in regression typically tests: __________________________  
+
+D) A p-value represents: __________________________  
+
+---
+
+## Employee Productivity Study
+
+A company studies employee productivity (ProductivityScore) using:
+
+- WorkHours (hours/week)  
+- Experience (years)  
+- Training (Yes/No)  
+- EducationLevel (Bachelor/Master/PhD)  
+
+A dataset of 250 employees was collected.
+
+---
+
+## Question 3 (6 pts)
+
+A) Observational or experimental?  
+
+B) Response variable  
+
+C) Two explanatory variables  
+
+D) One lurking variable  
+
+E) One confounding variable  
+
+F) EducationLevel is what type of variable?  
+
+---
+
+## Question 4 (6 pts)
+
+A simple regression model:
+
+$$
+\hat{Productivity} = 30 + 1.5(\text{WorkHours})
+$$
+
+A) Interpret the slope  
+
+B) Interpret the intercept  
+
+C) Predict productivity for 40 hours/week  
+
+---
+
+## Question 5 (8 pts)
+
+A multiple regression model:
+
+$$
+\hat{Productivity} = 10 + 1.1(\text{WorkHours}) + 0.8(\text{Experience}) + 5(\text{Training})
+$$
+
+A) Interpret WorkHours coefficient  
+
+B) Interpret Experience coefficient  
+
+C) Interpret Training coefficient  
+
+D) Why is the WorkHours coefficient smaller than in Question 4?  
+
+---
+
+## Question 6 (4 pts)
+
+The model has p-value = 0.012.
+
+A) Decision at α = 0.05  
+
+B) Write a conclusion in context  
+
+---
+
+## Question 7 (4 pts)
+
+Two models:
+
+- Model A: $R^2 = 0.28$  
+- Model B: $R^2 = 0.51$  
+
+A) Which model is better?  
+
+B) What does the increase in $R^2$ mean?  
+
+---
+
+## Question 8 (4 pts)
+
+Explain how Experience could act as a confounding variable between WorkHours and Productivity.
+
+---
+
+## Question 9 (4 pts)
+
+Use the model from Question 5.
+
+Predict productivity for:
+
+- WorkHours = 40  
+- Experience = 10  
+- Training = Yes  
+
+---
+
+## Question 10 (4 pts)
+
+Explain why adding more variables to a model can sometimes be misleading.
+
+---
+
+## Question 11 (4 pts)
+
+A researcher tests whether WorkHours is related to Productivity.
+
+The p-value for WorkHours is 0.20.
+
+A) Is WorkHours statistically significant?  
+
+B) What does this mean in context?  
+
+---
+
+## Question 12 (6 pts)
+
+A regression output is shown:
+
+| Predictor   | Estimate |
+|------------|---------|
+| Intercept  | 12      |
+| WorkHours  | 1.2     |
+| Experience | 0.6     |
+| Training   | 4       |
+
+A) Write the regression equation  
+
+B) Interpret the coefficient of Experience  
+
+C) Which variable has the strongest effect? Explain  
+
+---
+
+## Question 13 (4 pts)
+
+Explain the difference between:
+
+- Simple regression  
+- Multiple regression  
+
+---
+
+## Question 14 (4 pts)
+
+Why does controlling for variables help reduce bias in a model?
+
+---
+
+```
+
+---
+
+# ✅ VERSION B — SOLUTION KEY + RUBRIC
+
+---
+
+## Question 1 (2 pts)
+
+b (2 pts)
+
+---
+
+## Question 2 (4 pts)
+
+* Predicted value: model’s estimate (1)
+* Residual: observed − predicted (1)
+* Null: slope = 0 (1)
+* p-value: probability under (H_0) (1)
+
+---
+
+## Question 3 (6 pts)
+
+* Observational (1)
+* ProductivityScore (1)
+* Any two predictors (2)
+* Lurking (1)
+* Confounder (1)
+* Categorical (1)
+
+---
+
+## Question 4 (6 pts)
+
+\hat{Productivity} = 30 + 1.5(WorkHours)
+
+* Slope: +1.5 per hour (2)
+* Intercept: when 0 hours (2)
+* Prediction:
+  (30 + 1.5(40) = 90) (2)
+
+---
+
+## Question 5 (8 pts)
+
+* WorkHours: holding others constant (2)
+* Experience: +0.8 per year (2)
+* Training: +5 if trained (2)
+* Explanation: confounding/control reduces bias (2)
+
+---
+
+## Question 6 (4 pts)
+
+* Reject (H_0) (2)
+* Significant relationship (2)
+
+---
+
+## Question 7 (4 pts)
+
+* Model B better (2)
+* Explains more variability (2)
+
+---
+
+## Question 8 (4 pts)
+
+* Experience affects productivity (1)
+* Experience affects hours worked (1)
+* Bias explanation (2)
+
+---
+
+## Question 9 (4 pts)
+
+[
+10 + 1.1(40) + 0.8(10) + 5(1)
+]
+
+= 10 + 44 + 8 + 5 = **67**
+
+* Setup (2)
+* Answer (2)
+
+---
+
+## Question 10 (4 pts)
+
+* Overfitting / noise (2)
+* Harder interpretation / irrelevant variables (2)
+
+---
+
+## Question 11 (4 pts)
+
+* Not significant (2)
+* No evidence of relationship (2)
+
+---
+
+## Question 12 (6 pts)
+
+* Equation (2)
+* Interpretation (2)
+* Strongest = largest meaningful coefficient (2)
+
+---
+
+## Question 13 (4 pts)
+
+* Simple: 1 predictor (2)
+* Multiple: 2+ predictors (2)
+
+---
+
+## Question 14 (4 pts)
+
+* Controls confounding (2)
+* Gives more accurate estimates (2)
+
+---
+
+# 🔥 Why this Version B works
+
+* Same **difficulty level**, not just reworded
+* Adds:
+
+  * More inference
+  * More model comparison
+  * More interpretation
+* Still consistent with your prior exams  
+
+---
+
+## Next Step
+
+When you're ready, send your sample project—I’ll build you a **CourseKata-style mini-project + rubric** that fits perfectly with this exam.

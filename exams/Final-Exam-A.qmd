@@ -1,0 +1,269 @@
+Great—this is exactly the right move for consistency and reuse. Below is a **clean Quarto exam file** (student version) followed by a **solution key + grading rubric**. It matches your style, CourseKata approach, and your previous exams.
+
+---
+
+# 📄 QUARTO FILE — FINAL EXAM (Student Version)
+
+```markdown
+---
+title: "Math 338 – Final Exam"
+author: "Mansour Abdoli, PhD"
+format: docx
+fontsize: 12pt
+---
+
+## Instructions
+
+You have 70 minutes to complete the exam. The exam is closed book and notes.  
+You may use a calculator, but no computers or other electronic devices.  
+
+Show all your work for full credit. If your answer is based on a definition, write  
+“per definition of …”.
+
+---
+
+## Student Name: ____________________________
+
+---
+
+## Question 1 (1 pt)
+
+Which of the following is **not** something a regression model can determine?
+
+a. Direction of relationship  
+b. Strength of relationship  
+c. Causation  
+d. Form of relationship  
+
+---
+
+## Question 2 (3 pts)
+
+Fill in the blanks:
+
+A) A residual is: ________________________________  
+
+B) A null distribution is used to: ________________________________  
+
+C) A confounding variable is: ________________________________  
+
+---
+
+## Student Performance Study
+
+A university is studying student performance using the following variables:
+
+- FinalExamScore (score out of 100)  
+- StudyHours (hours per week)  
+- Attendance (percentage)  
+- PriorGPA  
+- Tutoring (Yes/No)  
+
+A dataset of 300 students was collected.
+
+---
+
+## Question 3 (6 pts)
+
+A) This is an __________ (observational / experimental) study.  
+
+B) The response variable is: __________________  
+
+C) List two explanatory variables: __________________, __________________  
+
+D) Give one potential lurking variable: __________________  
+
+E) Give one potential confounding variable: __________________  
+
+F) Tutoring is a __________________ (categorical / numerical) variable.  
+
+---
+
+## Question 4 (6 pts)
+
+A simple regression model is:
+
+$$
+\hat{Score} = 48 + 2.8(\text{StudyHours})
+$$
+
+A) Interpret the slope.  
+
+B) Interpret the intercept.  
+
+C) Predict the score for a student who studies 12 hours per week.  
+
+---
+
+## Question 5 (8 pts)
+
+A multiple regression model is:
+
+$$
+\hat{Score} = 15 + 2.1(\text{StudyHours}) + 0.5(\text{Attendance}) + 6(\text{Tutoring})
+$$
+
+A) Interpret the coefficient of StudyHours.  
+
+B) Interpret the coefficient of Attendance.  
+
+C) Interpret the coefficient of Tutoring.  
+
+D) Compare the StudyHours coefficient here to Question 4. What does the change suggest?  
+
+---
+
+## Question 6 (4 pts)
+
+The p-value for the overall model is 0.0004.
+
+A) At α = 0.05, what is your decision?  
+
+B) Write a conclusion in context.  
+
+---
+
+## Question 7 (3 pts)
+
+The model has $R^2 = 0.62$.
+
+Interpret this value in context.
+
+---
+
+## Question 8 (4 pts)
+
+Explain how PriorGPA could act as a confounding variable between StudyHours and FinalExamScore.
+
+---
+
+## Question 9 (4 pts)
+
+Use the model from Question 5.
+
+Predict the score for a student with:
+- StudyHours = 10  
+- Attendance = 80  
+- Tutoring = Yes  
+
+---
+
+## Question 10 (4 pts)
+
+Explain why multiple regression provides a more accurate estimate than simple regression.
+
+---
+```
+
+---
+
+# ✅ SOLUTION KEY + GRADING RUBRIC
+
+---
+
+## Question 1 (1 pt)
+
+**Answer:** c
+
+* 1 pt correct
+
+---
+
+## Question 2 (3 pts)
+
+A) observed − predicted (1 pt)
+B) probability of results under (H_0) (1 pt)
+C) variable related to both X and Y (1 pt)
+
+---
+
+## Question 3 (6 pts)
+
+* A) Observational (1)
+* B) FinalExamScore (1)
+* C) Any two: StudyHours, Attendance, PriorGPA, Tutoring (2)
+* D) Example: motivation, sleep, stress (1)
+* E) Example: PriorGPA (1)
+* F) Categorical (1)
+
+---
+
+## Question 4 (6 pts)
+
+### Use model:
+
+\hat{Score} = 48 + 2.8(StudyHours)
+
+* Slope: +2.8 points per additional hour (2 pts)
+* Intercept: predicted score when StudyHours = 0 (2 pts)
+* Prediction:
+  (48 + 2.8(12) = 81.6) (2 pts)
+
+---
+
+## Question 5 (8 pts)
+
+* StudyHours: holding others constant (2 pts)
+* Attendance: per 1% increase adds 0.5 points (2 pts)
+* Tutoring: +6 points compared to no tutoring (2 pts)
+* Comparison: coefficient decreased → confounding/control effect (2 pts)
+
+---
+
+## Question 6 (4 pts)
+
+* Decision: Reject (H_0) (2 pts)
+* Conclusion: model is statistically significant (2 pts)
+
+---
+
+## Question 7 (3 pts)
+
+* 62% of variability explained (3 pts)
+
+---
+
+## Question 8 (4 pts)
+
+Full credit answer includes:
+
+* GPA affects score (1)
+* GPA affects study habits (1)
+* Therefore biases relationship (2)
+
+---
+
+## Question 9 (4 pts)
+
+[
+15 + 2.1(10) + 0.5(80) + 6(1)
+]
+
+= 15 + 21 + 40 + 6 = **82**
+
+* Correct setup (2 pts)
+* Correct answer (2 pts)
+
+---
+
+## Question 10 (4 pts)
+
+Full answer includes:
+
+* Controls for other variables (2 pts)
+* Reduces bias/confounding (2 pts)
+
+---
+
+# 🎯 Final Notes
+
+This version:
+
+* Matches your **Exam 1 + 2 structure**  
+* Aligns tightly with **CourseKata modeling framework**
+* Balances:
+
+  * Conceptual
+  * Interpretation
+  * Light computation
+* Keeps grading **fast and consistent**

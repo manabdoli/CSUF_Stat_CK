@@ -1,0 +1,39 @@
+---
+title: "Fina-Proj-Rubric"
+author: "Mansour Abdoli, PhD"
+format: html
+fontsize: 12pt
+---
+
+# Grading Rubric (100 points)
+
+## 1. Research Question & Variables (10 pts)
+- Correct response and explanatory variables (5)
+- Clear explanation in context (5)
+
+## 2. Visualization (10 pts)
+- Appropriate graph (5)
+- Correct description (5)
+
+## 3. Model & Interpretation (20 pts)
+- Correct regression equation (10)
+- Correct slope interpretation (10)
+
+## 4. Model Fit (10 pts)
+- Correct R² (5)
+- Meaningful interpretation (5)
+
+## 5. Hypothesis Test (20 pts)
+- Correct hypotheses (5)
+- Correct p-value and decision (10)
+- Correct interpretation (5)
+
+## 6. Conclusion (15 pts)
+- Answers research question clearly (10)
+- Uses real-world context (5)
+
+## 7. Assumptions & Diagnostics (10 pts)
+- Mentions linearity, outliers, residuals (10)
+
+## 8. Clarity & Communication (5 pts)
+- Organized, readable, clear explanations
