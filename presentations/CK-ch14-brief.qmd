@@ -1,0 +1,167 @@
+---
+title: "CourseKata Chapter 14"
+subtitle: "Targetted Model Comparison"
+author: "Mansour Abdoli, PhD"
+format:
+  live-revealjs:
+    slide-number: true
+    incremental: true
+    chalkboard: true
+    preview-links: true
+    code-overflow: wrap
+    footer: "CourseKata Ch. 14"
+engine: knitr
+execute:
+  echo: true
+  warning: false
+  message: false
+output-files: CK-ch14-brief.html
+---
+
+## Overview / Goals
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| echo: false
+knitr::opts_chunk$set(echo=FALSE)
+suppressPackageStartupMessages({
+  library(mosaic)
+  library(ggformula)
+  library(supernova)
+})
+def.par <- par(no.readonly = TRUE)
+on.exit(par(def.par))
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+source('./assets/utils.R')
+source('./assets/embedR.R')
+source('./data/embedData.R')
+load(file = "./data/StudentSurvey.rda")
+```
+
+```{r}
+#| echo: false
+#| results: 'asis'
+cat(embedR("./assets/utils.R"))
+cat(embedData(StudentSurvey))
+```
+
+
+```{webr}
+#| echo: false
+#| output: true
+#| warning: false
+#| message: false
+
+library(mosaic)
+library(ggformula)
+library(supernova)
+options(digits = 3)
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+.webr_ready <- TRUE
+set.seed(123)
+```
+
+
+:::{.nonincremental}
+- Review: Model Overall Significance
+  - Simulating $F$ Value
+- New Topic: Variable Significance
+  - Single-Variable $F$ Distribution
+  - Single-Variable $coef$ Distribution
+    - Confidence Interval
+    - Test of Hypothesis
+:::
+
+# Review: Model Overall Significance
+## Using `StudentSurvey`
+```{webr}
+StudentSurvey <- na.omit(StudentSurvey) |> select(Year, Gender, GPA, SAT, HigherSAT)
+str(StudentSurvey)
+```
+
+## A Complex Model
+Let's check significance of $GPA \sim SAT + HigherSAT$
+
+```{webr}
+mdl2 <- lm(GPA ~ SAT + HigherSAT, data=StudentSurvey)
+summary(mdl2)
+```
+
+## Simulating $F$ Value
+```{webr}
+obs_f <- f(mdl2)
+ndo_f <- replicate(100, f(lm(shuffle(GPA) ~ SAT + HigherSAT, data=StudentSurvey)))
+
+gf_histogram(~ ndo_f, bins = 30) |>
+  gf_vline(xintercept = obs_f, color = "red")
+```
+
+# New Topic: Variable Significance
+## Single-Variable $F$ Effect
+Base Model (Without $SAT$):
+```{webr}
+mdl1 <- lm(GPA ~ HigherSAT, data=StudentSurvey)
+StudentSurvey$resid1 <- resid(mdl1)
+gf_point(resid1~ SAT, data = StudentSurvey, bins = 30) |>
+  gf_lm()
+```
+
+## Single-Variable $F$ Distribution
+Simulation:
+```{webr}
+obs_SAT_f <- f(lm(resid1 ~ SAT + HigherSAT, data=StudentSurvey))
+ndo_SAT_f <- replicate(100, f(lm(shuffle(resid1) ~ SAT + HigherSAT, data=StudentSurvey)))
+gf_histogram(~ ndo_SAT_f, bins = 30) |>
+  gf_vline(xintercept = obs_SAT_f, color = "red")
+```
+
+## Single-Variable $\text{coef}$ Distribution
+```{webr}
+obs_SAT_bs <- coef(lm(resid1 ~ SAT + HigherSAT, data=StudentSurvey))[['SAT']]
+ndo_SAT_bs <- replicate(100, coef(lm(shuffle(resid1) ~ SAT + HigherSAT, data=StudentSurvey))[['SAT']])
+
+gf_histogram(~ndo_SAT_bs, bins=30) |>
+  gf_vline(xintercept = obs_SAT_bs, color='red')
+```
+
+## Single-Variable $\text{coef}$ C.I.
+Finding ME:
+```{webr}
+mdi <- quantile(ndo_SAT_bs, probs=c(0.025, 0.975))
+me <- (mdi[2]-mdi[1])/2 # Margin of Error
+cat('ME =', me)
+```
+
+95% Confidence Interval:
+```{webr}
+cat(obs_SAT_bs, ' ± ', me, '\n\n')
+cat('(', obs_SAT_bs-me, ', ', obs_SAT_bs+me, ')\n')
+```
+
+## Single-Variable $\text{coef}$ ToH
+$$p\text{-value}=P(|b_i|>|b_{obs}|)$$
+```{webr}
+p_val = mean(abs(ndo_SAT_bs)>abs(obs_SAT_bs))
+cat('p-Value = ', p_val)
+```
