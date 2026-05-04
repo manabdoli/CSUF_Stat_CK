@@ -4,7 +4,7 @@
     "href": "presentations/StudentSurvey-Sandbox.html#overview",
     "title": "StudentSurvey Dataset",
     "section": "Overview",
-    "text": "Overview\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Sandbox: :::{.nonincremental} - Loaded Data: - StudentSurvey is loaded in this WebR - Loaded Libraries: - mosaic - ggformula - supernova :::",
+    "text": "Overview\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nR Sandbox:\n\nLoaded Data:\n\nStudentSurvey is loaded in this WebR\n\nLoaded Libraries:\n\nmosaic\nggformula\nsupernova",
     "crumbs": [
       "Presentations",
       "StudentSurvey Dataset"
@@ -1467,7 +1467,7 @@
     "href": "presentations/CK-ch12-sec1-8.html#caution",
     "title": "CourseKata Chapter 12",
     "section": "Caution",
-    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.97557 33.72841",
+    "text": "Caution\n\nC.I is for the population mean, not observations.\nC.I is a random variable, the populaiton mean is fixed.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  2.5%  97.5% \n17.075 63.650 \n\n\n    2.5%    97.5% \n26.90852 33.50057",
     "crumbs": [
       "Presentations",
       "CourseKata Chapter 12"
