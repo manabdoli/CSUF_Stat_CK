@@ -1,5 +1,6 @@
 ---
-title: "Simulation-Based Inference Summary"
+title: "Coursekata "
+subtitle: "Simulation-Based Inference Summary"
 format:
   html:
     toc: true
@@ -18,7 +19,10 @@ Two big ideas appear throughout:
 - A **hypothesis test** uses a **null distribution** centered at the null value.
 
 ::: {.callout-tip collapse="true"}
-## General pattern {.tabset}
+
+::: {.panel-tabset}
+
+## General pattern
 
 ### For a **confidence interval**:
 
@@ -37,6 +41,7 @@ Two big ideas appear throughout:
 5. Repeat many times to build a **null distribution**.
 6. Find the proportion of simulated statistics at least as extreme as the observed statistic, or identify rejection region(s).
 7. Make a decision and state a conclusion in context.
+:::
 :::
 
 ::: {.panel-tabset}
@@ -111,7 +116,9 @@ Two big ideas appear throughout:
 
 ::: {.callout-note}
 - For confidence intervals, resample **within each group**.
-- For tests, simulate under the null by treating the two groups as coming from the same population.
+- For tests, simulate under the null: shuffle the response and reassign to explanatory; i.e.
+  - Null: No association; treating the two groups as coming from the same population.
+  
 :::
 
 ## One Mean
@@ -183,6 +190,7 @@ Two big ideas appear throughout:
 ::: {.callout-note}
 - For confidence intervals, resample **within groups**.
 - For tests, shuffle or reassign **group labels** under the null.
+  - Null: No association; observations are from the same population.
 :::
 
 ## Slope
@@ -218,7 +226,8 @@ Two big ideas appear throughout:
 
 ::: {.callout-note}
 - For confidence intervals, resample **whole cases**.
-- For tests, shuffle the response to remove the linear association.
+- For tests, shuffle the response and pair back to predictor values.
+  - Null: No association between $y$ and $x$.
 :::
 
 ## Multiple Means
@@ -231,13 +240,13 @@ Two big ideas appear throughout:
 
 ### Confidence interval
 
-A single overall confidence interval is **not usually the focus** for multiple means.
+A single overall confidence interval is **not the focus** for multiple means.
+
 
 Instead, common follow-up goals are:
 
 - confidence intervals for **specific pairwise differences**
 - confidence intervals for **group means**
-- adjusted intervals after finding an overall difference
 
 If needed, construct pairwise bootstrap intervals by resampling within each group and computing the difference in means for the chosen pair.
 
@@ -256,7 +265,9 @@ If needed, construct pairwise bootstrap intervals by resampling within each grou
 
 ::: {.callout-note}
 - The overall test asks whether there is evidence that **any** group mean differs.
+  - A single test that determines whether a model is significant prevents the inflation of Type I Error.
 - If the overall test is significant, follow-up comparisons are usually needed.
+  - Adjusted-$\alpha$ is used for the *post-hoc* pairwise comparisons.
 :::
 
 ## Test of Independence
@@ -292,6 +303,10 @@ Useful follow-up summaries may include:
 
 ::: {.callout-note}
 - A significant result suggests an association, not causation.
+  - A single test that determines whether a model is significant prevents the inflation of Type I Error.
+- If the overall test is significant, follow-up comparisons are usually needed.
+  - Adjusted-$\alpha$ is used for the *post-hoc* pairwise comparisons.
+
 - After the test, examine conditional proportions or residuals to see where the association appears.
 :::
 

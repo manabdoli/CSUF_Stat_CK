@@ -1,0 +1,285 @@
+---
+title: "Coursekata "
+subtitle: "Theoretical Inference Summary"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    self-contained: true
+---
+
+## How to use this page
+
+This page summarizes the **assumptions/conditions** for theoretical approach to confidence intervals and hypothesis tests in common settings. 
+
+Two big ideas appear throughout:
+
+- A **confidence interval** are based on $\text{point estimate} \pm ME$ where $ME=m \times SE$.
+   - $ME$ can be computed directly from the **sampling distribution** of the $\text{point estimate}$.
+- A **hypothesis test** uses a **null distribution**
+
+:::{.callout-important}
+The **sampling distribution** of the $\text{point estimate}$ and the **null distribution** of the test statistic are determined based on some **assumptions** or **conditions**. 
+:::
+
+::: {.callout-tip collapse="true"}
+## General pattern
+### For a **confidence interval**:
+1. Compute the observed sample statistic.
+2. Compute the $SE$ from mathematic formulas.
+3. Find the multiplier $m$ from an appropriate distribution and desired confidence level.
+4. Calculate $ME = m\times SE$^[$ME$ could directly be calculated from the sampling distribution of a $\text{point estimate}$, as well.].
+5. Compute C.I as $(\text{point estimate}-ME, \text{point estimate}+ME)$.
+
+### For a **hypothesis test**:
+1. State the null and alternative hypotheses.
+2. Compute the observed test statistic^[The sample statistic could be the test statstic if the a fully known null distribution is used].
+3. Using the null distribution:
+   - Determine **Rejection Region**; the extreme test statistic values under a significance level $\alpha$.
+   - Compute $p$-value; the probability of values at least as extreme as the observed test statistic.
+4. Make a decision: Reject the null if
+   - observed test statistic is in Rejection Region.
+   - $p$-value is less than $\alpha$.
+7. Write a conclusion in context.
+
+:::
+
+## Theoretical Inference
+
+::: {.panel-tabset}
+### One Proportion
+#### Parameter and Statistic
+- Parameter: $p$
+- Statistic: $\hat{p}=x/n$
+  - Sample size: $n$
+  - Number of success: $x$
+
+#### Hypotheses
+- $H_0: p = p_0$
+- $H_A: p \ne p_0$ (or one-sided: $H_A: p < p_0$ or $H_A: p > p_0$)
+
+#### Test Statistic
+$$
+z = \frac{\hat{p} - p_0}{\sqrt{\frac{p_0(1-p_0)}{n}}}
+$$
+
+#### Distribution
+- Standard Normal ($z$)
+
+#### Confidence Interval
+$$
+\hat{p} \pm z^* \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
+$$
+
+#### Conditions
+- $np_0 \ge 10$, $n(1-p_0) \ge 10$
+   - Expected number of successes and failures are 10 or more.
+
+### Two Proportions
+
+#### Parameter and Statistic
+- Parameters: $p_1, p_2$
+- Statistic: $\hat{p}_1 - \hat{p}_2$
+  - Sample size: $n_1, n_2$
+  - Number of success: $x_1, x_2$
+
+#### Hypotheses
+- $H_0: p_1 = p_2$
+- $H_A: p_1 \ne p_2$
+
+#### Test Statistic
+$$
+z = \frac{\hat{p}_1 - \hat{p}_2}{\sqrt{\hat{p}(1-\hat{p})(\frac{1}{n_1} + \frac{1}{n_2})}}
+$$
+
+- $\hat{p}$ = pooled proportion $(x_1+x_2)/(n_1+n_2)$
+
+#### Distribution
+- $z$
+
+#### Confidence Interval
+
+$$
+(\hat{p}_1 - \hat{p}_2) \pm z^* \cdot SE
+$$
+
+#### Conditions
+- Expected counts ≥ 5
+
+### Test of Independence
+#### Parameter and Statistic
+- Parameters: $p_{1|g}, p_{2|j}, ..., p_{r|j}$, for groups $j=1, 2, ..., c$
+- Statistics:
+  - Observed counts ($O$): $n_{ij}, i=1,2,...,r; j=1,2,...,c$
+  - Expected counts ($E$): $e_{ij}=\frac{n_{i+}n_{+j}}{n_{++}}$
+
+#### Test Statistic
+$$\chi^2=\sum \frac{(O - E)^2}{E}$$
+
+#### Distribution
+- $\chi^2$ with $df = (r-1)(c-1)$
+
+#### Conditions
+- Expected counts ($e_{ij}$) ≥ 5
+
+### One Mean
+
+#### Parameter and Statistic
+- Parameter: $\mu$
+- Statistic: $\bar{x}$
+   - Sample size: $n$
+   - Sample mean: $\bar x$ 
+   - Sample std. dev.: $s$
+
+#### Hypotheses
+- $H_0: \mu = \mu_0$
+- $H_A: \mu \ne \mu_0$
+
+#### Test Statistic
+
+$$
+t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}
+$$
+
+#### Distribution
+- $t$ with $df = n - 1$
+
+#### Confidence Interval
+
+$$
+\bar{x} \pm t^* \frac{s}{\sqrt{n}}
+$$
+
+#### Conditions
+- Approximately normal data OR large sample
+
+### Two Means
+
+#### Parameter and Statistic
+- Parameters: $\mu_1, \mu_2$
+- Statistic: $\bar{x}_1 - \bar{x}_2$
+   - Sample size: $n_1, n_2$
+   - Sample mean: $\bar x_1, \bar x_2$ 
+   - Sample std. dev.: $s_1, s_2$
+
+
+#### Hypotheses
+- $H_0: \mu_1 = \mu_2$
+- $H_A: \mu_1 \ne \mu_2$
+
+#### Test Statistic
+
+$$
+t = \frac{\bar{x}_1 - \bar{x}_2}{SE}
+$$
+
+##### Assuming Unequal Variance
+$SE = \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}$
+
+##### Assuming Equal Variance
+$s_p^2 = \frac{(n_1-1)s_1^2 + (n_2)s_2^2}{n_1+n_2-2}$
+$SE = s_p\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}$
+
+#### Distribution
+- $t~T(df)$
+- Equal variance: $df=n_1+n_2-2$
+- Unequal variance: approximate $df$ using Welch method (software) or $min(n_1-1, n_2-1)$
+
+#### Confidence Interval
+
+$$
+(\bar{x}_1 - \bar{x}_2) \pm t^* \cdot SE
+$$
+
+
+### ANOVA (Multiple Means)
+
+#### Parameter and Statistic
+- Parameters: $\mu_1, \mu_2, \dots$
+- Statistic: $F$
+
+#### Hypotheses
+- $H_0$: all means equal  
+- $H_A$: at least one differs  
+
+#### Test Statistic
+
+$$
+F = \frac{\text{MSM}}{\text{MSE}}
+$$
+- MSM = Between-group variability
+- MSE = Within-group variability
+
+#### Distribution
+- $F$ with $(df_1, df_2)$
+
+#### Interpretation
+- Large $F$ → groups differ (at least one mean is different)
+
+
+### Simple Linear Regression
+
+#### Parameter and Statistic
+- Parameter: $\beta_1$
+- Statistic: $b_1$
+
+#### Hypotheses
+- $H_0: \beta_1 = 0$
+- $H_A: \beta_1 \ne 0$
+
+#### Test Statistic
+
+$$
+t = \frac{b_1}{SE(b_1)}
+$$
+
+#### Distribution
+- $t$ with $df = n - 2$
+
+#### Confidence Interval
+
+$$
+b_1 \pm t^* SE(b_1)
+$$
+
+
+### Multiple Regression
+
+#### Parameter and Statistic
+- Parameters: $\beta_j$, $j=0, 1, ..., p$ ($p$ is the number of predictors)
+- Statistics: $b_j$
+
+#### Hypotheses (each predictor)
+- $H_0: \beta_j = 0$
+- $H_A: \beta_j \ne 0$
+
+#### Test Statistic
+
+$$
+t = \frac{b_j}{SE(b_j)}
+$$
+
+#### Distribution
+- $t$ with $df = n - p - 1$
+
+#### Confidence Interval
+
+$$
+b_j \pm t^* SE(b_j)
+$$
+
+#### Key Interpretation
+
+👉 Effect of $X_j$ **holding all other predictors constant**
+
+:::
+
+### Big Picture Comparison
+
+| Scenario | Statistic | Distribution | Key Idea |
+|---------|----------|-------------|----------|
+| Proportion | $\hat{p}$ | Normal | Count successes |
+| Means | $\bar{x}$ | t | Estimate average |
+| Groups | $F$ | F | Compare variability |
+| Regression | $b$ | t | Slope = relationship |

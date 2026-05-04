@@ -1,5 +1,6 @@
 ---
 title: "CSUF Statistics using CourseKata"
+author: "Mansour Abdoli, PhD"
 ---
 
 Welcome! Choose a deck:
@@ -35,4 +36,8 @@ Welcome! Choose a deck:
 - [Exam 2 Study Guide](preparations/Exam2-Study-Guide.html)
 - [Sample Exam 2](preparations/Exam2-Sample.html)
 
+\
+
+- [Summary of Simulation Inference](preparations/simulation_summary_inference_tabset.html)
+- [Summary of Theoretical Inference](preparations/theoretical_summary_inference_tabset.html)
 :::
