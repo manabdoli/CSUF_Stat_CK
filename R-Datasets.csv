@@ -1,0 +1,27 @@
+"","Package","Item","Title","Dim","dim","nrow","ncol"
+"1","moonBook","acs","Demographic data of 857 patients with ACS","857x17",2,857,17
+"2","mosaicData","SaratogaHouses","Houses in Saratoga County (2006)","1728x16",2,1728,16
+"3","MASS","Boston","Housing Values in Suburbs of Boston","506x14",2,506,14
+"4","nlme","Quinidine","Quinidine Kinetics","1471x14",2,1471,14
+"5","MASS","biopsy","Biopsy Data on Breast Cancer Patients","699x11",2,699,11
+"6","mosaicData","CPS85","Data from the 1985 Current Population Survey (CPS85)","534x11",2,534,11
+"7","carData","BEPS","British Election Panel Study","1525x10",2,1525,10
+"8","dslabs","olive","Italian olive","572x10",2,572,10
+"9","lme4","schizophrenia","National Institute of Mental Health Schizophrenia Collaborative Study","1603x9",2,1603,9
+"10","reshape2","french_fries","Sensory data from a french fries experiment.","696x9",2,696,9
+"11","ROCit","Loan","Loan Data","900x9",2,900,9
+"12","carData","Mroz","U.S. Women's Labor-Force Participation","753x8",2,753,8
+"13","doBy","dietox","Growth curves of pigs in a 3x3 factorial experiment","861x8",2,861,8
+"14","lme4","Arabidopsis","Arabidopsis clipping/fertilization data","625x8",2,625,8
+"15","survival","rhDNase","rhDNASE data set","767x8",2,767,8
+"16","MASS","OME","Tests of Auditory Perception in Children with OME","1097x7",2,1097,7
+"17","nlme","Phenobarb","Phenobarbitol Kinetics","744x7",2,744,7
+"18","boot","aids","Delay in AIDS Reporting in England and Wales","570x6",2,570,6
+"19","ggplot2","economics","US economic time series","574x6",2,574,6
+"20","maps","canada.cities","Database of Canadian cities","916x6",2,916,6
+"21","maps","us.cities","Database of US cities","1005x6",2,1005,6
+"22","mosaicData","Galton","Galton's dataset of parent and child heights","898x6",2,898,6
+"23","psych","sat.act","3 Measures of ability: SATV, SATQ, ACT","700x6",2,700,6
+"24","rpart","solder","Soldering of Components on Printed-Circuit Boards","900x6",2,900,6
+"25","survival","solder","Data from a soldering experiment","900x6",2,900,6
+"26","survival","transplant","Liver transplant waiting list","815x6",2,815,6
