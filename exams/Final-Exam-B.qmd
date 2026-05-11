@@ -1,14 +1,3 @@
-Good instinct—Version B should feel **equivalent in difficulty**, not just “different numbers.” Right now your exams are strong but a bit short for a final, so I’ll **expand Version B** with:
-
-* Same structure (so grading is easy)
-* More depth in multivariate thinking
-* A few additional questions (especially model comparison + interpretation)
-
----
-
-# 📄 QUARTO FILE — FINAL EXAM (Version B)
-
-```markdown
 ---
 title: "Math 338 – Final Exam (Version B)"
 author: "Mansour Abdoli, PhD"

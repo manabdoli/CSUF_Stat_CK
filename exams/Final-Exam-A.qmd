@@ -1,10 +1,3 @@
-Great—this is exactly the right move for consistency and reuse. Below is a **clean Quarto exam file** (student version) followed by a **solution key + grading rubric**. It matches your style, CourseKata approach, and your previous exams.
-
----
-
-# 📄 QUARTO FILE — FINAL EXAM (Student Version)
-
-```markdown
 ---
 title: "Math 338 – Final Exam"
 author: "Mansour Abdoli, PhD"
@@ -14,40 +7,15 @@ fontsize: 12pt
 
 ## Instructions
 
-You have 70 minutes to complete the exam. The exam is closed book and notes.  
+You have 110 minutes to complete the exam. The exam is closed book and notes.  
 You may use a calculator, but no computers or other electronic devices.  
 
-Show all your work for full credit. If your answer is based on a definition, write  
-“per definition of …”.
+Show all your work for full credit. If your answer is based on a definition, write “per definition of …”.
 
 ---
 
 ## Student Name: ____________________________
 
----
-
-## Question 1 (1 pt)
-
-Which of the following is **not** something a regression model can determine?
-
-a. Direction of relationship  
-b. Strength of relationship  
-c. Causation  
-d. Form of relationship  
-
----
-
-## Question 2 (3 pts)
-
-Fill in the blanks:
-
-A) A residual is: ________________________________  
-
-B) A null distribution is used to: ________________________________  
-
-C) A confounding variable is: ________________________________  
-
----
 
 ## Student Performance Study
 

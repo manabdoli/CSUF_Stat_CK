@@ -21,7 +21,10 @@ installed.packages() |>
       na.omit() |> arrange(desc(ncol)) |> 
       filter(ncol<20, ncol>5, nrow>500, nrow<2000) |> write.csv('R-Datasets.csv')
 
-
+# Interesting datasets:
+MASS::Boston
+mosaicData::CPS85
+mosaicData::Galton
 
 # Testing Complexity vs Significance
 
