@@ -1,7 +1,7 @@
 ---
 title: "Math 338 – Mini Project"
 author: "Mansour Abdoli, PhD"
-format: docx
+format: pdf
 fontsize: 12pt
 ---
 
@@ -9,7 +9,7 @@ fontsize: 12pt
 
 ## Overview
 
-In this project, you will investigate whether **one variable helps explain another** using a linear model.
+In this project, you will investigate *whether* or *how* **one variable helps explain another** using a linear model.
 
 You will be assigned a dataset and a research question.
 
@@ -20,7 +20,7 @@ Your goal is to determine:
 ---
 
 ## Your Research Question (Example)
-Does time spent preparing for class predict GPA?
+Does a student's heart rate (pulse) predict GPA?
 
 ---
 
@@ -43,13 +43,16 @@ Does time spent preparing for class predict GPA?
 ### 1. Research Question & Variables
 
 - What is your research question?
-- Identify:
+  - Test of Hypothesis: Whether there is an association.
+  - Confidence Interval: In what extent the predictor explains the response?
+
+- Identify and describe:
   - Response variable (Y)
   - Explanatory variable (X)
 
 ---
 
-### 2. Explore the Data
+### 2. Explore the Association
 
 - Create a graph (scatterplot or boxplot)
 - Describe:
@@ -73,7 +76,7 @@ $$
 \hat{Y} = b_0 + b_1 X
 $$
 
-- Report the equation
+- Report the equation (use variable names instead of X and Y)
 - Interpret the slope in context
 
 ---
@@ -86,7 +89,7 @@ $$
 
 ---
 
-### 5. Hypothesis Test
+### 5. Model Significance (Test MHypothesis)
 
 State:
 
@@ -101,13 +104,16 @@ Then:
 
 ---
 
-### 6. Conclusion
+### 6. Confidence Interval
 
-Answer in plain language:
+Find CI:
 
-> Is there evidence of a relationship?
+- $\text{best guess} \pm ME = (b_j - ME, b_j + ME)$  
 
-Explain what it means in context.
+Then:
+
+- Interpret the C.I. in context
+- Make a decision
 
 ---
 
@@ -121,6 +127,17 @@ Briefly comment on:
 - Equality of variance
 
 ---
+
+### 8. Conclusion
+
+Answer in plain language:
+
+> Is there evidence of a relationship?
+
+Explain what it means in context.
+
+---
+
 
 ## Tips for Success
 
