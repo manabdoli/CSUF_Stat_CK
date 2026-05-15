@@ -1,0 +1,181 @@
+---
+title: "CK Approach: Sternegth and Opportunities"
+format: pptx
+editor: source
+---
+
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(patchwork)
+  library(ggformula)
+  library(mosaic)
+})
+
+theme_set(
+  theme_bw() +
+    theme(
+    axis.text  = element_text(size = 20),
+    axis.title = element_text(size = 22),
+    legend.text  = element_text(size = 20),
+    legend.title = element_text(size = 22)
+  )
+)
+
+yaxis_off<- theme(
+    axis.text.y  = element_blank(),  # remove y-axis tick labels
+    axis.ticks.y = element_blank(),  # remove y-axis tick marks
+    axis.title.y = element_blank()   # remove y-axis title
+  )
+
+source('../presentations/assets/utils.R')
+
+
+gini <- function(x, normalize=TRUE){
+  x<- as.factor(x)
+  p <- table(x) |> prop.table()
+  if(length(p)==1) return(0) else
+    sum(p*(1-p)) * if(normalize) 1/(1-1/length(p)) else 1
+}
+entropy <- function(x, normalize=TRUE){
+  x<- as.factor(x)
+  p <- table(x) |> prop.table()
+  if(length(p)==1) return(0) else
+    -sum(p*log(p), na.rm = TRUE) * if(normalize) 1/log(length(p)) else 1
+}
+
+```
+
+```{r}
+x<- mtcars |> 
+  mutate(cylinder=factor(cyl, uqcyl<- unique(cyl), 
+                    paste0(uqcyl, 'cyl')),
+         transmission=factor(am, 0:1, c('manual', 'automatic')))
+
+```
+
+## Association: Change in Variability
+
+```{r}
+nmdl0<- lm(mpg~NULL, data=x)
+ss0<- sum(nmdl0$residuals^2)
+nmdlcyl<- lm(mpg~cylinder, data=x)
+sscyl<- sum(nmdlcyl$residuals^2)
+gf_jitter(mpg~'overall', data=x, width=.1) %>% 
+  gf_model(nmdl0, color='red') -> p0 
+gf_jitter(mpg~cylinder, data=x, width=.1, 
+          color=~cylinder, show.legend = FALSE) %>% 
+  gf_model(nmdlcyl, color='red') ->pcyl
+(p0+labs(x='', title='mpg~NULL',
+         subtitle = sprintf('SST=%0.0f', ss0)))+
+  (pcyl+yaxis_off+
+     labs(title='       mpg~cylinder',
+          subtitle = sprintf('        SSE=%0.0f', sscyl)))+
+  plot_layout(widths = c(.25, .75))
+```
+
+## Extending it to Categorical
+
+```{r}
+x %>% gf_props(~'overall', fill=~transmission, show.legend = FALSE) %>% 
+  gf_segment(1/2+1/2~.5+1.5, color='blue') %>% 
+  gf_labs(y='Proportion')-> p1
+GIT<- gini(x$transmission, normalize = TRUE)
+
+x %>% gf_bar(~cylinder, fill=~transmission, position = 'fill',
+               show.legend = FALSE) %>% 
+  gf_segment(1/2+1/2~x+xend, color='blue', inherit = FALSE,
+             data=data.frame(x=c(.525, 1.525, 2.525), 
+                             xend=c(1.475, 2.475, 3.475))) %>% 
+  gf_labs(y='Proportion')-> p2
+GIE<- split(x$transmission, f=x$cylinder) |>
+  sapply(entropy, normalize=FALSE) |> mean()
+
+(p1+labs(x='', title='transmission~NULL',
+         subtitle = sprintf('GIT=%0.3f', GIT)))+
+  (p2+yaxis_off+
+     labs(title='                 transmission~cylinder',
+          subtitle = sprintf('                 AGI=%0.3f',
+                             GIE)))+
+  plot_layout(widths = c(.25, .75))
+
+```
+
+## Simulation: Great for Understanding Variability
+
+```{r}
+set.seed(2026)
+xbar<- mean(x$mpg)
+sd_mpg<- replicate(100, sample(x$mpg, replace = TRUE) |> mean())
+mi<- quantile(sd_mpg, c(0.025, 0.975))
+me<- diff(mi)/2
+ci<-sort(2*xbar-mi)
+# t - conf-int
+s<- sd(x$mpg); n<- length(x$mpg); se<- s/sqrt(n); tstr<- -qt(.025, n-1)
+tci<- xbar+c(-1,1)*tstr*se
+
+gf_histogram(~sd_mpg, bins = 10) |> 
+  gf_labs(title=sprintf('Sampling Distribution of MPG (n=%g)',
+                        nrow(x)), x='mpg') |>
+  gf_vline(xintercept = mi, linetype = 2) |>
+  gf_vline(xintercept = mean(x$mpg),color='red') + yaxis_off
+  
+```
+## Employing Symmetry & Elevating Mathematical Rigor
+
+```{r}
+gf_histogram(~sd_mpg, bins = 10) |> 
+  gf_labs(title=sprintf('Sampling Distribution of MPG (n=%g)',
+                        nrow(x)), x='mpg') |>
+  gf_vline(xintercept = mi, linetype = 2) |>
+  gf_vline(xintercept = mean(x$mpg),color='red') |>
+  gf_segment(1+1~cl+cu, inhirit=FALSE, color=~"Symmetric CI",
+             size=1.5,
+             data = data.frame(cl=xbar-me, cu=xbar+me),
+             arrow = grid::arrow(ends = 'both',
+                                 type = 'closed',
+                                 length = unit(.1, 'inches'))
+  ) |>
+  gf_segment(0+0~cl+cu, inhirit=FALSE, color=~"Solving for μ",
+             data = data.frame(cl=ci[1], cu=ci[2]),
+             size=1.5,
+             arrow = grid::arrow(ends = 'both',
+                                 type = 'closed',
+                                 length = unit(.1, 'inches'))
+  ) |>
+  gf_segment(2+2~cl+cu, inhirit=FALSE, color=~"t-Conf.Int.",
+             data = data.frame(cl=tci[1], cu=tci[2]),
+             size=1.5,
+             arrow = grid::arrow(ends = 'both',
+                                 type = 'closed',
+                                 length = unit(.1, 'inches'))
+  ) |>
+  gf_refine(
+    scale_color_manual(
+      name = "Confidence Intervals",          # Title of the legend
+      values = c("t-Conf.Int."='orange',
+                 "Solving for μ" = "red",
+                 "Symmetric CI" = "purple"), # Custom colors
+      breaks = c("t-Conf.Int.", "Symmetric CI", "Solving for μ") # Controls the number of lines/items shown
+    ),
+    # Use theme() to shrink the legend components
+    theme(
+      legend.title = element_text(size = 12),       # Shrink title font
+      legend.text = element_text(size = 10),        # Shrink item font
+      legend.key.size = unit(.7, "cm"),           # Shrink the colored icon box
+      legend.spacing.y = unit(0.02, "cm")          # Pack the rows closer together
+    )
+  ) + yaxis_off
+  
+```
+
+## Simulation: Knowing the Limits
+
+- Modeling Complex Situations:
+  - Single Variable in a Multivariate Model
+
+- Post Hoc Analysis
+  - Tukey's Honest Significant Difference
+  - Pairwise t-Test
+  
+- Environmental Footprint

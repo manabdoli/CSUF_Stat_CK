@@ -1,917 +1,1104 @@
 "","Package","Item","Title","Dim","dim","nrow","ncol"
-"1","ISLR2","Fund","Fund Manager Data","50x2000",2,50,2000
-"2","NACCdata","UDS","Unified Data Set Longitudinal data collected across the country from NIA-funded Alzheimer’s Disease Research Centers (ADRCs). Explanation of variables can be found in UDS's data dictionary, The Neuropathology (NP) data dictionary, and Genetic data dictionary.","169408x1936",2,169408,1936
-"3","modeldata","permeability_qsar","Predicting permeability from chemical information","165x1108",2,165,1108
-"4","doBy","breastcancer","Gene expression signatures for p53 mutation status in 250 breast cancer samples","250x1001",2,250,1001
-"5","mosaicData","HELPfull","Health Evaluation and Linkage to Primary Care","1472x788",2,1472,788
-"6","modeldata","pd_speech","Parkinson's disease speech classification data set","252x752",2,252,752
-"7","modeldata","hepatic_injury_qsar","Predicting hepatic injury from chemical information","281x377",2,281,377
-"8","loo","voice","Datasets for loo examples and vignettes","126x313",2,126,313
-"9","usdata","county_complete","United States Counties","3142x188",2,3142,188
-"10","doBy","NIRmilk","NIRmilk","17x158",2,17,158
-"11","modeldata","ad_data","Alzheimer's disease data","333x131",2,333,131
-"12","openintro","hfi","Human Freedom Index","1458x123",2,1458,123
-"13","modeldata","meats","Fat, water and protein content of meat samples","215x103",2,215,103
-"14","usdata","county_2019","American Community Survey 2019","3142x95",2,3142,95
-"15","ISLR2","Caravan","The Insurance Company (TIC) Benchmark","5822x86",2,5822,86
-"16","openintro","ames","Housing prices in Ames, Iowa","2930x82",2,2930,82
-"17","tidyr","billboard","Song rankings for Billboard top 100 in the year 2000","317x79",2,317,79
-"18","modeldata","ames","Ames Housing Data","2930x74",2,2930,74
-"19","openintro","reddit_finance","Reddit Survey on Financial Independence.","1998x65",2,1998,65
-"20","openintro","labor_market_discrimination","Are Emily and Greg More Employable Than Lakisha and Jamal?","4870x63",2,4870,63
-"21","carData","Rossi","Rossi et al.'s Criminal Recidivism Data","432x62",2,432,62
-"22","openintro","world_pop","World Population Data.","216x62",2,216,62
-"23","datasets","volcano","Topographic Information on Auckland's Maunga Whau Volcano","87x61",2,87,61
-"24","tidyr","who","World Health Organization TB data","7240x60",2,7240,60
-"25","modeldata","leaf_id_flavia","Leaf identification data (Flavia)","1907x59",2,1907,59
-"26","modeldata","cells","Cell body segmentation","2019x58",2,2019,58
-"27","modeldata","chem_proc_yield","Chemical manufacturing process data set","176x58",2,176,58
-"28","tidyr","who2","World Health Organization TB data","7240x58",2,7240,58
-"29","openintro","loans_full_schema","Loan data from Lending Club","10000x55",2,10000,55
-"30","modeldata","Chicago","Chicago ridership data","5698x50",2,5698,50
-"31","openintro","mlb_teams","Major League Baseball Teams Data.","2784x41",2,2784,41
+"1","NACCdata","UDS","Unified Data Set Longitudinal data collected across the country from NIA-funded Alzheimer’s Disease Research Centers (ADRCs). Explanation of variables can be found in UDS's data dictionary, The Neuropathology (NP) data dictionary, and Genetic data dictionary.","169408x1936",2,169408,1936
+"2","modeldata","permeability_qsar","Predicting permeability from chemical information","165x1108",2,165,1108
+"3","doBy","breastcancer","Gene expression signatures for p53 mutation status in 250 breast cancer samples","250x1001",2,250,1001
+"4","mosaicData","HELPfull","Health Evaluation and Linkage to Primary Care","1472x788",2,1472,788
+"5","modeldata","pd_speech","Parkinson's disease speech classification data set","252x752",2,252,752
+"6","modeldata","hepatic_injury_qsar","Predicting hepatic injury from chemical information","281x377",2,281,377
+"7","usdata","county_complete","United States Counties","3142x188",2,3142,188
+"8","doBy","NIRmilk","NIRmilk","17x158",2,17,158
+"9","modeldata","ad_data","Alzheimer's disease data","333x131",2,333,131
+"10","openintro","hfi","Human Freedom Index","1458x123",2,1458,123
+"11","modeldata","meats","Fat, water and protein content of meat samples","215x103",2,215,103
+"12","usdata","county_2019","American Community Survey 2019","3142x95",2,3142,95
+"13","openintro","ames","Housing prices in Ames, Iowa","2930x82",2,2930,82
+"14","tidyr","billboard","Song rankings for Billboard top 100 in the year 2000","317x79",2,317,79
+"15","modeldata","ames","Ames Housing Data","2930x74",2,2930,74
+"16","fivethirtyeight","bob_ross","A Statistical Analysis of the Work of Bob Ross","403x71",2,403,71
+"17","openintro","reddit_finance","Reddit Survey on Financial Independence.","1998x65",2,1998,65
+"18","openintro","labor_market_discrimination","Are Emily and Greg More Employable Than Lakisha and Jamal?","4870x63",2,4870,63
+"19","carData","Rossi","Rossi et al.'s Criminal Recidivism Data","432x62",2,432,62
+"20","openintro","world_pop","World Population Data.","216x62",2,216,62
+"21","datasets","volcano","Topographic Information on Auckland's Maunga Whau Volcano","87x61",2,87,61
+"22","tidyr","who","World Health Organization TB data","7240x60",2,7240,60
+"23","modeldata","leaf_id_flavia","Leaf identification data (Flavia)","1907x59",2,1907,59
+"24","modeldata","cells","Cell body segmentation","2019x58",2,2019,58
+"25","modeldata","chem_proc_yield","Chemical manufacturing process data set","176x58",2,176,58
+"26","tidyr","who2","World Health Organization TB data","7240x58",2,7240,58
+"27","openintro","loans_full_schema","Loan data from Lending Club","10000x55",2,10000,55
+"28","modeldata","Chicago","Chicago ridership data","5698x50",2,5698,50
+"29","fivethirtyeight","food_world_cup","The FiveThirtyEight International Food Association's 2014 World Cup","1373x48",2,1373,48
+"30","openintro","mlb_teams","Major League Baseball Teams Data.","2784x41",2,2784,41
+"31","fivethirtyeight","trumpworld_polls","What the World Thinks of Trump","32x40",2,32,40
 "32","datasets","gait","Hip and Knee Angle while Walking","20x39x2",3,20,39
 "33","bain","synthetic_nl","Simulated data about morality and politics in The Netherlands","401x38",2,401,38
 "34","data2teach","FinRisk4Loan","Housing Values in Suburbs of Boston (Kaggle)","20000x36",2,20000,36
-"35","rpart","car90","Automobile Data from 'Consumer Reports' 1990","111x34",2,111,34
-"36","bain","synthetic_us","Simulated data about morality and politics in the USA","518x33",2,518,33
-"37","doBy","personality","Personality traits","240x32",2,240,32
-"38","bain","synthetic_dk","Simulated data about morality and politics in Denmark","552x31",2,552,31
-"39","cluster","plantTraits","Plant Species Traits Data","136x31",2,136,31
-"40","cluster","votes.repub","Votes for Republican Candidate in Presidential Elections","50x31",2,50,31
-"41","modeldata","attrition","Job attrition","1470x31",2,1470,31
-"42","modeldata","deliveries","Food Delivery Time Data","10012x31",2,10012,31
-"43","mosaicData","HELPrct","Health Evaluation and Linkage to Primary Care","453x30",2,453,30
-"44","openintro","resume","Which resume attributes drive job callbacks?","4870x30",2,4870,30
-"45","modeldata","ischemic_stroke","Clinical data used to predict ischemic stroke","126x29",2,126,29
-"46","openintro","esi","Environmental Sustainability Index 2005","146x29",2,146,29
-"47","data2teach","McDonaldMenu","","260x28",2,260,28
-"48","ggeffects","efc","Sample dataset from the EUROFAMCARE project","908x28",2,908,28
-"49","ggeffects","efc_test","Sample dataset from the EUROFAMCARE project","908x28",2,908,28
-"50","ggplot2","midwest","Midwest demographics","437x28",2,437,28
-"51","modeldata","hotel_rates","Daily Hotel Rate Data","15402x28",2,15402,28
-"52","mosaicData","HELPmiss","Health Evaluation and Linkage to Primary Care","470x28",2,470,28
-"53","nlme","bdf","Language scores","2287x28",2,2287,28
-"54","openintro","epa2012","Vehicle info from the EPA for 2012","1129x28",2,1129,28
-"55","openintro","epa2021","Vehicle info from the EPA for 2021","1108x28",2,1108,28
-"56","usdata","urban_owner","Summary of many state-level variables","52x28",2,52,28
-"57","MASS","Cars93","Data from 93 Cars on Sale in the USA in 1993","93x27",2,93,27
-"58","ca","author","Author dataset","12x26",2,12,26
-"59","data2teach","County2014","","3141x25",2,3141,25
-"60","data2teach","airline_satisfaction","","103904x25",2,103904,25
-"61","modeldata","check_times","Execution time data","13626x25",2,13626,25
-"62","mosaicData","Weather","Weather","3655x25",2,3655,25
-"63","openintro","bdims","Body measurements of 507 physically active individuals.","507x25",2,507,25
-"64","vcd","Baseball","Baseball Data","322x25",2,322,25
-"65","ggridges","lincoln_weather","Weather in Lincoln, Nebraska in 2016.","366x24",2,366,24
-"66","plyr","ozone","Monthly ozone measurements over Central America.","24x24x72",3,24,24
-"67","usdata","houserace10","Election results for the 2010 U.S. House of Represenatives races","435x24",2,435,24
-"68","usdata","state_stats","State-level data","51x24",2,51,24
-"69","vcd","Butterfly","Butterfly Species in Malaya","24",2,24,24
-"70","modeldata","lending_club","Loan data","9857x23",2,9857,23
-"71","mosaicData","Gestation","Data from the Child Health and Development Studies","1236x23",2,1236,23
-"72","openintro","evals","Professor evaluations and beauty","463x23",2,463,23
-"73","openintro","mtl","Medial temporal lobe (MTL) and other data for 26 participants","35x23",2,35,23
-"74","usdata","govrace10","Election results for 2010 Governor races in the U.S.","37x23",2,37,23
-"75","usdata","senaterace10","Election results for the 2010 U.S. Senate races","38x23",2,38,23
-"76","datasets","crimtab","Student's 3000 Criminals Data","42x22",2,42,22
-"77","plyr","baseball","Yearly batting records for all major league baseball players","21699x22",2,21699,22
-"78","ROCit","Diabetes","Diabetes Data","403x22",2,403,22
-"79","bain","sesamesim","Simulated Sesame Street Data","240x21",2,240,21
-"80","data2teach","avengers_538","Avengers (death of Comic Characters)","173x21",2,173,21
-"81","data2teach","sesamesim","Simulated data inspired by Sesame Street","240x21",2,240,21
-"82","modeldata","stackoverflow","Annual Stack Overflow Developer Survey Data","5594x21",2,5594,21
-"83","openintro","email","Data frame representing information about a collection of emails","3921x21",2,3921,21
-"84","openintro","email50","Sample of 50 emails","50x21",2,50,21
-"85","openintro","email_test","Data frame representing information about a collection of emails","1252x21",2,1252,21
-"86","usdata","airline_delay","Airline Delays for December 2019 and 2020.","3351x21",2,3351,21
-"87","ISLR2","Hitters","Baseball Data","322x20",2,322,20
-"88","modeldata","cat_adoption","Cat Adoption","2257x20",2,2257,20
-"89","modeldata","mlc_churn","Customer churn data","5000x20",2,5000,20
-"90","modeldata","wa_churn","Watson churn data","7043x20",2,7043,20
-"91","openintro","pm25_2011_durham","Air quality for Durham, NC","449x20",2,449,20
-"92","openintro","ucla_textbooks_f18","Sample of UCLA course textbooks for Fall 2018","201x20",2,201,20
-"93","survival","pbc","Mayo Clinic Primary Biliary Cholangitis Data","418x20",2,418,20
-"94","tidyr","world_bank_pop","Population data from the World Bank","1064x20",2,1064,20
-"95","MASS","waders","Counts of Waders at 15 Sites in South Africa","15x19",2,15,19
-"96","modeldata","scat","Morphometric data on scat","110x19",2,110,19
-"97","mosaicData","Utilities2","Utility bills","117x19",2,117,19
-"98","openintro","cars04","cars04","428x19",2,428,19
-"99","openintro","mlb_players_18","Batter Statistics for 2018 Major League Baseball (MLB) Season","1270x19",2,1270,19
-"100","openintro","mlbbat10","Major League Baseball Player Hitting Statistics for 2010","1199x19",2,1199,19
-"101","openintro","pm25_2022_durham","Air quality for Durham, NC","356x19",2,356,19
-"102","usdata","pierce_county_house_sales","Pierce County House Sales Data for 2020","16814x19",2,16814,19
-"103","doBy","carcassall","Lean meat contents of 344 pig carcasses","344x18",2,344,18
-"104","ISLR2","College","U.S. News and World Report's College Data","777x18",2,777,18
-"105","ISLR2","OJ","Orange Juice Data","1070x18",2,1070,18
-"106","modeldata","car_prices","Kelly Blue Book resale data for 2005 model year GM cars","804x18",2,804,18
-"107","openintro","loan50","Loan data from Lending Club","50x18",2,50,18
-"108","openintro","sowc_child_mortality","SOWC Child Mortality Data.","195x18",2,195,18
-"109","openintro","sowc_demographics","SOWC Demographics Data.","202x18",2,202,18
-"110","openintro","sowc_maternal_newborn","SOWC Maternal and Newborn Health Data.","202x18",2,202,18
-"111","carData","OBrienKaiser","O'Brien and Kaiser's Repeated-Measures Data","16x17",2,16,17
-"112","openintro","birds","Aircraft-Wildlife Collisions","19302x17",2,19302,17
-"113","openintro","fastfood","Nutrition in fast food","515x17",2,515,17
-"114","MASS","UScrime","The Effect of Punishment Regimes on Crime Rates","47x16",2,47,16
-"115","mosaicData","SaratogaHouses","Houses in Saratoga County (2006)","1728x16",2,1728,16
-"116","openintro","nycflights","Flights data","32735x16",2,32735,16
-"117","survival","cgd","Chronic Granulotamous Disease data","203x16",2,203,16
-"118","data2teach","AirQualityUCI","Air Quality","9471x15",2,9471,15
-"119","data2teach","adult_50K_uci","Adults Income (1996 Census)","32560x15",2,32560,15
-"120","data2teach","boston_housing_kg","Housing Values in Suburbs of Boston (Kaggle)","333x15",2,333,15
-"121","ISLR2","Bikeshare","Bike sharing data","8645x15",2,8645,15
-"122","lavaan","HolzingerSwineford1939","Holzinger and Swineford Dataset (9 Variables)","301x15",2,301,15
-"123","mosaicData","Marriage","Marriage records","98x15",2,98,15
-"124","mosaicData","SnowGR","Snowfall data for Grand Rapids, MI","119x15",2,119,15
-"125","openintro","association","Simulated data for association plots","121x15",2,121,15
-"126","survival","udca","Data from a trial of usrodeoxycholic acid","170x15",2,170,15
-"127","usdata","county","United States Counties","3142x15",2,3142,15
-"128","airports","usairports","US Airports","19615x14",2,19615,14
-"129","carData","MplsStops","Minneapolis Police Department 2017 Stop Data","51920x14",2,51920,14
-"130","carData","Soils","Soil Compositions of Physical and Chemical Characteristics","48x14",2,48,14
-"131","cherryblossom","run09","Cherry Blossom Run data, 2009","14974x14",2,14974,14
-"132","data2teach","cereal2","cereal2","88x14",2,88,14
-"133","doBy","cad1","Coronary artery disease data","236x14",2,236,14
-"134","doBy","cad2","Coronary artery disease data","67x14",2,67,14
-"135","doBy","wine","Chemical composition of wine","178x14",2,178,14
-"136","dplyr","starwars","Starwars characters","87x14",2,87,14
-"137","MASS","Boston","Housing Values in Suburbs of Boston","506x14",2,506,14
-"138","modeldata","credit_data","Credit data","4454x14",2,4454,14
-"139","nlme","Quinidine","Quinidine Kinetics","1471x14",2,1471,14
-"140","openintro","lego_population","Population of Lego Sets for Sale between Jan. 1, 2018 and Sept. 11, 2020.","1304x14",2,1304,14
-"141","openintro","lego_sample","Sample of Lego Sets","75x14",2,75,14
-"142","openintro","ucla_f18","UCLA courses in Fall 2018","3950x14",2,3950,14
-"143","carData","UN98","United Nations Social Indicators Data 1998]","207x13",2,207,13
-"144","data2teach","WineQualityUCI","Wine Quality","6497x13",2,6497,13
-"145","dplyr","storms","Storm tracks data","19537x13",2,19537,13
-"146","ggridges","Aus_athletes","Australian athletes","202x13",2,202,13
-"147","ISLR2","Boston","Boston Data","506x13",2,506,13
-"148","lubridate","lakers","Lakers 2008-2009 basketball data set","34624x13",2,34624,13
-"149","modeldata","steroidogenic_toxicity","Predicting steroidogenic toxicity with assay data","162x13",2,162,13
-"150","openintro","COL","OpenIntro Statistics colors","7x13",2,7,13
-"151","openintro","IMSCOL","Introduction to Modern Statistics (IMS) Colors","8x13",2,8,13
-"152","openintro","acs12","American Community Survey, 2012","2000x13",2,2000,13
-"153","openintro","births14","US births","1000x13",2,1000,13
-"154","openintro","duke_forest","Sale prices of houses in Duke Forest, Durham, NC","98x13",2,98,13
-"155","openintro","mn_police_use_of_force","Minneapolis police use of force data.","12925x13",2,12925,13
-"156","openintro","ncbirths","North Carolina births, 1000 cases","1000x13",2,1000,13
-"157","openintro","yrbss","Youth Risk Behavior Surveillance System (YRBSS)","13583x13",2,13583,13
-"158","openintro","yrbss_samp","Sample of Youth Risk Behavior Surveillance System (YRBSS)","100x13",2,100,13
-"159","prettyglm","titanic","Titanic Data","891x13",2,891,13
-"160","vcd","Saxony","Families in Saxony","13",2,13,13
-"161","carData","Highway1","Highway Accidents","39x12",2,39,12
-"162","data2teach","titanic_kg","Titanic Disaster","891x12",2,891,12
-"163","datasets","USJudgeRatings","Lawyers' Ratings of State Judges in the US Superior Court","43x12",2,43,12
-"164","doBy","milkman","Milk yield data for manually milked cows.","161836x12",2,161836,12
-"165","doBy","milkman_rdm1","Milk yield data for manually milked cows.","12026x12",2,12026,12
-"166","lavaan","Demo.twolevel","Demo dataset for a illustrating a multilevel CFA.","2500x12",2,2500,12
-"167","MASS","survey","Student Survey Data","237x12",2,237,12
-"168","mosaicData","Riders","Volume of Users of a Massachusetts Rail Trail","90x12",2,90,12
-"169","mosaicData","Utilities","Utility bills","117x12",2,117,12
-"170","nlme","Remifentanil","Pharmacokinetics of Remifentanil","2107x12",2,2107,12
-"171","openintro","cpu","CPU's Released between 2010 and 2020.","875x12",2,875,12
-"172","openintro","house","United States House of Representatives historical make-up","116x12",2,116,12
-"173","openintro","mariokart","Wii Mario Kart auctions from Ebay","143x12",2,143,12
-"174","openintro","smoking","UK Smoking Data","1691x12",2,1691,12
-"175","openintro","sp500","Financial information for 50 S&P 500 companies","50x12",2,50,12
-"176","usdata","fatal_police_shootings","Fatal Police Shootings data.","6421x12",2,6421,12
-"177","usdata","gerrymander","Gerrymander","435x12",2,435,12
-"178","usdata","us_crime_rates","US Crime Rates","60x12",2,60,12
-"179","boot","nuclear","Nuclear Power Station Construction Data","32x11",2,32,11
-"180","carData","Florida","Florida County Voting","67x11",2,67,11
-"181","data2teach","inOutTime","","96x11",2,96,11
-"182","data2teach","stat_students3","","22x11",2,22,11
-"183","datasets","mtcars","Motor Trend Car Road Tests","32x11",2,32,11
-"184","ggplot2","mpg","Fuel economy data from 1999 to 2008 for 38 popular models of cars","234x11",2,234,11
-"185","ggplot2","msleep","An updated and expanded version of the mammals sleep dataset","83x11",2,83,11
-"186","infer","gss","Subset of data from the General Social Survey (GSS).","500x11",2,500,11
-"187","ISLR2","Carseats","Sales of Child Car Seats","400x11",2,400,11
-"188","ISLR2","Credit","Credit Card Balance Data","400x11",2,400,11
-"189","ISLR2","Wage","Mid-Atlantic Wage Data","3000x11",2,3000,11
-"190","lavaan","PoliticalDemocracy","Industrialization And Political Democracy Dataset","75x11",2,75,11
-"191","MASS","UScereal","Nutritional and Marketing Information on US Cereals","65x11",2,65,11
-"192","MASS","biopsy","Biopsy Data on Breast Cancer Patients","699x11",2,699,11
-"193","mosaicData","CPS85","Data from the 1985 Current Population Survey (CPS85)","534x11",2,534,11
-"194","mosaicData","RailTrail","Volume of Users of a Rail Trail","90x11",2,90,11
-"195","openintro","cia_factbook","CIA Factbook Details on Countries","259x11",2,259,11
-"196","openintro","comics","comics","21821x11",2,21821,11
-"197","openintro","hsb2","High School and Beyond survey","200x11",2,200,11
-"198","openintro","mammals","Sleep in Mammals","62x11",2,62,11
-"199","openintro","oscars","Oscar winners, 1929 to 2018","184x11",2,184,11
-"200","survival","flchain","Assay of serum free light chain for 7874 subjects.","7874x11",2,7874,11
-"201","tidyr","relig_income","Pew religion and income survey","18x11",2,18,11
-"202","vcd","WeldonDice","Weldon's Dice Data","11",2,11,11
-"203","vcd","WomenQueue","Women in Queues","11",2,11,11
-"204","carData","BEPS","British Election Panel Study","1525x10",2,1525,10
-"205","cluster","chorSub","Subset of C-horizon of Kola Data","61x10",2,61,10
-"206","data2teach","EnergyEff2012","Energy Efficiency","1296x10",2,1296,10
-"207","data2teach","yeast","Protein Localization Sites","1484x10",2,1484,10
-"208","ggplot2","diamonds","Prices of over 50,000 round cut diamonds","53940x10",2,53940,10
-"209","lavaan","Demo.growth","Demo dataset for a illustrating a linear growth model.","400x10",2,400,10
-"210","MASS","birthwt","Risk Factors Associated with Low Infant Birth Weight","189x10",2,189,10
-"211","MASS","fgl","Measurements of Forensic Glass Fragments","214x10",2,214,10
-"212","openintro","get_it_dunn_run","Get it Dunn Run, Race Times","978x10",2,978,10
-"213","survival","cancer","NCCTG Lung Cancer Data","228x10",2,228,10
-"214","brms","epilepsy","Epileptic seizure counts","236x9",2,236,9
-"215","carData","CES11","2011 Canadian National Election Study, With Attitude Toward Abortion","2231x9",2,2231,9
-"216","carData","Ericksen","The 1980 U.S. Census Undercount","66x9",2,66,9
-"217","carData","KosteckiDillon","Treatment of Migraine Headaches","4152x9",2,4152,9
-"218","carData","LoBD","Cancer drug data use to provide an example of the use of the skew power distributions.","84x9",2,84,9
-"219","cherryblossom","run12","Cherry Blossom Run data, 2012","16924x9",2,16924,9
-"220","cherryblossom","run17","Cherry Blossom Run data, 2017","19961x9",2,19961,9
-"221","data2teach","auto_mpg_uci","Auto MPG (1993)","398x9",2,398,9
-"222","data2teach","stat_students1","","32x9",2,32,9
-"223","doBy","codstom","Diet of Atlantic cod in the Gulf of St. Lawrence (Canada)","10000x9",2,10000,9
-"224","forcats","gss_cat","A sample of categorical variables from the General Social survey","21483x9",2,21483,9
-"225","ggeffects","fish","Sample data set","250x9",2,250,9
-"226","ggplot2","txhousing","Housing sales in TX","8602x9",2,8602,9
-"227","ISLR2","Auto","Auto Data Set","392x9",2,392,9
-"228","ISLR2","Publication","Time-to-Publication Data","244x9",2,244,9
-"229","ISLR2","Smarket","S&P Stock Market Data","1250x9",2,1250,9
-"230","ISLR2","Weekly","Weekly S&P Stock Market Data","1089x9",2,1089,9
-"231","lme4","VerbAgg","Verbal Aggression item responses","7584x9",2,7584,9
-"232","MASS","cpus","Performance of Computer CPUs","209x9",2,209,9
-"233","MASS","epil","Seizure Counts for Epileptics","236x9",2,236,9
-"234","MASS","gilgais","Line Transect of Soil in Gilgai Territory","365x9",2,365,9
-"235","modeldata","Sacramento","Sacramento CA home prices","932x9",2,932,9
-"236","modeldata","concrete","Compressive strength of concrete mixtures","1030x9",2,1030,9
-"237","openintro","births","North Carolina births, 100 cases","150x9",2,150,9
-"238","openintro","blizzard_salary","Blizzard Employee Voluntary Salary Info.","466x9",2,466,9
-"239","openintro","corr_match","Sample datasets for correlation problems","121x9",2,121,9
-"240","openintro","gdp_countries","GDP Countries Data.","654x9",2,654,9
-"241","openintro","iran","iran","366x9",2,366,9
-"242","openintro","nba_finals","NBA Finals History","73x9",2,73,9
-"243","openintro","paralympic_1500","Race time for Olympic and Paralympic 1500m.","82x9",2,82,9
-"244","openintro","us_temperature","US temperatures in 1950 and 2022","18759x9",2,18759,9
-"245","reshape2","french_fries","Sensory data from a french fries experiment.","696x9",2,696,9
-"246","ROCit","Loan","Loan Data","900x9",2,900,9
-"247","survival","nwtco","Data from the National Wilm's Tumor Study","4028x9",2,4028,9
-"248","survival","retinopathy","Diabetic Retinopathy","394x9",2,394,9
-"249","tidyr","construction","Completed construction in the US in 2018","9x9",2,9,9
-"250","usdata","us_temp","US Temperature Data","10118x9",2,10118,9
-"251","carData","Arrests","Arrests for Marijuana Possession","5226x8",2,5226,8
-"252","carData","Chile","Voting Intentions in the 1988 Chilean Plebiscite","2700x8",2,2700,8
-"253","carData","GSSvocab","Data from the General Social Survey (GSS) from the National Opinion Research Center of the University of Chicago.","28867x8",2,28867,8
-"254","carData","Hartnagel","Canadian Crime-Rates Time Series","38x8",2,38,8
-"255","carData","Migration","Canadian Interprovincial Migration Data","90x8",2,90,8
-"256","carData","MplsDemo","Minneapolis Demographic Data 2015, by Neighborhood","84x8",2,84,8
-"257","carData","Mroz","U.S. Women's Labor-Force Participation","753x8",2,753,8
-"258","cluster","flower","Flower Characteristics","18x8",2,18,8
-"259","data2teach","stat_students2","","24x8",2,24,8
-"260","datasets","Seatbelts","Road Casualties in Great Britain 1969-84","192x8",2,192,8
-"261","datasets","anscombe","Anscombe's Quartet of 'Identical' Simple Linear Regressions","11x8",2,11,8
-"262","datasets","infert","Infertility after Spontaneous and Induced Abortion","248x8",2,248,8
-"263","datasets","occupationalStatus","Occupational Status of Fathers and their Sons","8x8",2,8,8
-"264","datasets","penguins","Measurements of Penguins near Palmer Station, Antarctica","344x8",2,344,8
-"265","doBy","crimeRate","crimeRate","50x8",2,50,8
-"266","doBy","dietox","Growth curves of pigs in a 3x3 factorial experiment","861x8",2,861,8
-"267","ISLR2","BrainCancer","Brain Cancer Data","88x8",2,88,8
-"268","lme4","Arabidopsis","Arabidopsis clipping/fertilization data","625x8",2,625,8
-"269","lmtest","fyff","U.S. Macroeconomic Time Series","413x8",2,413,8
-"270","lmtest","gmdc","U.S. Macroeconomic Time Series","413x8",2,413,8
-"271","lmtest","ip","U.S. Macroeconomic Time Series","413x8",2,413,8
-"272","lmtest","jocci","U.S. Macroeconomic Time Series","411x8",2,411,8
-"273","lmtest","lhur","U.S. Macroeconomic Time Series","413x8",2,413,8
-"274","lmtest","pw561","U.S. Macroeconomic Time Series","413x8",2,413,8
-"275","loo","milk","Datasets for loo examples and vignettes","29x8",2,29,8
-"276","MASS","Pima.te","Diabetes in Pima Indian Women","332x8",2,332,8
-"277","MASS","Pima.tr","Diabetes in Pima Indian Women","200x8",2,200,8
-"278","MASS","Pima.tr2","Diabetes in Pima Indian Women","300x8",2,300,8
-"279","MASS","VA","Veteran's Administration Lung Cancer Trial","137x8",2,137,8
-"280","MASS","crabs","Morphological Measurements on Leptograpsus Crabs","200x8",2,200,8
-"281","modeldata","biomass","Biomass data","536x8",2,536,8
-"282","modeldata","hpc_data","High-performance computing system data","4331x8",2,4331,8
-"283","modeldata","oils","Fatty acid composition of commercial oils","96x8",2,96,8
-"284","modelr","heights","Height and income data.","7006x8",2,7006,8
-"285","mosaicData","Births","US Births","7305x8",2,7305,8
-"286","mosaicData","Births2015","US Births","365x8",2,365,8
-"287","mosaicData","Births78","US Births","365x8",2,365,8
-"288","mosaicData","BirthsCDC","US Births","3652x8",2,3652,8
-"289","mosaicData","BirthsSSA","US Births","5479x8",2,5479,8
-"290","mosaicData","KidsFeet","Foot measurements in children","39x8",2,39,8
-"291","mosaicData","SAT","State by State SAT data","50x8",2,50,8
-"292","openintro","LAhomes","LAhomes","1594x8",2,1594,8
-"293","openintro","babies","The Child Health and Development Studies","1236x8",2,1236,8
-"294","openintro","census","Random sample of 2000 U.S. Census Data","500x8",2,500,8
-"295","openintro","cle_sac","Cleveland and Sacramento","500x8",2,500,8
-"296","openintro","gifted","Analytical skills of young gifted children","36x8",2,36,8
-"297","openintro","heart_transplant","Heart Transplant Data","103x8",2,103,8
-"298","openintro","lecture_learning","Lecture Delivery Method and Learning Outcomes","552x8",2,552,8
-"299","openintro","piracy","Piracy and PIPA/SOPA","534x8",2,534,8
-"300","openintro","possum","Possums in Australia and New Guinea","104x8",2,104,8
-"301","openintro","teacher","Teacher Salaries in St. Louis, Michigan","71x8",2,71,8
-"302","rpart","car.test.frame","Automobile Data from 'Consumer Reports' 1990","60x8",2,60,8
-"303","rpart","stagec","Stage C Prostate Cancer","146x8",2,146,8
-"304","survival","diabetic","Ddiabetic retinopathy","394x8",2,394,8
-"305","survival","heart","Stanford Heart Transplant data","172x8",2,172,8
-"306","survival","rhDNase","rhDNASE data set","767x8",2,767,8
-"307","usdata","us_time_survey","American Time Survey 2009 - 2019","11x8",2,11,8
-"308","vcd","Lifeboats","Lifeboats on the Titanic","18x8",2,18,8
-"309","vcd","RepVict","Repeat Victimization Data","8x8",2,8,8
-"310","viridis","unemp","USA Unemployment in 2009","3218x8",2,3218,8
-"311","boot","melanoma","Survival from Malignant Melanoma","205x7",2,205,7
-"312","boot","nodal","Nodal Involvement in Prostate Cancer","53x7",2,53,7
-"313","boot","urine","Urine Analysis Data","79x7",2,79,7
-"314","brms","kidney","Infections in kidney patients","76x7",2,76,7
-"315","ca","wg93","International Social Survey Program on Environment 1993 - western German sample","871x7",2,871,7
-"316","carData","DavisThin","Davis's Data on Drive for Thinness","191x7",2,191,7
-"317","carData","Greene","Refugee Appeals","384x7",2,384,7
-"318","carData","States","Education and Related Statistics for the U.S. States","51x7",2,51,7
-"319","carData","UN","National Statistics from the United Nations, Mostly From 2009-2011","213x7",2,213,7
-"320","carData","WeightLoss","Weight Loss Data","34x7",2,34,7
-"321","carData","Wong","Post-Coma Recovery of IQ","331x7",2,331,7
-"322","data2teach","StarBucks_Drinks","","177x7",2,177,7
-"323","data2teach","fish","Fish Market","159x7",2,159,7
-"324","datasets","WorldPhones","The World's Telephones","7x7",2,7,7
-"325","datasets","attitude","The Chatterjee-Price Attitude Data","30x7",2,30,7
-"326","datasets","longley","Longley's Economic Regression Data","16x7",2,16,7
-"327","doBy","carcass","Lean meat contents of 344 pig carcasses","344x7",2,344,7
-"328","doBy","crime_rate","crimeRate","50x7",2,50,7
-"329","doBy","cropyield","Yield from Danish agricultural production of grain and root crop.","97x7",2,97,7
-"330","ggraph","whigs","Membership network of American Whigs","254x7",2,254,7
-"331","lme4","InstEval","University Lecture/Instructor Evaluations by Students at ETH","73421x7",2,73421,7
-"332","lme4","grouseticks","Data on red grouse ticks from Elston et al. 2001","403x7",2,403,7
-"333","lmtest","bondyield","Bond Yield","60x7",2,60,7
-"334","MASS","Aids2","Australian AIDS Survival Data","2843x7",2,2843,7
-"335","MASS","Melanoma","Survival from Malignant Melanoma","205x7",2,205,7
-"336","MASS","OME","Tests of Auditory Perception in Children with OME","1097x7",2,1097,7
-"337","MASS","shuttle","Space Shuttle Autolander Problem","256x7",2,256,7
-"338","modeldata","hpc_cv","Class probability predictions","3467x7",2,3467,7
-"339","modeldata","penguins","Palmer Station penguin data","344x7",2,344,7
-"340","modeldata","taxi","Chicago taxi data set","10000x7",2,10000,7
-"341","mosaicData","Birthdays","US Births in 1969 - 1988","372864x7",2,372864,7
-"342","mosaicData","HeatX","Data from a heat exchanger laboratory","6x7",2,6,7
-"343","nlme","MathAchSchool","School demographic data for MathAchieve","160x7",2,160,7
-"344","nlme","Phenobarb","Phenobarbitol Kinetics","744x7",2,744,7
-"345","openintro","climate70","Temperature Summary Data, Geography Limited","197x7",2,197,7
-"346","openintro","daycare_fines","Daycare fines","200x7",2,200,7
-"347","openintro","earthquakes","Earthquakes","123x7",2,123,7
-"348","openintro","goog","Google stock data","98x7",2,98,7
-"349","openintro","husbands_wives","Great Britain: husband and wife pairs","199x7",2,199,7
-"350","openintro","mcu_films","Marvel Cinematic Universe films","23x7",2,23,7
-"351","openintro","nba_finals_teams","NBA Finals Team Summary","33x7",2,33,7
-"352","openintro","nba_players_19","NBA Players for the 2018-2019 season","494x7",2,494,7
-"353","openintro","nyc_marathon","New York City Marathon Times","108x7",2,108,7
-"354","openintro","sa_gdp_elec","Sustainability and Economic Indicators for South Africa.","16x7",2,16,7
-"355","openintro","seattlepets","Names of pets in Seattle","52519x7",2,52519,7
-"356","openintro","sp500_1950_2018","Daily observations for the S&P 500","17346x7",2,17346,7
-"357","openintro","ssd_speed","SSD read and write speeds","54x7",2,54,7
-"358","openintro","starbucks","Starbucks nutrition","77x7",2,77,7
-"359","openintro","textbooks","Textbook data for UCLA Bookstore and Amazon","73x7",2,73,7
-"360","openintro","xom","Exxon Mobile stock data","98x7",2,98,7
-"361","parsnip","model_db","parsnip model specification database","105x7",2,105,7
-"362","pROC","aSAH","Subarachnoid hemorrhage data","113x7",2,113,7
-"363","reshape2","tips","Tipping data","244x7",2,244,7
-"364","usdata","prrace08","Election results for the 2008 U.S. Presidential race","51x7",2,51,7
-"365","usdata","voter_count","US Voter Turnout Data.","936x7",2,936,7
-"366","vcd","Bundesliga","Ergebnisse der Fussball-Bundesliga","14018x7",2,14018,7
-"367","vcd","Federalist","'May' in Federalist Papers","7",2,7,7
-"368","wk","wk_proj_crs_view","Common CRS Representations","13387x7",2,13387,7
-"369","yardstick","hpc_cv","Multiclass Probability Predictions","3467x7",2,3467,7
-"370","boot","aids","Delay in AIDS Reporting in England and Wales","570x6",2,570,6
-"371","boot","neuro","Neurophysiological Point Process Data","469x6",2,469,6
-"372","bridgesampling","ier","Standardized International Exchange Rate Changes from 1975 to 1986","143x6",2,143,6
-"373","carData","Baumann","Methods of Teaching Reading Comprehension","66x6",2,66,6
-"374","carData","Bfox","Canadian Women's Labour-Force Participation","30x6",2,30,6
-"375","carData","Ginzberg","Data on Depression","82x6",2,82,6
-"376","carData","OBrienKaiserLong","O'Brien and Kaiser's Repeated-Measures Data in ""Long"" Format","240x6",2,240,6
-"377","carData","Pottery","Chemical Composition of Pottery","26x6",2,26,6
-"378","carData","Prestige","Prestige of Canadian Occupations","102x6",2,102,6
-"379","carData","Quartet","Four Regression Datasets","11x6",2,11,6
-"380","carData","Salaries","Salaries for Professors","397x6",2,397,6
-"381","carData","WVS","World Values Surveys","5381x6",2,5381,6
-"382","cluster","animals","Attributes of Animals","20x6",2,20,6
-"383","data2teach","StarBucks_Food","","113x6",2,113,6
-"384","data2teach","mrp_qty","","45x6",2,45,6
-"385","datasets","airquality","New York Air Quality Measurements","153x6",2,153,6
-"386","datasets","swiss","Swiss Fertility and Socioeconomic Indicators (1888) Data","47x6",2,47,6
-"387","diagram","Teasel","Population dynamics model transition matrix of teasel","6x6",2,6,6
-"388","ggplot2","economics","US economic time series","574x6",2,574,6
-"389","ISLR2","NYSE","New York Stock Exchange Data","6051x6",2,6051,6
-"390","labelled","dta_file","Datasets for testing","47x6",2,47,6
-"391","lattice","USRegionalMortality","Mortality Rates in US by Cause and Gender","400x6",2,400,6
-"392","lavaan","FacialBurns","Dataset for illustrating the InformativeTesting function.","77x6",2,77,6
-"393","lmtest","moneydemand","Money Demand","96x6",2,96,6
-"394","MASS","bacteria","Presence of Bacteria after Drug Treatments","220x6",2,220,6
-"395","MASS","nlschools","Eighth-Grade Pupils in the Netherlands","2287x6",2,2287,6
-"396","MASS","petrol","N. L. Prater's Petrol Refinery Data","32x6",2,32,6
-"397","MASS","road","Road Accident Deaths in US States","26x6",2,26,6
-"398","MASS","snails","Snail Mortality Data","96x6",2,96,6
-"399","mosaicData","Galton","Galton's dataset of parent and child heights","898x6",2,898,6
-"400","nlme","Gasoline","Refinery yield of gasoline","32x6",2,32,6
-"401","nlme","MathAchieve","Mathematics achievement scores","7185x6",2,7185,6
-"402","openintro","cars93","cars93","54x6",2,54,6
-"403","openintro","climber_drugs","Climber Drugs Data.","211x6",2,211,6
-"404","openintro","exam_grades","Exam and course grades for statistics students","233x6",2,233,6
-"405","openintro","friday","Friday the 13th","61x6",2,61,6
-"406","openintro","kobe_basket","Kobe Bryant basketball performance","133x6",2,133,6
-"407","openintro","military","US Military Demographics","1414593x6",2,1414593,6
-"408","openintro","nyc","nyc","168x6",2,168,6
-"409","openintro","prison","Prison isolation experiment","14x6",2,14,6
-"410","openintro","satgpa","SAT and GPA data","1000x6",2,1000,6
-"411","openintro","ukdemo","United Kingdom Demographic Data","12x6",2,12,6
-"412","plotly","res_mn","Minnesotan Indian Reservation Lands","13x6",2,13,6
-"413","rpart","solder","Soldering of Components on Printed-Circuit Boards","900x6",2,900,6
-"414","rpart.plot","ptitanic","Titanic data with passenger names and other details removed.","1309x6",2,1309,6
-"415","survival","solder","Data from a soldering experiment","900x6",2,900,6
-"416","survival","transplant","Liver transplant waiting list","815x6",2,815,6
-"417","usdata","pop_race_2019","Population Race 2019 Data.","408x6",2,408,6
-"418","vcd","Employment","Employment Status","2x6x2",3,2,6
-"419","vcd","SpaceShuttle","Space Shuttle O-ring Failures","24x6",2,24,6
-"420","vcd","Suicide","Suicide Rates in Germany","306x6",2,306,6
-"421","vip","titanic","Survival of Titanic passengers","1309x6",2,1309,6
-"422","boot","breslow","Smoking Deaths Among Doctors","10x5",2,10,5
-"423","boot","cane","Sugar-cane Disease Data","180x5",2,180,5
-"424","boot","channing","Channing House Data","462x5",2,462,5
-"425","boot","nitrofen","Toxicity of Nitrofen in Aquatic Systems","50x5",2,50,5
-"426","brms","inhaler","Clarity of inhaler instructions","572x5",2,572,5
-"427","carData","AMSsurvey","American Math Society Survey Data","24x5",2,24,5
-"428","carData","Chirot","The 1907 Romanian Peasant Rebellion","32x5",2,32,5
-"429","carData","Davis","Self-Reports of Height and Weight","200x5",2,200,5
-"430","carData","Depredations","Minnesota Wolf Depredation Data","434x5",2,434,5
-"431","carData","SLID","Survey of Labour and Income Dynamics","7425x5",2,7425,5
-"432","carData","Wells","Well Switching in Bangladesh","3020x5",2,3020,5
-"433","data2teach","infoEmails","","142x5",2,142,5
-"434","datasets","CO2","Carbon Dioxide Uptake in Grass Plants","84x5",2,84,5
-"435","datasets","LifeCycleSavings","Intercountry Life-Cycle Savings Data","50x5",2,50,5
-"436","datasets","Theoph","Pharmacokinetics of Theophylline","132x5",2,132,5
-"437","datasets","USPersonalExpenditure","Personal Expenditure Data","5x5",2,5,5
-"438","datasets","attenu","The Joyner-Boore Attenuation Data","182x5",2,182,5
-"439","datasets","esoph","Smoking, Alcohol and (O)esophageal Cancer","88x5",2,88,5
-"440","datasets","freeny","Freeny's Revenue Data","39x5",2,39,5
-"441","datasets","iris","Edgar Anderson's Iris Data","150x5",2,150,5
-"442","datasets","npk","Classical N, P, K Factorial Experiment","24x5",2,24,5
-"443","datasets","quakes","Locations of Earthquakes off Fiji","1000x5",2,1000,5
-"444","doBy","beets","beets data","30x5",2,30,5
-"445","doBy","fatacid","Fish oil in pig food","26x5",2,26,5
-"446","doBy","fev","Forced expiratory volume in children","654x5",2,654,5
-"447","doBy","haldCement","Heat development in cement under hardening.","13x5",2,13,5
-"448","doBy","math","Mathematics marks for students","88x5",2,88,5
-"449","doBy","mathmark","Mathematics marks for students","88x5",2,88,5
-"450","ggeffects","coffee_data","Sample dataset from a course about analysis of factorial designs","120x5",2,120,5
-"451","ggeffects","lung2","Sample data set","226x5",2,226,5
-"452","lattice","USMortality","Mortality Rates in US by Cause and Gender","40x5",2,40,5
-"453","lme4","cake","Breakage Angle of Chocolate Cakes","270x5",2,270,5
-"454","lmtest","unemployment","Unemployment Data","90x5",2,90,5
-"455","lmtest","valueofstocks","Value of Stocks","71x5",2,71,5
-"456","loo","Kline","Datasets for loo examples and vignettes","10x5",2,10,5
-"457","MASS","Insurance","Numbers of Car Insurance claims","64x5",2,64,5
-"458","MASS","Rabbit","Blood Pressure in Rabbits","60x5",2,60,5
-"459","MASS","caith","Colours of Eyes and Hair of People in Caithness","4x5",2,4,5
-"460","MASS","cement","Heat Evolved by Setting Cements","13x5",2,13,5
-"461","MASS","eagles","Foraging Ecology of Bald Eagles","8x5",2,8,5
-"462","MASS","housing","Frequency Table from a Copenhagen Housing Conditions Survey","72x5",2,72,5
-"463","MASS","minn38","Minnesota High School Graduates of 1938","168x5",2,168,5
-"464","MASS","npk","Classical N, P, K Factorial Experiment","24x5",2,24,5
-"465","MASS","painters","The Painter's Data of de Piles","54x5",2,54,5
-"466","MASS","quine","Absenteeism from School in Rural New South Wales","146x5",2,146,5
-"467","MASS","rotifer","Numbers of Rotifers by Fluid Density","20x5",2,20,5
-"468","MASS","ships","Ships Damage Data","40x5",2,40,5
-"469","modeldata","tate_text","Tate Gallery modern artwork metadata","4284x5",2,4284,5
-"470","modelr","sim3","Simple simulated datasets","120x5",2,120,5
-"471","mosaicData","TenMileRace","Cherry Blossom Race","8636x5",2,8636,5
-"472","nlme","Dialyzer","High-Flux Hemodialyzer","140x5",2,140,5
-"473","nlme","Earthquake","Earthquake Intensity","182x5",2,182,5
-"474","nlme","Oxide","Variability in Semiconductor Manufacturing","72x5",2,72,5
-"475","nlme","PBG","Effect of Phenylbiguanide on Blood Pressure","60x5",2,60,5
-"476","nlme","RatPupWeight","The weight of rat pups","322x5",2,322,5
-"477","nlme","Soybean","Growth of soybean plants","412x5",2,412,5
-"478","nlme","Wheat2","Wheat Yield Trials","224x5",2,224,5
-"479","openintro","absenteeism","Absenteeism from school in New South Wales","146x5",2,146,5
-"480","openintro","babies_crawl","Crawling age","12x5",2,12,5
-"481","openintro","gpa","Survey of Duke students on GPA, studying, and more","55x5",2,55,5
-"482","openintro","gpa_iq","Sample of students and their GPA and IQ","78x5",2,78,5
-"483","openintro","gss2010","2010 General Social Survey","2044x5",2,2044,5
-"484","openintro","iowa","iowa","1386x5",2,1386,5
-"485","openintro","london_murders","London Murders, 2006-2011","838x5",2,838,5
-"486","openintro","midterms_house","President's party performance and unemployment rate","31x5",2,31,5
-"487","openintro","movies","movies","140x5",2,140,5
-"488","openintro","outliers","Simulated datasets for different types of outliers","50x5",2,50,5
-"489","openintro","president","United States Presidental History","67x5",2,67,5
-"490","openintro","prius_mpg","User reported fuel efficiency for 2017 Toyota Prius Prime","19x5",2,19,5
-"491","openintro","tips","Tip data","95x5",2,95,5
-"492","openintro","unemploy_pres","President's party performance and unemployment rate","29x5",2,29,5
-"493","pbkrtest","beets","Sugar beets data","30x5",2,30,5
-"494","reshape2","smiths","Demo data describing the Smiths.","2x5",2,2,5
-"495","rpart","cu.summary","Automobile Data from 'Consumer Reports' 1990","117x5",2,117,5
-"496","tidyr","cms_patient_care","Data from the Centers for Medicare & Medicaid Services","252x5",2,252,5
-"497","tidyr","cms_patient_experience","Data from the Centers for Medicare & Medicaid Services","500x5",2,500,5
-"498","tidyr","household","Household data","5x5",2,5,5
-"499","tidyr","smiths","Some data about the Smith family","2x5",2,2,5
-"500","tidyr","us_rent_income","US rent and income data","104x5",2,104,5
-"501","usdata","pop_age_2019","Population Age 2019 Data.","4386x5",2,4386,5
-"502","usdata","urban_rural_pop","State summary info","51x5",2,51,5
-"503","usdata","vote_nsa","Predicting who would vote for NSA Mass Surveillance","434x5",2,434,5
-"504","vcd","Arthritis","Arthritis Treatment Data","84x5",2,84,5
-"505","vcd","Bundestag2005","Votes in German Bundestag Election 2005","16x5",2,16,5
-"506","vcd","DanishWelfare","Danish Welfare Study Data","180x5",2,180,5
-"507","vcd","HorseKicks","Death by Horse Kicks","5",2,5,5
-"508","vcd","JointSports","Opinions About Joint Sports","40x5",2,40,5
-"509","vcd","OvaryCancer","Ovary Cancer Data","16x5",2,16,5
-"510","vcd","Punishment","Corporal Punishment Data","36x5",2,36,5
-"511","vcd","Trucks","Truck Accidents Data","24x5",2,24,5
-"512","vcd","UKSoccer","UK Soccer Scores","5x5",2,5,5
-"513","bain","kuiper2013","The Effect of Prior Interaction on Trust","4x4",2,4,4
-"514","boot","amis","Car Speeding and Warning Signs","8437x4",2,8437,4
-"515","boot","beaver","Beaver Body Temperature Data","100x4",2,100,4
-"516","boot","frets","Head Dimensions in Brothers","25x4",2,25,4
-"517","boot","motor","Data from a Simulated Motorcycle Accident","94x4",2,94,4
-"518","boot","salinity","Water Salinity and River Discharge","28x4",2,28,4
-"519","brms","loss","Cumulative Insurance Loss Payments","55x4",2,55,4
-"520","ca","smoke","Smoke dataset","5x4",2,5,4
-"521","carData","Angell","Moral Integration of American Cities","43x4",2,43,4
-"522","carData","Anscombe","U. S. State Public-School Expenditures","51x4",2,51,4
-"523","carData","Blackmore","Exercise Histories of Eating-Disordered and Control Subjects","945x4",2,945,4
-"524","carData","Cowles","Cowles and Davis's Data on Volunteering","1421x4",2,1421,4
-"525","carData","Duncan","Duncan's Occupational Prestige Data","45x4",2,45,4
-"526","carData","Freedman","Crowding and Crime in U. S. Metropolitan Areas","110x4",2,110,4
-"527","carData","Leinhardt","Data on Infant-Mortality","105x4",2,105,4
-"528","carData","Moore","Status, Authoritarianism, and Conformity","45x4",2,45,4
-"529","carData","Ornstein","Interlocking Directorates Among Major Canadian Firms","248x4",2,248,4
-"530","carData","TitanicSurvival","Survival of Passengers on the Titanic","1309x4",2,1309,4
-"531","carData","Vocab","Vocabulary and Education","30351x4",2,30351,4
-"532","carData","Womenlf","Canadian Women's Labour-Force Participation","263x4",2,263,4
-"533","carData","Wool","Wool data","27x4",2,27,4
-"534","cluster","pluton","Isotopic Composition Plutonium Batches","45x4",2,45,4
-"535","data2teach","avengers_long","Avengers (death of Comic Characters)","173x4",2,173,4
-"536","data2teach","ee_me_eng","","30x4",2,30,4
-"537","data2teach","gearbox","","275x4",2,275,4
-"538","datasets","ChickWeight","Weight versus age of chicks on different diets","578x4",2,578,4
-"539","datasets","EuStockMarkets","Daily Closing Prices of Major European Stock Indices, 1991-1998","1860x4",2,1860,4
-"540","datasets","HairEyeColor","Hair and Eye Color of Statistics Students","4x4x2",3,4,4
-"541","datasets","OrchardSprays","Potency of Orchard Sprays","64x4",2,64,4
-"542","datasets","USArrests","Violent Crime Rates by US State","50x4",2,50,4
-"543","datasets","VADeaths","Death Rates in Virginia (1940)","5x4",2,5,4
-"544","datasets","iris3","Edgar Anderson's Iris Data","50x4x3",3,50,4
-"545","datasets","rock","Measurements on Petroleum Rock Samples","48x4",2,48,4
-"546","datasets","stackloss","Brownlee's Stack Loss Plant Data","21x4",2,21,4
-"547","doBy","budworm","Budworm data","12x4",2,12,4
-"548","doBy","child_growth","Berkeley Growth Study data","2883x4",2,2883,4
-"549","doBy","shoes","shoes","10x4",2,10,4
-"550","ggplot2","economics_long","US economic time series","2870x4",2,2870,4
-"551","ggplot2","luv_colours","'colors()' in Luv space","657x4",2,657,4
-"552","ggplot2","presidential","Terms of 12 presidents from Eisenhower to Trump","12x4",2,12,4
-"553","ggplot2","seals","Vector field of seal movements","1155x4",2,1155,4
-"554","ggridges","Catalan_elections","Results from Catalan regional elections (1980-2015)","20764x4",2,20764,4
-"555","ISLR2","Default","Credit Card Default Data","10000x4",2,10000,4
-"556","lattice","barley","Yield data from a Minnesota barley trial","120x4",2,120,4
-"557","lattice","environmental","Atmospheric environmental conditions in New York City","111x4",2,111,4
-"558","lme4","Pastes","Paste strength by batch and cask","60x4",2,60,4
-"559","lme4","cbpp","Contagious bovine pleuropneumonia","56x4",2,56,4
-"560","lmtest","currencysubstitution","Currency Substitution","61x4",2,61,4
-"561","lmtest","wages","Wages","20x4",2,20,4
-"562","MASS","Sitka","Growth Curves for Sitka Spruce Trees in 1988","395x4",2,395,4
-"563","MASS","Sitka89","Growth Curves for Sitka Spruce Trees in 1989","632x4",2,632,4
-"564","MASS","Traffic","Effect of Swedish Speed Limits on Accidents","184x4",2,184,4
-"565","MASS","beav1","Body Temperature Series of Beaver 1","114x4",2,114,4
-"566","MASS","beav2","Body Temperature Series of Beaver 2","100x4",2,100,4
-"567","MASS","cabbages","Data from a cabbage field trial","60x4",2,60,4
-"568","MASS","coop","Co-operative Trial in Analytical Chemistry","252x4",2,252,4
-"569","MASS","farms","Ecological Factors in Farm Management","20x4",2,20,4
-"570","MASS","gehan","Remission Times of Leukaemia Patients","42x4",2,42,4
-"571","MASS","immer","Yields from a Barley Field Trial","30x4",2,30,4
-"572","MASS","npr1","US Naval Petroleum Reserve No. 1 data","104x4",2,104,4
-"573","MASS","oats","Data from an Oats Field Trial","72x4",2,72,4
-"574","modeldata","two_class_example","Two class predictions","500x4",2,500,4
-"575","modelr","sim4","Simple simulated datasets","300x4",2,300,4
-"576","nlme","Alfalfa","Split-Plot Experiment on Varieties of Alfalfa","72x4",2,72,4
-"577","nlme","Assay","Bioassay on Cell Culture Plate","60x4",2,60,4
-"578","nlme","BodyWeight","Rat weight over time for different diets","176x4",2,176,4
-"579","nlme","Glucose","Glucose levels over time","378x4",2,378,4
-"580","nlme","Glucose2","Glucose Levels Following Alcohol Ingestion","196x4",2,196,4
-"581","nlme","Gun","Methods for firing naval guns","36x4",2,36,4
-"582","nlme","Meat","Tenderness of meat","30x4",2,30,4
-"583","nlme","Milk","Protein content of cows' milk","1337x4",2,1337,4
-"584","nlme","Nitrendipene","Assay of nitrendipene","89x4",2,89,4
-"585","nlme","Oats","Split-plot Experiment on Varieties of Oats","72x4",2,72,4
-"586","nlme","Orthodont","Growth curve data on an orthdontic measurement","108x4",2,108,4
-"587","nlme","Oxboys","Heights of Boys in Oxford","234x4",2,234,4
-"588","nlme","Pixel","X-ray pixel intensities over time","102x4",2,102,4
-"589","nlme","Spruce","Growth of Spruce Trees","1027x4",2,1027,4
-"590","nlme","Tetracycline1","Pharmacokinetics of tetracycline","40x4",2,40,4
-"591","nlme","Tetracycline2","Pharmacokinetics of tetracycline","40x4",2,40,4
-"592","nlme","Wafer","Modeling of Analog MOS Circuits","400x4",2,400,4
-"593","nlme","Wheat","Yields by growing conditions","48x4",2,48,4
-"594","openintro","cards","Deck of cards","52x4",2,52,4
-"595","openintro","country_iso","Country ISO information","249x4",2,249,4
-"596","openintro","life_exp","life_exp","3142x4",2,3142,4
-"597","openintro","mail_me","Influence of a Good Mood on Helpfulness","42x4",2,42,4
-"598","openintro","mlb","Salary data for Major League Baseball (2010)","828x4",2,828,4
-"599","openintro","murders","Data for 20 metropolitan areas","20x4",2,20,4
-"600","openintro","nba_heights","NBA Player heights from 2008-9","435x4",2,435,4
-"601","openintro","orings","1986 Challenger disaster and O-rings","23x4",2,23,4
-"602","openintro","stocks_18","Monthly Returns for a few stocks","36x4",2,36,4
-"603","pbkrtest","budworm","Budworm data","12x4",2,12,4
-"604","pls","mayonnaise","NIR measurements and oil types of mayonnaise","162x4",2,162,4
-"605","probably","species_probs","Predictions on animal species","110x4",2,110,4
-"606","rpart","kyphosis","Data on Children who have had Corrective Spinal Surgery","81x4",2,81,4
-"607","survival","logan","Data from the 1972-78 GSS data used by Logan","838x4",2,838,4
-"608","tidyr","table1","Example tabular representations","6x4",2,6,4
-"609","tidyr","table2","Example tabular representations","12x4",2,12,4
-"610","tidyr","table5","Example tabular representations","6x4",2,6,4
-"611","vcd","BrokenMarriage","Broken Marriage Data","20x4",2,20,4
-"612","vcd","Hitters","Hitters Data","154x4",2,154,4
-"613","vcd","JobSatisfaction","Job Satisfaction Data","8x4",2,8,4
-"614","vcd","MSPatients","Diagnosis of Multiple Sclerosis","4x4x2",3,4,4
-"615","vcd","NonResponse","Non-Response Survey Data","12x4",2,12,4
-"616","vcd","SexualFun","Sex is Fun","4x4",2,4,4
-"617","vcd","VisualAcuity","Visual Acuity in Left and Right Eyes","32x4",2,32,4
-"618","vcd","VonBort","Von Bortkiewicz Horse Kicks Data","280x4",2,280,4
-"619","workflowsets","chi_features_set","Chicago Features Example Data","3x4",2,3,4
-"620","workflowsets","two_class_set","Two Class Example Data","6x4",2,6,4
-"621","yardstick","two_class_example","Two Class Predictions","500x4",2,500,4
-"622","boot","acme","Monthly Excess Returns","60x3",2,60,3
-"623","boot","aml","Remission Times for Acute Myelogenous Leukaemia","23x3",2,23,3
-"624","boot","brambles","Spatial Location of Bramble Canes","823x3",2,823,3
-"625","boot","catsM","Weight Data for Domestic Cats","97x3",2,97,3
-"626","boot","downs.bc","Incidence of Down's Syndrome in British Columbia","30x3",2,30,3
-"627","boot","fir","Counts of Balsam-fir Seedlings","50x3",2,50,3
-"628","boot","hirose","Failure Time of PET Film","44x3",2,44,3
-"629","boot","poisons","Animal Survival Times","48x3",2,48,3
-"630","boot","remission","Cancer Remission and Cell Activity","27x3",2,27,3
-"631","bridgesampling","turtles","Turtles Data from Janzen, Tucker, and Paukstis (2000)","244x3",2,244,3
-"632","carData","Adler","Experimenter Expectations","108x3",2,108,3
-"633","carData","Burt","Fraudulent Data on IQs of Twins Raised Apart","27x3",2,27,3
-"634","carData","Guyer","Anonymity and Cooperation","20x3",2,20,3
-"635","carData","Mandel","Contrived Collinear Data","8x3",2,8,3
-"636","carData","Robey","Fertility and Contraception","50x3",2,50,3
-"637","carData","Transact","Transaction data","261x3",2,261,3
-"638","colorspace","USSouthPolygon","Polygon for County Map of US South States: Alabama, Georgia, and South Carolina","4874x3",2,4874,3
-"639","datasets","DNase","Elisa assay of DNase","176x3",2,176,3
-"640","datasets","Indometh","Pharmacokinetics of Indomethacin","66x3",2,66,3
-"641","datasets","Loblolly","Growth of Loblolly Pine Trees","84x3",2,84,3
-"642","datasets","Orange","Growth of Orange Trees","35x3",2,35,3
-"643","datasets","Puromycin","Reaction Velocity of an Enzymatic Reaction","23x3",2,23,3
-"644","datasets","ToothGrowth","The Effect of Vitamin C on Tooth Growth in Guinea Pigs","60x3",2,60,3
-"645","datasets","morley","Michelson Speed of Light Data","100x3",2,100,3
-"646","datasets","randu","Random Numbers from Congruential Generator RANDU","400x3",2,400,3
-"647","datasets","sleep","Student's Sleep Data","20x3",2,20,3
-"648","datasets","trees","Diameter, Height and Volume for Black Cherry Trees","31x3",2,31,3
-"649","datasets","warpbreaks","The Number of Breaks in Yarn during Weaving","54x3",2,54,3
-"650","DiceDesign","OA131","A 3D orthogonal array of strength 2","49x3",2,49,3
-"651","DiceDesign","OA131_scrambled","A scrambled 3D orthogonal array of strength 2","49x3",2,49,3
-"652","doBy","crickets","crickets data","30x3",2,30,3
-"653","doBy","income","income data","80x3",2,80,3
-"654","doBy","potatoes","Weight and size of 20 potatoes","20x3",2,20,3
-"655","ggformula","MIpop","Population of Michigan counties","83x3",2,83,3
-"656","ggplot2","faithfuld","2d density estimate of Old Faithful data","5625x3",2,5625,3
-"657","ggraph","highschool","Friendship among high school boys","506x3",2,506,3
-"658","lattice","ethanol","Engine exhaust fumes from burning ethanol","88x3",2,88,3
-"659","lme4","Penicillin","Variation in penicillin testing","144x3",2,144,3
-"660","lme4","sleepstudy","Reaction times in a sleep deprivation study","180x3",2,180,3
-"661","loo","voice_loo","Datasets for loo examples and vignettes","126x3",2,126,3
-"662","MASS","Cushings","Diagnostic Tests on Patients with Cushing's Syndrome","27x3",2,27,3
-"663","MASS","Rubber","Accelerated Testing of Tyre Rubber","30x3",2,30,3
-"664","MASS","Skye","AFM Compositions of Aphyric Skye Lavas","23x3",2,23,3
-"665","MASS","anorexia","Anorexia Data on Weight Change","72x3",2,72,3
-"666","MASS","cats","Anatomical Data from Domestic Cats","144x3",2,144,3
-"667","MASS","genotype","Rat Genotype Data","61x3",2,61,3
-"668","MASS","hills","Record Times in Scottish Hill Races","35x3",2,35,3
-"669","MASS","leuk","Survival Times and White Blood Counts for Leukaemia Patients","33x3",2,33,3
-"670","MASS","menarche","Age of Menarche in Warsaw","25x3",2,25,3
-"671","MASS","michelson","Michelson's Speed of Light Data","100x3",2,100,3
-"672","MASS","motors","Accelerated Life Testing of Motorettes","40x3",2,40,3
-"673","MASS","muscle","Effect of Calcium Chloride on Muscle Contraction in Rat Hearts","60x3",2,60,3
-"674","MASS","stormer","The Stormer Viscometer Data","23x3",2,23,3
-"675","MASS","synth.te","Synthetic Classification Problem","1000x3",2,1000,3
-"676","MASS","synth.tr","Synthetic Classification Problem","250x3",2,250,3
-"677","MASS","topo","Spatial Topographic Data","52x3",2,52,3
-"678","MASS","whiteside","House Insulation: Whiteside's Data","56x3",2,56,3
-"679","modeldata","Smithsonian","Smithsonian museums","20x3",2,20,3
-"680","modeldata","crickets","Rates of Cricket Chirps","31x3",2,31,3
-"681","modeldata","parabolic","Parabolic class boundary data","500x3",2,500,3
-"682","modeldata","two_class_dat","Two class data","791x3",2,791,3
-"683","ModelMetrics","testDF","Test data","100x3",2,100,3
-"684","mosaic","Mustangs","Mustang Prices","25x3",2,25,3
-"685","mosaicData","Alcohol","Alcohol Consumption per Capita","411x3",2,411,3
-"686","mosaicData","Countries","Countries","288x3",2,288,3
-"687","mosaicData","GoosePermits","Goose Permit Study","11x3",2,11,3
-"688","mosaicData","SwimRecords","100 m Swimming World Records","62x3",2,62,3
-"689","mosaicData","Whickham","Data from the Whickham survey","1314x3",2,1314,3
-"690","nlme","Cefamandole","Pharmacokinetics of Cefamandole","84x3",2,84,3
-"691","nlme","Fatigue","Cracks caused by metal fatigue","262x3",2,262,3
-"692","nlme","IGF","Radioimmunoassay of IGF-I Protein","237x3",2,237,3
-"693","nlme","Machines","Productivity Scores for Machines and Workers","54x3",2,54,3
-"694","nlme","Muscle","Contraction of heart muscle sections","60x3",2,60,3
-"695","nlme","Ovary","Counts of Ovarian Follicles","308x3",2,308,3
-"696","nlme","Relaxin","Assay for Relaxin","198x3",2,198,3
-"697","nlme","ergoStool","Ergometrics experiment with stool types","36x3",2,36,3
-"698","openintro","arbuthnot","Male and female births in London","82x3",2,82,3
-"699","openintro","ask","How important is it to ask pointed questions?","219x3",2,219,3
-"700","openintro","bac","Beer and blood alcohol content","16x3",2,16,3
-"701","openintro","cherry","Summary information for 31 cherry trees","31x3",2,31,3
-"702","openintro","china","Child care hours","9788x3",2,9788,3
-"703","openintro","coast_starlight","Coast Starlight Amtrak train","16x3",2,16,3
-"704","openintro","elmhurst","Elmhurst College gift aid","50x3",2,50,3
-"705","openintro","fact_opinion","Can Americans categorize facts and opinions?","5035x3",2,5035,3
-"706","openintro","fish_age","Young fish in the North Sea.","300x3",2,300,3
-"707","openintro","flow_rates","River flow data","31x3",2,31,3
-"708","openintro","helium","Helium football","39x3",2,39,3
-"709","openintro","law_resume","Gender, Socioeconomic Class, and Interview Invites","316x3",2,316,3
-"710","openintro","lizard_run","Lizard speeds","48x3",2,48,3
-"711","openintro","london_boroughs","London Borough Boundaries","45341x3",2,45341,3
-"712","openintro","marathon","New York City Marathon Times (outdated)","59x3",2,59,3
-"713","openintro","playing_cards","Table of Playing Cards in 52-Card Deck","52x3",2,52,3
-"714","openintro","present","Birth counts","63x3",2,63,3
-"715","openintro","res_demo_1","Simulated data for regression","100x3",2,100,3
-"716","openintro","res_demo_2","Simulated data for regression","300x3",2,300,3
-"717","openintro","rosling_responses","Sample Responses to Two Public Health Questions","278x3",2,278,3
-"718","openintro","simpsons_paradox_covid","Simpson's Paradox: Covid","268166x3",2,268166,3
-"719","openintro","simulated_scatter","Simulated data for sample scatterplots","2033x3",2,2033,3
-"720","openintro","snowfall","Snowfall at Paradise, Mt. Rainier National Park","100x3",2,100,3
-"721","openintro","solar","Energy Output From Two Solar Arrays in San Francisco","284x3",2,284,3
-"722","openintro","speed_gender_height","Speed, gender, and height of 1325 students","1325x3",2,1325,3
-"723","openintro","stem_cell","Embryonic stem cells to treat heart attack (in sheep)","18x3",2,18,3
-"724","openintro","tourism","Turkey tourism","47x3",2,47,3
-"725","openintro","ucb_admit","ucb_admit","4526x3",2,4526,3
-"726","openintro","unempl","Annual unemployment since 1890","121x3",2,121,3
-"727","plotly","hobbs","Hobbs data","300x3",2,300,3
-"728","plotly","mic","Mic data","305x3",2,305,3
-"729","plotly","wind","Wind data","32x3",2,32,3
-"730","pls","yarn","NIR spectra and density measurements of PET yarns","28x3",2,28,3
-"731","probably","segment_logistic","Image segmentation predictions","1010x3",2,1010,3
-"732","probably","segment_naive_bayes","Image segmentation predictions","1010x3",2,1010,3
-"733","s2","s2_data_tbl_cities","Low-resolution world boundaries, timezones, and cities","243x3",2,243,3
-"734","s2","s2_data_tbl_countries","Low-resolution world boundaries, timezones, and cities","177x3",2,177,3
-"735","survival","tobin","Tobin's Tobit data","20x3",2,20,3
-"736","tidyr","fish_encounters","Fish encounters","114x3",2,114,3
-"737","tidyr","population","World Health Organization TB data","4060x3",2,4060,3
-"738","tidyr","table3","Example tabular representations","6x3",2,6,3
-"739","tidyr","table4a","Example tabular representations","3x3",2,3,3
-"740","tidyr","table4b","Example tabular representations","3x3",2,3,3
-"741","usdata","prez_pwr","Presidential Power.","365x3",2,365,3
-"742","vcd","Hospital","Hospital data","3x3",2,3,3
-"743","wk","wk_proj_crs_json","Common CRS Representations","13387x3",2,13387,3
-"744","yardstick","lung_surv","Survival Analysis Results","228x3",2,228,3
-"745","boot","bigcity","Population of U.S. Cities","49x2",2,49,2
-"746","boot","calcium","Calcium Uptake Data","27x2",2,27,2
-"747","boot","cav","Position of Muscle Caveolae","138x2",2,138,2
-"748","boot","cd4","CD4 Counts for HIV-Positive Patients","20x2",2,20,2
-"749","boot","city","Population of U.S. Cities","10x2",2,10,2
-"750","boot","claridge","Genetic Links to Left-handedness","37x2",2,37,2
-"751","boot","cloth","Number of Flaws in Cloth","32x2",2,32,2
-"752","boot","co.transfer","Carbon Monoxide Transfer","7x2",2,7,2
-"753","boot","dogs","Cardiac Data for Domestic Dogs","7x2",2,7,2
-"754","boot","ducks","Behavioral and Plumage Characteristics of Hybrid Ducks","11x2",2,11,2
-"755","boot","grav","Acceleration Due to Gravity","26x2",2,26,2
-"756","boot","gravity","Acceleration Due to Gravity","81x2",2,81,2
-"757","boot","polar","Pole Positions of New Caledonian Laterites","50x2",2,50,2
-"758","boot","survival","Survival of Rats after Radiation Doses","14x2",2,14,2
-"759","boot","tau","Tau Particle Decay Modes","60x2",2,60,2
-"760","carData","CanPop","Canadian Population Data","16x2",2,16,2
-"761","carData","Friendly","Format Effects on Recall","30x2",2,30,2
-"762","carData","Sahlins","Agricultural Production in Mazulu Village","20x2",2,20,2
-"763","carData","USPop","Population of the United States","22x2",2,22,2
-"764","cluster","agriculture","European Union Agricultural Workforces","12x2",2,12,2
-"765","cluster","ruspini","Ruspini Data","75x2",2,75,2
-"766","cluster","xclara","Bivariate Data Set with 3 Clusters","3000x2",2,3000,2
-"767","datasets","BOD","Biochemical Oxygen Demand","6x2",2,6,2
-"768","datasets","Formaldehyde","Determination of Formaldehyde","6x2",2,6,2
-"769","datasets","InsectSprays","Effectiveness of Insect Sprays","72x2",2,72,2
-"770","datasets","PlantGrowth","Results from an Experiment on Plant Growth","30x2",2,30,2
-"771","datasets","Titanic","Survival of passengers on the Titanic","4x2x2x2",4,4,2
-"772","datasets","UCBAdmissions","Student Admissions at UC Berkeley","2x2x6",3,2,2
-"773","datasets","cars","Speed and Stopping Distances of Cars","50x2",2,50,2
-"774","datasets","chickwts","Chicken Weights by Feed Type","71x2",2,71,2
-"775","datasets","faithful","Old Faithful Geyser Data","272x2",2,272,2
-"776","datasets","pressure","Vapor Pressure of Mercury as a Function of Temperature","19x2",2,19,2
-"777","datasets","women","Average Heights and Weights for American Women","15x2",2,15,2
-"778","doBy","math_teachers","Height of math teachers","30x2",2,30,2
-"779","dplyr","band_instruments","Band membership","3x2",2,3,2
-"780","dplyr","band_instruments2","Band membership","3x2",2,3,2
-"781","dplyr","band_members","Band membership","3x2",2,3,2
-"782","ISLR2","Portfolio","Portfolio Data","100x2",2,100,2
-"783","lattice","melanoma","Melanoma skin cancer incidence","37x2",2,37,2
-"784","lattice","singer","Heights of New York Choral Society singers","235x2",2,235,2
-"785","lme4","Dyestuff","Yield of dyestuff by batch","30x2",2,30,2
-"786","lme4","Dyestuff2","Yield of dyestuff by batch","30x2",2,30,2
-"787","lmtest","ChickEgg","Chickens, Eggs, and Causality","54x2",2,54,2
-"788","lmtest","Mandible","Mandible Data","167x2",2,167,2
-"789","lmtest","USDistLag","US Macroeconomic Data","20x2",2,20,2
-"790","lmtest","growthofmoney","Growth of Money Supply","19x2",2,19,2
-"791","MASS","Animals","Brain and Body Weights for 28 Species","28x2",2,28,2
-"792","MASS","GAGurine","Level of GAG in Urine of Children","314x2",2,314,2
-"793","MASS","forbes","Forbes' Data on Boiling Points in the Alps","17x2",2,17,2
-"794","MASS","geyser","Old Faithful Geyser Data","299x2",2,299,2
-"795","MASS","mammals","Brain and Body Weights for 62 Species of Land Mammals","62x2",2,62,2
-"796","MASS","mcycle","Data from a Simulated Motorcycle Accident","133x2",2,133,2
-"797","MASS","steam","The Saturated Steam Pressure Data","14x2",2,14,2
-"798","MASS","wtloss","Weight Loss Data from an Obese Patient","52x2",2,52,2
-"799","modeldata","drinks","Sample time series data","309x2",2,309,2
-"800","modeldata","pathology","Liver pathology data","344x2",2,344,2
-"801","modeldata","solubility_test","Solubility predictions from MARS model","316x2",2,316,2
-"802","modelr","sim1","Simple simulated datasets","30x2",2,30,2
-"803","modelr","sim2","Simple simulated datasets","40x2",2,40,2
-"804","mosaic","Sleep","Sleep and Memory","24x2",2,24,2
-"805","mosaicData","CoolingWater","CoolingWater","222x2",2,222,2
-"806","mosaicData","Dimes","Weight of dimes","30x2",2,30,2
-"807","mosaicData","Mites","Mites and Wilt Disease","47x2",2,47,2
-"808","NACCdata","udsGroups","Groupings for Variables in UDS This is a helper dataset that includes the 'Form' value for variables listed in the UDS's data dictionary. When a value is not available, the variable is set to 'No_Group'.","1943x2",2,1943,2
-"809","nlme","Rail","Evaluation of Stress in Railway Rails","18x2",2,18,2
-"810","openintro","assortative_mating","Eye color of couples","204x2",2,204,2
-"811","openintro","assortive_mating","Eye color of couples","204x2",2,204,2
-"812","openintro","avandia","Cardiovascular problems for two types of Diabetes medicines","227571x2",2,227571,2
-"813","openintro","biontech_adolescents","Efficacy of Pfizer-BioNTech COVID-19 vaccine on adolescents","2260x2",2,2260,2
-"814","openintro","books","Sample of books on a shelf","95x2",2,95,2
-"815","openintro","burger","Burger preferences","500x2",2,500,2
-"816","openintro","cancer_in_dogs","Cancer in dogs","1436x2",2,1436,2
-"817","openintro","classdata","Simulated class data","164x2",2,164,2
-"818","openintro","cpr","CPR dataset","90x2",2,90,2
-"819","openintro","diabetes2","Type 2 Diabetes Clinical Trial for Patients 10-17 Years Old","699x2",2,699,2
-"820","openintro","dream","Survey on views of the DREAM Act","910x2",2,910,2
-"821","openintro","drone_blades","Quadcopter Drone Blades","2000x2",2,2000,2
-"822","openintro","drug_use","Drug use of students and parents","445x2",2,445,2
-"823","openintro","ethanol","Ethanol Treatment for Tumors Experiment","24x2",2,24,2
-"824","openintro","family_college","Simulated sample of parent / teen college attendance","792x2",2,792,2
-"825","openintro","fcid","Summary of male heights from USDA Food Commodity Intake Database","100x2",2,100,2
-"826","openintro","full_body_scan","Poll about use of full-body airport scanners","1137x2",2,1137,2
-"827","openintro","gear_company","Fake data for a gear company example","2000x2",2,2000,2
-"828","openintro","gender_discrimination","Bank manager recommendations based on gender","48x2",2,48,2
-"829","openintro","global_warming_pew","Pew survey on global warming","2253x2",2,2253,2
-"830","openintro","gov_poll","Pew Research poll on government approval ratings","4223x2",2,4223,2
-"831","openintro","gpa_study_hours","gpa_study_hours","193x2",2,193,2
-"832","openintro","gradestv","Simulated data for analyzing the relationship between watching TV and grades","25x2",2,25,2
-"833","openintro","gsearch","Simulated Google search experiment","10000x2",2,10000,2
-"834","openintro","gss_wordsum_class","gss_wordsum_class","795x2",2,795,2
-"835","openintro","health_coverage","Health Coverage and Health Status","20000x2",2,20000,2
-"836","openintro","healthcare_law_survey","Pew Research Center poll on health care, including question variants","1503x2",2,1503,2
-"837","openintro","helmet","Socioeconomic status and reduced-fee school lunches","12x2",2,12,2
-"838","openintro","immigration","Poll on illegal workers in the US","910x2",2,910,2
-"839","openintro","infmortrate","Infant Mortality Rates, 2012","222x2",2,222,2
-"840","openintro","lizard_habitat","Field data on lizards observed in their natural habitat","332x2",2,332,2
-"841","openintro","major_survey","Survey of Duke students and the area of their major","218x2",2,218,2
-"842","openintro","malaria","Malaria Vaccine Trial","20x2",2,20,2
-"843","openintro","mammogram","Experiment with Mammogram Randomized","89835x2",2,89835,2
-"844","openintro","migraine","Migraines and acupuncture","89x2",2,89,2
-"845","openintro","offshore_drilling","California poll on drilling off the California coast","828x2",2,828,2
-"846","openintro","opportunity_cost","Opportunity cost of purchases","150x2",2,150,2
-"847","openintro","penetrating_oil","What's the best way to loosen a rusty bolt?","30x2",2,30,2
-"848","openintro","penny_ages","Penny Ages","648x2",2,648,2
-"849","openintro","photo_classify","Photo classifications: fashion or not","1822x2",2,1822,2
-"850","openintro","ppp_201503","US Poll on who it is better to raise taxes on","691x2",2,691,2
-"851","openintro","race_justice","Yahoo! News Race and Justice poll results","1059x2",2,1059,2
-"852","openintro","salinity","Salinity in Bimini Lagoon, Bahamas","30x2",2,30,2
-"853","openintro","sex_discrimination","Bank manager recommendations based on sex","48x2",2,48,2
-"854","openintro","sinusitis","Sinusitis and antibiotic experiment","166x2",2,166,2
-"855","openintro","sleep_deprivation","Survey on sleep deprivation and transportation workers","1087x2",2,1087,2
-"856","openintro","smallpox","Smallpox vaccine results","6224x2",2,6224,2
-"857","openintro","socialexp","Social experiment","45x2",2,45,2
-"858","openintro","soda","soda","60x2",2,60,2
-"859","openintro","stent30","Stents for the treatment of stroke","451x2",2,451,2
-"860","openintro","stent365","Stents for the treatment of stroke","451x2",2,451,2
-"861","openintro","sulphinpyrazone","Treating heart attacks","1475x2",2,1475,2
-"862","openintro","toy_anova","Simulated dataset for ANOVA","140x2",2,140,2
-"863","openintro","twins","twins","27x2",2,27,2
-"864","openintro","winery_cars","Time Between Gondola Cars at Sterling Winery","52x2",2,52,2
-"865","openintro","yawn","Contagiousness of yawning","50x2",2,50,2
-"866","pls","gasoline","Octane numbers and NIR spectra of gasoline","60x2",2,60,2
-"867","pls","oliveoil","Sensory and physico-chemical data of olive oils","16x2",2,16,2
-"868","s2","s2_data_tbl_timezones","Low-resolution world boundaries, timezones, and cities","120x2",2,120,2
-"869","vcd","CoalMiners","Breathlessness and Wheeze in Coal Miners","2x2x9",3,2,2
-"870","vcd","PreSex","Pre-marital Sex and Divorce","2x2x2x2",4,2,2
-"871","vcd","Rochdale","Rochdale Data","2x2x2x2x2x2x2x2",8,2,2
-"872","wordcloud2","demoFreq","Demo dataset with Words and Frequency","1011x2",2,1011,2
-"873","wordcloud2","demoFreqC","Demo dataset with Chinese character Words and Frequency","885x2",2,885,2
-"874","yardstick","pathology","Liver Pathology Data","344x2",2,344,2
-"875","yardstick","solubility_test","Solubility Predictions from MARS Model","316x2",2,316,2
-"876","boot","aircondit","Failures of Air-conditioning Equipment","12x1",2,12,1
-"877","boot","aircondit7","Failures of Air-conditioning Equipment","24x1",2,24,1
-"878","boot","capability","Simulated Manufacturing Process Data","75x1",2,75,1
-"879","boot","coal","Dates of Coal Mining Disasters","191x1",2,191,1
-"880","boot","darwin","Darwin's Plant Height Differences","15x1",2,15,1
-"881","boot","islay","Jura Quartzite Azimuths on Islay","18x1",2,18,1
-"882","boot","paulsen","Neurotransmission in Guinea Pig Brains","346x1",2,346,1
-"883","boot","tuna","Tuna Sighting Data","64x1",2,64,1
-"884","modeldata","covers","Raw cover type data","40x1",2,40,1
-"885","openintro","age_at_mar","Age at first marriage of 5,534 US women.","5534x1",2,5534,1
-"886","openintro","ami_occurrences","Acute Myocardial Infarction (Heart Attack) Events","365x1",2,365,1
-"887","openintro","antibiotics","Pre-existing conditions in 92 children","92x1",2,92,1
-"888","openintro","ball_bearing","Lifespan of ball bearings","75x1",2,75,1
-"889","openintro","cchousing","Community college housing (simulated data)","75x1",2,75,1
-"890","openintro","credits","College credits.","100x1",2,100,1
-"891","openintro","ebola_survey","Survey on Ebola quarantine","1042x1",2,1042,1
-"892","openintro","env_regulation","American Adults on Regulation and Renewable Energy","705x1",2,705,1
-"893","openintro","exams","Exam scores","19x1",2,19,1
-"894","openintro","exclusive_relationship","Number of Exclusive Relationships","218x1",2,218,1
-"895","openintro","fheights","Female college student heights, in inches","24x1",2,24,1
-"896","openintro","housing","Simulated dataset on student housing","75x1",2,75,1
-"897","openintro","ipod","Length of songs on an iPod","3000x1",2,3000,1
-"898","openintro","jury","Simulated juror dataset","275x1",2,275,1
-"899","openintro","leg_mari","Legalization of Marijuana Support in 2010 California Survey","119x1",2,119,1
-"900","openintro","male_heights","Sample of 100 male heights","100x1",2,100,1
-"901","openintro","male_heights_fcid","Random sample of adult male heights","100x1",2,100,1
-"902","openintro","manhattan","manhattan","20x1",2,20,1
-"903","openintro","nuclear_survey","Nuclear Arms Reduction Survey","1028x1",2,1028,1
-"904","openintro","penelope","Guesses at the weight of Penelope (a cow)","17184x1",2,17184,1
-"905","openintro","poker","Poker winnings during 50 sessions","50x1",2,50,1
-"906","openintro","russian_influence_on_us_election_2016","Russians' Opinions on US Election Influence in 2016","506x1",2,506,1
-"907","openintro","sat_improve","Simulated data for SAT score improvement","30x1",2,30,1
-"908","openintro","scotus_healthcare","Public Opinion with SCOTUS ruling on American Healthcare Act","1012x1",2,1012,1
-"909","openintro","sp500_seq","S&P 500 stock data","2948x1",2,2948,1
-"910","openintro","stats_scores","Final exam scores for twenty students","20x1",2,20,1
-"911","openintro","student_housing","Community college housing (simulated data, 2015)","175x1",2,175,1
-"912","openintro","student_sleep","Sleep for 110 students (simulated)","110x1",2,110,1
-"913","openintro","supreme_court","Supreme Court approval rating","976x1",2,976,1
-"914","openintro","thanksgiving_spend","Thanksgiving spending, simulated based on Gallup poll.","436x1",2,436,1
-"915","openintro","toohey","Simulated polling dataset","500x1",2,500,1
-"916","openintro","transplant","Transplant consultant success rate (fake data)","62x1",2,62,1
+"35","fivethirtyeight","police_killings","Where Police Have Killed Americans In 2015","467x34",2,467,34
+"36","rpart","car90","Automobile Data from 'Consumer Reports' 1990","111x34",2,111,34
+"37","bain","synthetic_us","Simulated data about morality and politics in the USA","518x33",2,518,33
+"38","fivethirtyeight","dem_candidates","Democratic Primary Candidates 2018","811x33",2,811,33
+"39","doBy","personality","Personality traits","240x32",2,240,32
+"40","bain","synthetic_dk","Simulated data about morality and politics in Denmark","552x31",2,552,31
+"41","cluster","plantTraits","Plant Species Traits Data","136x31",2,136,31
+"42","cluster","votes.repub","Votes for Republican Candidate in Presidential Elections","50x31",2,50,31
+"43","modeldata","attrition","Job attrition","1470x31",2,1470,31
+"44","modeldata","deliveries","Food Delivery Time Data","10012x31",2,10012,31
+"45","mosaicData","HELPrct","Health Evaluation and Linkage to Primary Care","453x30",2,453,30
+"46","openintro","resume","Which resume attributes drive job callbacks?","4870x30",2,4870,30
+"47","modeldata","ischemic_stroke","Clinical data used to predict ischemic stroke","126x29",2,126,29
+"48","openintro","esi","Environmental Sustainability Index 2005","146x29",2,146,29
+"49","data2teach","McDonaldMenu","","260x28",2,260,28
+"50","fivethirtyeight","drug_use","How Baby Boomers Get High","17x28",2,17,28
+"51","ggplot2","midwest","Midwest demographics","437x28",2,437,28
+"52","modeldata","hotel_rates","Daily Hotel Rate Data","15402x28",2,15402,28
+"53","mosaicData","HELPmiss","Health Evaluation and Linkage to Primary Care","470x28",2,470,28
+"54","nlme","bdf","Language scores","2287x28",2,2287,28
+"55","openintro","epa2012","Vehicle info from the EPA for 2012","1129x28",2,1129,28
+"56","openintro","epa2021","Vehicle info from the EPA for 2021","1108x28",2,1108,28
+"57","usdata","urban_owner","Summary of many state-level variables","52x28",2,52,28
+"58","fivethirtyeight","flying","41 Percent Of Fliers Think You're Rude If You Recline Your Seat","1040x27",2,1040,27
+"59","ggmosaic","fly","Flying Etiquette Survey Data","1040x27",2,1040,27
+"60","MASS","Cars93","Data from 93 Cars on Sale in the USA in 1993","93x27",2,93,27
+"61","ca","author","Author dataset","12x26",2,12,26
+"62","data2teach","County2014","","3141x25",2,3141,25
+"63","data2teach","airline_satisfaction","","103904x25",2,103904,25
+"64","fivethirtyeight","nfl_fandom_surveymonkey","How Every NFL Team’s Fans Lean Politically","33x25",2,33,25
+"65","fivethirtyeight","sandy_311","The (Very) Long Tail Of Hurricane Recovery","1783x25",2,1783,25
+"66","modeldata","check_times","Execution time data","13626x25",2,13626,25
+"67","mosaicData","Weather","Weather","3655x25",2,3655,25
+"68","openintro","bdims","Body measurements of 507 physically active individuals.","507x25",2,507,25
+"69","vcd","Baseball","Baseball Data","322x25",2,322,25
+"70","fivethirtyeight","impeachment_polls","Do Americans Support Impeaching Trump?","388x24",2,388,24
+"71","fivethirtyeight","nba_elo_latest","NBA Elo Ratings","1230x24",2,1230,24
+"72","ggridges","lincoln_weather","Weather in Lincoln, Nebraska in 2016.","366x24",2,366,24
+"73","plyr","ozone","Monthly ozone measurements over Central America.","24x24x72",3,24,24
+"74","usdata","houserace10","Election results for the 2010 U.S. House of Represenatives races","435x24",2,435,24
+"75","usdata","state_stats","State-level data","51x24",2,51,24
+"76","vcd","Butterfly","Butterfly Species in Malaya","24",2,24,24
+"77","fivethirtyeight","bachelorette","Bachelorette / Bachelor","887x23",2,887,23
+"78","fivethirtyeight","fandango","Be Suspicious Of Online Movie Ratings, Especially Fandango's","146x23",2,146,23
+"79","fivethirtyeight","fight_songs","Our Guide To The Exuberant Nonsense of College Fight Songs","65x23",2,65,23
+"80","modeldata","lending_club","Loan data","9857x23",2,9857,23
+"81","mosaicData","Gestation","Data from the Child Health and Development Studies","1236x23",2,1236,23
+"82","openintro","evals","Professor evaluations and beauty","463x23",2,463,23
+"83","openintro","mtl","Medial temporal lobe (MTL) and other data for 26 participants","35x23",2,35,23
+"84","usdata","govrace10","Election results for 2010 Governor races in the U.S.","37x23",2,37,23
+"85","usdata","senaterace10","Election results for the 2010 U.S. Senate races","38x23",2,38,23
+"86","datasets","crimtab","Student's 3000 Criminals Data","42x22",2,42,22
+"87","fivethirtyeight","college_grad_students","The Economic Guide To Picking A College Major","173x22",2,173,22
+"88","plyr","baseball","Yearly batting records for all major league baseball players","21699x22",2,21699,22
+"89","ROCit","Diabetes","Diabetes Data","403x22",2,403,22
+"90","bain","sesamesim","Simulated Sesame Street Data","240x21",2,240,21
+"91","data2teach","avengers_538","Avengers (death of Comic Characters)","173x21",2,173,21
+"92","data2teach","sesamesim","Simulated data inspired by Sesame Street","240x21",2,240,21
+"93","fivethirtyeight","avengers","Joining The Avengers Is As Deadly As Jumping Off A Four-Story Building","173x21",2,173,21
+"94","fivethirtyeight","college_recent_grads","The Economic Guide To Picking A College Major","173x21",2,173,21
+"95","fivethirtyeight","generic_polllist","Congress Generic Ballot Polls","1981x21",2,1981,21
+"96","fivethirtyeight","wwc_2019_forecasts","2019 Women's World Cup Predictions","192x21",2,192,21
+"97","modeldata","stackoverflow","Annual Stack Overflow Developer Survey Data","5594x21",2,5594,21
+"98","openintro","email","Data frame representing information about a collection of emails","3921x21",2,3921,21
+"99","openintro","email50","Sample of 50 emails","50x21",2,50,21
+"100","openintro","email_test","Data frame representing information about a collection of emails","1252x21",2,1252,21
+"101","usdata","airline_delay","Airline Delays for December 2019 and 2020.","3351x21",2,3351,21
+"102","modeldata","cat_adoption","Cat Adoption","2257x20",2,2257,20
+"103","modeldata","mlc_churn","Customer churn data","5000x20",2,5000,20
+"104","modeldata","wa_churn","Watson churn data","7043x20",2,7043,20
+"105","openintro","pm25_2011_durham","Air quality for Durham, NC","449x20",2,449,20
+"106","openintro","ucla_textbooks_f18","Sample of UCLA course textbooks for Fall 2018","201x20",2,201,20
+"107","survival","pbc","Mayo Clinic Primary Biliary Cholangitis Data","418x20",2,418,20
+"108","tidyr","world_bank_pop","Population data from the World Bank","1064x20",2,1064,20
+"109","fivethirtyeight","ncaa_w_bball_tourney","The Rise And Fall Of Women's NCAA Tournament Dynasties","2092x19",2,2092,19
+"110","fivethirtyeight","trump_approval_poll","How Popular is Donald Trump","4929x19",2,4929,19
+"111","MASS","waders","Counts of Waders at 15 Sites in South Africa","15x19",2,15,19
+"112","modeldata","scat","Morphometric data on scat","110x19",2,110,19
+"113","mosaicData","Utilities2","Utility bills","117x19",2,117,19
+"114","openintro","cars04","cars04","428x19",2,428,19
+"115","openintro","mlb_players_18","Batter Statistics for 2018 Major League Baseball (MLB) Season","1270x19",2,1270,19
+"116","openintro","mlbbat10","Major League Baseball Player Hitting Statistics for 2010","1199x19",2,1199,19
+"117","openintro","pm25_2022_durham","Air quality for Durham, NC","356x19",2,356,19
+"118","usdata","pierce_county_house_sales","Pierce County House Sales Data for 2020","16814x19",2,16814,19
+"119","doBy","carcassall","Lean meat contents of 344 pig carcasses","344x18",2,344,18
+"120","fivethirtyeight","wwc_2019_matches","2019 Women's World Cup Predictions","52x18",2,52,18
+"121","modeldata","car_prices","Kelly Blue Book resale data for 2005 model year GM cars","804x18",2,804,18
+"122","openintro","loan50","Loan data from Lending Club","50x18",2,50,18
+"123","openintro","sowc_child_mortality","SOWC Child Mortality Data.","195x18",2,195,18
+"124","openintro","sowc_demographics","SOWC Demographics Data.","202x18",2,202,18
+"125","openintro","sowc_maternal_newborn","SOWC Maternal and Newborn Health Data.","202x18",2,202,18
+"126","RobStatTM","bus","Bus data","218x18",2,218,18
+"127","RobStatTM","vehicle","Vehicle data","217x18",2,217,18
+"128","carData","OBrienKaiser","O'Brien and Kaiser's Repeated-Measures Data","16x17",2,16,17
+"129","fivethirtyeight","nfl_fav_team","The Rams Are Dead To Me, So I Answered 3,352 Questions To Find A New NFL Team","32x17",2,32,17
+"130","openintro","birds","Aircraft-Wildlife Collisions","19302x17",2,19302,17
+"131","openintro","fastfood","Nutrition in fast food","515x17",2,515,17
+"132","timetk","walmart_sales_weekly","Sample Time Series Retail Data from the Walmart Recruiting Store Sales Forecasting Competition","1001x17",2,1001,17
+"133","fivethirtyeight","mlb_as_team_talent","The Best MLB All-Star Teams Ever","172x16",2,172,16
+"134","fivethirtyeight","trump_lawsuits","Trump Lawsuits","57x16",2,57,16
+"135","MASS","UScrime","The Effect of Punishment Regimes on Crime Rates","47x16",2,47,16
+"136","mosaicData","SaratogaHouses","Houses in Saratoga County (2006)","1728x16",2,1728,16
+"137","openintro","nycflights","Flights data","32735x16",2,32735,16
+"138","survival","cgd","Chronic Granulotamous Disease data","203x16",2,203,16
+"139","timetk","bike_sharing_daily","Daily Bike Sharing Data","731x16",2,731,16
+"140","data2teach","AirQualityUCI","Air Quality","9471x15",2,9471,15
+"141","data2teach","adult_50K_uci","Adults Income (1996 Census)","32560x15",2,32560,15
+"142","data2teach","boston_housing_kg","Housing Values in Suburbs of Boston (Kaggle)","333x15",2,333,15
+"143","fivethirtyeight","bechdel","The Dollar-And-Cents Case Against Hollywood's Exclusion of Women","1794x15",2,1794,15
+"144","fivethirtyeight","love_actually_adj","The Definitive Analysis Of 'Love Actually,' The Greatest Christmas Movie Of Our Time","14x15",2,14,15
+"145","fivethirtyeight","love_actually_appearance","The Definitive Analysis Of 'Love Actually,' The Greatest Christmas Movie Of Our Time","71x15",2,71,15
+"146","fivethirtyeight","mad_men","""Mad Men"" Is Ending. What's Next For The Cast?","248x15",2,248,15
+"147","fivethirtyeight","mlb_as_play_talent","The Best MLB All-Star Teams Ever","3930x15",2,3930,15
+"148","fivethirtyeight","steak_survey","How Americans Like Their Steak","550x15",2,550,15
+"149","lavaan","HolzingerSwineford1939","Holzinger and Swineford Dataset (9 Variables)","301x15",2,301,15
+"150","mosaicData","Marriage","Marriage records","98x15",2,98,15
+"151","mosaicData","SnowGR","Snowfall data for Grand Rapids, MI","119x15",2,119,15
+"152","openintro","association","Simulated data for association plots","121x15",2,121,15
+"153","survival","udca","Data from a trial of usrodeoxycholic acid","170x15",2,170,15
+"154","usdata","county","United States Counties","3142x15",2,3142,15
+"155","airports","usairports","US Airports","19615x14",2,19615,14
+"156","carData","MplsStops","Minneapolis Police Department 2017 Stop Data","51920x14",2,51920,14
+"157","carData","Soils","Soil Compositions of Physical and Chemical Characteristics","48x14",2,48,14
+"158","cherryblossom","run09","Cherry Blossom Run data, 2009","14974x14",2,14974,14
+"159","data2teach","cereal2","cereal2","88x14",2,88,14
+"160","doBy","cad1","Coronary artery disease data","236x14",2,236,14
+"161","doBy","cad2","Coronary artery disease data","67x14",2,67,14
+"162","doBy","wine","Chemical composition of wine","178x14",2,178,14
+"163","dplyr","starwars","Starwars characters","87x14",2,87,14
+"164","fivethirtyeight","biopics","'Straight Outta Compton' Is The Rare Biopic Not About White Dudes","761x14",2,761,14
+"165","MASS","Boston","Housing Values in Suburbs of Boston","506x14",2,506,14
+"166","modeldata","credit_data","Credit data","4454x14",2,4454,14
+"167","nlme","Quinidine","Quinidine Kinetics","1471x14",2,1471,14
+"168","openintro","lego_population","Population of Lego Sets for Sale between Jan. 1, 2018 and Sept. 11, 2020.","1304x14",2,1304,14
+"169","openintro","lego_sample","Sample of Lego Sets","75x14",2,75,14
+"170","openintro","ucla_f18","UCLA courses in Fall 2018","3950x14",2,3950,14
+"171","robustbase","ambientNOxCH","Daily Means of NOx (mono-nitrogen oxides) in air","366x14",2,366,14
+"172","carData","UN98","United Nations Social Indicators Data 1998]","207x13",2,207,13
+"173","data2teach","WineQualityUCI","Wine Quality","6497x13",2,6497,13
+"174","dplyr","storms","Storm tracks data","19537x13",2,19537,13
+"175","fivethirtyeight","candy_rankings","Candy Power Ranking","85x13",2,85,13
+"176","fivethirtyeight","comma_survey","Elitist, Superfluous, Or Popular? We Polled Americans on the Oxford Comma","1129x13",2,1129,13
+"177","fivethirtyeight","congress_age","Both Republicans And Democrats Have an Age Problem","18635x13",2,18635,13
+"178","fivethirtyeight","endorsements_2020","The 2020 Endorsement Primary - Which Democratic candidates are receiving the most support from prominent members of their party?","1002x13",2,1002,13
+"179","fivethirtyeight","hate_crimes","Higher Rates Of Hate Crimes Are Tied To Income Inequality","51x13",2,51,13
+"180","fivethirtyeight","russia_investigation","Russia Investigation","194x13",2,194,13
+"181","fivethirtyeight","tenth_circuit","For A Trump Nominee, Neil Gorsuch’s Record Is Surprisingly Moderate On Immigration","954x13",2,954,13
+"182","ggridges","Aus_athletes","Australian athletes","202x13",2,202,13
+"183","lubridate","lakers","Lakers 2008-2009 basketball data set","34624x13",2,34624,13
+"184","modeldata","steroidogenic_toxicity","Predicting steroidogenic toxicity with assay data","162x13",2,162,13
+"185","openintro","COL","OpenIntro Statistics colors","7x13",2,7,13
+"186","openintro","IMSCOL","Introduction to Modern Statistics (IMS) Colors","8x13",2,8,13
+"187","openintro","acs12","American Community Survey, 2012","2000x13",2,2000,13
+"188","openintro","births14","US births","1000x13",2,1000,13
+"189","openintro","duke_forest","Sale prices of houses in Duke Forest, Durham, NC","98x13",2,98,13
+"190","openintro","mn_police_use_of_force","Minneapolis police use of force data.","12925x13",2,12925,13
+"191","openintro","ncbirths","North Carolina births, 1000 cases","1000x13",2,1000,13
+"192","openintro","yrbss","Youth Risk Behavior Surveillance System (YRBSS)","13583x13",2,13583,13
+"193","openintro","yrbss_samp","Sample of Youth Risk Behavior Surveillance System (YRBSS)","100x13",2,100,13
+"194","PerformanceAnalytics","edhec","EDHEC-Risk Hedge Fund Style Indices","293x13",2,293,13
+"195","RobStatTM","wine","Wine data","59x13",2,59,13
+"196","vcd","Saxony","Families in Saxony","13",2,13,13
+"197","carData","Highway1","Highway Accidents","39x12",2,39,12
+"198","data2teach","titanic_kg","Titanic Disaster","891x12",2,891,12
+"199","datasets","USJudgeRatings","Lawyers' Ratings of State Judges in the US Superior Court","43x12",2,43,12
+"200","doBy","milkman","Milk yield data for manually milked cows.","161836x12",2,161836,12
+"201","doBy","milkman_rdm1","Milk yield data for manually milked cows.","12026x12",2,12026,12
+"202","fivethirtyeight","masculinity_survey","Masculinity Survey","189x12",2,189,12
+"203","fivethirtyeight","mueller_approval_polls","Both Parties Think The Mueller Report Was Fair. They Just Completely Disagree On What It Says.","65x12",2,65,12
+"204","fivethirtyeight","senate_seat_forecast","Senate Forecast 2018","28353x12",2,28353,12
+"205","ggmosaic","happy","Data related to happiness from the general social survey.","64814x12",2,64814,12
+"206","lavaan","Demo.twolevel","Demo dataset for a illustrating a multilevel CFA.","2500x12",2,2500,12
+"207","MASS","survey","Student Survey Data","237x12",2,237,12
+"208","mosaicData","Riders","Volume of Users of a Massachusetts Rail Trail","90x12",2,90,12
+"209","mosaicData","Utilities","Utility bills","117x12",2,117,12
+"210","nlme","Remifentanil","Pharmacokinetics of Remifentanil","2107x12",2,2107,12
+"211","openintro","cpu","CPU's Released between 2010 and 2020.","875x12",2,875,12
+"212","openintro","house","United States House of Representatives historical make-up","116x12",2,116,12
+"213","openintro","mariokart","Wii Mario Kart auctions from Ebay","143x12",2,143,12
+"214","openintro","smoking","UK Smoking Data","1691x12",2,1691,12
+"215","openintro","sp500","Financial information for 50 S&P 500 companies","50x12",2,50,12
+"216","RobStatTM","algae","Algae data","90x12",2,90,12
+"217","RobStatTM","breslow.dat","Breslow Data","59x12",2,59,12
+"218","usdata","fatal_police_shootings","Fatal Police Shootings data.","6421x12",2,6421,12
+"219","usdata","gerrymander","Gerrymander","435x12",2,435,12
+"220","usdata","us_crime_rates","US Crime Rates","60x12",2,60,12
+"221","boot","nuclear","Nuclear Power Station Construction Data","32x11",2,32,11
+"222","carData","Florida","Florida County Voting","67x11",2,67,11
+"223","data2teach","inOutTime","","96x11",2,96,11
+"224","data2teach","stat_students3","","22x11",2,22,11
+"225","datasets","mtcars","Motor Trend Car Road Tests","32x11",2,32,11
+"226","fivethirtyeight","august_senate_polls","How Much Trouble Is Ted Cruz Really In?","594x11",2,594,11
+"227","fivethirtyeight","college_all_ages","The Economic Guide To Picking A College Major","173x11",2,173,11
+"228","fivethirtyeight","forecast_results_2018","How FiveThirtyEight's 2018 Midterm Forecasts Did","1518x11",2,1518,11
+"229","fivethirtyeight","governor_national_forecast","2018 Governors Forecast","150x11",2,150,11
+"230","fivethirtyeight","house_national_forecast","2018 House Forecast","588x11",2,588,11
+"231","fivethirtyeight","riddler_castles","Can You Rule Riddler Nation?","1387x11",2,1387,11
+"232","fivethirtyeight","riddler_castles2","The Battle For Riddler Nation, Round 2","932x11",2,932,11
+"233","fivethirtyeight","san_andreas","The Rock Isn't Alone: Lots Of People Are Worried About 'The Big One'","1013x11",2,1013,11
+"234","fivethirtyeight","senate_national_forecast","Senate Forecast 2018","450x11",2,450,11
+"235","ggplot2","mpg","Fuel economy data from 1999 to 2008 for 38 popular models of cars","234x11",2,234,11
+"236","ggplot2","msleep","An updated and expanded version of the mammals sleep dataset","83x11",2,83,11
+"237","infer","gss","Subset of data from the General Social Survey (GSS).","500x11",2,500,11
+"238","lavaan","PoliticalDemocracy","Industrialization And Political Democracy Dataset","75x11",2,75,11
+"239","MASS","UScereal","Nutritional and Marketing Information on US Cereals","65x11",2,65,11
+"240","MASS","biopsy","Biopsy Data on Breast Cancer Patients","699x11",2,699,11
+"241","mosaicData","CPS85","Data from the 1985 Current Population Survey (CPS85)","534x11",2,534,11
+"242","mosaicData","RailTrail","Volume of Users of a Rail Trail","90x11",2,90,11
+"243","openintro","cia_factbook","CIA Factbook Details on Countries","259x11",2,259,11
+"244","openintro","comics","comics","21821x11",2,21821,11
+"245","openintro","hsb2","High School and Beyond survey","200x11",2,200,11
+"246","openintro","mammals","Sleep in Mammals","62x11",2,62,11
+"247","openintro","oscars","Oscar winners, 1929 to 2018","184x11",2,184,11
+"248","PerformanceAnalytics","weights","Selected Portfolio Weights Data","8x11",2,8,11
+"249","robustbase","epilepsy","Epilepsy Attacks Data Set","59x11",2,59,11
+"250","survival","flchain","Assay of serum free light chain for 7874 subjects.","7874x11",2,7874,11
+"251","survminer","myeloma","Multiple Myeloma Data","256x11",2,256,11
+"252","tidyr","relig_income","Pew religion and income survey","18x11",2,18,11
+"253","vcd","WeldonDice","Weldon's Dice Data","11",2,11,11
+"254","vcd","WomenQueue","Women in Queues","11",2,11,11
+"255","carData","BEPS","British Election Panel Study","1525x10",2,1525,10
+"256","cluster","chorSub","Subset of C-horizon of Kola Data","61x10",2,61,10
+"257","data2teach","EnergyEff2012","Energy Efficiency","1296x10",2,1296,10
+"258","data2teach","yeast","Protein Localization Sites","1484x10",2,1484,10
+"259","fivethirtyeight","governor_state_forecast","2018 Governors Forecast","7743x10",2,7743,10
+"260","ggplot2","diamonds","Prices of over 50,000 round cut diamonds","53940x10",2,53940,10
+"261","lavaan","Demo.growth","Demo dataset for a illustrating a linear growth model.","400x10",2,400,10
+"262","MASS","birthwt","Risk Factors Associated with Low Infant Birth Weight","189x10",2,189,10
+"263","MASS","fgl","Measurements of Forensic Glass Fragments","214x10",2,214,10
+"264","openintro","get_it_dunn_run","Get it Dunn Run, Race Times","978x10",2,978,10
+"265","PerformanceAnalytics","managers","Hypothetical Alternative Asset Manager and Benchmark Data","132x10",2,132,10
+"266","PerformanceAnalytics","test_returns","Sample sector returns for use by unit tests","5x10",2,5,10
+"267","PerformanceAnalytics","test_weights","Sample sector weights for use by unit tests","5x10",2,5,10
+"268","productplots","happy","Data related to happiness from the general social survey.","51020x10",2,51020,10
+"269","robustbase","toxicity","Toxicity of Carboxylic Acids Data","38x10",2,38,10
+"270","survival","cancer","NCCTG Lung Cancer Data","228x10",2,228,10
+"271","carData","CES11","2011 Canadian National Election Study, With Attitude Toward Abortion","2231x9",2,2231,9
+"272","carData","Ericksen","The 1980 U.S. Census Undercount","66x9",2,66,9
+"273","carData","KosteckiDillon","Treatment of Migraine Headaches","4152x9",2,4152,9
+"274","carData","LoBD","Cancer drug data use to provide an example of the use of the skew power distributions.","84x9",2,84,9
+"275","cherryblossom","run12","Cherry Blossom Run data, 2012","16924x9",2,16924,9
+"276","cherryblossom","run17","Cherry Blossom Run data, 2017","19961x9",2,19961,9
+"277","data2teach","auto_mpg_uci","Auto MPG (1993)","398x9",2,398,9
+"278","data2teach","stat_students1","","32x9",2,32,9
+"279","doBy","codstom","Diet of Atlantic cod in the Gulf of St. Lawrence (Canada)","10000x9",2,10000,9
+"280","fivethirtyeight","airline_safety","Should Travelers Avoid Flying Airlines That Have Had Crashes in the Past?","56x9",2,56,9
+"281","fivethirtyeight","antiquities_act","Trump Might Be The First President To Scrap A National Monument","344x9",2,344,9
+"282","fivethirtyeight","datasets_master","Master list of all datasets","148x9",2,148,9
+"283","fivethirtyeight","endorsements","Pols And Polls Say The Same Thing: Jeb Bush Is A Weak Front-Runner","109x9",2,109,9
+"284","fivethirtyeight","generic_topline","Congress Generic Ballot Polls","1447x9",2,1447,9
+"285","fivethirtyeight","librarians","Where Are America's Librarians?","371x9",2,371,9
+"286","fivethirtyeight","nba_draft_2015","Projecting The Top 50 Players In The 2015 NBA Draft Class","1090x9",2,1090,9
+"287","fivethirtyeight","nfl_fandom_google","How Every NFL Team’s Fans Lean Politically","207x9",2,207,9
+"288","fivethirtyeight","state_words","What America’s Governors Are Talking About","2223x9",2,2223,9
+"289","fivethirtyeight","trump_approval_trend","How Popular is Donald Trump","1704x9",2,1704,9
+"290","fivethirtyeight","weather_check","Where People Go To Check The Weather","928x9",2,928,9
+"291","forcats","gss_cat","A sample of categorical variables from the General Social survey","21483x9",2,21483,9
+"292","ggplot2","txhousing","Housing sales in TX","8602x9",2,8602,9
+"293","lme4","VerbAgg","Verbal Aggression item responses","7584x9",2,7584,9
+"294","MASS","cpus","Performance of Computer CPUs","209x9",2,209,9
+"295","MASS","epil","Seizure Counts for Epileptics","236x9",2,236,9
+"296","MASS","gilgais","Line Transect of Soil in Gilgai Territory","365x9",2,365,9
+"297","modeldata","Sacramento","Sacramento CA home prices","932x9",2,932,9
+"298","modeldata","concrete","Compressive strength of concrete mixtures","1030x9",2,1030,9
+"299","ncvreg","prostate","Factors associated with prostate specific antigen","97x9",2,97,9
+"300","openintro","births","North Carolina births, 100 cases","150x9",2,150,9
+"301","openintro","blizzard_salary","Blizzard Employee Voluntary Salary Info.","466x9",2,466,9
+"302","openintro","corr_match","Sample datasets for correlation problems","121x9",2,121,9
+"303","openintro","gdp_countries","GDP Countries Data.","654x9",2,654,9
+"304","openintro","iran","iran","366x9",2,366,9
+"305","openintro","nba_finals","NBA Finals History","73x9",2,73,9
+"306","openintro","paralympic_1500","Race time for Olympic and Paralympic 1500m.","82x9",2,82,9
+"307","openintro","us_temperature","US temperatures in 1950 and 2022","18759x9",2,18759,9
+"308","reshape2","french_fries","Sensory data from a french fries experiment.","696x9",2,696,9
+"309","robustbase","CrohnD","Crohn's Disease Adverse Events Data","117x9",2,117,9
+"310","robustbase","possumDiv","Possum Diversity Data","151x9",2,151,9
+"311","robustbase","steamUse","Steam Usage Data (Excerpt)","25x9",2,25,9
+"312","ROCit","Loan","Loan Data","900x9",2,900,9
+"313","survival","nwtco","Data from the National Wilm's Tumor Study","4028x9",2,4028,9
+"314","survival","retinopathy","Diabetic Retinopathy","394x9",2,394,9
+"315","tidyr","construction","Completed construction in the US in 2018","9x9",2,9,9
+"316","usdata","us_temp","US Temperature Data","10118x9",2,10118,9
+"317","carData","Arrests","Arrests for Marijuana Possession","5226x8",2,5226,8
+"318","carData","Chile","Voting Intentions in the 1988 Chilean Plebiscite","2700x8",2,2700,8
+"319","carData","GSSvocab","Data from the General Social Survey (GSS) from the National Opinion Research Center of the University of Chicago.","28867x8",2,28867,8
+"320","carData","Hartnagel","Canadian Crime-Rates Time Series","38x8",2,38,8
+"321","carData","Migration","Canadian Interprovincial Migration Data","90x8",2,90,8
+"322","carData","MplsDemo","Minneapolis Demographic Data 2015, by Neighborhood","84x8",2,84,8
+"323","carData","Mroz","U.S. Women's Labor-Force Participation","753x8",2,753,8
+"324","cluster","flower","Flower Characteristics","18x8",2,18,8
+"325","data2teach","stat_students2","","24x8",2,24,8
+"326","datasets","Seatbelts","Road Casualties in Great Britain 1969-84","192x8",2,192,8
+"327","datasets","anscombe","Anscombe's Quartet of 'Identical' Simple Linear Regressions","11x8",2,11,8
+"328","datasets","infert","Infertility after Spontaneous and Induced Abortion","248x8",2,248,8
+"329","datasets","occupationalStatus","Occupational Status of Fathers and their Sons","8x8",2,8,8
+"330","datasets","penguins","Measurements of Penguins near Palmer Station, Antarctica","344x8",2,344,8
+"331","doBy","crimeRate","crimeRate","50x8",2,50,8
+"332","doBy","dietox","Growth curves of pigs in a 3x3 factorial experiment","861x8",2,861,8
+"333","fivethirtyeight","bad_drivers","Dear Mona, Which State Has The Worst Drivers?","51x8",2,51,8
+"334","fivethirtyeight","cabinet_turnover","Two Years In, Turnover In Trump’s Cabinet Is Still Historically High","312x8",2,312,8
+"335","fivethirtyeight","cand_events_20150114","Looking For Clues: Who Is Going To Run For President In 2016?","42x8",2,42,8
+"336","fivethirtyeight","cand_events_20150130","Who Will Run For President: Romney Is Out","74x8",2,74,8
+"337","fivethirtyeight","elo_blatter","Blatter's Reign At FIFA Hasn't Helped Soccer's Poor","209x8",2,209,8
+"338","fivethirtyeight","hiphop_cand_lyrics","Hip-Hop Is Turning On Donald Trump","377x8",2,377,8
+"339","fivethirtyeight","police_locals","Most Police Don't Live In The Cities They Serve","75x8",2,75,8
+"340","fivethirtyeight","pres_commencement","Sitting Presidents Give Way More Commencement Speeches Than They Used To","154x8",2,154,8
+"341","lme4","Arabidopsis","Arabidopsis clipping/fertilization data","625x8",2,625,8
+"342","lmtest","fyff","U.S. Macroeconomic Time Series","413x8",2,413,8
+"343","lmtest","gmdc","U.S. Macroeconomic Time Series","413x8",2,413,8
+"344","lmtest","ip","U.S. Macroeconomic Time Series","413x8",2,413,8
+"345","lmtest","jocci","U.S. Macroeconomic Time Series","411x8",2,411,8
+"346","lmtest","lhur","U.S. Macroeconomic Time Series","413x8",2,413,8
+"347","lmtest","pw561","U.S. Macroeconomic Time Series","413x8",2,413,8
+"348","MASS","Pima.te","Diabetes in Pima Indian Women","332x8",2,332,8
+"349","MASS","Pima.tr","Diabetes in Pima Indian Women","200x8",2,200,8
+"350","MASS","Pima.tr2","Diabetes in Pima Indian Women","300x8",2,300,8
+"351","MASS","VA","Veteran's Administration Lung Cancer Trial","137x8",2,137,8
+"352","MASS","crabs","Morphological Measurements on Leptograpsus Crabs","200x8",2,200,8
+"353","modeldata","biomass","Biomass data","536x8",2,536,8
+"354","modeldata","hpc_data","High-performance computing system data","4331x8",2,4331,8
+"355","modeldata","oils","Fatty acid composition of commercial oils","96x8",2,96,8
+"356","modelr","heights","Height and income data.","7006x8",2,7006,8
+"357","mosaicData","Births","US Births","7305x8",2,7305,8
+"358","mosaicData","Births2015","US Births","365x8",2,365,8
+"359","mosaicData","Births78","US Births","365x8",2,365,8
+"360","mosaicData","BirthsCDC","US Births","3652x8",2,3652,8
+"361","mosaicData","BirthsSSA","US Births","5479x8",2,5479,8
+"362","mosaicData","KidsFeet","Foot measurements in children","39x8",2,39,8
+"363","mosaicData","SAT","State by State SAT data","50x8",2,50,8
+"364","openintro","LAhomes","LAhomes","1594x8",2,1594,8
+"365","openintro","babies","The Child Health and Development Studies","1236x8",2,1236,8
+"366","openintro","census","Random sample of 2000 U.S. Census Data","500x8",2,500,8
+"367","openintro","cle_sac","Cleveland and Sacramento","500x8",2,500,8
+"368","openintro","gifted","Analytical skills of young gifted children","36x8",2,36,8
+"369","openintro","heart_transplant","Heart Transplant Data","103x8",2,103,8
+"370","openintro","lecture_learning","Lecture Delivery Method and Learning Outcomes","552x8",2,552,8
+"371","openintro","piracy","Piracy and PIPA/SOPA","534x8",2,534,8
+"372","openintro","possum","Possums in Australia and New Guinea","104x8",2,104,8
+"373","openintro","teacher","Teacher Salaries in St. Louis, Michigan","71x8",2,71,8
+"374","robustbase","milk","Daudin's Milk Composition Data","86x8",2,86,8
+"375","robustbase","pulpfiber","Pulp Fiber and Paper Data","62x8",2,62,8
+"376","rpart","car.test.frame","Automobile Data from 'Consumer Reports' 1990","60x8",2,60,8
+"377","rpart","stagec","Stage C Prostate Cancer","146x8",2,146,8
+"378","survival","diabetic","Ddiabetic retinopathy","394x8",2,394,8
+"379","survival","heart","Stanford Heart Transplant data","172x8",2,172,8
+"380","survival","rhDNase","rhDNASE data set","767x8",2,767,8
+"381","tidyquant","FANG","Stock prices for the ""FANG"" stocks.","4032x8",2,4032,8
+"382","timetk","FANG","Stock prices for the ""FANG"" stocks.","4032x8",2,4032,8
+"383","usdata","us_time_survey","American Time Survey 2009 - 2019","11x8",2,11,8
+"384","vcd","Lifeboats","Lifeboats on the Titanic","18x8",2,18,8
+"385","vcd","RepVict","Repeat Victimization Data","8x8",2,8,8
+"386","viridis","unemp","USA Unemployment in 2009","3218x8",2,3218,8
+"387","boot","melanoma","Survival from Malignant Melanoma","205x7",2,205,7
+"388","boot","nodal","Nodal Involvement in Prostate Cancer","53x7",2,53,7
+"389","boot","urine","Urine Analysis Data","79x7",2,79,7
+"390","ca","wg93","International Social Survey Program on Environment 1993 - western German sample","871x7",2,871,7
+"391","carData","DavisThin","Davis's Data on Drive for Thinness","191x7",2,191,7
+"392","carData","Greene","Refugee Appeals","384x7",2,384,7
+"393","carData","States","Education and Related Statistics for the U.S. States","51x7",2,51,7
+"394","carData","UN","National Statistics from the United Nations, Mostly From 2009-2011","213x7",2,213,7
+"395","carData","WeightLoss","Weight Loss Data","34x7",2,34,7
+"396","carData","Wong","Post-Coma Recovery of IQ","331x7",2,331,7
+"397","data2teach","StarBucks_Drinks","","177x7",2,177,7
+"398","data2teach","fish","Fish Market","159x7",2,159,7
+"399","datasets","WorldPhones","The World's Telephones","7x7",2,7,7
+"400","datasets","attitude","The Chatterjee-Price Attitude Data","30x7",2,30,7
+"401","datasets","longley","Longley's Economic Regression Data","16x7",2,16,7
+"402","doBy","carcass","Lean meat contents of 344 pig carcasses","344x7",2,344,7
+"403","doBy","crime_rate","crimeRate","50x7",2,50,7
+"404","doBy","cropyield","Yield from Danish agricultural production of grain and root crop.","97x7",2,97,7
+"405","fivethirtyeight","ahca_polls","American Health Care Act Polls","15x7",2,15,7
+"406","fivethirtyeight","classic_rock_raw_data","Why Classic Rock Isn't What It Used To Be","37673x7",2,37673,7
+"407","fivethirtyeight","classic_rock_song_list","Why Classic Rock Isn't What It Used To Be","2229x7",2,2229,7
+"408","fivethirtyeight","foul_balls","We Watched 906 Foul Balls To Find Out Where The Most Dangerous Ones","906x7",2,906,7
+"409","fivethirtyeight","media_mentions_cable","2020 Presidential Candidates Media Mentions","972x7",2,972,7
+"410","fivethirtyeight","mediacloud_trump","The Media Really Started Paying Attention to Puerto Rico When Trump Did","51x7",2,51,7
+"411","fivethirtyeight","murder_2016_prelim","A Handful Of Cities Are Driving 2016's Rise In Murder","79x7",2,79,7
+"412","fivethirtyeight","nfl_suspensions","The NFL's Uneven History Of Punishing Domestic Violence","269x7",2,269,7
+"413","fivethirtyeight","police_deaths","The Dallas Shooting Was Among The Deadliest For Police In U.S. History","22800x7",2,22800,7
+"414","fivethirtyeight","pulitzer","Do Pulitzers Help Newspapers Keep Readers?","50x7",2,50,7
+"415","fivethirtyeight","spi_global_rankings","Current SPI ratings and rankings for men's club teams","576x7",2,576,7
+"416","fivethirtyeight","tennis_serve_time","Why Some Tennis Matches Take Forever","120x7",2,120,7
+"417","ggraph","whigs","Membership network of American Whigs","254x7",2,254,7
+"418","lme4","InstEval","University Lecture/Instructor Evaluations by Students at ETH","73421x7",2,73421,7
+"419","lme4","grouseticks","Data on red grouse ticks from Elston et al. 2001","403x7",2,403,7
+"420","lmtest","bondyield","Bond Yield","60x7",2,60,7
+"421","MASS","Aids2","Australian AIDS Survival Data","2843x7",2,2843,7
+"422","MASS","Melanoma","Survival from Malignant Melanoma","205x7",2,205,7
+"423","MASS","OME","Tests of Auditory Perception in Children with OME","1097x7",2,1097,7
+"424","MASS","shuttle","Space Shuttle Autolander Problem","256x7",2,256,7
+"425","maxstat","DLBCL","Diffuse large B-cell lymphoma","42x7",2,42,7
+"426","modeldata","hpc_cv","Class probability predictions","3467x7",2,3467,7
+"427","modeldata","penguins","Palmer Station penguin data","344x7",2,344,7
+"428","modeldata","taxi","Chicago taxi data set","10000x7",2,10000,7
+"429","mosaicData","Birthdays","US Births in 1969 - 1988","372864x7",2,372864,7
+"430","mosaicData","HeatX","Data from a heat exchanger laboratory","6x7",2,6,7
+"431","nlme","MathAchSchool","School demographic data for MathAchieve","160x7",2,160,7
+"432","nlme","Phenobarb","Phenobarbitol Kinetics","744x7",2,744,7
+"433","openintro","climate70","Temperature Summary Data, Geography Limited","197x7",2,197,7
+"434","openintro","daycare_fines","Daycare fines","200x7",2,200,7
+"435","openintro","earthquakes","Earthquakes","123x7",2,123,7
+"436","openintro","goog","Google stock data","98x7",2,98,7
+"437","openintro","husbands_wives","Great Britain: husband and wife pairs","199x7",2,199,7
+"438","openintro","mcu_films","Marvel Cinematic Universe films","23x7",2,23,7
+"439","openintro","nba_finals_teams","NBA Finals Team Summary","33x7",2,33,7
+"440","openintro","nba_players_19","NBA Players for the 2018-2019 season","494x7",2,494,7
+"441","openintro","nyc_marathon","New York City Marathon Times","108x7",2,108,7
+"442","openintro","sa_gdp_elec","Sustainability and Economic Indicators for South Africa.","16x7",2,16,7
+"443","openintro","seattlepets","Names of pets in Seattle","52519x7",2,52519,7
+"444","openintro","sp500_1950_2018","Daily observations for the S&P 500","17346x7",2,17346,7
+"445","openintro","ssd_speed","SSD read and write speeds","54x7",2,54,7
+"446","openintro","starbucks","Starbucks nutrition","77x7",2,77,7
+"447","openintro","textbooks","Textbook data for UCLA Bookstore and Amazon","73x7",2,73,7
+"448","openintro","xom","Exxon Mobile stock data","98x7",2,98,7
+"449","parsnip","model_db","parsnip model specification database","105x7",2,105,7
+"450","pROC","aSAH","Subarachnoid hemorrhage data","113x7",2,113,7
+"451","reshape2","tips","Tipping data","244x7",2,244,7
+"452","RobStatTM","alcohol","Alcohol data","44x7",2,44,7
+"453","RobStatTM","glass","Glass data","76x7",2,76,7
+"454","RobStatTM","hearing","Hearing data","7x7",2,7,7
+"455","robustbase","alcohol","Alcohol Solubility in Water Data","44x7",2,44,7
+"456","robustbase","wagnerGrowth","Wagner's Hannover Employment Growth Data","63x7",2,63,7
+"457","usdata","prrace08","Election results for the 2008 U.S. Presidential race","51x7",2,51,7
+"458","usdata","voter_count","US Voter Turnout Data.","936x7",2,936,7
+"459","vcd","Bundesliga","Ergebnisse der Fussball-Bundesliga","14018x7",2,14018,7
+"460","vcd","Federalist","'May' in Federalist Papers","7",2,7,7
+"461","wk","wk_proj_crs_view","Common CRS Representations","13387x7",2,13387,7
+"462","yardstick","hpc_cv","Multiclass Probability Predictions","3467x7",2,3467,7
+"463","boot","aids","Delay in AIDS Reporting in England and Wales","570x6",2,570,6
+"464","boot","neuro","Neurophysiological Point Process Data","469x6",2,469,6
+"465","carData","Baumann","Methods of Teaching Reading Comprehension","66x6",2,66,6
+"466","carData","Bfox","Canadian Women's Labour-Force Participation","30x6",2,30,6
+"467","carData","Ginzberg","Data on Depression","82x6",2,82,6
+"468","carData","OBrienKaiserLong","O'Brien and Kaiser's Repeated-Measures Data in ""Long"" Format","240x6",2,240,6
+"469","carData","Pottery","Chemical Composition of Pottery","26x6",2,26,6
+"470","carData","Prestige","Prestige of Canadian Occupations","102x6",2,102,6
+"471","carData","Quartet","Four Regression Datasets","11x6",2,11,6
+"472","carData","Salaries","Salaries for Professors","397x6",2,397,6
+"473","carData","WVS","World Values Surveys","5381x6",2,5381,6
+"474","cluster","animals","Attributes of Animals","20x6",2,20,6
+"475","data2teach","CPI_Urban","CPI_Urban","4620x6",2,4620,6
+"476","data2teach","ImportPI","ImportPI","4620x6",2,4620,6
+"477","data2teach","StarBucks_Food","","113x6",2,113,6
+"478","data2teach","mrp_qty","","45x6",2,45,6
+"479","datasets","airquality","New York Air Quality Measurements","153x6",2,153,6
+"480","datasets","swiss","Swiss Fertility and Socioeconomic Indicators (1888) Data","47x6",2,47,6
+"481","diagram","Teasel","Population dynamics model transition matrix of teasel","6x6",2,6,6
+"482","fivethirtyeight","US_births_1994_2003","Some People Are Too Superstitious To Have A Baby On Friday The 13th","3652x6",2,3652,6
+"483","fivethirtyeight","US_births_2000_2014","Some People Are Too Superstitious To Have A Baby On Friday The 13th","5479x6",2,5479,6
+"484","fivethirtyeight","hist_ncaa_bball_casts","The NCAA Bracket: Checking Our Work","253x6",2,253,6
+"485","fivethirtyeight","media_mentions_online","2020 Presidential Candidates Media Mentions","954x6",2,954,6
+"486","fivethirtyeight","nflwr_hist","The Football Hall Of Fame Has A Receiver Problem","6496x6",2,6496,6
+"487","fivethirtyeight","trumpworld_issues","What the World Thinks of Trump","185x6",2,185,6
+"488","fivethirtyeight","tv_hurricanes_by_network","The Media Really Started Paying Attention to Puerto Rico When Trump Did","84x6",2,84,6
+"489","ggplot2","economics","US economic time series","574x6",2,574,6
+"490","labelled","dta_file","Datasets for testing","47x6",2,47,6
+"491","lattice","USRegionalMortality","Mortality Rates in US by Cause and Gender","400x6",2,400,6
+"492","lavaan","FacialBurns","Dataset for illustrating the InformativeTesting function.","77x6",2,77,6
+"493","lmtest","moneydemand","Money Demand","96x6",2,96,6
+"494","MASS","bacteria","Presence of Bacteria after Drug Treatments","220x6",2,220,6
+"495","MASS","nlschools","Eighth-Grade Pupils in the Netherlands","2287x6",2,2287,6
+"496","MASS","petrol","N. L. Prater's Petrol Refinery Data","32x6",2,32,6
+"497","MASS","road","Road Accident Deaths in US States","26x6",2,26,6
+"498","MASS","snails","Snail Mortality Data","96x6",2,96,6
+"499","mosaicData","Galton","Galton's dataset of parent and child heights","898x6",2,898,6
+"500","nlme","Gasoline","Refinery yield of gasoline","32x6",2,32,6
+"501","nlme","MathAchieve","Mathematics achievement scores","7185x6",2,7185,6
+"502","openintro","cars93","cars93","54x6",2,54,6
+"503","openintro","climber_drugs","Climber Drugs Data.","211x6",2,211,6
+"504","openintro","exam_grades","Exam and course grades for statistics students","233x6",2,233,6
+"505","openintro","friday","Friday the 13th","61x6",2,61,6
+"506","openintro","kobe_basket","Kobe Bryant basketball performance","133x6",2,133,6
+"507","openintro","military","US Military Demographics","1414593x6",2,1414593,6
+"508","openintro","nyc","nyc","168x6",2,168,6
+"509","openintro","prison","Prison isolation experiment","14x6",2,14,6
+"510","openintro","satgpa","SAT and GPA data","1000x6",2,1000,6
+"511","openintro","ukdemo","United Kingdom Demographic Data","12x6",2,12,6
+"512","padr","emergency","Emergency Calls for Montgomery County, PA","120450x6",2,120450,6
+"513","plotly","res_mn","Minnesotan Indian Reservation Lands","13x6",2,13,6
+"514","RobStatTM","image","Image data","1573x6",2,1573,6
+"515","RobStatTM","waste","Waste data","40x6",2,40,6
+"516","robustbase","coleman","Coleman Data Set","20x6",2,20,6
+"517","robustbase","education","Education Expenditure Data","50x6",2,50,6
+"518","robustbase","wood","Modified Data on Wood Specific Gravity","20x6",2,20,6
+"519","rpart","solder","Soldering of Components on Printed-Circuit Boards","900x6",2,900,6
+"520","survival","solder","Data from a soldering experiment","900x6",2,900,6
+"521","survival","transplant","Liver transplant waiting list","815x6",2,815,6
+"522","usdata","pop_race_2019","Population Race 2019 Data.","408x6",2,408,6
+"523","vcd","Employment","Employment Status","2x6x2",3,2,6
+"524","vcd","SpaceShuttle","Space Shuttle O-ring Failures","24x6",2,24,6
+"525","vcd","Suicide","Suicide Rates in Germany","306x6",2,306,6
+"526","boot","breslow","Smoking Deaths Among Doctors","10x5",2,10,5
+"527","boot","cane","Sugar-cane Disease Data","180x5",2,180,5
+"528","boot","channing","Channing House Data","462x5",2,462,5
+"529","boot","nitrofen","Toxicity of Nitrofen in Aquatic Systems","50x5",2,50,5
+"530","carData","AMSsurvey","American Math Society Survey Data","24x5",2,24,5
+"531","carData","Chirot","The 1907 Romanian Peasant Rebellion","32x5",2,32,5
+"532","carData","Davis","Self-Reports of Height and Weight","200x5",2,200,5
+"533","carData","Depredations","Minnesota Wolf Depredation Data","434x5",2,434,5
+"534","carData","SLID","Survey of Labour and Income Dynamics","7425x5",2,7425,5
+"535","carData","Wells","Well Switching in Bangladesh","3020x5",2,3020,5
+"536","data2teach","infoEmails","","142x5",2,142,5
+"537","datasets","CO2","Carbon Dioxide Uptake in Grass Plants","84x5",2,84,5
+"538","datasets","LifeCycleSavings","Intercountry Life-Cycle Savings Data","50x5",2,50,5
+"539","datasets","Theoph","Pharmacokinetics of Theophylline","132x5",2,132,5
+"540","datasets","USPersonalExpenditure","Personal Expenditure Data","5x5",2,5,5
+"541","datasets","attenu","The Joyner-Boore Attenuation Data","182x5",2,182,5
+"542","datasets","esoph","Smoking, Alcohol and (O)esophageal Cancer","88x5",2,88,5
+"543","datasets","freeny","Freeny's Revenue Data","39x5",2,39,5
+"544","datasets","iris","Edgar Anderson's Iris Data","150x5",2,150,5
+"545","datasets","npk","Classical N, P, K Factorial Experiment","24x5",2,24,5
+"546","datasets","quakes","Locations of Earthquakes off Fiji","1000x5",2,1000,5
+"547","DiagrammeR","edge_list_2","Edge list - Version 2.","19x5",2,19,5
+"548","DiagrammeR","node_list_2","Node list - Version 2.","10x5",2,10,5
+"549","doBy","beets","beets data","30x5",2,30,5
+"550","doBy","fatacid","Fish oil in pig food","26x5",2,26,5
+"551","doBy","fev","Forced expiratory volume in children","654x5",2,654,5
+"552","doBy","haldCement","Heat development in cement under hardening.","13x5",2,13,5
+"553","doBy","math","Mathematics marks for students","88x5",2,88,5
+"554","doBy","mathmark","Mathematics marks for students","88x5",2,88,5
+"555","fivethirtyeight","cand_state_20150114","Looking For Clues: Who Is Going To Run For President In 2016?","25x5",2,25,5
+"556","fivethirtyeight","cand_state_20150130","Who Will Run For President: Romney Is Out","27x5",2,27,5
+"557","fivethirtyeight","chess_transfers","Chess Transfers","932x5",2,932,5
+"558","fivethirtyeight","daily_show_guests","Every Guest Jon Stewart Ever Had On 'The Daily Show'","2693x5",2,2693,5
+"559","fivethirtyeight","drinks","Dear Mona Followup: Where Do People Drink The Most Beer, Wine And Spirits?","193x5",2,193,5
+"560","fivethirtyeight","fifa_audience","How To Break FIFA","191x5",2,191,5
+"561","fivethirtyeight","google_trends","The Media Really Started Paying Attention to Puerto Rico When Trump Did","37x5",2,37,5
+"562","fivethirtyeight","hist_senate_preds","How The FiveThirtyEight Senate Forecast Model Works","207x5",2,207,5
+"563","fivethirtyeight","mediacloud_hurricanes","The Media Really Started Paying Attention to Puerto Rico When Trump Did","38x5",2,38,5
+"564","fivethirtyeight","murder_2015_final","A Handful Of Cities Are Driving 2016's Rise In Murder","83x5",2,83,5
+"565","fivethirtyeight","pres_2016_trail","The Last 10 Weeks Of 2016 Campaign Stops In One Handy Gif","177x5",2,177,5
+"566","fivethirtyeight","state_index","What America’s Governors Are Talking About","50x5",2,50,5
+"567","fivethirtyeight","tennis_events_time","Why Some Tennis Matches Take Forever","205x5",2,205,5
+"568","fivethirtyeight","tv_hurricanes","The Media Really Started Paying Attention to Puerto Rico When Trump Did","37x5",2,37,5
+"569","fivethirtyeight","unisex_names","The Most Common Unisex Names In America: Is Yours One Of Them?","919x5",2,919,5
+"570","ggpubr","diff_express","Differential gene expression analysis results","36028x5",2,36028,5
+"571","ggpubr","gene_expression","Gene Expression Data","1305x5",2,1305,5
+"572","lattice","USMortality","Mortality Rates in US by Cause and Gender","40x5",2,40,5
+"573","lme4","cake","Breakage Angle of Chocolate Cakes","270x5",2,270,5
+"574","lmtest","unemployment","Unemployment Data","90x5",2,90,5
+"575","lmtest","valueofstocks","Value of Stocks","71x5",2,71,5
+"576","MASS","Insurance","Numbers of Car Insurance claims","64x5",2,64,5
+"577","MASS","Rabbit","Blood Pressure in Rabbits","60x5",2,60,5
+"578","MASS","caith","Colours of Eyes and Hair of People in Caithness","4x5",2,4,5
+"579","MASS","cement","Heat Evolved by Setting Cements","13x5",2,13,5
+"580","MASS","eagles","Foraging Ecology of Bald Eagles","8x5",2,8,5
+"581","MASS","housing","Frequency Table from a Copenhagen Housing Conditions Survey","72x5",2,72,5
+"582","MASS","minn38","Minnesota High School Graduates of 1938","168x5",2,168,5
+"583","MASS","npk","Classical N, P, K Factorial Experiment","24x5",2,24,5
+"584","MASS","painters","The Painter's Data of de Piles","54x5",2,54,5
+"585","MASS","quine","Absenteeism from School in Rural New South Wales","146x5",2,146,5
+"586","MASS","rotifer","Numbers of Rotifers by Fluid Density","20x5",2,20,5
+"587","MASS","ships","Ships Damage Data","40x5",2,40,5
+"588","modeldata","tate_text","Tate Gallery modern artwork metadata","4284x5",2,4284,5
+"589","modelr","sim3","Simple simulated datasets","120x5",2,120,5
+"590","mosaicData","TenMileRace","Cherry Blossom Race","8636x5",2,8636,5
+"591","nlme","Dialyzer","High-Flux Hemodialyzer","140x5",2,140,5
+"592","nlme","Earthquake","Earthquake Intensity","182x5",2,182,5
+"593","nlme","Oxide","Variability in Semiconductor Manufacturing","72x5",2,72,5
+"594","nlme","PBG","Effect of Phenylbiguanide on Blood Pressure","60x5",2,60,5
+"595","nlme","RatPupWeight","The weight of rat pups","322x5",2,322,5
+"596","nlme","Soybean","Growth of soybean plants","412x5",2,412,5
+"597","nlme","Wheat2","Wheat Yield Trials","224x5",2,224,5
+"598","openintro","absenteeism","Absenteeism from school in New South Wales","146x5",2,146,5
+"599","openintro","babies_crawl","Crawling age","12x5",2,12,5
+"600","openintro","gpa","Survey of Duke students on GPA, studying, and more","55x5",2,55,5
+"601","openintro","gpa_iq","Sample of students and their GPA and IQ","78x5",2,78,5
+"602","openintro","gss2010","2010 General Social Survey","2044x5",2,2044,5
+"603","openintro","iowa","iowa","1386x5",2,1386,5
+"604","openintro","london_murders","London Murders, 2006-2011","838x5",2,838,5
+"605","openintro","midterms_house","President's party performance and unemployment rate","31x5",2,31,5
+"606","openintro","movies","movies","140x5",2,140,5
+"607","openintro","outliers","Simulated datasets for different types of outliers","50x5",2,50,5
+"608","openintro","president","United States Presidental History","67x5",2,67,5
+"609","openintro","prius_mpg","User reported fuel efficiency for 2017 Toyota Prius Prime","19x5",2,19,5
+"610","openintro","tips","Tip data","95x5",2,95,5
+"611","openintro","unemploy_pres","President's party performance and unemployment rate","29x5",2,29,5
+"612","pbkrtest","beets","Sugar beets data","30x5",2,30,5
+"613","reshape2","smiths","Demo data describing the Smiths.","2x5",2,2,5
+"614","RobStatTM","neuralgia","Neuralgia data","18x5",2,18,5
+"615","RobStatTM","stackloss","Stackloss data","21x5",2,21,5
+"616","robustbase","aircraft","Aircraft Data","23x5",2,23,5
+"617","robustbase","bushfire","Campbell Bushfire Data","38x5",2,38,5
+"618","robustbase","radarImage","Satellite Radar Image Data from near Munich","1573x5",2,1573,5
+"619","rpart","cu.summary","Automobile Data from 'Consumer Reports' 1990","117x5",2,117,5
+"620","tidyr","cms_patient_care","Data from the Centers for Medicare & Medicaid Services","252x5",2,252,5
+"621","tidyr","cms_patient_experience","Data from the Centers for Medicare & Medicaid Services","500x5",2,500,5
+"622","tidyr","household","Household data","5x5",2,5,5
+"623","tidyr","smiths","Some data about the Smith family","2x5",2,2,5
+"624","tidyr","us_rent_income","US rent and income data","104x5",2,104,5
+"625","usdata","pop_age_2019","Population Age 2019 Data.","4386x5",2,4386,5
+"626","usdata","urban_rural_pop","State summary info","51x5",2,51,5
+"627","usdata","vote_nsa","Predicting who would vote for NSA Mass Surveillance","434x5",2,434,5
+"628","vcd","Arthritis","Arthritis Treatment Data","84x5",2,84,5
+"629","vcd","Bundestag2005","Votes in German Bundestag Election 2005","16x5",2,16,5
+"630","vcd","DanishWelfare","Danish Welfare Study Data","180x5",2,180,5
+"631","vcd","HorseKicks","Death by Horse Kicks","5",2,5,5
+"632","vcd","JointSports","Opinions About Joint Sports","40x5",2,40,5
+"633","vcd","OvaryCancer","Ovary Cancer Data","16x5",2,16,5
+"634","vcd","Punishment","Corporal Punishment Data","36x5",2,36,5
+"635","vcd","Trucks","Truck Accidents Data","24x5",2,24,5
+"636","vcd","UKSoccer","UK Soccer Scores","5x5",2,5,5
+"637","bain","kuiper2013","The Effect of Prior Interaction on Trust","4x4",2,4,4
+"638","boot","amis","Car Speeding and Warning Signs","8437x4",2,8437,4
+"639","boot","beaver","Beaver Body Temperature Data","100x4",2,100,4
+"640","boot","frets","Head Dimensions in Brothers","25x4",2,25,4
+"641","boot","motor","Data from a Simulated Motorcycle Accident","94x4",2,94,4
+"642","boot","salinity","Water Salinity and River Discharge","28x4",2,28,4
+"643","ca","smoke","Smoke dataset","5x4",2,5,4
+"644","carData","Angell","Moral Integration of American Cities","43x4",2,43,4
+"645","carData","Anscombe","U. S. State Public-School Expenditures","51x4",2,51,4
+"646","carData","Blackmore","Exercise Histories of Eating-Disordered and Control Subjects","945x4",2,945,4
+"647","carData","Cowles","Cowles and Davis's Data on Volunteering","1421x4",2,1421,4
+"648","carData","Duncan","Duncan's Occupational Prestige Data","45x4",2,45,4
+"649","carData","Freedman","Crowding and Crime in U. S. Metropolitan Areas","110x4",2,110,4
+"650","carData","Leinhardt","Data on Infant-Mortality","105x4",2,105,4
+"651","carData","Moore","Status, Authoritarianism, and Conformity","45x4",2,45,4
+"652","carData","Ornstein","Interlocking Directorates Among Major Canadian Firms","248x4",2,248,4
+"653","carData","TitanicSurvival","Survival of Passengers on the Titanic","1309x4",2,1309,4
+"654","carData","Vocab","Vocabulary and Education","30351x4",2,30351,4
+"655","carData","Womenlf","Canadian Women's Labour-Force Participation","263x4",2,263,4
+"656","carData","Wool","Wool data","27x4",2,27,4
+"657","cluster","pluton","Isotopic Composition Plutonium Batches","45x4",2,45,4
+"658","data2teach","avengers_long","Avengers (death of Comic Characters)","173x4",2,173,4
+"659","data2teach","ee_me_eng","","30x4",2,30,4
+"660","data2teach","gearbox","","275x4",2,275,4
+"661","datasets","ChickWeight","Weight versus age of chicks on different diets","578x4",2,578,4
+"662","datasets","EuStockMarkets","Daily Closing Prices of Major European Stock Indices, 1991-1998","1860x4",2,1860,4
+"663","datasets","HairEyeColor","Hair and Eye Color of Statistics Students","4x4x2",3,4,4
+"664","datasets","OrchardSprays","Potency of Orchard Sprays","64x4",2,64,4
+"665","datasets","USArrests","Violent Crime Rates by US State","50x4",2,50,4
+"666","datasets","VADeaths","Death Rates in Virginia (1940)","5x4",2,5,4
+"667","datasets","iris3","Edgar Anderson's Iris Data","50x4x3",3,50,4
+"668","datasets","rock","Measurements on Petroleum Rock Samples","48x4",2,48,4
+"669","datasets","stackloss","Brownlee's Stack Loss Plant Data","21x4",2,21,4
+"670","DiagrammeR","currencies","ISO-4217 currency data.","171x4",2,171,4
+"671","doBy","budworm","Budworm data","12x4",2,12,4
+"672","doBy","child_growth","Berkeley Growth Study data","2883x4",2,2883,4
+"673","doBy","shoes","shoes","10x4",2,10,4
+"674","fivethirtyeight","mediacloud_states","The Media Really Started Paying Attention to Puerto Rico When Trump Did","51x4",2,51,4
+"675","fivethirtyeight","nba_draymond","A Better Way to Evaluate NBA Defense","3009x4",2,3009,4
+"676","fivethirtyeight","partisan_lean_district","FiveThirtyEight's Partisan Lean","435x4",2,435,4
+"677","fivethirtyeight","senate_polls","Early Senate Polls Have Plenty to Tell Us About November","107x4",2,107,4
+"678","fivethirtyeight","state_info","Information on each state","51x4",2,51,4
+"679","fivethirtyeight","tarantino","A Complete Catalog Of Every Time Someone Cursed Or Bled Out In A Quentin Tarantino Movie","1894x4",2,1894,4
+"680","fivethirtyeight","tv_states","The Media Really Started Paying Attention to Puerto Rico When Trump Did","52x4",2,52,4
+"681","fivethirtyeight","undefeated","Mayweather Is Defined By The Zero Next To His Name","2125x4",2,2125,4
+"682","ggmosaic","titanic","Passengers and crew on board the Titanic","2201x4",2,2201,4
+"683","ggplot2","economics_long","US economic time series","2870x4",2,2870,4
+"684","ggplot2","luv_colours","'colors()' in Luv space","657x4",2,657,4
+"685","ggplot2","presidential","Terms of 12 presidents from Eisenhower to Trump","12x4",2,12,4
+"686","ggplot2","seals","Vector field of seal movements","1155x4",2,1155,4
+"687","ggridges","Catalan_elections","Results from Catalan regional elections (1980-2015)","20764x4",2,20764,4
+"688","lattice","barley","Yield data from a Minnesota barley trial","120x4",2,120,4
+"689","lattice","environmental","Atmospheric environmental conditions in New York City","111x4",2,111,4
+"690","lme4","Pastes","Paste strength by batch and cask","60x4",2,60,4
+"691","lme4","cbpp","Contagious bovine pleuropneumonia","56x4",2,56,4
+"692","lmtest","currencysubstitution","Currency Substitution","61x4",2,61,4
+"693","lmtest","wages","Wages","20x4",2,20,4
+"694","MASS","Sitka","Growth Curves for Sitka Spruce Trees in 1988","395x4",2,395,4
+"695","MASS","Sitka89","Growth Curves for Sitka Spruce Trees in 1989","632x4",2,632,4
+"696","MASS","Traffic","Effect of Swedish Speed Limits on Accidents","184x4",2,184,4
+"697","MASS","beav1","Body Temperature Series of Beaver 1","114x4",2,114,4
+"698","MASS","beav2","Body Temperature Series of Beaver 2","100x4",2,100,4
+"699","MASS","cabbages","Data from a cabbage field trial","60x4",2,60,4
+"700","MASS","coop","Co-operative Trial in Analytical Chemistry","252x4",2,252,4
+"701","MASS","farms","Ecological Factors in Farm Management","20x4",2,20,4
+"702","MASS","gehan","Remission Times of Leukaemia Patients","42x4",2,42,4
+"703","MASS","immer","Yields from a Barley Field Trial","30x4",2,30,4
+"704","MASS","npr1","US Naval Petroleum Reserve No. 1 data","104x4",2,104,4
+"705","MASS","oats","Data from an Oats Field Trial","72x4",2,72,4
+"706","modeldata","two_class_example","Two class predictions","500x4",2,500,4
+"707","modelr","sim4","Simple simulated datasets","300x4",2,300,4
+"708","nlme","Alfalfa","Split-Plot Experiment on Varieties of Alfalfa","72x4",2,72,4
+"709","nlme","Assay","Bioassay on Cell Culture Plate","60x4",2,60,4
+"710","nlme","BodyWeight","Rat weight over time for different diets","176x4",2,176,4
+"711","nlme","Glucose","Glucose levels over time","378x4",2,378,4
+"712","nlme","Glucose2","Glucose Levels Following Alcohol Ingestion","196x4",2,196,4
+"713","nlme","Gun","Methods for firing naval guns","36x4",2,36,4
+"714","nlme","Meat","Tenderness of meat","30x4",2,30,4
+"715","nlme","Milk","Protein content of cows' milk","1337x4",2,1337,4
+"716","nlme","Nitrendipene","Assay of nitrendipene","89x4",2,89,4
+"717","nlme","Oats","Split-plot Experiment on Varieties of Oats","72x4",2,72,4
+"718","nlme","Orthodont","Growth curve data on an orthdontic measurement","108x4",2,108,4
+"719","nlme","Oxboys","Heights of Boys in Oxford","234x4",2,234,4
+"720","nlme","Pixel","X-ray pixel intensities over time","102x4",2,102,4
+"721","nlme","Spruce","Growth of Spruce Trees","1027x4",2,1027,4
+"722","nlme","Tetracycline1","Pharmacokinetics of tetracycline","40x4",2,40,4
+"723","nlme","Tetracycline2","Pharmacokinetics of tetracycline","40x4",2,40,4
+"724","nlme","Wafer","Modeling of Analog MOS Circuits","400x4",2,400,4
+"725","nlme","Wheat","Yields by growing conditions","48x4",2,48,4
+"726","openintro","cards","Deck of cards","52x4",2,52,4
+"727","openintro","country_iso","Country ISO information","249x4",2,249,4
+"728","openintro","life_exp","life_exp","3142x4",2,3142,4
+"729","openintro","mail_me","Influence of a Good Mood on Helpfulness","42x4",2,42,4
+"730","openintro","mlb","Salary data for Major League Baseball (2010)","828x4",2,828,4
+"731","openintro","murders","Data for 20 metropolitan areas","20x4",2,20,4
+"732","openintro","nba_heights","NBA Player heights from 2008-9","435x4",2,435,4
+"733","openintro","orings","1986 Challenger disaster and O-rings","23x4",2,23,4
+"734","openintro","stocks_18","Monthly Returns for a few stocks","36x4",2,36,4
+"735","pbkrtest","budworm","Budworm data","12x4",2,12,4
+"736","probably","species_probs","Predictions on animal species","110x4",2,110,4
+"737","RobStatTM","oats","Oats data","40x4",2,40,4
+"738","robustbase","NOxEmissions","NOx Air Pollution Data","8088x4",2,8088,4
+"739","robustbase","airmay","Air Quality Data","31x4",2,31,4
+"740","robustbase","biomassTill","Biomass Tillage Data","58x4",2,58,4
+"741","robustbase","carrots","Insect Damages on Carrots","24x4",2,24,4
+"742","robustbase","foodstamp","Food Stamp Program Participation","150x4",2,150,4
+"743","robustbase","hbk","Hawkins, Bradu, Kass's Artificial Data","75x4",2,75,4
+"744","robustbase","salinity","Salinity Data","28x4",2,28,4
+"745","rpart","kyphosis","Data on Children who have had Corrective Spinal Surgery","81x4",2,81,4
+"746","survival","logan","Data from the 1972-78 GSS data used by Logan","838x4",2,838,4
+"747","survminer","BRCAOV.survInfo","Breast and Ovarian Cancers Survival Information","1674x4",2,1674,4
+"748","tidyr","table1","Example tabular representations","6x4",2,6,4
+"749","tidyr","table2","Example tabular representations","12x4",2,12,4
+"750","tidyr","table5","Example tabular representations","6x4",2,6,4
+"751","vcd","BrokenMarriage","Broken Marriage Data","20x4",2,20,4
+"752","vcd","Hitters","Hitters Data","154x4",2,154,4
+"753","vcd","JobSatisfaction","Job Satisfaction Data","8x4",2,8,4
+"754","vcd","MSPatients","Diagnosis of Multiple Sclerosis","4x4x2",3,4,4
+"755","vcd","NonResponse","Non-Response Survey Data","12x4",2,12,4
+"756","vcd","SexualFun","Sex is Fun","4x4",2,4,4
+"757","vcd","VisualAcuity","Visual Acuity in Left and Right Eyes","32x4",2,32,4
+"758","vcd","VonBort","Von Bortkiewicz Horse Kicks Data","280x4",2,280,4
+"759","workflowsets","chi_features_set","Chicago Features Example Data","3x4",2,3,4
+"760","workflowsets","two_class_set","Two Class Example Data","6x4",2,6,4
+"761","yardstick","two_class_example","Two Class Predictions","500x4",2,500,4
+"762","boot","acme","Monthly Excess Returns","60x3",2,60,3
+"763","boot","aml","Remission Times for Acute Myelogenous Leukaemia","23x3",2,23,3
+"764","boot","brambles","Spatial Location of Bramble Canes","823x3",2,823,3
+"765","boot","catsM","Weight Data for Domestic Cats","97x3",2,97,3
+"766","boot","downs.bc","Incidence of Down's Syndrome in British Columbia","30x3",2,30,3
+"767","boot","fir","Counts of Balsam-fir Seedlings","50x3",2,50,3
+"768","boot","hirose","Failure Time of PET Film","44x3",2,44,3
+"769","boot","poisons","Animal Survival Times","48x3",2,48,3
+"770","boot","remission","Cancer Remission and Cell Activity","27x3",2,27,3
+"771","carData","Adler","Experimenter Expectations","108x3",2,108,3
+"772","carData","Burt","Fraudulent Data on IQs of Twins Raised Apart","27x3",2,27,3
+"773","carData","Guyer","Anonymity and Cooperation","20x3",2,20,3
+"774","carData","Mandel","Contrived Collinear Data","8x3",2,8,3
+"775","carData","Robey","Fertility and Contraception","50x3",2,50,3
+"776","carData","Transact","Transaction data","261x3",2,261,3
+"777","colorspace","USSouthPolygon","Polygon for County Map of US South States: Alabama, Georgia, and South Carolina","4874x3",2,4874,3
+"778","datasets","DNase","Elisa assay of DNase","176x3",2,176,3
+"779","datasets","Indometh","Pharmacokinetics of Indomethacin","66x3",2,66,3
+"780","datasets","Loblolly","Growth of Loblolly Pine Trees","84x3",2,84,3
+"781","datasets","Orange","Growth of Orange Trees","35x3",2,35,3
+"782","datasets","Puromycin","Reaction Velocity of an Enzymatic Reaction","23x3",2,23,3
+"783","datasets","ToothGrowth","The Effect of Vitamin C on Tooth Growth in Guinea Pigs","60x3",2,60,3
+"784","datasets","morley","Michelson Speed of Light Data","100x3",2,100,3
+"785","datasets","randu","Random Numbers from Congruential Generator RANDU","400x3",2,400,3
+"786","datasets","sleep","Student's Sleep Data","20x3",2,20,3
+"787","datasets","trees","Diameter, Height and Volume for Black Cherry Trees","31x3",2,31,3
+"788","datasets","warpbreaks","The Number of Breaks in Yarn during Weaving","54x3",2,54,3
+"789","DiagrammeR","usd_exchange_rates","US Dollar exchange rates.","196x3",2,196,3
+"790","DiceDesign","OA131","A 3D orthogonal array of strength 2","49x3",2,49,3
+"791","DiceDesign","OA131_scrambled","A scrambled 3D orthogonal array of strength 2","49x3",2,49,3
+"792","doBy","crickets","crickets data","30x3",2,30,3
+"793","doBy","income","income data","80x3",2,80,3
+"794","doBy","potatoes","Weight and size of 20 potatoes","20x3",2,20,3
+"795","fivethirtyeight","democratic_bench","Some Democrats Who Could Step Up If Hillary Isn't Ready For Hillary","67x3",2,67,3
+"796","fivethirtyeight","elasticity_by_district","Political Elasticity Scores","435x3",2,435,3
+"797","fivethirtyeight","nfltix_div_avgprice","Who Goes To Meaningless NFL Games And Why?","108x3",2,108,3
+"798","fivethirtyeight","nflwr_aging_curve","The Football Hall Of Fame Has A Receiver Problem","24x3",2,24,3
+"799","fivethirtyeight","nutrition_pvalues","You Can't Trust What You Read About Nutrition","27716x3",2,27716,3
+"800","fivethirtyeight","partisan_lean_state","FiveThirtyEight's Partisan Lean","50x3",2,50,3
+"801","fivethirtyeight","trump_news","How Trump Hacked The Media","286x3",2,286,3
+"802","fivethirtyeight","trump_twitter","The World's Favorite Donald Trump Tweets","448x3",2,448,3
+"803","ggformula","MIpop","Population of Michigan counties","83x3",2,83,3
+"804","ggplot2","faithfuld","2d density estimate of Old Faithful data","5625x3",2,5625,3
+"805","ggraph","highschool","Friendship among high school boys","506x3",2,506,3
+"806","lattice","ethanol","Engine exhaust fumes from burning ethanol","88x3",2,88,3
+"807","lme4","Penicillin","Variation in penicillin testing","144x3",2,144,3
+"808","lme4","sleepstudy","Reaction times in a sleep deprivation study","180x3",2,180,3
+"809","MASS","Cushings","Diagnostic Tests on Patients with Cushing's Syndrome","27x3",2,27,3
+"810","MASS","Rubber","Accelerated Testing of Tyre Rubber","30x3",2,30,3
+"811","MASS","Skye","AFM Compositions of Aphyric Skye Lavas","23x3",2,23,3
+"812","MASS","anorexia","Anorexia Data on Weight Change","72x3",2,72,3
+"813","MASS","cats","Anatomical Data from Domestic Cats","144x3",2,144,3
+"814","MASS","genotype","Rat Genotype Data","61x3",2,61,3
+"815","MASS","hills","Record Times in Scottish Hill Races","35x3",2,35,3
+"816","MASS","leuk","Survival Times and White Blood Counts for Leukaemia Patients","33x3",2,33,3
+"817","MASS","menarche","Age of Menarche in Warsaw","25x3",2,25,3
+"818","MASS","michelson","Michelson's Speed of Light Data","100x3",2,100,3
+"819","MASS","motors","Accelerated Life Testing of Motorettes","40x3",2,40,3
+"820","MASS","muscle","Effect of Calcium Chloride on Muscle Contraction in Rat Hearts","60x3",2,60,3
+"821","MASS","stormer","The Stormer Viscometer Data","23x3",2,23,3
+"822","MASS","synth.te","Synthetic Classification Problem","1000x3",2,1000,3
+"823","MASS","synth.tr","Synthetic Classification Problem","250x3",2,250,3
+"824","MASS","topo","Spatial Topographic Data","52x3",2,52,3
+"825","MASS","whiteside","House Insulation: Whiteside's Data","56x3",2,56,3
+"826","maxstat","hohnloser","Left ventricular ejection fraction of patients with malignant ventricular tachyarrhythmias.","94x3",2,94,3
+"827","modeldata","Smithsonian","Smithsonian museums","20x3",2,20,3
+"828","modeldata","crickets","Rates of Cricket Chirps","31x3",2,31,3
+"829","modeldata","parabolic","Parabolic class boundary data","500x3",2,500,3
+"830","modeldata","two_class_dat","Two class data","791x3",2,791,3
+"831","ModelMetrics","testDF","Test data","100x3",2,100,3
+"832","mosaic","Mustangs","Mustang Prices","25x3",2,25,3
+"833","mosaicData","Alcohol","Alcohol Consumption per Capita","411x3",2,411,3
+"834","mosaicData","Countries","Countries","288x3",2,288,3
+"835","mosaicData","GoosePermits","Goose Permit Study","11x3",2,11,3
+"836","mosaicData","SwimRecords","100 m Swimming World Records","62x3",2,62,3
+"837","mosaicData","Whickham","Data from the Whickham survey","1314x3",2,1314,3
+"838","nlme","Cefamandole","Pharmacokinetics of Cefamandole","84x3",2,84,3
+"839","nlme","Fatigue","Cracks caused by metal fatigue","262x3",2,262,3
+"840","nlme","IGF","Radioimmunoassay of IGF-I Protein","237x3",2,237,3
+"841","nlme","Machines","Productivity Scores for Machines and Workers","54x3",2,54,3
+"842","nlme","Muscle","Contraction of heart muscle sections","60x3",2,60,3
+"843","nlme","Ovary","Counts of Ovarian Follicles","308x3",2,308,3
+"844","nlme","Relaxin","Assay for Relaxin","198x3",2,198,3
+"845","nlme","ergoStool","Ergometrics experiment with stool types","36x3",2,36,3
+"846","openintro","arbuthnot","Male and female births in London","82x3",2,82,3
+"847","openintro","ask","How important is it to ask pointed questions?","219x3",2,219,3
+"848","openintro","bac","Beer and blood alcohol content","16x3",2,16,3
+"849","openintro","cherry","Summary information for 31 cherry trees","31x3",2,31,3
+"850","openintro","china","Child care hours","9788x3",2,9788,3
+"851","openintro","coast_starlight","Coast Starlight Amtrak train","16x3",2,16,3
+"852","openintro","elmhurst","Elmhurst College gift aid","50x3",2,50,3
+"853","openintro","fact_opinion","Can Americans categorize facts and opinions?","5035x3",2,5035,3
+"854","openintro","fish_age","Young fish in the North Sea.","300x3",2,300,3
+"855","openintro","flow_rates","River flow data","31x3",2,31,3
+"856","openintro","helium","Helium football","39x3",2,39,3
+"857","openintro","law_resume","Gender, Socioeconomic Class, and Interview Invites","316x3",2,316,3
+"858","openintro","lizard_run","Lizard speeds","48x3",2,48,3
+"859","openintro","london_boroughs","London Borough Boundaries","45341x3",2,45341,3
+"860","openintro","marathon","New York City Marathon Times (outdated)","59x3",2,59,3
+"861","openintro","playing_cards","Table of Playing Cards in 52-Card Deck","52x3",2,52,3
+"862","openintro","present","Birth counts","63x3",2,63,3
+"863","openintro","res_demo_1","Simulated data for regression","100x3",2,100,3
+"864","openintro","res_demo_2","Simulated data for regression","300x3",2,300,3
+"865","openintro","rosling_responses","Sample Responses to Two Public Health Questions","278x3",2,278,3
+"866","openintro","simpsons_paradox_covid","Simpson's Paradox: Covid","268166x3",2,268166,3
+"867","openintro","simulated_scatter","Simulated data for sample scatterplots","2033x3",2,2033,3
+"868","openintro","snowfall","Snowfall at Paradise, Mt. Rainier National Park","100x3",2,100,3
+"869","openintro","solar","Energy Output From Two Solar Arrays in San Francisco","284x3",2,284,3
+"870","openintro","speed_gender_height","Speed, gender, and height of 1325 students","1325x3",2,1325,3
+"871","openintro","stem_cell","Embryonic stem cells to treat heart attack (in sheep)","18x3",2,18,3
+"872","openintro","tourism","Turkey tourism","47x3",2,47,3
+"873","openintro","ucb_admit","ucb_admit","4526x3",2,4526,3
+"874","openintro","unempl","Annual unemployment since 1890","121x3",2,121,3
+"875","plotly","hobbs","Hobbs data","300x3",2,300,3
+"876","plotly","mic","Mic data","305x3",2,305,3
+"877","plotly","wind","Wind data","32x3",2,32,3
+"878","probably","segment_logistic","Image segmentation predictions","1010x3",2,1010,3
+"879","probably","segment_naive_bayes","Image segmentation predictions","1010x3",2,1010,3
+"880","RobStatTM","leuk.dat","Leukemia Data","33x3",2,33,3
+"881","RobStatTM","skin","Skin data","39x3",2,39,3
+"882","robustbase","delivery","Delivery Time Data","25x3",2,25,3
+"883","robustbase","heart","Heart Catherization Data","12x3",2,12,3
+"884","robustbase","phosphor","Phosphorus Content Data","18x3",2,18,3
+"885","robustbase","vaso","Vaso Constriction Skin Data Set","39x3",2,39,3
+"886","s2","s2_data_tbl_cities","Low-resolution world boundaries, timezones, and cities","243x3",2,243,3
+"887","s2","s2_data_tbl_countries","Low-resolution world boundaries, timezones, and cities","177x3",2,177,3
+"888","survival","tobin","Tobin's Tobit data","20x3",2,20,3
+"889","survminer","BMT","Bone Marrow Transplant","35x3",2,35,3
+"890","tidyr","fish_encounters","Fish encounters","114x3",2,114,3
+"891","tidyr","population","World Health Organization TB data","4060x3",2,4060,3
+"892","tidyr","table3","Example tabular representations","6x3",2,6,3
+"893","tidyr","table4a","Example tabular representations","3x3",2,3,3
+"894","tidyr","table4b","Example tabular representations","3x3",2,3,3
+"895","timetk","m4_daily","Sample of 4 Daily Time Series Datasets from the M4 Competition","9743x3",2,9743,3
+"896","timetk","m4_hourly","Sample of 4 Hourly Time Series Datasets from the M4 Competition","3060x3",2,3060,3
+"897","timetk","m4_monthly","Sample of 4 Monthly Time Series Datasets from the M4 Competition","1574x3",2,1574,3
+"898","timetk","m4_quarterly","Sample of 4 Quarterly Time Series Datasets from the M4 Competition","196x3",2,196,3
+"899","timetk","m4_weekly","Sample of 4 Weekly Time Series Datasets from the M4 Competition","2295x3",2,2295,3
+"900","timetk","m4_yearly","Sample of 4 Yearly Time Series Datasets from the M4 Competition","135x3",2,135,3
+"901","timetk","wikipedia_traffic_daily","Sample Daily Time Series Data from the Web Traffic Forecasting (Wikipedia) Competition","5500x3",2,5500,3
+"902","usdata","prez_pwr","Presidential Power.","365x3",2,365,3
+"903","vcd","Hospital","Hospital data","3x3",2,3,3
+"904","wk","wk_proj_crs_json","Common CRS Representations","13387x3",2,13387,3
+"905","yardstick","lung_surv","Survival Analysis Results","228x3",2,228,3
+"906","boot","bigcity","Population of U.S. Cities","49x2",2,49,2
+"907","boot","calcium","Calcium Uptake Data","27x2",2,27,2
+"908","boot","cav","Position of Muscle Caveolae","138x2",2,138,2
+"909","boot","cd4","CD4 Counts for HIV-Positive Patients","20x2",2,20,2
+"910","boot","city","Population of U.S. Cities","10x2",2,10,2
+"911","boot","claridge","Genetic Links to Left-handedness","37x2",2,37,2
+"912","boot","cloth","Number of Flaws in Cloth","32x2",2,32,2
+"913","boot","co.transfer","Carbon Monoxide Transfer","7x2",2,7,2
+"914","boot","dogs","Cardiac Data for Domestic Dogs","7x2",2,7,2
+"915","boot","ducks","Behavioral and Plumage Characteristics of Hybrid Ducks","11x2",2,11,2
+"916","boot","grav","Acceleration Due to Gravity","26x2",2,26,2
+"917","boot","gravity","Acceleration Due to Gravity","81x2",2,81,2
+"918","boot","polar","Pole Positions of New Caledonian Laterites","50x2",2,50,2
+"919","boot","survival","Survival of Rats after Radiation Doses","14x2",2,14,2
+"920","boot","tau","Tau Particle Decay Modes","60x2",2,60,2
+"921","carData","CanPop","Canadian Population Data","16x2",2,16,2
+"922","carData","Friendly","Format Effects on Recall","30x2",2,30,2
+"923","carData","Sahlins","Agricultural Production in Mazulu Village","20x2",2,20,2
+"924","carData","USPop","Population of the United States","22x2",2,22,2
+"925","cluster","agriculture","European Union Agricultural Workforces","12x2",2,12,2
+"926","cluster","ruspini","Ruspini Data","75x2",2,75,2
+"927","cluster","xclara","Bivariate Data Set with 3 Clusters","3000x2",2,3000,2
+"928","datasets","BOD","Biochemical Oxygen Demand","6x2",2,6,2
+"929","datasets","Formaldehyde","Determination of Formaldehyde","6x2",2,6,2
+"930","datasets","InsectSprays","Effectiveness of Insect Sprays","72x2",2,72,2
+"931","datasets","PlantGrowth","Results from an Experiment on Plant Growth","30x2",2,30,2
+"932","datasets","Titanic","Survival of passengers on the Titanic","4x2x2x2",4,4,2
+"933","datasets","UCBAdmissions","Student Admissions at UC Berkeley","2x2x6",3,2,2
+"934","datasets","cars","Speed and Stopping Distances of Cars","50x2",2,50,2
+"935","datasets","chickwts","Chicken Weights by Feed Type","71x2",2,71,2
+"936","datasets","faithful","Old Faithful Geyser Data","272x2",2,272,2
+"937","datasets","pressure","Vapor Pressure of Mercury as a Function of Temperature","19x2",2,19,2
+"938","datasets","women","Average Heights and Weights for American Women","15x2",2,15,2
+"939","DiagrammeR","edge_list_1","Edge list - Version 1.","19x2",2,19,2
+"940","DiagrammeR","node_list_1","Node list - Version 1.","10x2",2,10,2
+"941","doBy","math_teachers","Height of math teachers","30x2",2,30,2
+"942","dplyr","band_instruments","Band membership","3x2",2,3,2
+"943","dplyr","band_instruments2","Band membership","3x2",2,3,2
+"944","dplyr","band_members","Band membership","3x2",2,3,2
+"945","fivethirtyeight","cousin_marriage","How Many Americans Are Married To Their Cousins?","70x2",2,70,2
+"946","fivethirtyeight","elasticity_by_state","Political Elasticity Scores","51x2",2,51,2
+"947","fivethirtyeight","male_flight_attend","Dear Mona, How Many Flight Attendants Are Men?","320x2",2,320,2
+"948","fivethirtyeight","mediacloud_online_news","The Media Really Started Paying Attention to Puerto Rico When Trump Did","49x2",2,49,2
+"949","fivethirtyeight","nba_tattoos","Accurately Counting NBA Tattoos Isn't Easy, Even If You're Up Close","636x2",2,636,2
+"950","fivethirtyeight","nfltix_usa_avg","Who Goes To Meaningless NFL Games And Why?","32x2",2,32,2
+"951","fivethirtyeight","riddler_pick_lowest","Pick A Number, Any Number","3660x2",2,3660,2
+"952","fivethirtyeight","tennis_players_time","Why Some Tennis Matches Take Forever","218x2",2,218,2
+"953","ggpubr","gene_citation","Gene Citation Index","66x2",2,66,2
+"954","lattice","melanoma","Melanoma skin cancer incidence","37x2",2,37,2
+"955","lattice","singer","Heights of New York Choral Society singers","235x2",2,235,2
+"956","lme4","Dyestuff","Yield of dyestuff by batch","30x2",2,30,2
+"957","lme4","Dyestuff2","Yield of dyestuff by batch","30x2",2,30,2
+"958","lmtest","ChickEgg","Chickens, Eggs, and Causality","54x2",2,54,2
+"959","lmtest","Mandible","Mandible Data","167x2",2,167,2
+"960","lmtest","USDistLag","US Macroeconomic Data","20x2",2,20,2
+"961","lmtest","growthofmoney","Growth of Money Supply","19x2",2,19,2
+"962","MASS","Animals","Brain and Body Weights for 28 Species","28x2",2,28,2
+"963","MASS","GAGurine","Level of GAG in Urine of Children","314x2",2,314,2
+"964","MASS","forbes","Forbes' Data on Boiling Points in the Alps","17x2",2,17,2
+"965","MASS","geyser","Old Faithful Geyser Data","299x2",2,299,2
+"966","MASS","mammals","Brain and Body Weights for 62 Species of Land Mammals","62x2",2,62,2
+"967","MASS","mcycle","Data from a Simulated Motorcycle Accident","133x2",2,133,2
+"968","MASS","steam","The Saturated Steam Pressure Data","14x2",2,14,2
+"969","MASS","wtloss","Weight Loss Data from an Obese Patient","52x2",2,52,2
+"970","maxstat","treepipit","Tree Pipit Data","86x2",2,86,2
+"971","modeldata","drinks","Sample time series data","309x2",2,309,2
+"972","modeldata","pathology","Liver pathology data","344x2",2,344,2
+"973","modeldata","solubility_test","Solubility predictions from MARS model","316x2",2,316,2
+"974","modelr","sim1","Simple simulated datasets","30x2",2,30,2
+"975","modelr","sim2","Simple simulated datasets","40x2",2,40,2
+"976","mosaic","Sleep","Sleep and Memory","24x2",2,24,2
+"977","mosaicData","CoolingWater","CoolingWater","222x2",2,222,2
+"978","mosaicData","Dimes","Weight of dimes","30x2",2,30,2
+"979","mosaicData","Mites","Mites and Wilt Disease","47x2",2,47,2
+"980","NACCdata","udsGroups","Groupings for Variables in UDS This is a helper dataset that includes the 'Form' value for variables listed in the UDS's data dictionary. When a value is not available, the variable is set to 'No_Group'.","1943x2",2,1943,2
+"981","nlme","Rail","Evaluation of Stress in Railway Rails","18x2",2,18,2
+"982","openintro","assortative_mating","Eye color of couples","204x2",2,204,2
+"983","openintro","assortive_mating","Eye color of couples","204x2",2,204,2
+"984","openintro","avandia","Cardiovascular problems for two types of Diabetes medicines","227571x2",2,227571,2
+"985","openintro","biontech_adolescents","Efficacy of Pfizer-BioNTech COVID-19 vaccine on adolescents","2260x2",2,2260,2
+"986","openintro","books","Sample of books on a shelf","95x2",2,95,2
+"987","openintro","burger","Burger preferences","500x2",2,500,2
+"988","openintro","cancer_in_dogs","Cancer in dogs","1436x2",2,1436,2
+"989","openintro","classdata","Simulated class data","164x2",2,164,2
+"990","openintro","cpr","CPR dataset","90x2",2,90,2
+"991","openintro","diabetes2","Type 2 Diabetes Clinical Trial for Patients 10-17 Years Old","699x2",2,699,2
+"992","openintro","dream","Survey on views of the DREAM Act","910x2",2,910,2
+"993","openintro","drone_blades","Quadcopter Drone Blades","2000x2",2,2000,2
+"994","openintro","drug_use","Drug use of students and parents","445x2",2,445,2
+"995","openintro","ethanol","Ethanol Treatment for Tumors Experiment","24x2",2,24,2
+"996","openintro","family_college","Simulated sample of parent / teen college attendance","792x2",2,792,2
+"997","openintro","fcid","Summary of male heights from USDA Food Commodity Intake Database","100x2",2,100,2
+"998","openintro","full_body_scan","Poll about use of full-body airport scanners","1137x2",2,1137,2
+"999","openintro","gear_company","Fake data for a gear company example","2000x2",2,2000,2
+"1000","openintro","gender_discrimination","Bank manager recommendations based on gender","48x2",2,48,2
+"1001","openintro","global_warming_pew","Pew survey on global warming","2253x2",2,2253,2
+"1002","openintro","gov_poll","Pew Research poll on government approval ratings","4223x2",2,4223,2
+"1003","openintro","gpa_study_hours","gpa_study_hours","193x2",2,193,2
+"1004","openintro","gradestv","Simulated data for analyzing the relationship between watching TV and grades","25x2",2,25,2
+"1005","openintro","gsearch","Simulated Google search experiment","10000x2",2,10000,2
+"1006","openintro","gss_wordsum_class","gss_wordsum_class","795x2",2,795,2
+"1007","openintro","health_coverage","Health Coverage and Health Status","20000x2",2,20000,2
+"1008","openintro","healthcare_law_survey","Pew Research Center poll on health care, including question variants","1503x2",2,1503,2
+"1009","openintro","helmet","Socioeconomic status and reduced-fee school lunches","12x2",2,12,2
+"1010","openintro","immigration","Poll on illegal workers in the US","910x2",2,910,2
+"1011","openintro","infmortrate","Infant Mortality Rates, 2012","222x2",2,222,2
+"1012","openintro","lizard_habitat","Field data on lizards observed in their natural habitat","332x2",2,332,2
+"1013","openintro","major_survey","Survey of Duke students and the area of their major","218x2",2,218,2
+"1014","openintro","malaria","Malaria Vaccine Trial","20x2",2,20,2
+"1015","openintro","mammogram","Experiment with Mammogram Randomized","89835x2",2,89835,2
+"1016","openintro","migraine","Migraines and acupuncture","89x2",2,89,2
+"1017","openintro","offshore_drilling","California poll on drilling off the California coast","828x2",2,828,2
+"1018","openintro","opportunity_cost","Opportunity cost of purchases","150x2",2,150,2
+"1019","openintro","penetrating_oil","What's the best way to loosen a rusty bolt?","30x2",2,30,2
+"1020","openintro","penny_ages","Penny Ages","648x2",2,648,2
+"1021","openintro","photo_classify","Photo classifications: fashion or not","1822x2",2,1822,2
+"1022","openintro","ppp_201503","US Poll on who it is better to raise taxes on","691x2",2,691,2
+"1023","openintro","race_justice","Yahoo! News Race and Justice poll results","1059x2",2,1059,2
+"1024","openintro","salinity","Salinity in Bimini Lagoon, Bahamas","30x2",2,30,2
+"1025","openintro","sex_discrimination","Bank manager recommendations based on sex","48x2",2,48,2
+"1026","openintro","sinusitis","Sinusitis and antibiotic experiment","166x2",2,166,2
+"1027","openintro","sleep_deprivation","Survey on sleep deprivation and transportation workers","1087x2",2,1087,2
+"1028","openintro","smallpox","Smallpox vaccine results","6224x2",2,6224,2
+"1029","openintro","socialexp","Social experiment","45x2",2,45,2
+"1030","openintro","soda","soda","60x2",2,60,2
+"1031","openintro","stent30","Stents for the treatment of stroke","451x2",2,451,2
+"1032","openintro","stent365","Stents for the treatment of stroke","451x2",2,451,2
+"1033","openintro","sulphinpyrazone","Treating heart attacks","1475x2",2,1475,2
+"1034","openintro","toy_anova","Simulated dataset for ANOVA","140x2",2,140,2
+"1035","openintro","twins","twins","27x2",2,27,2
+"1036","openintro","winery_cars","Time Between Gondola Cars at Sterling Winery","52x2",2,52,2
+"1037","openintro","yawn","Contagiousness of yawning","50x2",2,50,2
+"1038","padr","coffee","Coffee Data Set","4x2",2,4,2
+"1039","PerformanceAnalytics","portfolio_bacon","Bacon(2008) Data","24x2",2,24,2
+"1040","RobStatTM","biochem","Biochem data","12x2",2,12,2
+"1041","RobStatTM","mineral","Mineral data","53x2",2,53,2
+"1042","RobStatTM","shock","Shock data","16x2",2,16,2
+"1043","robustbase","Animals2","Brain and Body Weights for 65 Species of Land Animals","65x2",2,65,2
+"1044","robustbase","SiegelsEx","Siegel's Exact Fit Example Data","9x2",2,9,2
+"1045","robustbase","cloud","Cloud point of a Liquid","19x2",2,19,2
+"1046","robustbase","condroz","Condroz Data","428x2",2,428,2
+"1047","robustbase","exAM","Example Data of Antille and May - for Simple Regression","12x2",2,12,2
+"1048","robustbase","kootenay","Waterflow Measurements of Kootenay River in Libby and Newgate","13x2",2,13,2
+"1049","robustbase","lactic","Lactic Acid Concentration Measurement Data","20x2",2,20,2
+"1050","robustbase","pension","Pension Funds Data","18x2",2,18,2
+"1051","robustbase","pilot","Pilot-Plant Data","20x2",2,20,2
+"1052","robustbase","starsCYG","Hertzsprung-Russell Diagram Data of Star Cluster CYG OB1","47x2",2,47,2
+"1053","robustbase","telef","Number of International Calls from Belgium","24x2",2,24,2
+"1054","s2","s2_data_tbl_timezones","Low-resolution world boundaries, timezones, and cities","120x2",2,120,2
+"1055","timetk","taylor_30_min","Half-hourly electricity demand","4032x2",2,4032,2
+"1056","vcd","CoalMiners","Breathlessness and Wheeze in Coal Miners","2x2x9",3,2,2
+"1057","vcd","PreSex","Pre-marital Sex and Divorce","2x2x2x2",4,2,2
+"1058","vcd","Rochdale","Rochdale Data","2x2x2x2x2x2x2x2",8,2,2
+"1059","yardstick","pathology","Liver Pathology Data","344x2",2,344,2
+"1060","yardstick","solubility_test","Solubility Predictions from MARS Model","316x2",2,316,2
+"1061","boot","aircondit","Failures of Air-conditioning Equipment","12x1",2,12,1
+"1062","boot","aircondit7","Failures of Air-conditioning Equipment","24x1",2,24,1
+"1063","boot","capability","Simulated Manufacturing Process Data","75x1",2,75,1
+"1064","boot","coal","Dates of Coal Mining Disasters","191x1",2,191,1
+"1065","boot","darwin","Darwin's Plant Height Differences","15x1",2,15,1
+"1066","boot","islay","Jura Quartzite Azimuths on Islay","18x1",2,18,1
+"1067","boot","paulsen","Neurotransmission in Guinea Pig Brains","346x1",2,346,1
+"1068","boot","tuna","Tuna Sighting Data","64x1",2,64,1
+"1069","modeldata","covers","Raw cover type data","40x1",2,40,1
+"1070","openintro","age_at_mar","Age at first marriage of 5,534 US women.","5534x1",2,5534,1
+"1071","openintro","ami_occurrences","Acute Myocardial Infarction (Heart Attack) Events","365x1",2,365,1
+"1072","openintro","antibiotics","Pre-existing conditions in 92 children","92x1",2,92,1
+"1073","openintro","ball_bearing","Lifespan of ball bearings","75x1",2,75,1
+"1074","openintro","cchousing","Community college housing (simulated data)","75x1",2,75,1
+"1075","openintro","credits","College credits.","100x1",2,100,1
+"1076","openintro","ebola_survey","Survey on Ebola quarantine","1042x1",2,1042,1
+"1077","openintro","env_regulation","American Adults on Regulation and Renewable Energy","705x1",2,705,1
+"1078","openintro","exams","Exam scores","19x1",2,19,1
+"1079","openintro","exclusive_relationship","Number of Exclusive Relationships","218x1",2,218,1
+"1080","openintro","fheights","Female college student heights, in inches","24x1",2,24,1
+"1081","openintro","housing","Simulated dataset on student housing","75x1",2,75,1
+"1082","openintro","ipod","Length of songs on an iPod","3000x1",2,3000,1
+"1083","openintro","jury","Simulated juror dataset","275x1",2,275,1
+"1084","openintro","leg_mari","Legalization of Marijuana Support in 2010 California Survey","119x1",2,119,1
+"1085","openintro","male_heights","Sample of 100 male heights","100x1",2,100,1
+"1086","openintro","male_heights_fcid","Random sample of adult male heights","100x1",2,100,1
+"1087","openintro","manhattan","manhattan","20x1",2,20,1
+"1088","openintro","nuclear_survey","Nuclear Arms Reduction Survey","1028x1",2,1028,1
+"1089","openintro","penelope","Guesses at the weight of Penelope (a cow)","17184x1",2,17184,1
+"1090","openintro","poker","Poker winnings during 50 sessions","50x1",2,50,1
+"1091","openintro","russian_influence_on_us_election_2016","Russians' Opinions on US Election Influence in 2016","506x1",2,506,1
+"1092","openintro","sat_improve","Simulated data for SAT score improvement","30x1",2,30,1
+"1093","openintro","scotus_healthcare","Public Opinion with SCOTUS ruling on American Healthcare Act","1012x1",2,1012,1
+"1094","openintro","sp500_seq","S&P 500 stock data","2948x1",2,2948,1
+"1095","openintro","stats_scores","Final exam scores for twenty students","20x1",2,20,1
+"1096","openintro","student_housing","Community college housing (simulated data, 2015)","175x1",2,175,1
+"1097","openintro","student_sleep","Sleep for 110 students (simulated)","110x1",2,110,1
+"1098","openintro","supreme_court","Supreme Court approval rating","976x1",2,976,1
+"1099","openintro","thanksgiving_spend","Thanksgiving spending, simulated based on Gallup poll.","436x1",2,436,1
+"1100","openintro","toohey","Simulated polling dataset","500x1",2,500,1
+"1101","openintro","transplant","Transplant consultant success rate (fake data)","62x1",2,62,1
+"1102","PerformanceAnalytics","prices","Selected Price Series Example Data","2011x1",2,2011,1
+"1103","RobStatTM","flour","Flour data","24x1",2,24,1

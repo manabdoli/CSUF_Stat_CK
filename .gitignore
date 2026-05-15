@@ -63,3 +63,4 @@ _extensions
 *.docx
 !exam2_practice.html
 .positai
+*.pptx
