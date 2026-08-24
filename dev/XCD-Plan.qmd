@@ -1,0 +1,333 @@
+---
+title: "XCD-Plan"
+format: html
+---
+
+Your sequence is coherent overall, especially the progression from **description → model/fit → sampling variation → inference → estimation → multivariable models**. The main place I would revise is the middle of the course, where the transition from quantitative-response models into categorical-response inference currently feels compressed.
+
+The strongest conceptual thread in your plan is already there: **Observed = Model + Error**, then increasingly sophisticated ways of asking whether the remaining error is unusually large. I would protect that thread and use your extra categorical-response day to make categorical inference feel like a continuation of the same framework rather than an appendix to Chapter 11.
+
+### Where I would adjust the timing
+
+| Current area                                       | Recommendation                                                                                                   | Reason                                                                                                   |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| 2.8–2.11 Sampling                                  | Keep, but make this primarily **sampling process + sampling variability**, not yet formal sampling distributions | Students need the idea early, but formal sampling distributions make more sense after they know means/SD |
+| 3.9–3.13 Categorical data                          | Keep descriptive                                                                                                 | Establish counts, proportions, conditional proportions, and categorical DGPs                             |
+| 4.6–4.13 Cat–Cat association                       | Definitely keep                                                                                                  | This creates the descriptive foundation for later $\chi^2$ inference                                     |
+| One-sample mean sampling distribution              | Expand slightly if possible                                                                                      | This is the bridge that makes Chapters 10–12 substantially easier                                        |
+| 9.8–9.11 correlation + slope sampling distribution | Consider moving the **slope sampling distribution** closer to Chapter 10                                         | Otherwise students see an inferential object before you have formally introduced null distributions      |
+| 10.1–10.5 null hypothesis / null distribution      | Treat this as the major conceptual inference day                                                                 | This should unify permutation/randomization, sampling distributions, test statistics, and $p$-values     |
+| 11.13+ categorical response                        | Give this **two conceptual beats**, even if only one full class day                                              | There is too much new structure for a single pass                                                        |
+| Error types / power                                | Keep after Exam 2                                                                                                | Good placement: students first learn to conduct tests, then critique testing                             |
+| CI / estimation                                    | Keep after testing                                                                                               | Pedagogically defensible, especially given your course architecture                                      |
+| Multivariate                                       | Keep, but use final days for synthesis rather than introducing too much new algebra                              | Reinforces the model-comparison framework                                                                |
+
+## The categorical-response section is where I would spend your extra time
+
+Right now you effectively have:
+
+**Descriptive categorical association → several weeks of quantitative-response modeling → $\chi^2$ inference**
+
+That gap is large enough that students may not recognize the connection.
+
+I would use the extra categorical-response time to deliberately reconstruct the bridge:
+
+**counts → proportions → expected counts → residuals → standardized discrepancies → aggregate discrepancy → $\chi^2$ → null distribution**
+
+That gives you an exceptionally nice connection to the rest of the course.
+
+For a contingency table,
+
+$$\text{Residual}_{ij}=O_{ij}-E_{ij}$$
+
+and then
+
+$$\chi^2=\sum_{i,j}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}.$$
+
+This fits your course theme almost perfectly:
+
+$$\text{Observed}=\text{Expected}+\text{Error}.$$
+
+The key difference is simply that the response is now categorical and the error has to be measured differently.
+
+I would therefore make the categorical material roughly:
+
+| Day / portion                                    | Main question                                                | Concepts                                                                                        |
+| ------------------------------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| Earlier, Ch. 4                                   | **Is there a pattern?**                                      | contingency tables, marginal/conditional proportions, independence, expected proportions/counts |
+| Categorical inference Day 1                      | **How far are observed counts from the independence model?** | $O-E$, expected counts, contribution $\frac{(O-E)^2}{E}$, $\chi^2$                              |
+| Categorical inference Day 2 or extended activity | **Is that discrepancy unusually large?**                     | randomization/null distribution, $\chi^2$ distribution, df, $p$-value, GoF vs independence      |
+
+If you truly only have **one additional day**, I would combine GoF and independence strategically rather than teach them as two separate tests.
+
+Start with **goodness of fit**, because the expected counts are easier:
+
+$$E_i=np_i.$$
+
+Then say that independence is the same idea, except the model itself determines the expected probabilities:
+
+$$E_{ij}=\frac{(\text{row total})(\text{column total})}{n}.$$
+
+Students then see one procedure rather than two disconnected tests.
+
+---
+
+## I would make one larger structural adjustment around sampling distributions
+
+You currently introduce sampling twice:
+
+1. 2.8–2.11: sampling and sampling variation
+2. after Chapter 6: one-sample mean sampling distribution
+
+That is good, but I would make their roles explicitly different.
+
+Early course:
+
+> **Different samples give different data.**
+
+Later:
+
+> **Different samples give different statistics.**
+
+That distinction is extremely important.
+
+I would make your added sampling-distribution section a small conceptual mini-unit:
+
+$$Y
+\quad\longrightarrow\quad
+\bar Y
+\quad\longrightarrow\quad
+\text{distribution of }\bar Y.$$
+
+Then introduce
+
+$$E(\bar Y)=\mu$$
+
+and
+
+$$SE(\bar Y)=\frac{\sigma}{\sqrt n}.$$
+
+You do not need the full CLT machinery yet. The main learning objective should be:
+
+> A statistic is itself a random variable.
+
+That single idea pays off repeatedly later for:
+
+* $t$
+* $F$
+* regression slopes
+* $R^2$
+* proportions
+* bootstrap distributions
+* confidence intervals.
+
+### I would slightly change the order here
+
+Your current sequence is approximately:
+
+$$SD
+\rightarrow
+\text{sampling distribution}
+\rightarrow
+z
+\rightarrow
+\text{group models}.$$
+
+I would use:
+
+$$SD
+\rightarrow
+z
+\rightarrow
+\text{sampling distribution of }\bar Y
+\rightarrow
+SE
+\rightarrow
+\text{group models}.$$
+
+Why? Because students first understand standardization of **individual observations**:
+
+$$z=\frac{Y-\bar Y}{s},$$
+
+and then you can show the analogous standardization of a **statistic**:
+
+$$\frac{\bar Y-\mu}{SE(\bar Y)}.$$
+
+That makes the eventual $t$ statistic much less mysterious.
+
+---
+
+# Transitions I would make explicit
+
+Your content is good enough that the transitions may matter more than adding additional topics.
+
+### Chapter 4 → Chapter 5
+
+End Chapter 4 with:
+
+> We have learned how to **see** relationships. Now we want numerical models that summarize them.
+
+Then Chapter 5 introduces the empty model:
+
+$$Y_i=\bar Y+e_i.$$
+
+That is a very natural pivot.
+
+### Chapter 6 → Chapter 7
+
+Use:
+
+> If SD measures the error left by a model, perhaps a predictor can reduce that error.
+
+Then:
+
+$$Y_i=\bar Y+e_i$$
+
+becomes
+
+$$Y_i=\hat Y_{group}+e_i.$$
+
+This makes Chapter 7 feel inevitable.
+
+### Chapter 7 → Chapter 8
+
+Frame ANOVA as:
+
+> Nothing fundamentally new happened—we simply went from two group means to several.
+
+I would actively avoid presenting Chapter 8 as a completely new procedure.
+
+### Chapter 8 → Chapter 9
+
+This transition can be especially elegant:
+
+Categorical predictor:
+
+$$\hat Y=b_0+b_1X_{\text{group}}$$
+
+Quantitative predictor:
+
+$$\hat Y=b_0+b_1X.$$
+
+Then ANOVA and regression become manifestations of the same model-comparison framework.
+
+### Chapter 9 → Chapter 10
+
+This is perhaps your most important transition:
+
+> A model can reduce error in our sample simply by chance. How much reduction would occur if there were really no relationship?
+
+That immediately motivates a **null distribution**.
+
+Then $p$-values answer:
+
+$$P(\text{statistic this extreme}\mid H_0).$$
+
+That is cleaner than beginning Chapter 10 with hypothesis-testing terminology.
+
+---
+
+# One content change I would strongly consider
+
+Your Exam 2 is labeled:
+
+> **INFERENCE USING P-VALUE**
+
+I would broaden the conceptual description slightly to:
+
+> **Inference from Null Models**
+
+Students often leave introductory statistics thinking inference means "calculate a $p$-value."
+
+Your course actually gives them a much richer model:
+
+$$\text{Observed statistic}
+\longleftrightarrow
+\text{Null distribution}
+\longrightarrow
+\text{How surprising?}$$
+
+The $p$-value is merely the summary of that comparison.
+
+That framing will also make your categorical-response material fit much more smoothly.
+
+---
+
+# I would also reconsider where correlation receives emphasis
+
+You have:
+
+> 9.8–9.11: Correlation, Correlation Matrix?; $b_1$ sampling dist.
+
+I would **de-emphasize the correlation matrix at this point** unless it is needed later in your multivariate section.
+
+For this course, students will probably gain more from understanding:
+
+$$R^2$$
+
+as proportional reduction in error than from spending much time interpreting matrices of $r$ values.
+
+A correlation matrix becomes useful again in Chapter 13 when you ask:
+
+> What happens when predictors themselves are related?
+
+That gives it an actual purpose.
+
+So I would either:
+
+* move correlation matrices to Chapter 13, or
+* introduce them very lightly in Chapter 9 and revisit them in Chapter 13.
+
+---
+
+# A possible revised middle sequence
+
+This is the part I would most strongly recommend:
+
+| Sequence                                     | Main conceptual question                                     |
+| -------------------------------------------- | ------------------------------------------------------------ |
+| Ch. 5 Center                                 | What is our simplest prediction?                             |
+| Ch. 6 Spread                                 | How much error does that prediction leave?                   |
+| Standardization                              | How unusual is one observation?                              |
+| **Sampling Distribution mini-unit**          | How much do statistics vary across samples?                  |
+| Ch. 7 Two-group model                        | Can one binary predictor reduce error?                       |
+| Ch. 8 ANOVA                                  | Can a categorical predictor reduce error?                    |
+| Ch. 9 Regression                             | Can a quantitative predictor reduce error?                   |
+| Ch. 10 Null models                           | Could this reduction have occurred by chance?                |
+| Ch. 11 $F/t$ inference                       | How do theoretical null distributions quantify that?         |
+| **Categorical inference 1**                  | How far are counts from an expected categorical model?       |
+| **Categorical inference 2 / extended class** | Is that categorical discrepancy larger than chance explains? |
+| Exam 2                                       | Inference from null models                                   |
+| Error / power                                | What can go wrong when we make decisions?                    |
+| Multiplicity                                 | What happens when we test repeatedly?                        |
+| CI / Bootstrap                               | Instead of testing one value, what values are plausible?     |
+
+That gives the course a remarkably consistent conceptual trajectory.
+
+---
+
+## One additional idea for your categorical day
+
+Because you have developed PRE so heavily, I would explicitly compare the two worlds on the board:
+
+| Quantitative response | Categorical response                 |
+| --------------------- | ------------------------------------ |
+| prediction $\hat Y$   | expected count $E$                   |
+| residual $Y-\hat Y$   | residual $O-E$                       |
+| SSE                   | $\sum (O-E)^2/E$                     |
+| $F$, $t$, $R^2$       | $\chi^2$                             |
+| null model            | independence / specified proportions |
+| null distribution     | $\chi^2$ null distribution           |
+| $p$-value             | $p$-value                            |
+
+I think this could become one of the most important synthesis moments in XCD. It communicates that $\chi^2$ is **not an isolated categorical-data trick**. It is another instance of the framework students have been using all semester:
+
+$$\boxed{
+\text{Specify a model}
+\rightarrow
+\text{measure error}
+\rightarrow
+\text{compare with chance}
+}$$
+
+If you have one genuinely flexible extra class day, I would spend it here rather than on adding more multivariate material at the end. The payoff is greater because it strengthens their understanding of inference itself, not merely one additional method.

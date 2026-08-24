@@ -1,0 +1,70 @@
+---
+title: "F vs Rsquared"
+format: html
+---
+
+For a simple linear regression with intercept (model \(y=\beta_0+\beta_1 x+\varepsilon\)) under the classical OLS assumptions (i.i.d. normal errors), the exact distribution of \(R^2\) is induced by an F distribution.
+
+Let \(n\) be sample size. Then
+\[
+F=\frac{(R^2/1)}{(1-R^2)/(n-2)} \sim F_{1,\;n-2}
+\]
+equivalently,
+\[
+\frac{R^2}{1-R^2}\cdot (n-2)\sim F_{1,\;n-2}.
+\]
+
+From this, you can express \(R^2\) directly: if the true slope is zero (\(\beta_1=0\)), then
+\[
+R^2 \sim \text{Beta}\!\left(\frac{1}{2},\frac{n-2}{2}\right).
+\]
+
+If \(\beta_1\neq 0\) (noncentral case), the corresponding test statistic is noncentral:
+\[
+F \sim F_{1,\;n-2}(\lambda),
+\]
+where \(\lambda\) is the noncentrality parameter determined by the effect size and design (roughly, \(\lambda\propto\beta_1^2\) times the centered \(x\)-sum of squares divided by \(\sigma^2\)). In that case, \(R^2\) follows a noncentral analog (not a simple central Beta).
+
+
+## Linear Regression
+
+$$Y\sim X$$
+
+$$f\sim F(p, n-p-1), \quad R^2\sim Beta(p/2, (n-p-1)/2)$$
+where $p$ is the number of predictors.
+
+
+For a categorical $X$ with $k$ levels, $p=k-1$, and 
+
+$$f\sim F(k-1, n-k), \quad R^2\sim Beta\left(\frac{k-1}{2}, \frac{n-k}{2}\right)$$
+
+```{r}
+suppressPackageStartupMessages({
+  library(tidyverse)
+})
+
+dst<- mtcars |> mutate(cyl=factor(cyl), am=factor(am)) |> na.omit()
+
+n<- nrow(dst)
+
+mdlA <- lm(hp~wt, dst)
+mdlB <- lm(hp~am, dst)
+mdlC <- lm(hp~cyl, dst)
+
+dfA1<- mdlA$df.residual
+dfB1<- mdlB$df.residual
+dfC1<- mdlC$df.residual
+
+fA<- summary(mdlA)$fstatistic
+fB<- summary(mdlB)$fstatistic
+fC<- summary(mdlC)$fstatistic
+
+RsqA <- summary(mdlA)$r.square
+RsqB <- summary(mdlB)$r.square
+RsqC <- summary(mdlC)$r.square
+
+c(p_F=1-pf(fA[1], fA[2], fA[3]), p_Beta=1-pbeta(RsqA, fA[2]/2, fA[3]/2))
+c(p_F=1-pf(fB[1], fB[2], fB[3]), p_Beta=1-pbeta(RsqB, fB[2]/2, fB[3]/2))
+c(p_F=1-pf(fC[1], fC[2], fC[3]), p_Beta=1-pbeta(RsqC, fC[2]/2, fC[3]/2))
+
+```

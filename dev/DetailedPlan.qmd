@@ -1,0 +1,139 @@
+---
+title: "DetailedPlan"
+format: html
+---
+
+```{r}
+dp<- read.csv('DetailedPlan.csv', check.names = FALSE)
+tcb<- c("T", "B", "C")
+colnames(dp)
+addlb<- function(x) {
+  x|> 
+    gsub(pattern = " B: ", replacement = " \nB: ") |>
+    gsub(pattern = " C: ", replacement = " \nC: ") 
+}
+
+library(kableExtra)
+apply(dp, 2, addlb) |>
+  kbl() %>%
+  kable_paper() %>%
+  column_spec(2, extra_css = "white-space: pre-wrap;")
+
+library(DT)
+apply(dp, 2, addlb) |> kbl() |>
+  pack_rows(index = table(dp$Part)) |>
+  kable_styling(full_width = FALSE)
+
+```
+
+
+```{r}
+library(readr)
+library(reactable)
+
+reactable(
+  dp,
+  groupBy = "Part",   # replace with your grouping variable
+  filterable = TRUE,
+  searchable = TRUE,
+  pagination = TRUE,
+  highlight = TRUE
+)
+
+```
+
+
+```{r}
+library(dplyr)
+datatable(
+  mtcars |> dplyr::arrange(cyl) |> group_by(cyl),
+  filter = "top",
+  extensions = "RowGroup",
+  options = list(
+    pageLength = 10,
+    rowGroup = list(dataSrc = 2) # Group by 3rd column (cyl)
+  )
+)
+
+
+exdst<- data.frame(group=c(letters[1:2]), VarA = c('A:Something B:Important C:Hidden', 'A:But B:We Cannot C: See', 'A:We B:Cannot C: See', 'A:Hidden B:Important C:Thing'))
+
+
+exdst |> kbl()
+
+
+datatable(
+  mtcars |> dplyr::arrange(cyl) |> transmute(Group=cyl, mpg, hp),
+  extensions = "RowGroup",
+  options = list(
+    rowGroup = list(dataSrc = 1), # Group by first column ("Group")
+    pageLength = 12,
+    ordering = FALSE,
+    # Custom JS to make groups collapsible
+    drawCallback = JS(
+      "var api = this.api();
+       var rows = api.rows({page:'current'}).nodes();
+       var last = null;
+       api.column(0, {page:'current'}).data().each(function(group, i) {
+         if (last !== group) {
+           $(rows).eq(i).before(
+             '<tr class=\"group\"><td colspan=\"3\" style=\"cursor:pointer; background:#f0f0f0; font-weight:bold;\">'+group+'</td></tr>'
+           );
+           last = group;
+         }
+       });
+       $('.group').off('click').on('click', function() {
+         var name = $(this).text();
+         var visible = api.rows().eq(0).filter(function(idx) {
+           return api.cell(idx, 0).data() === name;
+         }).nodes().to$().is(':visible');
+         api.rows().eq(0).filter(function(idx) {
+           return api.cell(idx, 0).data() === name;
+         }).nodes().to$().toggle(!visible);
+       });"
+    )
+  ),
+  rownames = FALSE
+)
+```
+
+
+```{r}
+
+library(dplyr)
+library(stringr)
+library(knitr)
+library(kableExtra)
+
+# Your data
+df <- data.frame(
+  group = c('a', 'b', 'a', 'b'),
+  VarA = c(
+    'A:Something B:Important C:Hidden',
+    'A:But B:We Cannot C: See',
+    'A:We B:Cannot C: See',
+    'A:Hidden B:Important C:Thing'
+  )
+)
+
+# Function to add newlines before B: and C:
+format_varA <- function(text) {
+  text <- str_replace_all(text, " B:", "\nB:")
+  text <- str_replace_all(text, " C:", "\nC:")
+  return(text)
+}
+
+# Apply formatting and group
+df_formatted <- df %>%
+  mutate(VarA = sapply(VarA, format_varA)) %>%
+  group_by(group) %>%
+  summarise(VarA = paste(VarA, collapse = "\n\n")) %>%
+  ungroup()
+
+# Create table with line breaks using kableExtra
+df_formatted %>%
+  kbl() %>%
+  kable_paper() %>%
+  column_spec(2, extra_css = "white-space: pre-wrap;")
+
+```

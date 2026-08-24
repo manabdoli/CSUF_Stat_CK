@@ -1,0 +1,49 @@
+---
+title: "Partially Publishing"
+format: html
+---
+
+Yes, it is possible to avoid rebuilding the entire website. The key is to separate the rendering and publishing steps and use Quarto's features for incremental updates.
+
+The `quarto publish` command itself doesn't have a built-in incremental option, but you can achieve this by rendering only the changed files and then publishing the result with the `--no-render` flag.
+
+### 🔧 How to Update Only Changed Files
+
+#### 1. Render Files Individually
+The core of this approach is to render only the specific files you've changed instead of the whole project. You can do this by passing file names directly to the `quarto render` command. For example:
+```bash
+quarto render post1.qmd post2.qmd
+```
+This will render just those files and update the output directory (e.g., `_site`) with the new HTML.
+
+#### 2. Publish Without Re-rendering
+After rendering the individual files, you can publish the already-updated `_site` directory to GitHub Pages without triggering a full rebuild. Use the `--no-render` option with the `quarto publish` command:
+```bash
+quarto publish gh-pages --no-render
+```
+This command will deploy the current content of your `_site` folder to the `gh-pages` branch, making it the live site.
+
+#### 3. Use `freeze` to Speed Up Rendering
+To make the process of rendering individual files even faster, you can use the `freeze` option. This caches the results of computational code (like R or Python) so they are not re-run on every render.
+
+Add this to your `_quarto.yml` file:
+```yaml
+execute:
+  freeze: true
+```
+With this setting, Quarto will re-use cached results for code chunks that haven't changed, and only run code in documents that have been updated.
+
+### 💡 Alternative: A More Advanced Incremental Workflow
+For a more streamlined automated approach, especially if you are using a CI/CD service like GitHub Actions, you can create a custom workflow that only renders changed files. A typical setup works like this:
+
+1.  **Use `freeze`**: Enable the `freeze` option in your `_quarto.yml`.
+2.  **Cache the output directory**: Configure your CI workflow (e.g., GitHub Actions) to cache the `_site` directory between runs.
+3.  **Detect changed files**: Use tools like `git diff` to find which Quarto files have been modified.
+4.  **Render changed files only**: Run `quarto render` on those specific files.
+5.  **Deploy the updated `_site`**: Publish the updated `_site` directory to GitHub Pages.
+
+This approach can significantly reduce build times, potentially from minutes to under a minute.
+
+### 📌 Important Considerations
+*   **Project-wide changes**: This incremental approach works best when you are updating individual content files. If you change site-wide configurations (like `_quarto.yml` or a custom CSS file), a full rebuild (`quarto render`) is generally safer to ensure all pages reflect the change correctly.
+*   **`quarto publish` is for full rebuilds**: By default, `quarto publish` is designed to re-render everything. Using the `--no-render` flag is essential to bypass this behavior.

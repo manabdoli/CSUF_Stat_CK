@@ -1,0 +1,529 @@
+---
+title: "XCD v ABCD"
+author: Mansour Abdoli, PhD
+ai.disclaimer: "Chat GPT was used in producing and improving the document."
+format: 
+  html:
+    toc: true
+    toc.float: true
+---
+
+## Structural Mapping
+
+| ABCD                                                                          |      XCD | Pattern                                                                   |
+| ----------------------------------------------------------------------------- | -------: | ------------------------------------------------------------------------- |
+| Ch. 1–4: intro, data, distributions, explaining variation                     |  Ch. 1–2 | Condensed into a faster “explore data with R → modeling variation” launch |
+| Ch. 5–7 and parts of Ch. 9: empty model, error, group model, regression model |  Ch. 2–3 | Modeling content is pulled earlier and made more streamlined              |
+| Ch. 10: Logic of Inference                                                    |    Ch. 4 | Essentially carried forward, renumbered                                   |
+| Ch. 11: Model Comparison with F                                               |    Ch. 5 | Essentially carried forward, renumbered                                   |
+| Ch. 12: Confidence Intervals                                                  |    Ch. 6 | Essentially carried forward, renumbered                                   |
+| Ch. 13–16: Multivariate + Interactions                                        | Ch. 7–10 | Essentially carried forward, renumbered                                   |
+
+
+## The main transformation
+
+### Compressing Content
+
+:::{.columns}
+:::{.column}
+#### ABCD
+- Part I: Exploring Variation:
+  - Ch 1-4 
+- Part II: Modeling Variation
+  - Ch 5-7 & part of 9
+  - Ch 8 is dropped(To be verified)
+
+:::
+:::{.column}
+#### XCD
+- Part I: Exploring and Modeling Variation
+  - Ch 1-2 (Exploring)
+  - Ch 3-4 (Modeling)
+:::
+
+### Example Datasets
+:::{.columns}
+:::{.column}
+#### ABCD
+A few datasets (Students, Home-price, ...), but each dominating a chapter or two.
+:::
+:::{.column}
+#### XCD
+One coherent dataset (Home-price) used everywhere.
+
+:::
+
+Some Chat GPT observations:
+
+- detailed “understanding data” material from ABCD Chapter 2,
+- distributional exploration from ABCD Chapter 3,
+- research design / DGP material from ABCD Chapter 4,
+- much of ABCD Chapter 6 on variance, standard deviation, z-scores, and the normal model,
+- some “digging deeper” group-model material from ABCD Chapter 8.
+
+ABCD includes full chapters on “Examining Distributions,” “Quantifying Error,” and “Digging Deeper into Group Models,” while XCD does not have direct chapter-level equivalents for those.
+
+
+# Now Approach
+
+Here is the **5-unit XCD lineup** I would use. This keeps the course aligned with XCD’s own structure while preserving your original 29-day course rhythm.
+
+## 5-Unit XCD Approach
+
+| Unit                                            | Approx. Days | XCD Chapters / Sections                                                 | Core Purpose                                                                                                                                 | Assessment                             |
+| ----------------------------------------------- | -----------: | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| **Unit 1. Exploring Data and Variation**        |     Days 1–7 | **Ch. 1: 1.1–1.11** and **Ch. 2: 2.1–2.3**                              | R basics, data frames, variable types, data cleaning, one-variable and two-variable visualization                                            | **Exam 1 prep begins**                 |
+| **Unit 2. Modeling Variation**                  |    Days 9–16 | **Ch. 2: 2.4–2.10** and **Ch. 3: 3.1–3.13**                             | Empty model, mean as model, error, sums of squares, group model, regression model, ANOVA, PRE, F                                             | **Exam 1 or early Exam 2 content**     |
+| **Unit 3. Inference Using P-Values**            |   Days 17–22 | **Ch. 4: 4.1–4.11** and **Ch. 5: 5.1–5.15**                             | Sampling distributions, null model, p-values, t distribution, F distribution, Type I/II error, pairwise comparisons, chi-square independence | **Exam 2**                             |
+| **Unit 4. Estimation and Confidence Intervals** |   Days 23–26 | **Ch. 6: 6.1–6.15**                                                     | Bootstrap CIs, standard error, t-based CIs, CIs for $\beta_0$, slope, pairwise comparisons, CI width                                         | CI quiz / applied inference assignment |
+| **Unit 5. Multivariate and Interaction Models** |   Days 27–29 | **Ch. 7: 7.1–7.9**, selected **Ch. 8: 8.1–8.11**, optional **Ch. 9–10** | Multivariate models, targeted model comparisons, unique effects, optional interactions                                                       | Final project / final review           |
+
+XCD’s full TOC supports this grouping: Chapter 1 covers R/data/visualization; Chapter 2 moves from two-variable relationships into the empty model and sums of squares; Chapter 3 develops group and regression models with ANOVA, PRE, and F; Chapters 4–5 build p-value inference through sampling distributions, t/F distributions, and chi-square independence; Chapter 6 covers CIs; Chapters 7–10 move into multivariate and interaction models. ([app.coursekata.org][1])
+
+---
+
+## Unit 1 — Exploring Data and Variation
+
+**Days 1–7**
+**XCD sections:** Ch. 1 **1.1–1.11** plus Ch. 2 **2.1–2.3**
+
+### Main topics
+
+* Welcome to statistics and data science
+* R basics: functions, objects, data frames
+* Variable types
+* Selecting, filtering, recoding, missing data
+* Quantitative summaries and visualizations
+* Categorical summaries and visualizations
+* Relationships between two variables
+* Two-variable visualizations
+
+### Suggested class flow
+
+| Day | XCD Sections | Focus                                                        |
+| --: | ------------ | ------------------------------------------------------------ |
+|   1 | 1.1–1.4      | Syllabus, intro to R, functions, objects                     |
+|   2 | 1.5–1.7      | Data frames, variable types, select/filter                   |
+|   3 | 1.8–1.9      | Missing data, recoding, creating variables                   |
+|   4 | 1.10         | Quantitative variables: histograms, boxplots, summaries      |
+|   5 | 1.11         | Categorical variables: counts, proportions, bar plots        |
+|   6 | 2.1–2.2      | Relationships between two variables; choosing displays       |
+|   7 | 2.3 + review | More two-variable visualization; description/modeling bridge |
+
+**Why this unit works:** XCD Chapter 1 is basically the compressed replacement for much of ABCD’s early data, R, and visualization content. Chapter 2 begins with relationships between two variables before moving into modeling, so I would put **2.1–2.3** with Unit 1 rather than Unit 2. ([app.coursekata.org][2])
+
+---
+
+## Unit 2 — Modeling Variation
+
+**Days 9–16**
+**XCD sections:** Ch. 2 **2.4–2.10** and Ch. 3 **3.1–3.13**
+
+### Main topics
+
+* Explaining variation in an outcome variable
+* Mean as a model
+* Empty model
+* DATA = MODEL + ERROR
+* Parameters and estimates
+* Total error and sum of squares
+* Group model with categorical explanatory variable
+* Regression model with quantitative explanatory variable
+* ANOVA tables
+* PRE and F
+
+### Suggested class flow
+
+| Day | XCD Sections         | Focus                                                            |
+| --: | -------------------- | ---------------------------------------------------------------- |
+|   9 | 2.4–2.7              | Explaining variation, mean as model, empty model, error notation |
+|  10 | 2.8–2.10             | Parameters/estimates, total error, sum of squares                |
+|  11 | Supplemental bridge  | One-mean/empty-model sampling intuition, optional                |
+|  12 | Supplemental bridge  | Distribution tools: standard error, normal-ish/t/F preview       |
+|  13 | 3.1–3.5              | Group model, GLM notation, group-model error                     |
+|  14 | 3.6–3.10             | Regression model, slope/intercept, regression error, ANOVA       |
+|  15 | 3.11–3.13            | SS Model, PRE, F                                                 |
+|  16 | Review / application | Compare empty, group, and regression models                      |
+
+**Important adjustment:** I would keep Days 11–12, but I would not make them full traditional-statistics detours. Instead, use them as **bridges** that support XCD’s modeling spine. For example, Day 11 can connect the empty model to one-mean inference, and Day 12 can prepare students for simulated vs mathematical sampling distributions.
+
+XCD Chapter 3 is the real modeling hub: it includes the `Neighborhood` model, GLM notation, error reduction, the `HomeSizeK` regression model, ANOVA tables, PRE, and F. ([app.coursekata.org][1])
+
+---
+
+## Unit 3 — Inference Using P-Values
+
+**Days 17–22**
+**XCD sections:** Ch. 4 **4.1–4.11** and Ch. 5 **5.1–5.15**
+
+### Main topics
+
+* The problem of inference
+* Constructing sampling distributions
+* Sampling distribution of $b_1$
+* What counts as unlikely
+* p-values
+* Mathematical model of the sampling distribution of $b_1$
+* Hypothesis testing for regression
+* Sampling distributions of PRE and F
+* F distribution
+* Relationship between F and t
+* Type I and Type II error
+* Multiple groups
+* Pairwise comparisons
+* Simultaneous comparisons
+* Chi-square test of independence
+
+### Suggested class flow
+
+| Day | XCD Sections | Focus                                                                           |
+| --: | ------------ | ------------------------------------------------------------------------------- |
+|  17 | 4.1–4.3      | Problem of inference; constructing sampling distribution of $b_1$               |
+|  18 | 4.4–4.6      | Unlikely samples, p-value, calculating p-value                                  |
+|  19 | 4.7–4.9      | t distribution as mathematical model; regression hypothesis test                |
+|  20 | 5.1–5.8      | PRE, F, F distribution, F/t relationship, regression model test                 |
+|  21 | 5.9–5.13     | Type I/II error, multiple groups, pairwise comparisons, chi-square independence |
+|  22 | Exam 2       | Inference using p-values                                                        |
+
+This is the cleanest place for **Exam 2**, because XCD Chapters 4–5 are the p-value inference sequence. Chapter 4 builds inference from sampling distributions and $b_1$; Chapter 5 generalizes that to PRE, F, multiple groups, pairwise comparisons, simultaneous comparisons, and chi-square independence. ([app.coursekata.org][3])
+
+---
+
+## Unit 4 — Estimation and Confidence Intervals
+
+**Days 23–26**
+**XCD sections:** Ch. 6 **6.1–6.15**
+
+### Main topics
+
+* From hypothesis testing to confidence intervals
+* Thinking with sampling distributions
+* Basic CI logic
+* Bootstrapping
+* Bootstrap sampling distribution
+* Shuffle vs resample
+* Standard error
+* t-based confidence intervals
+* Interpreting CIs
+* CIs and model comparison
+* CI for $\beta_0$
+* CI for regression slope
+* Pairwise CIs
+* What affects CI width
+
+### Suggested class flow
+
+| Day | XCD Sections | Focus                                                           |
+| --: | ------------ | --------------------------------------------------------------- |
+|  23 | 6.1–6.3      | From p-values to estimation; basic CI logic                     |
+|  24 | 6.4–6.6      | Bootstrap CI, bootstrap sampling distribution, standard error   |
+|  25 | 6.7–6.9      | t-based CI, interpretation, CIs and model comparison            |
+|  26 | 6.10–6.15    | CI for $\beta_0$, slope, pairwise comparisons, CI width, review |
+
+This should be its own unit, not just an add-on after p-values. XCD Chapter 6 explicitly reframes inference from “rejecting the empty model” toward estimating plausible parameter values, then uses bootstrap and t-based approaches to construct confidence intervals. ([app.coursekata.org][4])
+
+---
+
+## Unit 5 — Multivariate and Interaction Models
+
+**Days 27–29**
+**XCD sections:** Ch. 7 **7.1–7.9**, selected Ch. 8 **8.1–8.11**, optional Ch. 9–10
+
+### Main topics
+
+* Models with two explanatory variables
+* Visualizing multivariate relationships
+* Specifying and fitting multivariate models
+* Interpreting parameter estimates
+* Predictions
+* Multivariate residuals, SS, PRE, and F
+* Targeted model comparisons
+* Unique effects of predictors
+* Optional interactions
+
+### Suggested class flow
+
+| Day | XCD Sections        | Focus                                                             |
+| --: | ------------------- | ----------------------------------------------------------------- |
+|  27 | 7.1–7.5             | Intro to multivariate models; fitting and interpreting            |
+|  28 | 7.6–7.9 + 8.1–8.4   | Error, SS, PRE, F; targeted model comparisons                     |
+|  29 | 8.5–8.11 or 9.1–9.8 | Predictor selection / multiple predictors / optional interactions |
+
+For a 29-day course, I would **not** try to cover all of Chapters 7–10 in detail. I would make Unit 5 either:
+
+**Option A: Multivariate Core**
+Use Ch. 7 and selected Ch. 8 only.
+
+**Option B: Multivariate + One Interaction Day**
+Use Ch. 7, selected Ch. 8, and one carefully chosen interaction lesson from Ch. 9.
+
+**Option C: Project-Based Finish**
+Use Ch. 7–8 concepts in a final modeling project, with interaction models as optional extensions.
+
+XCD Chapters 7–8 introduce multivariate models, targeted comparisons, sums of squares, PRE, F, inference for targeted comparisons, and models with multiple categorical or quantitative predictors; Chapters 9–10 then extend this to interactions. ([app.coursekata.org][1])
+
+---
+
+## My recommended 5-unit calendar skeleton
+
+| Day Range      | Unit                                        | XCD Coverage                        | Major Product                                   |
+| -------------- | ------------------------------------------- | ----------------------------------- | ----------------------------------------------- |
+| **Days 1–7**   | Unit 1: Exploring Data and Variation        | 1.1–1.11, 2.1–2.3                   | Data/visualization fluency                      |
+| **Day 8**      | Exam 1                                      | Units 1 + intro modeling            | Description, visualization, R basics            |
+| **Days 9–16**  | Unit 2: Modeling Variation                  | 2.4–2.10, 3.1–3.13                  | Empty/group/regression model comparison         |
+| **Days 17–21** | Unit 3: Inference Using P-Values            | 4.1–4.11, 5.1–5.15                  | Sampling distributions, p-values, F, chi-square |
+| **Day 22**     | Exam 2                                      | Units 2–3                           | Modeling + p-value inference                    |
+| **Days 23–26** | Unit 4: Estimation and Confidence Intervals | 6.1–6.15                            | Bootstrap/t CIs and interpretation              |
+| **Days 27–29** | Unit 5: Multivariate and Interaction Models | 7.1–7.9, selected 8.x, optional 9.x | Multivariate application or final project       |
+
+The one decision I would make explicit in the syllabus is this: **Goodness-of-fit, difference of two proportions, and classical one-mean tests are supplemental extensions, not central XCD units.** XCD’s central spine is: **explore variation → fit models → compare models → use sampling distributions for inference → estimate parameters → extend to multivariate models.**
+
+[1]: https://app.coursekata.org/preview/ec26c7bd-0ade-480b-a307-13c141fe28cb/program?book=3075cfeb-4476-4f38-97ae-7f3ad85f36b3&version=e77bc3d1-755f-4045-bcfa-40700796fcaa&utm_source=chatgpt.com "CourseKata - Preview v6.1"
+[2]: https://app.coursekata.org/preview/book/ce3a2b1f-af5c-46a9-847a-a355c171b8fc/lesson/2/0?utm_source=chatgpt.com "CourseKata - Part I: Exploring and Modeling Variation"
+[3]: https://app.coursekata.org/preview/book/79f4478a-f95d-4605-b9f1-97903ce627ca/lesson/7/0?utm_source=chatgpt.com "CourseKata - 4.1 The Problem of Inference"
+[4]: https://app.coursekata.org/preview/book/79f4478a-f95d-4605-b9f1-97903ce627ca/lesson/9/0?utm_source=chatgpt.com "Chapter 6 - Parameter Estimation and Confidence Intervals"
+
+# Detailed Plan
+Below is a **working day-by-day activity map** for the 5-unit XCD approach. I used a compact format inside each cell:
+
+**T = Topic**
+**C = Content**
+**B = Beyond textbook / extension**
+
+I kept the XCD spine aligned to the book: Ch. 1 data/R/visualization; Ch. 2 empty model and error; Ch. 3 group/regression models, PRE, F; Ch. 4–5 p-value inference; Ch. 6 confidence intervals; Ch. 7–8 multivariate models, with optional Ch. 9 interaction material. The XCD TOC supports this sequencing. ([app.coursekata.org][1])
+
+---
+
+## Unit 1 — Exploring Data and Variation
+
+| Day | XCD Section  | Pre-Class Canvas Quiz                                                                                                                                                                | Class Activity                                                                                                                                                                                         | Lab / Mini-JNB                                                                                                                                                                                                   | HW / Project                                                                                                                   |
+| --: | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+|   1 | 1.1–1.4      | **T:** Intro to stats, R, functions, objects  <br> **C:** Syllabus + reading quiz on why we use data/R  <br> **B:** Ask students to identify one real-world question they care about | **T:** Course launch, measurements, R basics  <br> **C:** Use textbook examples; `print()`, `sum()`, `c()`, arithmetic, assignment  <br> **B:** “What can be measured in this class?” quick brainstorm | **T:** Basic R operations  <br> **C:** Simple JNB using student-safe fake survey variables  <br> **B:** NA                                                                                                       | **T:** Project seed  <br> **C:** Submit 2–3 possible survey questions  <br> **B:** Mark each as categorical or quantitative    |
+|   2 | 1.5–1.7      | **T:** Data frames, variables, select/filter  <br> **C:** Questions based on `iris` or simple student survey sample  <br> **B:** Challenge: filter a group and predict what changes  | **T:** Data frame, variable type, group comparison  <br> **C:** Compare overall mean vs group mean  <br> **B:** Find another group mean and explain why it differs                                     | **T:** Same operations in a new dataset  <br> **C:** Mini-JNB with `mtcars`: compare `hp` by `cyl`; use `select()`, `filter()`, `favstats()`  <br> **B:** Discuss what student survey variables could be grouped | **T:** Project question design  <br> **C:** Generate questions that group means can answer  <br> **B:** NA                     |
+|   3 | 1.8–1.9      | **T:** Missing data, recoding, creating variables  <br> **C:** Identify missing values and recoded categories  <br> **B:** Challenge: explain when recoding loses information        | **T:** Cleaning data for analysis  <br> **C:** Mini examples: missing values, collapsing categories, creating a binary variable  <br> **B:** Discuss ethical handling of survey responses              | **T:** Data cleaning  <br> **C:** JNB using `starwars`, `penguins`, or mock class survey; use `is.na()`, `na.omit()`, `recode()`  <br> **B:** Create one useful new variable                                     | **T:** Project survey draft  <br> **C:** Submit final candidate survey items  <br> **B:** Identify response type for each item |
+|   4 | 1.10         | **T:** Quantitative variables  <br> **C:** Interpret histogram, boxplot, center/spread questions  <br> **B:** Challenge: choose the better graph for a skewed variable               | **T:** Describing quantitative variation  <br> **C:** Shape, center, spread, unusual observations  <br> **B:** Compare mean vs median in skewed data                                                   | **T:** Quantitative visualization  <br> **C:** JNB using survey-like quantitative data or `mtcars`: histograms, boxplots, `favstats()`  <br> **B:** Write one “data story” sentence from a graph                 | **T:** HW quiz  <br> **C:** Identify graph, center, spread, unusual values  <br> **B:** NA                                     |
+|   5 | 1.11         | **T:** Categorical variables  <br> **C:** Counts, proportions, bar plots  <br> **B:** Challenge: convert counts to proportions                                                       | **T:** Describing categorical variation  <br> **C:** Frequency tables, bar plots, relative frequencies  <br> **B:** Compare two ways of grouping the same variable                                     | **T:** Categorical summaries  <br> **C:** JNB with survey-style categorical variables; `tally()`, proportions, bar plots  <br> **B:** Ask what categorical variable might explain a quantitative outcome         | **T:** Project prep  <br> **C:** Groups choose possible outcome variable  <br> **B:** Each group lists two possible predictors |
+|   6 | 2.1–2.2      | **T:** Two-variable relationships  <br> **C:** Match variable types to graph types  <br> **B:** Challenge: choose graph for messy real-world scenario                                | **T:** Association and graph choice  <br> **C:** Quant-quant, quant-cat, cat-cat relationships  <br> **B:** Students justify graph choice before seeing graph                                          | **T:** Two-variable visualization  <br> **C:** JNB using `mtcars`, `penguins`, or survey data; scatterplot, boxplot, faceting  <br> **B:** Find one relationship worth modeling                                  | **T:** HW quiz  <br> **C:** Graph choice and interpretation  <br> **B:** NA                                                    |
+|   7 | 2.3 + review | **T:** More two-variable visualization  <br> **C:** Interpretation quiz using graph screenshots  <br> **B:** Challenge: identify possible confounding variable                       | **T:** Description-to-modeling bridge  <br> **C:** Given a graph, ask: what varies? what might explain it?  <br> **B:** Introduce “outcome vs explanatory variable” language                           | **T:** Unit 1 review JNB  <br> **C:** Students analyze one small dataset from start to graph interpretation  <br> **B:** Choose a project-style question from the data                                           | **T:** Exam 1 review  <br> **C:** Auto-graded review quiz  <br> **B:** Optional correction/reflection                          |
+
+---
+
+## Day 8 — Exam 1
+
+| Day | XCD Section | Pre-Class Canvas Quiz                     | Class Activity                                                                                                         | Lab / Mini-JNB                            | HW / Project                                                                                                                                       |
+| --: | ----------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   8 | Exam 1      | **T:** NA  <br> **C:** NA  <br> **B:** NA | **T:** Exam 1  <br> **C:** Description, visualization, R basics, variable types, data-frame operations  <br> **B:** NA | **T:** NA  <br> **C:** NA  <br> **B:** NA | **T:** Project checkpoint  <br> **C:** Groups confirm outcome + possible predictors  <br> **B:** Optional: submit a one-sentence research question |
+
+---
+
+## Unit 2 — Modeling Variation
+
+| Day | XCD Section          | Pre-Class Canvas Quiz                                                                                                                                                 | Class Activity                                                                                                                                                                                | Lab / Mini-JNB                                                                                                                                                          | HW / Project                                                                                                                                      |
+| --: | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+|   9 | 2.4–2.7              | **T:** Outcome variation, mean as model, empty model  <br> **C:** Interpret mean as prediction  <br> **B:** Challenge: when is the mean a bad prediction?             | **T:** Empty model and residuals  <br> **C:** Predict each case with the mean; calculate observed − predicted  <br> **B:** Compare residuals for two different outcomes                       | **T:** Empty model JNB  <br> **C:** Fit empty model with `lm(y ~ NULL)` or equivalent; calculate predictions/residuals  <br> **B:** Connect to project outcome variable | **T:** HW quiz  <br> **C:** Mean, prediction, residual interpretation  <br> **B:** NA                                                             |
+|  10 | 2.8–2.10             | **T:** Parameters, estimates, total error, SS  <br> **C:** Identify parameter vs estimate; compute simple residual squares  <br> **B:** Challenge: why square errors? | **T:** Quantifying error  <br> **C:** Compare two models by total squared error  <br> **B:** Use physical “distance from model” idea on a dotplot                                             | **T:** Error and SS JNB  <br> **C:** Calculate residuals, squared residuals, SS for empty model  <br> **B:** Compare SS for two different outcome variables             | **T:** Project milestone  <br> **C:** Groups compute basic summaries for outcome variable  <br> **B:** Explain whether outcome has much variation |
+|  11 | Supplemental bridge  | **T:** Empty model sampling intuition  <br> **C:** Sampling variation in a mean  <br> **B:** Challenge: distinguish one person’s value from sample mean               | **T:** One-mean inference as empty-model bridge  <br> **C:** Simulate repeated samples; observe variation in $\bar{Y}$  <br> **B:** Connect $\bar{Y}$ to $\beta_0$                            | **T:** Sampling distribution of mean  <br> **C:** Mini-JNB: sample repeatedly from a population or large dataset  <br> **B:** Ask whether observed mean is surprising   | **T:** HW quiz  <br> **C:** Sampling variation, sample mean, sampling distribution  <br> **B:** NA                                                |
+|  12 | Supplemental bridge  | **T:** Distribution tools  <br> **C:** Standard error, normal-ish shape, t/F preview  <br> **B:** Challenge: compare variability of data vs variability of statistic  | **T:** From simulation to mathematical models  <br> **C:** Why sampling distributions can be approximated by named distributions  <br> **B:** Preview t and F as tools, not isolated formulas | **T:** Distribution tools JNB  <br> **C:** Simulate statistics; compare shape/spread as n changes  <br> **B:** Optional z-score/empirical rule mini-extension           | **T:** NA or light quiz  <br> **C:** Keep low-stakes to avoid overload  <br> **B:** NA                                                            |
+|  13 | 3.1–3.5              | **T:** Group model  <br> **C:** Predict outcome using group means  <br> **B:** Challenge: compare empty-model prediction to group-model prediction                    | **T:** Categorical predictor model  <br> **C:** Group means, GLM notation, error reduction  <br> **B:** Which predictor explains more variation?                                              | **T:** Group model JNB  <br> **C:** Fit model like `y ~ group`; compare predictions/residuals  <br> **B:** Apply same idea to project predictor                         | **T:** HW quiz  <br> **C:** Interpret group model and residuals  <br> **B:** NA                                                                   |
+|  14 | 3.6–3.10             | **T:** Regression model  <br> **C:** Slope, intercept, quantitative predictor  <br> **B:** Challenge: interpret slope in context                                      | **T:** Quantitative predictor model  <br> **C:** Fit and interpret regression model; introduce ANOVA table  <br> **B:** Compare graph, equation, and table                                    | **T:** Regression JNB  <br> **C:** Fit `y ~ x`; interpret $\beta_0$, $\beta_1$, residuals, ANOVA output  <br> **B:** Find one meaningful quantitative predictor         | **T:** Project milestone  <br> **C:** Groups fit one group model or regression model  <br> **B:** Explain model in plain language                 |
+|  15 | 3.11–3.13            | **T:** SS Model, PRE, F  <br> **C:** Interpret model improvement  <br> **B:** Challenge: explain PRE without formula language                                         | **T:** Comparing models  <br> **C:** Empty vs complex model; SS Error, SS Model, PRE, F  <br> **B:** Ranking several models by usefulness                                                     | **T:** Model comparison JNB  <br> **C:** Compare empty, group, and regression models  <br> **B:** Model tournament: which predictor reduces error most?                 | **T:** HW quiz  <br> **C:** PRE/F interpretation  <br> **B:** NA                                                                                  |
+|  16 | Review / application | **T:** Modeling review  <br> **C:** Identify model type from research question  <br> **B:** Challenge: choose between group and regression model                      | **T:** Model comparison synthesis  <br> **C:** Students complete model-comparison table: outcome, predictor, model, error, PRE/F  <br> **B:** Short correlation extension if desired          | **T:** Applied modeling JNB  <br> **C:** One dataset, multiple possible predictors, choose best simple model  <br> **B:** Draft project model comparison                | **T:** Exam 2 preparation starts  <br> **C:** Mixed review quiz  <br> **B:** Optional corrections                                                 |
+
+---
+
+## Unit 3 — Inference Using P-Values
+
+| Day | XCD Section | Pre-Class Canvas Quiz                                                                                                                                                                                                | Class Activity                                                                                                                                                                           | Lab / Mini-JNB                                                                                                                                                | HW / Project                                                                                                            |
+| --: | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+|  17 | 4.1–4.3     | **T:** Problem of inference, sampling distribution of $b_1$  <br> **C:** Identify observed statistic vs simulated statistics  <br> **B:** Challenge: why shuffle?                                                    | **T:** Null model and sampling distribution  <br> **C:** Shuffle explanatory variable; build null distribution of slope  <br> **B:** Predict what happens if relationship is strong/weak | **T:** Sampling distribution JNB  <br> **C:** Use `shuffle()` to simulate slopes under null  <br> **B:** Compare class dataset slope to shuffled slopes       | **T:** HW quiz  <br> **C:** Null model, sampling distribution, observed statistic  <br> **B:** NA                       |
+|  18 | 4.4–4.6     | **T:** Unlikely samples and p-values  <br> **C:** Locate observed statistic in null distribution  <br> **B:** Challenge: one-tail vs two-tail intuition if desired                                                   | **T:** p-value interpretation  <br> **C:** Calculate proportion of shuffled statistics as extreme as observed  <br> **B:** Common wrong interpretations of p-value                       | **T:** p-value JNB  <br> **C:** Simulate null distribution and calculate p-value  <br> **B:** Students write a p-value interpretation in context              | **T:** HW quiz  <br> **C:** p-value calculation and interpretation  <br> **B:** NA                                      |
+|  19 | 4.7–4.9     | **T:** Mathematical model of sampling distribution, t, regression test  <br> **C:** Compare simulated p-value and model-based p-value  <br> **B:** Challenge: what affects p-value?                                  | **T:** Hypothesis testing for regression  <br> **C:** State null/alternative; interpret model output  <br> **B:** Connect t to slope uncertainty                                         | **T:** Regression inference JNB  <br> **C:** Fit regression, extract p-value, compare to simulated result  <br> **B:** Use project model if appropriate       | **T:** Project milestone  <br> **C:** Groups state an inference question and null hypothesis  <br> **B:** NA            |
+|  20 | 5.1–5.8     | **T:** PRE, F, F distribution  <br> **C:** Interpret F as model comparison statistic  <br> **B:** Challenge: when F and t tell similar stories                                                                       | **T:** Model comparison with F  <br> **C:** Sampling distributions of PRE/F; p-value from F  <br> **B:** Compare regression and group-model tests                                        | **T:** F-test JNB  <br> **C:** Simulate F under null; compare with model output  <br> **B:** Students explain F in nontechnical language                      | **T:** HW quiz  <br> **C:** F, PRE, p-value from model comparison  <br> **B:** NA                                       |
+|  21 | 5.9–5.13    | **T:** Error types, multiple groups, pairwise comparisons, chi-square independence  <br> **C:** Concept checks on Type I/II and categorical inference  <br> **B:** Challenge: why multiple comparisons inflate error | **T:** Extensions of p-value inference  <br> **C:** Type I/II error; pairwise comparisons; chi-square independence  <br> **B:** Optional short goodness-of-fit contrast                  | **T:** Mixed inference JNB  <br> **C:** One activity on multiple groups or chi-square independence  <br> **B:** If course outcome requires, add mini GOF task | **T:** Exam 2 review  <br> **C:** Auto-graded p-value inference review  <br> **B:** Optional error-type reflection      |
+|  22 | Exam 2      | **T:** NA  <br> **C:** NA  <br> **B:** NA                                                                                                                                                                            | **T:** Exam 2  <br> **C:** Modeling + p-value inference: sampling distributions, p-values, t, F, chi-square independence  <br> **B:** NA                                                 | **T:** NA  <br> **C:** NA  <br> **B:** NA                                                                                                                     | **T:** Project checkpoint  <br> **C:** Groups submit model + p-value interpretation  <br> **B:** Peer comments optional |
+
+---
+
+## Unit 4 — Estimation and Confidence Intervals
+
+| Day | XCD Section | Pre-Class Canvas Quiz                                                                                                                                                            | Class Activity                                                                                                                                                                   | Lab / Mini-JNB                                                                                                                                            | HW / Project                                                                                                          |
+| --: | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+|  23 | 6.1–6.3     | **T:** From p-values to confidence intervals  <br> **C:** Identify estimation question vs testing question  <br> **B:** Challenge: explain why “not rejected” is not an estimate | **T:** CI logic  <br> **C:** Plausible values, uncertainty, confidence level  <br> **B:** Compare p-value conclusion vs CI conclusion                                            | **T:** CI intuition JNB  <br> **C:** Use repeated samples or simulated intervals  <br> **B:** Interpret interval in student-friendly language             | **T:** HW quiz  <br> **C:** CI concept and interpretation  <br> **B:** NA                                             |
+|  24 | 6.4–6.6     | **T:** Bootstrap, resampling, standard error  <br> **C:** Distinguish shuffle vs resample  <br> **B:** Challenge: what does SE measure?                                          | **T:** Bootstrap confidence intervals  <br> **C:** Build bootstrap distribution; find middle 95%  <br> **B:** Compare bootstrap distribution to original data distribution       | **T:** Bootstrap JNB  <br> **C:** Bootstrap mean, slope, or group difference  <br> **B:** Use project variable if clean enough                            | **T:** Project milestone  <br> **C:** Groups create one bootstrap CI  <br> **B:** Explain what parameter it estimates |
+|  25 | 6.7–6.9     | **T:** t-based CI and model comparison  <br> **C:** Interpret CI from R output  <br> **B:** Challenge: compare bootstrap CI and t CI                                             | **T:** Mathematical CI methods  <br> **C:** t-distribution, model output, CI interpretation  <br> **B:** When should we trust method-based intervals?                            | **T:** t-based CI JNB  <br> **C:** Compare `confint()` or model output CIs to bootstrap intervals  <br> **B:** Write conclusion using both p-value and CI | **T:** HW quiz  <br> **C:** t CI, interpretation, model comparison  <br> **B:** NA                                    |
+|  26 | 6.10–6.15   | **T:** CI for $\beta_0$, slope, pairwise comparisons, CI width  <br> **C:** Match interval to parameter  <br> **B:** Challenge: what changes CI width?                           | **T:** Interpreting different CIs  <br> **C:** CI for intercept/mean, slope, group difference; effect of n and variability  <br> **B:** Students critique bad CI interpretations | **T:** CI synthesis JNB  <br> **C:** One dataset, multiple CIs; students choose appropriate interval  <br> **B:** Project CI draft                        | **T:** Project milestone  <br> **C:** Groups submit CI interpretation + revision plan  <br> **B:** NA                 |
+
+---
+
+## Unit 5 — Multivariate and Interaction Models
+
+| Day | XCD Section              | Pre-Class Canvas Quiz                                                                                                                                                                | Class Activity                                                                                                                                                                 | Lab / Mini-JNB                                                                                                                                 | HW / Project                                                                                                               |
+| --: | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+|  27 | 7.1–7.5                  | **T:** Two explanatory variables, multivariate model  <br> **C:** Identify outcome and two predictors  <br> **B:** Challenge: explain why adding a predictor can change coefficients | **T:** Intro multivariate modeling  <br> **C:** Fit and interpret model with two predictors  <br> **B:** Compare simple vs multivariate interpretation                         | **T:** Multivariate JNB  <br> **C:** Fit `y ~ x1 + x2`; interpret predictions and coefficients  <br> **B:** Apply to project model if feasible | **T:** Project milestone  <br> **C:** Groups decide whether to include second predictor  <br> **B:** Explain why/why not   |
+|  28 | 7.6–7.9 + 8.1–8.4        | **T:** Multivariate error, SS, PRE, F, targeted comparisons  <br> **C:** Identify full and reduced models  <br> **B:** Challenge: unique contribution of a predictor                 | **T:** Targeted model comparison  <br> **C:** Compare full vs reduced model; interpret F and p-value  <br> **B:** Venn diagram / shared variation idea                         | **T:** Targeted comparison JNB  <br> **C:** Fit two nested models and compare them  <br> **B:** Groups test whether one predictor adds value   | **T:** Peer review prep  <br> **C:** Draft project claim, evidence, and model table  <br> **B:** NA                        |
+|  29 | 8.5–8.11 or selected 9.x | **T:** Predictor selection or optional interaction  <br> **C:** Choose model; interpret final result  <br> **B:** Challenge: additive vs interaction model, if time                  | **T:** Final modeling synthesis  <br> **C:** Students explain modeling story: question → data → model → inference → CI → conclusion  <br> **B:** Gallery walk or peer feedback | **T:** Final project workshop  <br> **C:** Groups revise report/poster based on feedback  <br> **B:** Optional interaction extension           | **T:** Final project / reflection  <br> **C:** Submit final project and individual reflection  <br> **B:** Peer review due |
+
+---
+
+## Dataset suggestions
+
+Your idea to collect a **student survey dataset** is excellent. I would use it repeatedly, but carefully. Keep it low-risk and not too personal.
+
+Good student-survey variables:
+
+| Variable type                       | Examples                                                                                                                                                   |
+| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Quantitative outcome candidates     | weekly study hours, commute time, sleep hours, number of work hours, screen time, exercise minutes                                                         |
+| Categorical predictors              | full-time/part-time student, works for pay, online/in-person preference, major group, first-generation status only if optional/sensitive handling is clear |
+| Quantitative predictors             | work hours, commute time, number of enrolled units, sleep hours                                                                                            |
+| Categorical outcomes for chi-square | prefers online/in-person, uses tutoring yes/no, works for pay yes/no                                                                                       |
+
+I would avoid sensitive variables unless they are clearly optional and aggregated.
+
+Other reliable practical datasets:
+
+| Dataset                       | Best use                                                  |
+| ----------------------------- | --------------------------------------------------------- |
+| `mtcars`                      | Early R, group means, regression, model comparison        |
+| `iris`                        | Data frames, variable types, group means, visualization   |
+| `palmerpenguins`              | Group models, visualization, missing data, regression     |
+| `tips`                        | Group differences, regression, multivariate models        |
+| `diamonds`                    | Large-data visualization, regression, multivariate models |
+| `gapminder`                   | Trend, visualization, multivariate thinking               |
+| CourseKata home-price dataset | Best alignment with XCD Ch. 3 and Ch. 7 examples          |
+
+My recommendation: use **student survey data for motivation**, but use **clean traditional datasets for first exposure**. Then return to student data once students understand the operation. That way the course feels relevant without making every lesson depend on messy real data.
+
+A good pattern is:
+
+> First learn the operation on a clean dataset → repeat the operation on student survey data → explain what the result means in a human context.
+
+[1]: https://app.coursekata.org/preview/ec26c7bd-0ade-480b-a307-13c141fe28cb/program?book=79f4478a-f95d-4605-b9f1-97903ce627ca&version=ef140287-4c15-4abd-9e36-2453ad3d7626 "CourseKata - Preview v7.2"
+
+# Exams Discussions
+I would **keep Exam 2**. In fact, XCD almost needs it because the middle of the course has a natural breakpoint after **model comparison + p-value inference**.
+
+I would structure the course around **two midterm-style exams plus a final project**, not replace Exam 2 with the project.
+
+## Recommended assessment structure
+
+| Assessment        |                       Timing | Main focus                                                                                       | Why keep it                                                                               |
+| ----------------- | ---------------------------: | ------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------- |
+| **Exam 1**        |                        Day 8 | Data, visualization, R basics, variable types, intro relationships                               | Checks whether students can read data and describe variation before modeling gets serious |
+| **Exam 2**        |                       Day 22 | Empty/group/regression models, sampling distributions, p-values, PRE, F, chi-square independence | Checks individual understanding of the central XCD inference arc                          |
+| **Final project** | Days 23–29, submitted at end | Confidence intervals, multivariate modeling, interpretation, communication                       | Lets students apply ideas collaboratively without replacing individual accountability     |
+
+So the structure becomes:
+
+| Unit                                 |  Days | Assessment               |
+| ------------------------------------ | ----: | ------------------------ |
+| Unit 1: Exploring Data and Variation |   1–7 | Exam 1 on Day 8          |
+| Unit 2: Modeling Variation           |  9–16 | Included on Exam 2       |
+| Unit 3: Inference Using P-Values     | 17–21 | Exam 2 on Day 22         |
+| Unit 4: Confidence Intervals         | 23–26 | Project milestone / quiz |
+| Unit 5: Multivariate Models          | 27–29 | Final project            |
+
+## Why Exam 2 is worth keeping
+
+Exam 2 gives students a needed checkpoint on the hardest conceptual material:
+
+* What is the empty model?
+* What does it mean for one model to reduce error compared to another?
+* What are PRE and F measuring?
+* What is a sampling distribution?
+* What is a p-value?
+* What does “under the null model” mean?
+* How do we interpret model output?
+* What is the difference between statistical significance and practical usefulness?
+
+Those are too important to assess only through group work or completion-based JNBs.
+
+## How to support students before Exam 2
+
+I would build a **three-part support system**.
+
+### 1. Exam 2 review quiz, auto-graded
+
+Give a Canvas quiz after Day 21. Let students take it multiple times.
+
+Recommended structure:
+
+| Item type                                      | Number |
+| ---------------------------------------------- | -----: |
+| Vocabulary/concept questions                   |    5–6 |
+| Interpret model output                         |    4–5 |
+| Sampling distribution / p-value interpretation |    4–5 |
+| PRE/F/model comparison                         |    3–4 |
+| One chi-square or categorical inference item   |    1–2 |
+
+Make it low-stakes but required.
+
+### 2. “Model comparison map” handout or JNB
+
+Students should practice filling in the same structure repeatedly:
+
+| Question                               | Student answer  |
+| -------------------------------------- | --------------- |
+| What is the outcome variable?          |                 |
+| What is the explanatory variable?      |                 |
+| What is the empty model?               |                 |
+| What is the complex model?             |                 |
+| What statistic measures improvement?   | PRE / F / slope |
+| What is the null hypothesis?           |                 |
+| What was shuffled or simulated?        |                 |
+| What does the p-value mean in context? |                 |
+| What conclusion is reasonable?         |                 |
+
+This is the single best support for Exam 2 because it connects XCD Chapters 2–5.
+
+### 3. Exam wrapper / correction option
+
+After Exam 2, allow students to recover a small amount of credit by completing corrections.
+
+Example policy:
+
+> Students may earn back up to 20% of missed points by submitting corrections. For each corrected problem, they must identify the mistake, show the corrected reasoning, and explain the concept in words.
+
+This motivates learning without making the exam feel one-and-done.
+
+## How Exam 2 fits with the project
+
+I would use the project to **reinforce** Exam 2 topics, not replace the exam.
+
+For example:
+
+| Before Exam 2 | Project task                       |
+| ------------- | ---------------------------------- |
+| Day 14        | Fit one simple model               |
+| Day 17        | State a null hypothesis            |
+| Day 19        | Interpret a p-value                |
+| Day 21        | Submit model-comparison checkpoint |
+| Day 22        | Take Exam 2                        |
+
+Then after Exam 2:
+
+| After Exam 2 | Project task                        |
+| ------------ | ----------------------------------- |
+| Day 24       | Add confidence interval             |
+| Day 27       | Add second predictor if appropriate |
+| Day 29       | Peer review / final presentation    |
+
+That way the project becomes a running application of the same ideas, but the exam still verifies individual understanding.
+
+## My suggested grading balance with Exam 2 included
+
+| Category                                 | Weight |
+| ---------------------------------------- | -----: |
+| Pre-class Canvas quizzes                 |    10% |
+| Mini-JNB / lab completion                |    15% |
+| Post-lab HW quizzes                      |    15% |
+| Exam 1                                   |    15% |
+| Exam 2                                   |    20% |
+| Term project + peer review               |    20% |
+| Participation / reflection / corrections |     5% |
+
+This gives Exam 2 enough weight to matter, but not so much that it overwhelms the course.
+
+My recommendation: **keep Exam 2 on Day 22**, covering XCD Chapters **2.4–5.13/5.15**, and let the project take over after Exam 2 as the main vehicle for confidence intervals and multivariate modeling.
+
+

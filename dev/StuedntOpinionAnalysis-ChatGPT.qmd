@@ -1,0 +1,109 @@
+I reviewed the 58 student responses and grouped them into recurring themes. Because many comments mention more than one issue, percentages do **not** add up to 100%.
+
+# Positive Themes
+
+| Theme                                                                   | Students | % of Responses |
+| ----------------------------------------------------------------------- | -------: | -------------: |
+| Easy to follow, clear, step-by-step learning                            |        9 |          15.5% |
+| Interactive, hands-on learning                                          |        7 |          12.1% |
+| Accessibility (web-based, no software installation, available anywhere) |        7 |          12.1% |
+| Helpful examples and practice exercises                                 |        6 |          10.3% |
+| Helpful feedback/check questions                                        |        4 |           6.9% |
+| Learning R/programming skills                                           |        4 |           6.9% |
+
+### Representative positive comments
+
+**Ease of learning**
+
+* "Very easy to understand."
+* "Straight-forward and easy to follow."
+* "Walks you through the steps."
+
+**Interactive learning**
+
+* "I learn much better when I apply my knowledge."
+* "The check-in questions kept me paying attention."
+
+**Examples**
+
+* "The amount of examples provided."
+* "Examples helped me remember and practice."
+
+**Accessibility**
+
+* "Easy accessibility from any device."
+* "Didn't have to download or buy software."
+
+# Negative Themes
+
+| Theme                                                                   | Students | % of Responses |
+| ----------------------------------------------------------------------- | -------: | -------------: |
+| Need more explanations, hints, feedback, and clearer instructions       |       12 |          20.7% |
+| Too much reading, tedious, overwhelming, or chapters too long           |        8 |          13.8% |
+| Technical issues (slow loading, server problems, browser compatibility) |        6 |          10.3% |
+| UI/layout improvements needed                                           |        2 |           3.4% |
+| Misalignment with lectures/exams or insufficient depth                  |        2 |           3.4% |
+
+### Representative negative comments
+
+**Need more guidance (largest complaint)**
+
+* More hints for coding exercises.
+* Better explanations when answers are wrong.
+* Clearer instructions on what functions to use.
+* More examples of correct solutions.
+* Better summaries of key ideas.
+
+**Reading load**
+
+* Sections were long and tedious.
+* Too much reading.
+* Some students lost interest over the semester.
+* Requests for shorter chapters and more concise presentation.
+
+**Technical issues**
+
+* Slow performance.
+* Server connection problems.
+* Questions occasionally failed to load.
+* Safari and iPad compatibility issues.
+
+**Course alignment**
+
+* Some students felt exams emphasized formulas while CourseKata emphasized coding.
+* A few felt some class topics were not adequately covered in CourseKata.
+
+# Executive Summary
+
+### What students liked most
+
+1. **Clear step-by-step instruction** (15.5%)
+2. **Interactive learning approach** (12.1%)
+3. **Accessibility and ease of use** (12.1%)
+4. **Examples and practice opportunities** (10.3%)
+
+### Biggest opportunities for improvement
+
+1. **Provide more feedback, hints, and explanations** (20.7%)
+2. **Reduce or reorganize reading load** (13.8%)
+3. **Improve technical performance and browser support** (10.3%)
+
+# Overall Sentiment
+
+The overall sentiment is strongly positive. Most students praised CourseKata's:
+
+* interactive format,
+* guided learning approach,
+* examples and practice,
+* accessibility,
+* support for learning R and statistics.
+
+The criticisms were concentrated in a few areas:
+
+* wanting **more detailed feedback and hints**,
+* finding some chapters **too long or repetitive**,
+* occasional **technical/performance issues**.
+
+If I were preparing a report for instructors, I would summarize the findings as:
+
+> Students overwhelmingly value CourseKata's interactive, guided learning environment and examples-based pedagogy. The most common recommendation is to provide more detailed feedback and hints for coding exercises, followed by reducing reading burden and addressing technical performance issues. These improvements would likely address the majority of student concerns while preserving the features students value most.
