@@ -1,0 +1,75 @@
+body {
+  max-width: 820px;
+  margin: auto;
+  font-size: 15px;
+}
+.question {
+  margin-bottom: 2em;
+  padding: 1em 1.25em;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #fafafa;
+}
+.q-num {
+  font-size: 0.75em;
+  color: #888;
+  margin-bottom: 0.3em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.section-title {
+  font-size: 1em;
+  font-weight: 600;
+  color: #444;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 4px;
+  margin: 2em 0 1em;
+}
+.short-answer textarea {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.long-answer textarea {
+  width: 100%;
+  min-height: 140px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.instructions {
+  background: #f0f4ff;
+  border-left: 4px solid #4a6cf7;
+  padding: 0.75em 1em;
+  border-radius: 4px;
+  margin-bottom: 2em;
+  font-size: 0.93em;
+}
+table { 
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75em 0;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px 10px;
+  text-align: center;
+}
+th {
+  background: #f0f0f0;
+}
+.formula-box {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.75em 1em;
+  margin: 0.5em 0 1em;
+  font-size: 0.9em; 
+}

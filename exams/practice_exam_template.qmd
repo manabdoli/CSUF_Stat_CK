@@ -1,7 +1,6 @@
 ---
 title: "Practice Exam — Two-Mean Inference"
 subtitle: "Introductory Statistics · Chapters 5–11"
-navbar: false
 format:
   html:
     theme: cosmo
