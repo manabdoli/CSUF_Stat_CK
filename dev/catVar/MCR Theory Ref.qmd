@@ -1,0 +1,603 @@
+---
+title: "MCR Theory Ref"
+format: html
+---
+
+Yes. The cleanest theoretical way to study this is through **Bayes classification error**, because it gives you a population-level statement about what happens when you add predictors. Then you can contrast that with the finite-sample behavior of an estimated classifier.
+
+Suppose $Y\in{1,\ldots,K}$ and you currently classify using predictors $X$. The Bayes classifier is
+
+$$
+g^*(X)=\arg\max_k P(Y=k\mid X),
+$$
+
+and its minimum possible misclassification rate is
+
+$$
+R^*(X)
+=
+P\{g^*(X)\neq Y\}
+=
+1-E\left[\max_k P(Y=k\mid X)\right].
+$$
+
+Now add a new predictor $Z$. Then
+
+$$
+R^*(X,Z)
+=
+1-E\left[\max_k P(Y=k\mid X,Z)\right].
+$$
+
+A fundamental result is
+
+$$
+\boxed{R^*(X,Z)\le R^*(X).}
+$$
+
+So, **at the population/Bayes level, adding information can never make the optimal MCR worse**. It either decreases MCR or leaves it unchanged.
+
+There is a very nice proof. Since
+
+$$
+P(Y=k\mid X)
+=
+E[P(Y=k\mid X,Z)\mid X],
+$$
+
+and $\max(\cdot)$ is convex,
+
+$$
+\max_k E[p_k(X,Z)\mid X]
+\le
+E[\max_k p_k(X,Z)\mid X].
+$$
+
+Taking expectations,
+
+$$
+E[\max_k P(Y=k\mid X)]
+\le
+E[\max_k P(Y=k\mid X,Z)],
+$$
+
+and therefore
+
+$$
+R^*(X,Z)\le R^*(X).
+$$
+
+For binary classification this is particularly transparent. Let
+
+$$
+\eta(X)=P(Y=1\mid X).
+$$
+
+Then
+
+$$
+R^*(X)
+=
+E[\min\{\eta(X),1-\eta(X)\}]
+$$
+
+or equivalently
+
+$$
+R^*(X)
+=
+\frac12-
+E\left|\eta(X)-\frac12\right|.
+$$
+
+Adding $Z$ can make the posterior probabilities move farther away from $0.5$, allowing more confident—and sometimes different—classifications.
+
+### But here is the crucial distinction
+
+The above result is **not** saying that adding variables to logistic regression, LDA, a tree, etc. must improve test-set MCR.
+
+There are really two different statements:
+
+| Situation                                    | Effect of adding $Z$ |
+| -------------------------------------------- | -------------------- |
+| True Bayes classifier / infinite information | MCR cannot increase  |
+| Classifier estimated from finite data        | MCR can increase     |
+
+The second phenomenon is extremely important. With finite $n$, additional predictors introduce additional estimation variance and model complexity. Eventually the deterioration in estimation can outweigh the additional predictive information.
+
+This is the classical **Hughes phenomenon**, sometimes called the **peaking phenomenon** or related to the curse of dimensionality. Hughes' 1968 paper showed that, for fixed sample size, expected classification accuracy can initially improve as the number of measurements grows and then deteriorate. ([DBLP][1])
+
+Conceptually:
+
+$$
+\text{more variables}
+\quad\Rightarrow\quad
+\begin{cases}
+\text{potentially lower Bayes error}\\
+\text{but greater estimation difficulty}
+\end{cases}
+$$
+
+and therefore the observed test MCR might have a U-shaped relationship with model complexity.
+
+This distinction may fit especially well with the framework you have been developing around model/error and prediction: **additional variables reduce the irreducible classification error only insofar as they contain relevant information about $Y$ beyond what $X$ already tells us; but estimating how to use that information introduces sampling error.**
+
+### When does a new variable actually reduce Bayes MCR?
+
+This question is subtler than simply asking whether $Z$ is associated with $Y$.
+
+If
+
+$$
+Y\perp Z\mid X,
+$$
+
+then
+
+$$
+P(Y\mid X,Z)=P(Y\mid X)
+$$
+
+and therefore
+
+$$
+R^*(X,Z)=R^*(X).
+$$
+
+So conditional information is what matters.
+
+But even
+
+$$
+Y\not\perp Z\mid X
+$$
+
+does **not necessarily imply a reduction in MCR**.
+
+For example, suppose
+
+$$
+P(Y=1\mid X)=0.80,
+$$
+
+and observing $Z$ changes this to either $.70$ or $.90$. $Z$ clearly contains information about $Y$, but the optimal prediction remains $Y=1$ in every case.
+
+Therefore MCR doesn't necessarily improve.
+
+Contrast this with
+
+$$
+P(Y=1\mid X)=0.55,
+$$
+
+while after observing $Z$ we get
+
+$$
+P(Y=1\mid X,Z)
+=
+\begin{cases}
+.80\\
+.30.
+\end{cases}
+$$
+
+Now $Z$ changes which side of the decision boundary some observations fall on, and Bayes MCR decreases.
+
+That gives an especially useful distinction:
+
+$$
+\boxed{\text{predictive information} \neq \text{necessarily MCR improvement}.}
+$$
+
+A predictor can improve probability estimation while producing exactly the same hard classifications.
+
+That observation also connects MCR to **entropy/log-loss**. Conditional entropy obeys
+
+$$
+H(Y\mid X,Z)\le H(Y\mid X),
+$$
+
+with reduction
+
+$$
+H(Y\mid X)-H(Y\mid X,Z)
+=
+I(Y;Z\mid X)\ge0.
+$$
+
+So if $Z$ gives conditional information about $Y$, it improves the theoretical information available for probabilistic prediction. But MCR is much coarser because it only cares about the winning class.
+
+That may be particularly relevant if you are trying to build a theoretical bridge among **MCR, entropy, and PRE**.
+
+## References I would start with
+
+**1. Devroye, Györfi & Lugosi (1996), *A Probabilistic Theory of Pattern Recognition*.**
+This is probably the strongest theoretical reference for what you're asking. Chapter 2 is literally **“The Bayes Error”**, followed by chapters on inequalities, classification rules, consistency, error estimation, complexity regularization, and feature extraction. ([DOI][2])
+
+I would use this as the main mathematical source for
+
+$$
+R(g)=P(g(X)\neq Y),
+$$
+
+Bayes risk,
+
+$$
+R^*=\inf_g R(g),
+$$
+
+posterior-class probabilities, consistency, and theoretical classification error.
+
+**2. Hughes, G. F. (1968), “On the Mean Accuracy of Statistical Pattern Recognizers,” IEEE Transactions on Information Theory, 14(1), 55–63.**
+This is the classic paper for the counterpoint: adding features does not necessarily improve an *estimated* classifier when the training sample is finite. ([DBLP][1])
+
+This is particularly useful if your argument is:
+
+$$
+\text{population: more information cannot hurt}
+$$
+
+versus
+
+$$
+\text{sample: more dimensions can hurt estimation}.
+$$
+
+**3. Cover & Hart (1967), “Nearest Neighbor Pattern Classification.”**
+A foundational classification-error paper. They connect nearest-neighbor error to the Bayes error and show the famous asymptotic bound for 1-NN. ([OA Monitor Ireland][3])
+
+For binary classification one form of the result is
+
+$$
+R^*\le R_{NN}\le 2R^*(1-R^*)\le2R^*.
+$$
+
+It is useful for establishing the Bayes error as the fundamental benchmark against which classification methods are judged.
+
+**4. Blackwell (1951, 1953), comparison of statistical experiments.**
+This is a more abstract but surprisingly relevant direction. Blackwell's theory formalizes what it means for one information structure to be “more informative” than another: more information cannot increase optimal Bayes risk for a decision problem. ([Celebratio][4])
+
+Your $X$ versus $(X,Z)$ problem is essentially a special case of this idea.
+
+**5. Feature-selection literature.**
+Li et al.'s review organizes feature selection into information-theoretic, statistical, similarity-based, and sparse-learning approaches. ([arXiv][5]) It is useful for moving from the theoretical question
+
+> Does $Z$ contain additional information about $Y$?
+
+to the practical question
+
+> How do we decide which $Z$ to include?
+
+The literature on the Hughes/peaking phenomenon emphasizes exactly the finite-sample tradeoff: true discriminatory information can increase with dimensionality while estimated classifier performance eventually deteriorates. ([OUP Academic][6])
+
+---
+
+I think there is a **very interesting theoretical thread for your framework** here:
+
+$$
+\text{Variable added}
+\rightarrow
+\text{conditional information}
+\rightarrow
+\text{reduced uncertainty}
+\rightarrow
+\text{possibly changed predictions}
+\rightarrow
+\text{reduced MCR}.
+$$
+
+But the arrows are not all equivalences. In particular,
+
+$$
+I(Y;Z\mid X)>0
+$$
+
+can reduce entropy without reducing MCR, because the probabilities may change without changing the modal prediction.
+
+This suggests treating **entropy reduction as a finer notion of predictive improvement than MCR reduction**. MCR only notices improvements that matter enough to change the winning category.
+
+Given your earlier interest in connecting **PRE, $\chi^2$, entropy, and categorical modeling**, I think this is probably the direction worth pursuing. I can next build a **theoretical map showing the relationships among MCR, Bayes error, entropy, Gini impurity, conditional mutual information, and PRE**, including the relevant inequalities and proofs.
+
+[1]: https://dblp.org/rec/journals/tit/Hughes68?utm_source=chatgpt.com "dblp: On the mean accuracy of statistical pattern recognizers."
+[2]: https://doi.org/10.1007/978-1-4612-0711-5?utm_source=chatgpt.com "A Probabilistic Theory of Pattern Recognition | Springer Nature Link"
+[3]: https://oamonitor.ireland.openaire.eu/rfo/environmental-protection-agency1/search/publication?pid=10.1109%2Ftit.1967.1053964&utm_source=chatgpt.com "Nearest neighbor pattern classification"
+[4]: https://celebratio.org/Blackwell_DH/article/255/?utm_source=chatgpt.com "Celebratio Mathematica — Blackwell — Statistics"
+[5]: https://arxiv.org/abs/1601.07996?utm_source=chatgpt.com "Feature Selection: A Data Perspective"
+[6]: https://academic.oup.com/bioinformatics/article/22/7/837/202450?utm_source=chatgpt.com "Genetic test bed for feature selection | Bioinformatics | Oxford Academic"
+
+
+# More on Proof
+Yes. The proof I sketched is essentially a **Jensen's inequality + posterior probability** argument, and most classification books do not present it exactly in that compact form. For learning it carefully, I would split the reading into two pieces: first the Bayes-classification part, then the convexity/Jensen part.
+
+The best classification reference is **Devroye, Györfi, and Lugosi, *A Probabilistic Theory of Pattern Recognition* (1996)**. Their early chapters develop Bayes error, posterior probabilities, and the optimal classifier carefully. Even if they do not phrase the “adding a variable cannot worsen Bayes error” result exactly as I did, they provide the machinery needed to derive it cleanly.
+
+For the convexity step, I would use **Boyd and Vandenberghe, *Convex Optimization***. Their treatment of convex functions includes the key fact that a pointwise maximum of affine—and more generally convex—functions is convex. Their book is freely available from Stanford. ([Stanford University][1])
+
+Here is the specific piece you need.
+
+Let
+
+$$
+f(p_1,\ldots,p_K)=\max\{p_1,\ldots,p_K\}.
+$$
+
+Why is this convex?
+
+For any two probability vectors $p$ and $q$, and $0\le\lambda\le1$,
+
+$$
+f(\lambda p+(1-\lambda)q)
+=
+\max_k\{\lambda p_k+(1-\lambda)q_k\}.
+$$
+
+For every particular $k$,
+
+$$
+p_k\le\max_j p_j
+$$
+
+and
+
+$$
+q_k\le\max_j q_j.
+$$
+
+Therefore,
+
+$$
+\lambda p_k+(1-\lambda)q_k
+\le
+\lambda\max_jp_j+(1-\lambda)\max_jq_j.
+$$
+
+This is true for **every** $k$, so it is also true for the largest left-hand side:
+
+$$
+\boxed{
+\max_k\{\lambda p_k+(1-\lambda)q_k\}
+\le
+\lambda\max_kp_k+(1-\lambda)\max_kq_k
+}.
+$$
+
+But that is exactly the definition of convexity.
+
+So the slightly mysterious statement
+
+$$
+\text{"max is convex"}
+$$
+
+is actually quite elementary once written this way.
+
+Now we can revisit the classification proof more slowly.
+
+Suppose
+
+$$
+p_k(X,Z)=P(Y=k\mid X,Z).
+$$
+
+Before seeing $Z$, our posterior probabilities are
+
+$$
+P(Y=k\mid X).
+$$
+
+By the law of iterated expectation,
+
+$$
+P(Y=k\mid X)
+=
+E[P(Y=k\mid X,Z)\mid X].
+$$
+
+So we may write
+
+$$
+P(Y=k\mid X)=E[p_k(X,Z)\mid X].
+$$
+
+The probability of being correct under the Bayes classifier using only $X$ is
+
+$$
+\max_k P(Y=k\mid X).
+$$
+
+Substitute the conditional expectation:
+
+$$
+\max_k E[p_k(X,Z)\mid X].
+$$
+
+Now Jensen's inequality enters. Because $\max$ is convex,
+
+$$
+\max_k E[p_k(X,Z)\mid X]
+\le
+E\left[\max_k p_k(X,Z)\mid X\right].
+$$
+
+The left side is the best probability of correct classification **before observing $Z$**.
+
+The right side is the average best probability of correct classification **after observing $Z$**.
+
+That is the entire argument.
+
+Taking expectation over $X$ gives
+
+$$
+E\left[\max_k P(Y=k\mid X)\right]
+\le
+E\left[\max_k P(Y=k\mid X,Z)\right].
+$$
+
+Since Bayes MCR is
+
+$$
+R^*=1-P(\text{correct classification}),
+$$
+
+we reverse the direction:
+
+$$
+\boxed{
+R^*(X,Z)\le R^*(X).
+}
+$$
+
+There is also a much more intuitive way of understanding the proof that does not require Jensen at first. Imagine that after observing $X$ you have three class probabilities
+
+$$
+(.50,.30,.20).
+$$
+
+Your best classification probability is $.50$.
+
+Now suppose $Z$ can take two equally likely values and yields posterior probabilities
+
+$$
+Z=0:\quad(.70,.20,.10),
+$$
+
+and
+
+$$
+Z=1:\quad(.30,.40,.30).
+$$
+
+Averaging them gives
+
+$$
+\frac12(.70,.20,.10)+
+\frac12(.30,.40,.30)
+=
+(.50,.30,.20),
+$$
+
+so ignoring $Z$ takes you back to the original posterior.
+
+Without $Z$, your probability of being correct is
+
+$$
+\max(.50,.30,.20)=.50.
+$$
+
+With $Z$, your average probability of being correct is
+
+$$
+\frac12(.70)+\frac12(.40)=.55.
+$$
+
+So
+
+$$
+\max(\text{average probabilities})
+\le
+\text{average of the maximum probabilities}.
+$$
+
+That sentence is Jensen's inequality in this problem.
+
+For the binary case, the geometry becomes even simpler. Write
+
+$$
+\eta(X)=P(Y=1\mid X).
+$$
+
+Then the Bayes probability of correct classification is
+
+$$
+\max\{\eta(X),1-\eta(X)\}.
+$$
+
+But
+
+$$
+\max\{\eta,1-\eta\}
+=
+\frac12+\left|\eta-\frac12\right|.
+$$
+
+Consequently,
+
+$$
+R^*(X)
+=
+\frac12-E\left|\eta(X)-\frac12\right|.
+$$
+
+Adding $Z$ gives
+
+$$
+R^*(X,Z)
+=
+\frac12-
+E\left|
+P(Y=1\mid X,Z)-\frac12
+\right|.
+$$
+
+Since
+
+$$
+\eta(X)
+=
+E[\eta(X,Z)\mid X],
+$$
+
+convexity of absolute value gives
+
+$$
+\left|
+E[\eta(X,Z)\mid X]-\frac12
+\right|
+\le
+E\left[
+\left|\eta(X,Z)-\frac12\right|
+\mid X
+\right].
+$$
+
+This is just Jensen again, now using the familiar convex function
+
+$$
+f(t)=|t|.
+$$
+
+I actually think **this binary proof is the better one pedagogically**. It makes the substantive meaning very clear:
+
+$$
+R^*
+=
+\frac12-
+\underbrace{
+E\left|\eta-\frac12\right|
+}_{\text{average separation from uncertainty}}.
+$$
+
+Additional information $Z$ can only increase, on average, how far posterior probabilities spread away from their conditional mean. That is exactly what convexity captures.
+
+For deeper theoretical context, **Blackwell's comparison-of-experiments theory** is the more general result behind this. It says, roughly, that having a more informative experiment cannot produce higher optimal Bayes risk for a decision problem. A useful statistical treatment is Goel and DeGroot's *Comparison of Experiments and Information Measures*, which explicitly frames informativeness in terms of expected Bayes risk. ([DOI][2]) A recent paper also gives a modern discussion and proof of Blackwell's theorem. ([DOI][3])
+
+So I would recommend this learning sequence:
+
+1. **Devroye, Györfi & Lugosi** — Bayes classifier and Bayes error.
+2. **Boyd & Vandenberghe, §3.2–3.3** — convex functions, pointwise maxima, and Jensen's inequality. ([Stanford University][1])
+3. Re-derive the **binary $|\eta-.5|$ proof** yourself.
+4. Then look at **Blackwell's theorem** to see that this result is part of a much broader theory of “more information cannot hurt an optimal decision maker.” ([DOI][3])
+
+One thing I find especially promising for your framework is that the binary formula
+
+$$
+\boxed{
+R^*=\frac12-E\left|\eta-\frac12\right|
+}
+$$
+
+gives you a very concrete bridge between **prediction, variation in conditional probabilities, and reduction in classification error**. It may be a cleaner starting point than entropy if your eventual goal is to develop an intuitive categorical analogue of your numerical-modeling framework.
+
+[1]: https://web.stanford.edu/~boyd/cvxbook/?utm_source=chatgpt.com "Convex Optimization – Boyd and Vandenberghe"
+[2]: https://doi.org/10.1214/AOS%2F1176344790?utm_source=chatgpt.com "Comparison of Experiments and Information Measures"
+[3]: https://doi.org/10.1016/j.econlet.2024.112146?utm_source=chatgpt.com "A simple proof of Blackwell’s theorem on the comparison of experiments for a general state space - ScienceDirect"

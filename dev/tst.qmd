@@ -110,3 +110,110 @@ webr::eval_js(sprintf("
 
 ```
 
+
+# Simulation of Prediction Performances
+
+```{r}
+set.seed(123)
+x<- c(3, 3, 4, 5, 7)
+r<- 1000
+simX <- sample(x, r, replace = TRUE)
+
+predX <- list(mode = rep(3, r), 
+              median = rep(4, r), 
+              mean = rep(mean(x), r), 
+              random = sample(x, r, replace = TRUE))
+
+Missed <- lapply(predX, function(l) sum((simX-l)!=0))
+SumAbsDeviation <- lapply(predX, function(l) sum(abs(simX-l)))
+SumSquaredErr <- lapply(predX, function(l) sum((simX-l)^2))
+
+rbind(Missed, SumAbsDeviation, SumSquaredErr)
+
+```
+
+# Simulation of Prediction for Categorical variables
+
+```{r}
+ds <- data.frame(
+  x = c(3, 3, 4, 5, 7),
+  g1 = c('A', 'A', 'A', 'B', 'B'),
+  g2 = c('A', 'B', 'A', 'B', 'A'),
+  cr = c('C', 'C', 'D', 'D', 'D')
+)
+ds
+```
+
+```{r}
+catResponse <- ds |>
+  group_by(cr) |> summarise(All=n()) |>
+  left_join(by = join_by(cr),
+            ds |> group_by(cr) |> summarise(Gr1A = sum(g1=='A'), Grp1B = sum(g1=='B'))
+  ) |>
+  left_join(by = join_by(cr),
+            ds |> group_by(cr) |> summarise(Gr2A = sum(g2=='A'), Grp2B = sum(g2=='B'))
+  )
+catResponse
+```
+
+
+```{r}
+ds |> 
+  gf_bar(~'All', fill=~cr, color = ~'All', linewidth=2, position = 'fill') |>
+  gf_bar(~paste0('Grp1',g1), fill=~cr, color = ~'Group1', linewidth=1.5, position = 'fill') |>
+  gf_bar(~paste0('Grp2',g2), fill=~cr, color = ~'Group2', linewidth=1.5, position = 'fill') |>
+  gf_labs(x = 'Explanatory Variables/Levels', 
+          title = 'Categorical Response in different models')
+```
+
+## Mesuring Prediction Performance:
+
+```{r}
+# p = P(C) = .6
+p = 0.6
+
+# Create a grid: a = P(A) and q = P(C|A)
+# grid <- expand.grid(a = seq(0, 1, length.out = 100),
+#                     q = seq(0, 1, length.out = 100))
+
+a <- seq(0, 1, length.out = 100)
+q <- seq(0, 1, length.out = 100)
+X <- outer(a, q, function(x, y) x)
+Y <- outer(a, q, function(x, y) y)
+# Define the function
+mcr <- function(a, q) {
+  # Compute weighted MCR
+  r <- (p-q*a)/(1-a)
+  r[which(r<0 | r>1)] <- NA
+  mcr <- a*sapply(q, function(v) min(v, 1-v))+(1-a)*sapply(r, function(v) min(v, 1-v))
+  # Enforce constraint q between (p+1-1)/a and p/a
+  mcr[which(q<= (p+a-1)/a | q>= p/a)] <- NA
+  mcr
+}
+
+MCR <- mcr(X, Y)
+
+persp(a, q, MCR,
+      theta = 30, phi = 30,
+      col = "lightblue",
+      shade = 0.05,
+      xlab = "P(A)=a",
+      ylab = "P(C|A)=q",
+      zlab = "MCR")
+```
+
+```{r}
+library(plotly)
+plot_ly(
+  x = a,
+  y = q,
+  z = MCR,
+  type = "surface") %>%
+  layout(
+    scene = list(
+      xaxis = list(title = "P(A)=a"),
+      yaxis = list(title = "P(C|A)=q"),
+      zaxis = list(title = "MCR")
+    )
+  )
+```

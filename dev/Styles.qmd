@@ -1,0 +1,58 @@
+---
+title: "Styles"
+format: html
+---
+
+## 📝 Note / Side Note
+```html
+<div style="background:#E6F2FF; border:2px solid #4A90E2; padding:12px; border-radius:6px;">
+  <strong>📝 Side Note:</strong> 
+    
+    This is a friendly clarification or extra detail.
+</div>
+```
+
+---
+
+## ⚠️ Alert
+```html
+<div style="background:#FFF8E1; border:2px solid #FFC107; padding:12px; border-radius:6px;">
+  <strong>⚠️ Alert:</strong> 
+    
+    Be careful — this highlights a pitfall or important caution.
+</div>
+```
+
+---
+
+## 📐 Mathematical Details
+```html
+<div style="background:#F5F5F5; border:2px solid #9E9E9E; padding:12px; border-radius:6px;">
+  <strong>📐 Mathematical Details:</strong> 
+    
+    
+    Formal derivations or proofs.
+</div>
+```
+
+---
+
+## 🌱 Enrichment
+```html
+<div style="background:#E8F5E9; border:2px solid #66BB6A; padding:12px; border-radius:6px;">
+  <strong>🌱 Enrichment:</strong> 
+    
+    Optional conceptual depth or intuition.
+</div>
+```
+
+---
+
+## 📚 Further Reading
+```html
+<div style="background:#F3E5F5; border:2px solid #AB47BC; padding:12px; border-radius:6px;">
+  <strong>📚 Further Reading:</strong> 
+    
+    External references or recommended materials.
+</div>
+```
