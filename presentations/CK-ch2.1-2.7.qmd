@@ -266,12 +266,12 @@ tally( ~ Condition + AgeGroup, data = MindsetMatters)
 
 ```{webr}
 #| caption: "Sort by Age"
-head(arrange(MindsetMatters Age))
+head(arrange(MindsetMatters, Age))
 ```
 
 ```{webr}
 #| caption: "Sort by Age"
-MindsetMatters <- arrange(MindsetMatters desc(Age))
+MindsetMatters <- arrange(MindsetMatters, desc(Age))
 tail(MindsetMatters)
 ```
 
